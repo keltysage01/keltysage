@@ -143,7 +143,7 @@
 
       .hero-inner {
         display: grid;
-        gap: 14px;
+        gap: 0;
         padding: 32px 24px;
         border: 1px solid rgba(255, 255, 255, 0.68);
         border-radius: var(--radius-card);
@@ -153,6 +153,43 @@
         -webkit-backdrop-filter: blur(24px);
         position: relative;
         overflow: hidden;
+      }
+
+      .hero-copy { display: grid; gap: 0; }
+
+      .hero-photo {
+        display: none;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 20%;
+        border-radius: calc(var(--radius-card) - 4px);
+        box-shadow: 0 18px 52px rgba(108, 87, 72, 0.15);
+      }
+
+      .founder-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .founder-pill img {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center 20%;
+        border: 2px solid rgba(255, 255, 255, 0.9);
+        box-shadow: 0 8px 24px rgba(108, 87, 72, 0.16);
+        flex: 0 0 auto;
       }
 
       .hero-inner::before {
@@ -588,7 +625,13 @@
         .nav-links { display: flex; }
 
         .hero { padding: 64px 0 40px; }
-        .hero-inner { padding: 48px 44px; }
+        .hero-inner {
+          padding: 48px 44px;
+          grid-template-columns: 1fr 260px;
+          gap: 32px;
+          align-items: center;
+        }
+        .hero-photo { display: block; aspect-ratio: 3/4; min-height: 320px; }
         h1 { font-size: 5rem; }
 
         .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -597,6 +640,12 @@
 
       @media (min-width: 920px) {
         .hero { padding: 72px 0 48px; }
+        .hero-inner {
+          grid-template-columns: 1fr 320px;
+          gap: 44px;
+          padding: 52px 52px;
+        }
+        .hero-photo { min-height: 400px; }
         h1 { font-size: 5.8rem; }
         .hero-subhead { font-size: 1.38rem; }
 
@@ -651,7 +700,11 @@
       <main id="top">
         <section class="hero container" aria-labelledby="hero-title">
           <div class="hero-inner reveal">
-            <p class="eyebrow">Builder &amp; AI coach for small business</p>
+            <div class="hero-copy">
+            <div class="founder-pill">
+              <img src="kelty.jpg" alt="Kelty smiling in front of her screen." width="700" height="700" />
+              <p class="eyebrow" style="margin:0;">Builder &amp; AI coach for small business</p>
+            </div>
             <h1 id="hero-title">Hi, I&rsquo;m Kelty.</h1>
             <p class="hero-subhead">I build AI tools and coach small business owners to use them.</p>
             <p class="hero-body">
@@ -662,6 +715,10 @@
             <div class="button-row" aria-label="Main calls to action">
               <a class="button button-primary" href="#tools">See the Tools</a>
               <a class="button button-secondary" href="#coaching">Book a $100 Coaching Session</a>
+            </div>
+            </div><!-- /.hero-copy -->
+            <div class="hero-photo" aria-hidden="true">
+              <img src="kelty.jpg" alt="Kelty smiling in front of her screen." width="700" height="700" loading="eager" />
             </div>
           </div>
         </section>
