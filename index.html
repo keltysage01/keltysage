@@ -4,33 +4,46 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kelty Sage — AI Tools for Small Business</title>
-    <meta name="description" content="Kelty Sage builds AI tools for small business owners. Explore Sage Systems AI, FetchNote, and CycleCEO, or book a free AI coaching session." />
+    <meta name="description" content="Kelty Sage teaches business owners to use AI. Not for them — with them. Explore Sage Systems AI, FetchNote, and CycleCEO." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
+      /* ─── iOS 27 Design Tokens ─── */
       :root {
-        --rose:       #c65b7c;
-        --rose-dark:  #9f3f60;
-        --rose-glow:  rgba(198, 91, 124, 0.38);
-        --green:      #4f7a5a;
-        --green-glow: rgba(79, 122, 90, 0.30);
-        --violet:     #7c5bbf;
-        --violet-glow:rgba(124, 91, 191, 0.30);
-        --charcoal:   #1a1a1f;
-        --muted:      rgba(26, 26, 31, 0.58);
+        --rose:         #f472b6;
+        --rose-mid:     #ec4899;
+        --rose-dark:    #db2777;
+        --rose-glow:    rgba(244,114,182,0.32);
+        --green:        #34d399;
+        --green-glow:   rgba(52,211,153,0.24);
+        --violet:       #a78bfa;
+        --violet-glow:  rgba(167,139,250,0.28);
 
-        --glass-bg:       rgba(255,255,255,0.13);
-        --glass-bg-heavy: rgba(255,255,255,0.22);
-        --glass-border:   rgba(255,255,255,0.68);
-        --glass-specular: rgba(255,255,255,0.92);
-        --glass-blur:     blur(52px) saturate(200%);
-        --glass-blur-sm:  blur(32px) saturate(180%);
+        /* iOS 27 Glass System — adjustable via --glass-frost (0→1) */
+        --glass-frost:   0.3;
+        --g-blur-px:     28;
+        --g-sat:         155;
+        --g-bg-alpha:    0.08;
 
-        --shadow-card: 0 2px 0 rgba(255,255,255,0.9) inset, 0 32px 80px rgba(100,70,90,0.18);
-        --shadow-btn:  0 16px 40px var(--rose-glow), 0 4px 12px rgba(0,0,0,0.12);
+        --g-bg:         rgba(255,255,255,calc(var(--g-bg-alpha)));
+        --g-bg-mid:     rgba(255,255,255,0.11);
+        --g-bg-heavy:   rgba(255,255,255,0.16);
+        --g-border:     rgba(255,255,255,0.18);
+        --g-spec:       rgba(255,255,255,0.28);
+        --g-text-iso:   rgba(0,0,0,0.22);   /* text isolation layer — the iOS 27 fix */
+        --g-blur:       blur(28px) saturate(155%);
+        --g-blur-sm:    blur(18px) saturate(140%);
 
-        --radius-card: 24px;
+        --shadow-card:
+          inset 0 1.5px 0 var(--g-spec),
+          inset 0 -1px 0 rgba(255,255,255,0.04),
+          0 2px 0 rgba(255,255,255,0.05) inset,
+          0 32px 80px rgba(0,0,0,0.45);
+
+        --shadow-btn: 0 18px 40px var(--rose-glow), 0 4px 12px rgba(0,0,0,0.3);
+
+        --radius-card: 28px;
         --radius-pill: 999px;
         --max: 1120px;
       }
@@ -43,17 +56,17 @@
         font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
         font-size: 16px;
         line-height: 1.65;
-        color: var(--charcoal);
-        /* Layered color-blob background — glass elements blur and tint these */
-        background-color: #f5f0fa;
-        background-image:
-          radial-gradient(ellipse 70% 55% at 8% 12%,  rgba(247,183,200,0.72) 0%, transparent 65%),
-          radial-gradient(ellipse 55% 60% at 95% 5%,  rgba(198,178,248,0.58) 0%, transparent 60%),
-          radial-gradient(ellipse 60% 50% at 50% 95%, rgba(150,210,180,0.54) 0%, transparent 60%),
-          radial-gradient(ellipse 45% 40% at 15% 80%, rgba(255,210,160,0.42) 0%, transparent 55%),
-          radial-gradient(ellipse 50% 45% at 85% 65%, rgba(247,183,200,0.38) 0%, transparent 55%),
-          linear-gradient(160deg, #fdf8ff 0%, #f5f0fa 50%, #f0f7f2 100%);
+        color: #fff;
         overflow-x: hidden;
+        /* iOS 27: rich dark gradient — glass refracts real color through it */
+        background-color: #0c0816;
+        background-image:
+          radial-gradient(ellipse 65% 55% at 10% 15%,  rgba(236,72,153,0.28)  0%, transparent 60%),
+          radial-gradient(ellipse 55% 65% at 90% 8%,   rgba(167,139,250,0.32) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 50% at 55% 92%,  rgba(52,211,153,0.22)  0%, transparent 58%),
+          radial-gradient(ellipse 45% 55% at 8%  80%,  rgba(251,191,36,0.14)  0%, transparent 55%),
+          radial-gradient(ellipse 50% 45% at 88% 72%,  rgba(244,114,182,0.18) 0%, transparent 55%),
+          linear-gradient(160deg, #100a20 0%, #1a0f2e 42%, #0e1525 100%);
       }
 
       img { display: block; max-width: 100%; }
@@ -64,13 +77,36 @@
         margin: 0 auto;
       }
 
-      /* ─── Glass surface mixin ─── */
-      .glass {
-        background: var(--glass-bg);
-        backdrop-filter: var(--glass-blur);
-        -webkit-backdrop-filter: var(--glass-blur);
-        border: 1px solid var(--glass-border);
+      /* ─── Shared glass surface ─── */
+      .g27 {
+        background: var(--g-bg);
+        backdrop-filter: var(--g-blur);
+        -webkit-backdrop-filter: var(--g-blur);
+        border: 1.5px solid var(--g-border);
         box-shadow: var(--shadow-card);
+        position: relative;
+      }
+
+      /* Specular rim — iOS 27 sharp top edge */
+      .g27::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(175deg,
+          rgba(255,255,255,0.18) 0%,
+          rgba(255,255,255,0.06) 18%,
+          rgba(255,255,255,0) 40%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* iOS 27 text isolation layer — prevents color bleeding into text */
+      .text-iso {
+        background: var(--g-text-iso);
+        border-radius: 14px;
+        padding: 12px 16px;
+        border: 1px solid rgba(255,255,255,0.06);
       }
 
       /* ─── NAV ─── */
@@ -78,10 +114,10 @@
         position: sticky;
         top: 0;
         z-index: 100;
-        background: rgba(245, 240, 250, 0.55);
-        backdrop-filter: var(--glass-blur-sm);
-        -webkit-backdrop-filter: var(--glass-blur-sm);
-        border-bottom: 1px solid var(--glass-border);
+        background: rgba(15, 10, 26, 0.55);
+        backdrop-filter: var(--g-blur-sm);
+        -webkit-backdrop-filter: var(--g-blur-sm);
+        border-bottom: 1px solid var(--g-border);
       }
 
       .nav {
@@ -98,7 +134,7 @@
         gap: 10px;
         font-weight: 700;
         font-size: 0.95rem;
-        color: var(--charcoal);
+        color: #fff;
       }
 
       .brand-mark {
@@ -107,12 +143,12 @@
         width: 36px;
         height: 36px;
         border-radius: 50%;
-        border: 1px solid var(--glass-border);
-        background: var(--glass-bg-heavy);
-        backdrop-filter: var(--glass-blur-sm);
-        -webkit-backdrop-filter: var(--glass-blur-sm);
-        box-shadow: 0 0 18px var(--rose-glow), inset 0 1px 0 var(--glass-specular);
-        color: var(--rose-dark);
+        background: var(--g-bg-mid);
+        backdrop-filter: var(--g-blur-sm);
+        -webkit-backdrop-filter: var(--g-blur-sm);
+        border: 1px solid var(--g-border);
+        box-shadow: 0 0 20px var(--rose-glow), inset 0 1.5px 0 var(--g-spec);
+        color: var(--rose);
         font-family: "DM Serif Display", Georgia, serif;
         font-size: 1.1rem;
       }
@@ -120,73 +156,56 @@
       .nav-links {
         display: none;
         align-items: center;
-        gap: 20px;
+        gap: 22px;
         font-size: 0.84rem;
         font-weight: 700;
-        color: var(--muted);
+        color: rgba(255,255,255,0.6);
       }
+
+      .nav-links a:hover { color: #fff; }
 
       .nav-cta {
         display: inline-flex;
         align-items: center;
         padding: 9px 16px;
         border-radius: var(--radius-pill);
-        border: 1px solid var(--glass-border);
-        background: var(--glass-bg-heavy);
-        backdrop-filter: var(--glass-blur-sm);
-        -webkit-backdrop-filter: var(--glass-blur-sm);
-        box-shadow: 0 8px 20px var(--rose-glow), inset 0 1px 0 var(--glass-specular);
-        color: var(--rose-dark);
+        background: var(--g-bg-mid);
+        backdrop-filter: var(--g-blur-sm);
+        -webkit-backdrop-filter: var(--g-blur-sm);
+        border: 1px solid var(--g-border);
+        box-shadow: 0 8px 24px var(--rose-glow), inset 0 1.5px 0 var(--g-spec);
+        color: var(--rose);
         font-size: 0.82rem;
         font-weight: 800;
         white-space: nowrap;
         transition: box-shadow 200ms, transform 200ms;
       }
 
-      .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 12px 28px var(--rose-glow), inset 0 1px 0 var(--glass-specular); }
+      .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 12px 32px var(--rose-glow), inset 0 1.5px 0 var(--g-spec); }
 
       /* ─── HERO ─── */
-      .hero { padding: 40px 0 36px; }
+      .hero { padding: 48px 0 40px; }
 
       .hero-card {
-        position: relative;
+        border-radius: var(--radius-card);
+        overflow: hidden;
         display: grid;
         grid-template-columns: 1fr;
         gap: 28px;
         padding: 36px 28px;
-        border-radius: var(--radius-card);
-        border: 1px solid var(--glass-border);
-        background: var(--glass-bg-heavy);
-        backdrop-filter: var(--glass-blur);
-        -webkit-backdrop-filter: var(--glass-blur);
-        box-shadow: var(--shadow-card);
-        overflow: hidden;
-      }
-
-      /* specular rim light at top */
-      .hero-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        background: linear-gradient(160deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 38%);
-        pointer-events: none;
       }
 
       .hero-copy { position: relative; z-index: 1; }
-
-      /* hide the standalone eyebrow on mobile — the pill already shows it */
-      .hero-copy > .eyebrow { display: none; }
 
       .eyebrow {
         display: inline-flex;
         align-items: center;
         gap: 8px;
         color: var(--green);
-        font-size: 0.7rem;
+        font-size: 0.68rem;
         font-weight: 800;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.12em;
         margin-bottom: 18px;
       }
 
@@ -196,40 +215,41 @@
         font-family: "DM Serif Display", Georgia, serif;
         font-weight: 400;
         line-height: 1.04;
-        color: var(--charcoal);
+        color: #fff;
       }
 
       h1 { font-size: 3.4rem; }
 
       .hero-subhead {
         margin-top: 14px;
-        color: var(--rose-dark);
-        font-size: 1.12rem;
+        color: rgba(255,255,255,0.92);
+        font-size: 1.14rem;
         font-weight: 700;
-        line-height: 1.38;
+        line-height: 1.4;
       }
 
-      .hero-body {
-        margin-top: 12px;
-        color: var(--muted);
-        font-size: 1rem;
-      }
-
-      .button-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 22px;
+      /* hero body in text isolation layer */
+      .hero-body-iso {
+        margin-top: 16px;
+        background: var(--g-text-iso);
+        border-radius: 14px;
+        padding: 14px 18px;
+        border: 1px solid rgba(255,255,255,0.07);
+        color: rgba(255,255,255,0.82);
+        font-size: 0.98rem;
+        line-height: 1.65;
       }
 
       /* ─── BUTTONS ─── */
+      .button-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
       .btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 8px;
         min-height: 46px;
-        padding: 12px 20px;
+        padding: 12px 22px;
         border-radius: var(--radius-pill);
         font-size: 0.9rem;
         font-weight: 800;
@@ -237,37 +257,39 @@
         transition: transform 200ms, box-shadow 200ms;
         cursor: pointer;
         border: none;
+        position: relative;
+        z-index: 1;
       }
 
-      .btn:hover, .btn:focus-visible { transform: translateY(-2px); }
-      .btn:focus-visible { outline: 3px solid rgba(198,91,124,0.35); outline-offset: 3px; }
+      .btn:hover { transform: translateY(-2px); }
+      .btn:focus-visible { outline: 3px solid rgba(244,114,182,0.4); outline-offset: 3px; }
 
       .btn-primary {
         color: #fff;
-        background: linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%);
+        background: linear-gradient(135deg, var(--rose-mid), var(--rose-dark));
         box-shadow: var(--shadow-btn);
       }
 
-      .btn-primary:hover { box-shadow: 0 22px 52px var(--rose-glow), 0 4px 16px rgba(0,0,0,0.14); }
+      .btn-primary:hover { box-shadow: 0 24px 56px var(--rose-glow), 0 4px 16px rgba(0,0,0,0.3); }
 
       .btn-glass {
         color: var(--green);
-        border: 1px solid var(--glass-border);
-        background: var(--glass-bg-heavy);
-        backdrop-filter: var(--glass-blur-sm);
-        -webkit-backdrop-filter: var(--glass-blur-sm);
-        box-shadow: 0 8px 24px var(--green-glow), inset 0 1px 0 var(--glass-specular);
+        background: var(--g-bg-mid);
+        backdrop-filter: var(--g-blur-sm);
+        -webkit-backdrop-filter: var(--g-blur-sm);
+        border: 1px solid var(--g-border);
+        box-shadow: 0 8px 24px var(--green-glow), inset 0 1.5px 0 var(--g-spec);
       }
 
-      .btn-glass:hover { box-shadow: 0 14px 34px var(--green-glow), inset 0 1px 0 var(--glass-specular); }
+      .btn-glass:hover { box-shadow: 0 14px 36px var(--green-glow), inset 0 1.5px 0 var(--g-spec); }
 
       /* ─── HERO PHOTO ─── */
       .hero-photo-wrap {
         display: none;
-        position: relative;
-        z-index: 1;
         align-self: center;
         justify-self: center;
+        position: relative;
+        z-index: 1;
       }
 
       .hero-photo-ring {
@@ -276,30 +298,34 @@
         height: 260px;
       }
 
-      /* outer glow ring */
       .hero-photo-ring::before {
         content: "";
         position: absolute;
-        inset: -8px;
+        inset: -10px;
         border-radius: 50%;
         background: conic-gradient(
-          from 120deg,
-          rgba(247,183,200,0.6) 0%,
-          rgba(198,178,248,0.5) 30%,
-          rgba(150,210,180,0.5) 55%,
-          rgba(247,183,200,0.6) 100%
+          from 100deg,
+          rgba(244,114,182,0.6) 0%,
+          rgba(167,139,250,0.5) 28%,
+          rgba(52,211,153,0.45) 56%,
+          rgba(244,114,182,0.6) 100%
         );
-        filter: blur(14px);
+        filter: blur(16px);
         z-index: 0;
+        animation: ring-spin 8s linear infinite;
       }
 
-      /* specular glass rim */
+      @keyframes ring-spin {
+        from { transform: rotate(0deg); }
+        to   { transform: rotate(360deg); }
+      }
+
       .hero-photo-ring::after {
         content: "";
         position: absolute;
-        inset: -3px;
+        inset: -2px;
         border-radius: 50%;
-        background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.4) 100%);
+        background: linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.2) 100%);
         z-index: 2;
         pointer-events: none;
       }
@@ -313,9 +339,9 @@
         object-position: center 18%;
         border-radius: 50%;
         display: block;
+        border: 2px solid rgba(255,255,255,0.15);
       }
 
-      /* mobile avatar pill */
       .founder-pill {
         display: flex;
         align-items: center;
@@ -324,97 +350,93 @@
       }
 
       .founder-pill img {
-        width: 56px;
-        height: 56px;
+        width: 52px;
+        height: 52px;
         border-radius: 50%;
         object-fit: cover;
         object-position: center 18%;
-        border: 2px solid var(--glass-border);
-        box-shadow: 0 6px 20px var(--rose-glow), inset 0 1px 0 var(--glass-specular);
+        border: 2px solid var(--g-border);
+        box-shadow: 0 6px 20px var(--rose-glow);
         flex: 0 0 auto;
       }
 
       /* ─── SECTIONS ─── */
-      .section { padding: 56px 0; }
+      .section { padding: 60px 0; }
 
-      .section-head {
-        margin-bottom: 32px;
-      }
-
-      .section-head h2 { font-size: 2.4rem; margin-bottom: 8px; }
-      .section-head p { color: var(--muted); max-width: 580px; }
+      .section-head { margin-bottom: 32px; }
+      .section-head h2 { font-size: 2.4rem; }
+      .section-head p { color: rgba(255,255,255,0.58); margin-top: 8px; max-width: 560px; }
 
       /* ─── PRODUCT CARDS ─── */
-      .products-grid {
-        display: grid;
-        gap: 16px;
-      }
+      .products-grid { display: grid; gap: 16px; }
 
       .product-card {
-        position: relative;
-        padding: 28px 26px;
         border-radius: var(--radius-card);
-        border: 1px solid var(--glass-border);
-        background: var(--glass-bg);
-        backdrop-filter: var(--glass-blur);
-        -webkit-backdrop-filter: var(--glass-blur);
-        box-shadow: var(--shadow-card);
         overflow: hidden;
         transition: transform 200ms, box-shadow 200ms;
+        padding: 0;
       }
 
-      /* per-card tinted glow blob */
-      .product-card::after {
-        content: "";
+      .product-card:hover { transform: translateY(-4px); }
+      .product-card:hover .g27 { box-shadow: inset 0 1.5px 0 var(--g-spec), 0 48px 100px rgba(0,0,0,0.55); }
+
+      .pc-inner {
+        position: relative;
+        z-index: 1;
+        padding: 28px 26px 24px;
+      }
+
+      /* per-card color blob */
+      .product-card .blob {
         position: absolute;
         top: -60px;
         right: -60px;
         width: 220px;
         height: 220px;
         border-radius: 50%;
+        filter: blur(52px);
+        opacity: 0.5;
         pointer-events: none;
-        filter: blur(48px);
-        opacity: 0.55;
       }
 
-      .product-card.c-rose::after  { background: radial-gradient(circle, rgba(198,91,124,0.55), transparent 70%); }
-      .product-card.c-green::after { background: radial-gradient(circle, rgba(79,122,90,0.50), transparent 70%); }
-      .product-card.c-violet::after { background: radial-gradient(circle, rgba(124,91,191,0.50), transparent 70%); }
-
-      .product-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 2px 0 rgba(255,255,255,0.9) inset, 0 40px 100px rgba(100,70,90,0.22);
-      }
+      .c-green .blob { background: radial-gradient(circle, rgba(52,211,153,0.6), transparent 70%); }
+      .c-rose  .blob { background: radial-gradient(circle, rgba(244,114,182,0.6), transparent 70%); }
+      .c-violet .blob { background: radial-gradient(circle, rgba(167,139,250,0.6), transparent 70%); }
 
       .card-tag {
         display: inline-flex;
-        padding: 5px 12px;
+        padding: 4px 11px;
         margin-bottom: 14px;
         border-radius: var(--radius-pill);
-        font-size: 0.7rem;
+        font-size: 0.68rem;
         font-weight: 800;
-        letter-spacing: 0.06em;
+        letter-spacing: 0.07em;
         text-transform: uppercase;
+        border: 1px solid;
         position: relative;
         z-index: 1;
-        border: 1px solid;
       }
 
-      .card-tag.rose   { color: var(--rose-dark);  border-color: rgba(198,91,124,0.28);  background: rgba(247,183,200,0.22); }
-      .card-tag.green  { color: var(--green);       border-color: rgba(79,122,90,0.28);   background: rgba(150,210,180,0.22); }
-      .card-tag.violet { color: var(--violet);      border-color: rgba(124,91,191,0.28);  background: rgba(198,178,248,0.22); }
+      .card-tag.rose   { color: var(--rose);   border-color: rgba(244,114,182,0.35); background: rgba(244,114,182,0.12); }
+      .card-tag.green  { color: var(--green);  border-color: rgba(52,211,153,0.35);  background: rgba(52,211,153,0.12); }
+      .card-tag.violet { color: var(--violet); border-color: rgba(167,139,250,0.35); background: rgba(167,139,250,0.12); }
 
       .product-card h3 {
         font-size: 1.7rem;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         position: relative;
         z-index: 1;
       }
 
-      .product-card p {
-        color: var(--muted);
-        font-size: 0.96rem;
-        line-height: 1.58;
+      /* product description in iOS 27 text isolation layer */
+      .pc-desc {
+        background: var(--g-text-iso);
+        border-radius: 14px;
+        padding: 14px 16px;
+        border: 1px solid rgba(255,255,255,0.06);
+        color: rgba(255,255,255,0.80);
+        font-size: 0.94rem;
+        line-height: 1.6;
         position: relative;
         z-index: 1;
       }
@@ -423,69 +445,51 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        margin-top: 20px;
+        margin-top: 18px;
         padding: 10px 16px;
         border-radius: var(--radius-pill);
         font-size: 0.84rem;
         font-weight: 800;
-        border: 1px solid var(--glass-border);
-        background: var(--glass-bg-heavy);
-        backdrop-filter: var(--glass-blur-sm);
-        -webkit-backdrop-filter: var(--glass-blur-sm);
-        box-shadow: inset 0 1px 0 var(--glass-specular);
+        background: var(--g-bg-mid);
+        backdrop-filter: var(--g-blur-sm);
+        -webkit-backdrop-filter: var(--g-blur-sm);
+        border: 1px solid var(--g-border);
+        box-shadow: inset 0 1.5px 0 var(--g-spec);
         transition: transform 200ms, box-shadow 200ms;
         position: relative;
         z-index: 1;
       }
 
-      .product-link.rose   { color: var(--rose-dark);  box-shadow: 0 6px 18px var(--rose-glow),  inset 0 1px 0 var(--glass-specular); }
-      .product-link.green  { color: var(--green);       box-shadow: 0 6px 18px var(--green-glow), inset 0 1px 0 var(--glass-specular); }
-      .product-link.violet { color: var(--violet);      box-shadow: 0 6px 18px var(--violet-glow),inset 0 1px 0 var(--glass-specular); }
+      .product-link.rose   { color: var(--rose);   box-shadow: 0 6px 20px var(--rose-glow),   inset 0 1.5px 0 var(--g-spec); }
+      .product-link.green  { color: var(--green);  box-shadow: 0 6px 20px var(--green-glow),  inset 0 1.5px 0 var(--g-spec); }
+      .product-link.violet { color: var(--violet); box-shadow: 0 6px 20px var(--violet-glow), inset 0 1.5px 0 var(--g-spec); }
 
       .product-link:hover { transform: translateX(4px); }
 
       /* ─── BETA BAND ─── */
-      .beta-band {
-        padding: 64px 0;
-        position: relative;
+      .beta-band { padding: 0 0 64px; }
+
+      .beta-inner {
+        border-radius: var(--radius-card);
         overflow: hidden;
+        display: grid;
+        gap: 28px;
+        padding: 40px 32px;
+        position: relative;
       }
 
-      .beta-band::before {
-        content: "";
+      .beta-inner h2 { font-size: 2.6rem; position: relative; z-index: 1; }
+      .beta-inner > div > p { color: rgba(255,255,255,0.70); margin-top: 12px; position: relative; z-index: 1; }
+
+      .beta-blob {
         position: absolute;
         inset: 0;
         background:
-          radial-gradient(ellipse 80% 60% at 10% 50%, rgba(247,183,200,0.45) 0%, transparent 60%),
-          radial-gradient(ellipse 60% 70% at 90% 50%, rgba(198,178,248,0.38) 0%, transparent 60%);
+          radial-gradient(ellipse 80% 60% at 5%  50%, rgba(244,114,182,0.15) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 70% at 95% 50%, rgba(167,139,250,0.14) 0%, transparent 60%);
         pointer-events: none;
+        z-index: 0;
       }
-
-      .beta-inner {
-        position: relative;
-        z-index: 1;
-        display: grid;
-        gap: 32px;
-        padding: 44px 36px;
-        border-radius: var(--radius-card);
-        border: 1px solid var(--glass-border);
-        background: var(--glass-bg);
-        backdrop-filter: var(--glass-blur);
-        -webkit-backdrop-filter: var(--glass-blur);
-        box-shadow: var(--shadow-card);
-      }
-
-      .beta-inner::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        background: linear-gradient(150deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 40%);
-        pointer-events: none;
-      }
-
-      .beta-inner h2 { font-size: 2.6rem; }
-      .beta-inner > p { color: var(--muted); margin-top: 12px; }
 
       .check-list {
         display: grid;
@@ -493,14 +497,16 @@
         list-style: none;
         padding: 0;
         margin: 0;
+        position: relative;
+        z-index: 1;
       }
 
       .check-list li {
         display: flex;
         align-items: flex-start;
         gap: 12px;
-        color: var(--muted);
-        font-size: 0.97rem;
+        color: rgba(255,255,255,0.75);
+        font-size: 0.96rem;
       }
 
       .check-list li::before {
@@ -510,53 +516,40 @@
         height: 22px;
         margin-top: 2px;
         border-radius: 50%;
-        border: 1px solid rgba(79,122,90,0.28);
+        border: 1px solid rgba(52,211,153,0.35);
         background:
           radial-gradient(circle at 50% 50%, var(--green) 0 3.5px, transparent 4px),
-          rgba(255,255,255,0.6);
-        box-shadow: 0 3px 10px var(--green-glow);
+          rgba(52,211,153,0.1);
+        box-shadow: 0 3px 12px var(--green-glow);
       }
 
-      .beta-note { margin-top: 14px; color: var(--rose-dark); font-size: 0.88rem; font-weight: 800; }
+      .beta-note { margin-top: 14px; color: var(--rose); font-size: 0.88rem; font-weight: 800; position: relative; z-index: 1; }
 
       /* ─── COACHING ─── */
       .coaching-panel {
-        position: relative;
+        border-radius: var(--radius-card);
+        overflow: hidden;
         display: grid;
         gap: 32px;
         padding: 36px 28px;
-        border-radius: var(--radius-card);
-        border: 1px solid var(--glass-border);
-        background: var(--glass-bg);
-        backdrop-filter: var(--glass-blur);
-        -webkit-backdrop-filter: var(--glass-blur);
-        box-shadow: var(--shadow-card);
-        overflow: hidden;
+        position: relative;
       }
 
-      .coaching-panel::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        background: linear-gradient(150deg, rgba(255,255,255,0.48) 0%, rgba(255,255,255,0) 38%);
-        pointer-events: none;
-      }
-
-      .coaching-panel h2 { font-size: 2.4rem; }
-      .coaching-panel > div > p { color: var(--muted); margin-top: 12px; }
+      .coaching-panel h2 { font-size: 2.4rem; position: relative; z-index: 1; }
+      .coaching-panel > div > p { color: rgba(255,255,255,0.68); margin-top: 12px; position: relative; z-index: 1; }
 
       .coaching-note {
         margin-top: 18px;
         padding: 16px 18px;
         border-radius: 16px;
-        border: 1px solid rgba(79,122,90,0.22);
-        background: rgba(150,210,180,0.15);
-        backdrop-filter: blur(12px);
-        color: rgba(26,26,31,0.78);
+        border: 1px solid rgba(52,211,153,0.18);
+        background: rgba(52,211,153,0.08);
+        color: rgba(255,255,255,0.82);
         font-size: 0.94rem;
         font-weight: 700;
-        line-height: 1.5;
+        line-height: 1.55;
+        position: relative;
+        z-index: 1;
       }
 
       .work-list {
@@ -566,28 +559,31 @@
         list-style: none;
         padding: 0;
         margin: 20px 0 0;
+        position: relative;
+        z-index: 1;
       }
 
       .work-list li {
         padding: 9px 14px;
         border-radius: var(--radius-pill);
-        border: 1px solid rgba(79,122,90,0.18);
-        background: rgba(150,210,180,0.18);
-        backdrop-filter: blur(12px);
+        border: 1px solid rgba(52,211,153,0.18);
+        background: rgba(52,211,153,0.08);
         color: var(--green);
-        font-size: 0.86rem;
+        font-size: 0.84rem;
         font-weight: 800;
         text-align: center;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
       }
 
       .calendar-card {
         border-radius: 20px;
-        border: 1px solid var(--glass-border);
-        background: rgba(255,255,255,0.72);
-        backdrop-filter: blur(24px);
+        border: 1.5px solid var(--g-border);
+        background: rgba(255,255,255,0.88);
+        backdrop-filter: blur(12px);
         overflow: hidden;
-        box-shadow: inset 0 1px 0 var(--glass-specular), 0 20px 60px rgba(100,70,90,0.12);
+        box-shadow: inset 0 1.5px 0 var(--g-spec), 0 24px 60px rgba(0,0,0,0.4);
+        position: relative;
+        z-index: 1;
       }
 
       .calendar-card iframe {
@@ -604,14 +600,14 @@
         display: grid;
         gap: 24px;
         padding-top: 28px;
-        border-top: 1px solid rgba(26,26,31,0.08);
+        border-top: 1px solid rgba(255,255,255,0.08);
       }
 
       .footer-statement {
         font-family: "DM Serif Display", Georgia, serif;
         font-size: 1.8rem;
         line-height: 1.12;
-        color: var(--charcoal);
+        color: rgba(255,255,255,0.92);
       }
 
       .footer-links { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -619,277 +615,384 @@
       .footer-link {
         padding: 8px 14px;
         border-radius: var(--radius-pill);
-        border: 1px solid var(--glass-border);
-        background: var(--glass-bg-heavy);
-        backdrop-filter: var(--glass-blur-sm);
-        -webkit-backdrop-filter: var(--glass-blur-sm);
-        color: var(--muted);
-        font-size: 0.83rem;
+        border: 1px solid var(--g-border);
+        background: var(--g-bg-mid);
+        backdrop-filter: var(--g-blur-sm);
+        -webkit-backdrop-filter: var(--g-blur-sm);
+        color: rgba(255,255,255,0.62);
+        font-size: 0.82rem;
         font-weight: 800;
-        box-shadow: inset 0 1px 0 var(--glass-specular);
-        transition: transform 180ms;
+        box-shadow: inset 0 1.5px 0 var(--g-spec);
+        transition: color 180ms, transform 180ms;
       }
 
-      .footer-link:hover { transform: translateY(-1px); }
+      .footer-link:hover { color: #fff; transform: translateY(-1px); }
+
+      /* ─── LIQUID GLASS SLIDER (iOS 27 setting) ─── */
+      .glass-ctrl {
+        position: fixed;
+        bottom: 24px;
+        right: 20px;
+        z-index: 200;
+      }
+
+      .glass-ctrl-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1.5px solid var(--g-border);
+        background: var(--g-bg-heavy);
+        backdrop-filter: var(--g-blur-sm);
+        -webkit-backdrop-filter: var(--g-blur-sm);
+        box-shadow: 0 8px 28px rgba(0,0,0,0.5), inset 0 1.5px 0 var(--g-spec);
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        color: rgba(255,255,255,0.8);
+        font-size: 1.1rem;
+        transition: transform 200ms, box-shadow 200ms;
+        font-family: inherit;
+      }
+
+      .glass-ctrl-btn:hover { transform: scale(1.08); box-shadow: 0 12px 34px rgba(0,0,0,0.5), inset 0 1.5px 0 var(--g-spec); }
+
+      .glass-panel {
+        position: absolute;
+        bottom: 54px;
+        right: 0;
+        width: 248px;
+        border-radius: 20px;
+        padding: 18px 18px 14px;
+        display: none;
+      }
+
+      .glass-panel.open { display: block; }
+
+      .glass-panel-title {
+        font-size: 0.65rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.5);
+        margin-bottom: 12px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .glass-slider-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: rgba(255,255,255,0.45);
+        margin-bottom: 6px;
+        position: relative;
+        z-index: 1;
+      }
+
+      #glass-slider {
+        width: 100%;
+        height: 4px;
+        border-radius: 99px;
+        background: rgba(255,255,255,0.15);
+        appearance: none;
+        -webkit-appearance: none;
+        outline: none;
+        cursor: pointer;
+        position: relative;
+        z-index: 1;
+      }
+
+      #glass-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        cursor: pointer;
+      }
+
+      #glass-slider::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #fff;
+        border: none;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        cursor: pointer;
+      }
+
+      .glass-label {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 0.7rem;
+        font-weight: 800;
+        color: rgba(255,255,255,0.45);
+        position: relative;
+        z-index: 1;
+      }
 
       /* ─── REVEAL ─── */
-      .reveal {
-        opacity: 0;
-        transform: translateY(16px);
-        transition: opacity 560ms ease, transform 560ms ease;
-      }
-
+      .reveal { opacity: 0; transform: translateY(16px); transition: opacity 560ms ease, transform 560ms ease; }
       .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
       @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-          scroll-behavior: auto !important;
-          transition-duration: 0.001ms !important;
-          animation-duration: 0.001ms !important;
-        }
+        *, *::before, *::after { transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; }
         .reveal { opacity: 1; transform: none; }
+        .hero-photo-ring::before { animation: none; }
       }
 
       /* ─── RESPONSIVE ─── */
       @media (min-width: 680px) {
         .container { width: min(100% - 48px, var(--max)); }
         .nav-links { display: flex; }
-
-        .hero { padding: 64px 0 44px; }
-        .hero-card {
-          grid-template-columns: 1fr auto;
-          gap: 40px;
-          align-items: center;
-          padding: 48px 44px;
-        }
+        .hero { padding: 72px 0 52px; }
+        .hero-card { grid-template-columns: 1fr auto; gap: 44px; align-items: center; padding: 52px 48px; }
         .hero-photo-wrap { display: flex; align-items: center; justify-content: center; }
         .hero-photo-ring { width: 280px; height: 280px; }
         .founder-pill { display: none; }
-        /* show the standalone eyebrow once pill is hidden */
         .hero-copy > .eyebrow { display: inline-flex; }
         h1 { font-size: 5rem; }
-
         .products-grid { grid-template-columns: repeat(2, 1fr); }
         .beta-inner { grid-template-columns: 1fr 1fr; align-items: start; }
+        .glass-ctrl { bottom: 32px; right: 28px; }
       }
 
       @media (min-width: 920px) {
-        .hero { padding: 72px 0 52px; }
-        .hero-card { padding: 56px 56px; gap: 52px; }
+        .hero-card { padding: 60px 56px; gap: 52px; }
         .hero-photo-ring { width: 320px; height: 320px; }
         h1 { font-size: 5.8rem; }
         .hero-subhead { font-size: 1.32rem; }
-
         .section { padding: 80px 0; }
-
         .products-grid { grid-template-columns: repeat(3, 1fr); }
-
         .section-head { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 16px; margin-bottom: 36px; }
         .section-head h2, .coaching-panel h2, .beta-inner h2 { font-size: 3rem; }
-
-        .coaching-panel {
-          grid-template-columns: 1fr minmax(420px, 0.9fr);
-          gap: 52px;
-          padding: 52px 52px;
-        }
-
+        .coaching-panel { grid-template-columns: 1fr minmax(420px, 0.9fr); gap: 52px; padding: 56px 52px; }
         .footer-inner { grid-template-columns: 1fr auto; align-items: center; }
         .footer-links { justify-content: flex-end; }
       }
+
+      /* hide desktop eyebrow on mobile — pill already shows it */
+      .hero-copy > .eyebrow { display: none; }
     </style>
   </head>
   <body>
-    <div class="page-shell">
 
-      <!-- ── NAV ── -->
-      <header class="site-header">
-        <nav class="container nav" aria-label="Primary navigation">
-          <a class="brand" href="#top" aria-label="Kelty Sage home">
-            <span class="brand-mark" aria-hidden="true">K</span>
-            <span>Kelty Sage</span>
-          </a>
-          <div class="nav-links" aria-label="Section links">
-            <a href="#tools">Tools</a>
-            <a href="#beta">Beta</a>
-            <a href="#coaching">Coaching</a>
-          </div>
-          <a class="nav-cta" href="#coaching">Book a Free Session</a>
-        </nav>
-      </header>
+    <!-- ── NAV ── -->
+    <header class="site-header">
+      <nav class="container nav" aria-label="Primary navigation">
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true">K</span>
+          <span>Kelty Sage</span>
+        </a>
+        <div class="nav-links">
+          <a href="#tools">Building</a>
+          <a href="#beta">Beta</a>
+          <a href="#coaching">Coaching</a>
+        </div>
+        <a class="nav-cta" href="#coaching">Book a Free Session</a>
+      </nav>
+    </header>
 
-      <main id="top">
+    <main id="top">
 
-        <!-- ── HERO ── -->
-        <section class="hero container" aria-labelledby="hero-title">
-          <div class="hero-card reveal">
+      <!-- ── HERO ── -->
+      <section class="hero container" aria-labelledby="hero-title">
+        <div class="hero-card g27 reveal">
 
-            <div class="hero-copy">
-              <!-- avatar pill — mobile only -->
-              <div class="founder-pill">
-                <img src="kelty.jpg" alt="Kelty smiling in front of her screen." width="700" height="700" loading="eager" />
-                <p class="eyebrow" style="margin:0;">The AI coach who won&rsquo;t do it for you</p>
-              </div>
-
-              <p class="eyebrow">The AI coach who won&rsquo;t do it for you</p>
-              <h1 id="hero-title">Hi, I&rsquo;m Kelty!</h1>
-              <p class="hero-subhead">I teach business owners to use AI. Not for them &mdash; with them.</p>
-              <p class="hero-body">
-                You leave every session knowing exactly what we built and how to build it again.
-                That&rsquo;s the whole product.
-              </p>
-              <div class="button-row">
-                <a class="btn btn-primary" href="#tools">See the Tools</a>
-                <a class="btn btn-glass" href="#coaching">Book a Free Session</a>
-              </div>
+          <div class="hero-copy">
+            <div class="founder-pill">
+              <img src="kelty.jpg" alt="Kelty smiling in front of her screen." width="700" height="700" loading="eager" />
+              <p class="eyebrow" style="margin:0;">The AI coach who won&rsquo;t do it for you</p>
             </div>
 
-            <!-- photo — tablet/desktop only -->
-            <div class="hero-photo-wrap" aria-hidden="true">
-              <div class="hero-photo-ring">
-                <img src="kelty.jpg" alt="Kelty smiling in front of her screen." width="700" height="700" loading="eager" />
-              </div>
+            <p class="eyebrow">The AI coach who won&rsquo;t do it for you</p>
+            <h1 id="hero-title">Hi, I&rsquo;m Kelty!</h1>
+            <p class="hero-subhead">I teach business owners to use AI. Not for them &mdash; with them.</p>
+            <div class="hero-body-iso">
+              You leave every session knowing exactly what we built and how to build it again.
+              That&rsquo;s the whole product.
             </div>
-
-          </div>
-        </section>
-
-        <!-- ── TOOLS ── -->
-        <section class="section container" id="tools" aria-labelledby="tools-title">
-          <div class="section-head reveal">
-            <div>
-              <h2 id="tools-title">The Tools</h2>
-              <p>Three real products. Zero hand-waving. All built to teach you something along the way.</p>
+            <div class="button-row">
+              <a class="btn btn-primary" href="#tools">See the Tools</a>
+              <a class="btn btn-glass" href="#coaching">Book a Free Session</a>
             </div>
           </div>
 
-          <div class="products-grid">
+          <div class="hero-photo-wrap" aria-hidden="true">
+            <div class="hero-photo-ring">
+              <img src="kelty.jpg" alt="" width="700" height="700" loading="eager" />
+            </div>
+          </div>
 
-            <article class="product-card c-green reveal">
+        </div>
+      </section>
+
+      <!-- ── TOOLS ── -->
+      <section class="section container" id="tools" aria-labelledby="tools-title">
+        <div class="section-head reveal">
+          <div>
+            <h2 id="tools-title">What I&rsquo;m Building</h2>
+            <p>A look at my current projects &mdash; what they are, who they&rsquo;re for, and what they teach you in the process of using them.</p>
+          </div>
+        </div>
+
+        <div class="products-grid">
+
+          <article class="product-card c-green g27 reveal">
+            <div class="blob" aria-hidden="true"></div>
+            <div class="pc-inner">
               <span class="card-tag green">AI Courses</span>
               <h3>Sage Systems AI</h3>
-              <p>
+              <div class="pc-desc">
                 Answer a few questions about your business and get a full AI fluency course — custom
                 prompts, tool picks, flashcards, a business brain — in about 60 seconds. Then you
                 actually learn why every piece works.
-              </p>
+              </div>
               <a class="product-link green" href="https://sage-systems-ai.netlify.app" target="_blank" rel="noopener">
                 Open Sage Systems AI &rarr;
               </a>
-            </article>
+            </div>
+          </article>
 
-            <article class="product-card c-rose reveal">
+          <article class="product-card c-rose g27 reveal">
+            <div class="blob" aria-hidden="true"></div>
+            <div class="pc-inner">
               <span class="card-tag rose">Dog Training</span>
               <h3>FetchNote</h3>
-              <p>
+              <div class="pc-desc">
                 Dog trainers spend 20 minutes typing homework after every session. FetchNote turns
                 2 minutes of voice notes into a polished, branded PDF. No typing. No forgetting
                 what you said.
-              </p>
+              </div>
               <a class="product-link rose" href="https://fetchnote.app" target="_blank" rel="noopener">
                 Open FetchNote &rarr;
               </a>
-            </article>
+            </div>
+          </article>
 
-            <article class="product-card c-violet reveal">
+          <article class="product-card c-violet g27 reveal">
+            <div class="blob" aria-hidden="true"></div>
+            <div class="pc-inner">
               <span class="card-tag violet">Cycle Planning</span>
               <h3>CycleCEO</h3>
-              <p>
+              <div class="pc-desc">
                 Your energy isn&rsquo;t random. CycleCEO maps your cycle phases to your business
                 schedule so you stop planning launches for the week you crash. AI coach included.
-              </p>
+              </div>
               <a class="product-link violet" href="https://cycleceo.app" target="_blank" rel="noopener">
                 Open CycleCEO &rarr;
               </a>
-            </article>
-
-          </div>
-        </section>
-
-        <!-- ── BETA ── -->
-        <section class="beta-band" id="beta" aria-labelledby="beta-title">
-          <div class="container">
-            <div class="beta-inner reveal">
-              <div>
-                <p class="eyebrow">Free &middot; Limited spots</p>
-                <h2 id="beta-title">Be the First to Break It</h2>
-                <p>I build things fast and I need people who will actually use them, get confused, and tell me exactly where.</p>
-                <p style="margin-top:10px;">Free access. Honest opinions. No fluff.</p>
-                <div class="button-row" style="margin-top:22px;">
-                  <a class="btn btn-primary" href="/beta">Apply to Test</a>
-                </div>
-                <p class="beta-note">A few spots left.</p>
-              </div>
-              <ul class="check-list" aria-label="Beta criteria">
-                <li>You have ideas you can&rsquo;t execute yet</li>
-                <li>You want to understand AI, not just have it</li>
-                <li>You&rsquo;ll actually try the thing I send you</li>
-                <li>You&rsquo;ll tell me when it doesn&rsquo;t work</li>
-              </ul>
             </div>
-          </div>
-        </section>
+          </article>
 
-        <!-- ── COACHING ── -->
-        <section class="section container" id="coaching" aria-labelledby="coaching-title">
-          <div class="coaching-panel reveal">
-            <div>
-              <p class="eyebrow">1-on-1 &middot; Free for now</p>
-              <h2 id="coaching-title">Let&rsquo;s Build Something</h2>
-              <p>
-                Pick the thing you&rsquo;ve been putting off &mdash; an offer, a prompt system,
-                a workflow, a lead magnet &mdash; and we&rsquo;ll get it done together.
-              </p>
-              <div class="coaching-note">
-                You&rsquo;re not watching me work. We&rsquo;re working together. You leave
-                understanding every piece &mdash; and knowing how to do it again.
-              </div>
-              <div class="button-row">
-                <a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0_HJqH5XlU8uIjPV98aDeJjWsXAwUB9X-KzosVSgzusqbgrnFKBolRwvMsWV8H6waBx344Y4TW?gv=true" target="_blank" rel="noopener">
-                  Book a Free Session
-                </a>
-              </div>
-              <ul class="work-list">
-                <li>the offer you keep rewriting</li>
-                <li>your content system</li>
-                <li>that lead magnet draft</li>
-                <li>your AI prompt library</li>
-                <li>a workflow you&rsquo;ll actually use</li>
-                <li>your client onboarding</li>
-                <li>the course you haven&rsquo;t started</li>
-                <li>your business brain prompt</li>
-              </ul>
-            </div>
-            <div class="calendar-card">
-              <iframe
-                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0_HJqH5XlU8uIjPV98aDeJjWsXAwUB9X-KzosVSgzusqbgrnFKBolRwvMsWV8H6waBx344Y4TW?gv=true"
-                title="Book an AI coaching call with Kelty"
-                width="100%"
-                height="600"
-                loading="lazy"
-              ></iframe>
-            </div>
-          </div>
-        </section>
-
-      </main>
-
-      <!-- ── FOOTER ── -->
-      <footer class="site-footer">
-        <div class="container footer-inner">
-          <p class="footer-statement">Your ideas are not random.<br/>They are raw material.</p>
-          <nav class="footer-links" aria-label="Footer links">
-            <a class="footer-link" href="https://sage-systems-ai.netlify.app" target="_blank" rel="noopener">Sage Systems AI</a>
-            <a class="footer-link" href="https://fetchnote.app" target="_blank" rel="noopener">FetchNote</a>
-            <a class="footer-link" href="https://cycleceo.app" target="_blank" rel="noopener">CycleCEO</a>
-            <a class="footer-link" href="#coaching">Book a Free Session</a>
-            <a class="footer-link" href="#beta">Beta Users</a>
-          </nav>
         </div>
-      </footer>
+      </section>
 
+      <!-- ── BETA ── -->
+      <section class="beta-band container" id="beta" aria-labelledby="beta-title">
+        <div class="beta-inner g27 reveal">
+          <div class="beta-blob" aria-hidden="true"></div>
+
+          <div>
+            <p class="eyebrow">Free &middot; Limited spots</p>
+            <h2 id="beta-title">Be the First to Break It</h2>
+            <p>I build things fast and I need people who will actually use them, get confused, and tell me exactly where.</p>
+            <p style="margin-top:10px;">Free access. Honest opinions. No fluff.</p>
+            <div class="button-row" style="margin-top:22px;">
+              <a class="btn btn-primary" href="/beta">Apply to Test</a>
+            </div>
+            <p class="beta-note">A few spots left.</p>
+          </div>
+
+          <ul class="check-list" aria-label="Beta criteria">
+            <li>You have ideas you can&rsquo;t execute yet</li>
+            <li>You want to understand AI, not just have it</li>
+            <li>You&rsquo;ll actually try the thing I send you</li>
+            <li>You&rsquo;ll tell me when it doesn&rsquo;t work</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ── COACHING ── -->
+      <section class="section container" id="coaching" aria-labelledby="coaching-title">
+        <div class="coaching-panel g27 reveal">
+          <div>
+            <p class="eyebrow">1-on-1 &middot; Free for now</p>
+            <h2 id="coaching-title">Let&rsquo;s Build Something</h2>
+            <p>
+              Pick the thing you&rsquo;ve been putting off &mdash; an offer, a prompt system,
+              a workflow, a lead magnet &mdash; and we&rsquo;ll get it done together.
+            </p>
+            <div class="coaching-note">
+              You&rsquo;re not watching me work. We&rsquo;re working together. You leave
+              understanding every piece &mdash; and knowing how to do it again.
+            </div>
+            <div class="button-row">
+              <a class="btn btn-primary"
+                href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0_HJqH5XlU8uIjPV98aDeJjWsXAwUB9X-KzosVSgzusqbgrnFKBolRwvMsWV8H6waBx344Y4TW?gv=true"
+                target="_blank" rel="noopener">
+                Book a Free Session
+              </a>
+            </div>
+            <ul class="work-list">
+              <li>the offer you keep rewriting</li>
+              <li>your content system</li>
+              <li>that lead magnet draft</li>
+              <li>your AI prompt library</li>
+              <li>a workflow you&rsquo;ll actually use</li>
+              <li>your client onboarding</li>
+              <li>the course you haven&rsquo;t started</li>
+              <li>your business brain prompt</li>
+            </ul>
+          </div>
+          <div class="calendar-card">
+            <iframe
+              src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0_HJqH5XlU8uIjPV98aDeJjWsXAwUB9X-KzosVSgzusqbgrnFKBolRwvMsWV8H6waBx344Y4TW?gv=true"
+              title="Book an AI coaching call with Kelty"
+              width="100%"
+              height="600"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ── FOOTER ── -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="footer-statement">Your ideas are not random.<br/>They are raw material.</p>
+        <nav class="footer-links">
+          <a class="footer-link" href="https://sage-systems-ai.netlify.app" target="_blank" rel="noopener">Sage Systems AI</a>
+          <a class="footer-link" href="https://fetchnote.app" target="_blank" rel="noopener">FetchNote</a>
+          <a class="footer-link" href="https://cycleceo.app" target="_blank" rel="noopener">CycleCEO</a>
+          <a class="footer-link" href="#coaching">Book a Free Session</a>
+          <a class="footer-link" href="/beta">Apply to Beta</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- ── iOS 27 LIQUID GLASS SLIDER ── -->
+    <div class="glass-ctrl" aria-label="Liquid Glass settings">
+      <div class="glass-panel g27" id="glass-panel" role="dialog" aria-label="Adjust glass intensity">
+        <p class="glass-panel-title">Liquid Glass &nbsp;·&nbsp; iOS 27</p>
+        <div class="glass-slider-row">
+          <span>Ultra Clear</span>
+          <span>Frosted</span>
+        </div>
+        <input type="range" id="glass-slider" min="0" max="100" value="30" aria-label="Glass intensity" />
+        <p class="glass-label" id="glass-label">Balanced</p>
+      </div>
+      <button class="glass-ctrl-btn" id="glass-ctrl-btn" aria-expanded="false" aria-controls="glass-panel" title="Adjust Liquid Glass">
+        ◈
+      </button>
     </div>
 
     <script>
+      /* ── Reveal on scroll ── */
       if ("IntersectionObserver" in window) {
         const obs = new IntersectionObserver(
           entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("is-visible"); obs.unobserve(e.target); } }),
@@ -899,6 +1002,48 @@
       } else {
         document.querySelectorAll(".reveal").forEach(el => el.classList.add("is-visible"));
       }
+
+      /* ── iOS 27 Liquid Glass slider ── */
+      const sliderBtn   = document.getElementById('glass-ctrl-btn');
+      const glassPanel  = document.getElementById('glass-panel');
+      const glassSlider = document.getElementById('glass-slider');
+      const glassLabel  = document.getElementById('glass-label');
+      const root        = document.documentElement;
+
+      sliderBtn.addEventListener('click', () => {
+        const open = glassPanel.classList.toggle('open');
+        sliderBtn.setAttribute('aria-expanded', open);
+      });
+
+      // Close on outside click
+      document.addEventListener('click', e => {
+        if (!e.target.closest('.glass-ctrl')) {
+          glassPanel.classList.remove('open');
+          sliderBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      const labels = ['Ultra Clear','Crisp','Balanced','Tinted','Frosted'];
+
+      glassSlider.addEventListener('input', e => {
+        const v = e.target.value / 100;  // 0 → 1
+
+        // Interpolate: clear = sharp + thin, frosted = heavy blur + opaque
+        const blurPx   = Math.round(10 + v * 52);
+        const sat      = Math.round(120 + v * 80);
+        const bgAlpha  = (0.04 + v * 0.22).toFixed(3);
+        const border   = (0.10 + v * 0.22).toFixed(3);
+        const textIso  = (0.12 + v * 0.20).toFixed(3);
+
+        root.style.setProperty('--g-blur',    `blur(${blurPx}px) saturate(${sat}%)`);
+        root.style.setProperty('--g-blur-sm', `blur(${Math.round(blurPx * 0.62)}px) saturate(${Math.round(sat * 0.88)}%)`);
+        root.style.setProperty('--g-bg',      `rgba(255,255,255,${bgAlpha})`);
+        root.style.setProperty('--g-bg-mid',  `rgba(255,255,255,${(+bgAlpha + 0.06).toFixed(3)})`);
+        root.style.setProperty('--g-border',  `rgba(255,255,255,${border})`);
+        root.style.setProperty('--g-text-iso',`rgba(0,0,0,${textIso})`);
+
+        glassLabel.textContent = labels[Math.round(v * (labels.length - 1))];
+      });
     </script>
   </body>
 </html>

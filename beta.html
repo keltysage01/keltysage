@@ -10,27 +10,31 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
       :root {
-        --rose:        #c65b7c;
-        --rose-dark:   #9f3f60;
-        --rose-glow:   rgba(198, 91, 124, 0.35);
-        --green:       #4f7a5a;
-        --green-glow:  rgba(79, 122, 90, 0.28);
-        --violet:      #7c5bbf;
-        --violet-glow: rgba(124, 91, 191, 0.28);
-        --charcoal:    #1a1a1f;
-        --muted:       rgba(26, 26, 31, 0.58);
+        --rose:         #f472b6;
+        --rose-mid:     #ec4899;
+        --rose-dark:    #db2777;
+        --rose-glow:    rgba(244,114,182,0.32);
+        --green:        #34d399;
+        --green-glow:   rgba(52,211,153,0.24);
+        --violet:       #a78bfa;
+        --violet-glow:  rgba(167,139,250,0.28);
 
-        --glass-bg:       rgba(255,255,255,0.13);
-        --glass-bg-heavy: rgba(255,255,255,0.24);
-        --glass-border:   rgba(255,255,255,0.68);
-        --glass-specular: rgba(255,255,255,0.92);
-        --glass-blur:     blur(52px) saturate(200%);
-        --glass-blur-sm:  blur(32px) saturate(180%);
+        --g-bg:         rgba(255,255,255,0.08);
+        --g-bg-mid:     rgba(255,255,255,0.12);
+        --g-bg-heavy:   rgba(255,255,255,0.16);
+        --g-border:     rgba(255,255,255,0.18);
+        --g-spec:       rgba(255,255,255,0.28);
+        --g-text-iso:   rgba(0,0,0,0.22);
+        --g-blur:       blur(28px) saturate(155%);
+        --g-blur-sm:    blur(18px) saturate(140%);
 
-        --shadow-card: 0 2px 0 rgba(255,255,255,0.9) inset, 0 32px 80px rgba(100,70,90,0.16);
-        --shadow-btn:  0 16px 40px var(--rose-glow), 0 4px 12px rgba(0,0,0,0.1);
+        --shadow-card:
+          inset 0 1.5px 0 var(--g-spec),
+          inset 0 -1px 0 rgba(255,255,255,0.04),
+          0 32px 80px rgba(0,0,0,0.45);
+        --shadow-btn: 0 18px 40px var(--rose-glow), 0 4px 12px rgba(0,0,0,0.3);
 
-        --radius-card: 24px;
+        --radius-card: 28px;
         --radius-pill: 999px;
         --max: 680px;
       }
@@ -43,15 +47,15 @@
         font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
         font-size: 16px;
         line-height: 1.65;
-        color: var(--charcoal);
-        background-color: #f5f0fa;
-        background-image:
-          radial-gradient(ellipse 70% 55% at 8% 12%,  rgba(247,183,200,0.72) 0%, transparent 65%),
-          radial-gradient(ellipse 55% 60% at 95% 5%,  rgba(198,178,248,0.58) 0%, transparent 60%),
-          radial-gradient(ellipse 60% 50% at 50% 95%, rgba(150,210,180,0.54) 0%, transparent 60%),
-          radial-gradient(ellipse 45% 40% at 15% 80%, rgba(255,210,160,0.42) 0%, transparent 55%),
-          linear-gradient(160deg, #fdf8ff 0%, #f5f0fa 50%, #f0f7f2 100%);
+        color: #fff;
         overflow-x: hidden;
+        background-color: #0c0816;
+        background-image:
+          radial-gradient(ellipse 65% 55% at 10% 15%,  rgba(236,72,153,0.28)  0%, transparent 60%),
+          radial-gradient(ellipse 55% 65% at 90% 8%,   rgba(167,139,250,0.32) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 50% at 55% 92%,  rgba(52,211,153,0.22)  0%, transparent 58%),
+          radial-gradient(ellipse 45% 55% at 8%  80%,  rgba(251,191,36,0.14)  0%, transparent 55%),
+          linear-gradient(160deg, #100a20 0%, #1a0f2e 42%, #0e1525 100%);
       }
 
       img { display: block; max-width: 100%; }
@@ -68,10 +72,10 @@
         position: sticky;
         top: 0;
         z-index: 100;
-        background: rgba(245,240,250,0.55);
-        backdrop-filter: var(--glass-blur-sm);
-        -webkit-backdrop-filter: var(--glass-blur-sm);
-        border-bottom: 1px solid var(--glass-border);
+        background: rgba(15,10,26,0.55);
+        backdrop-filter: var(--g-blur-sm);
+        -webkit-backdrop-filter: var(--g-blur-sm);
+        border-bottom: 1px solid var(--g-border);
         margin-bottom: 0;
       }
 
@@ -91,7 +95,7 @@
         gap: 10px;
         font-weight: 700;
         font-size: 0.95rem;
-        color: var(--charcoal);
+        color: #fff;
       }
 
       .brand-mark {
@@ -100,11 +104,11 @@
         width: 36px;
         height: 36px;
         border-radius: 50%;
-        border: 1px solid var(--glass-border);
-        background: var(--glass-bg-heavy);
-        backdrop-filter: var(--glass-blur-sm);
-        -webkit-backdrop-filter: var(--glass-blur-sm);
-        box-shadow: 0 0 18px var(--rose-glow), inset 0 1px 0 var(--glass-specular);
+        border: 1px solid var(--g-border);
+        background: var(--g-bg-heavy);
+        backdrop-filter: var(--g-blur-sm);
+        -webkit-backdrop-filter: var(--g-blur-sm);
+        box-shadow: 0 0 18px var(--rose-glow), inset 0 1px 0 var(--g-spec);
         color: var(--rose-dark);
         font-family: "DM Serif Display", Georgia, serif;
         font-size: 1.1rem;
@@ -116,14 +120,14 @@
         gap: 6px;
         padding: 8px 14px;
         border-radius: var(--radius-pill);
-        border: 1px solid var(--glass-border);
-        background: var(--glass-bg-heavy);
-        backdrop-filter: var(--glass-blur-sm);
-        -webkit-backdrop-filter: var(--glass-blur-sm);
-        color: var(--muted);
+        border: 1px solid var(--g-border);
+        background: var(--g-bg-heavy);
+        backdrop-filter: var(--g-blur-sm);
+        -webkit-backdrop-filter: var(--g-blur-sm);
+        color: rgba(255,255,255,0.62);
         font-size: 0.82rem;
         font-weight: 800;
-        box-shadow: inset 0 1px 0 var(--glass-specular);
+        box-shadow: inset 0 1px 0 var(--g-spec);
         transition: transform 180ms;
       }
 
@@ -160,12 +164,12 @@
         font-weight: 400;
         font-size: 2.8rem;
         line-height: 1.04;
-        color: var(--charcoal);
+        color: #fff;
       }
 
       .page-sub {
         margin-top: 12px;
-        color: var(--muted);
+        color: rgba(255,255,255,0.62);
         font-size: 1rem;
         max-width: 480px;
         margin-left: auto;
@@ -183,10 +187,10 @@
         position: relative;
         cursor: pointer;
         border-radius: var(--radius-card);
-        border: 2px solid var(--glass-border);
-        background: var(--glass-bg);
-        backdrop-filter: var(--glass-blur);
-        -webkit-backdrop-filter: var(--glass-blur);
+        border: 2px solid var(--g-border);
+        background: var(--g-bg);
+        backdrop-filter: var(--g-blur);
+        -webkit-backdrop-filter: var(--g-blur);
         box-shadow: var(--shadow-card);
         overflow: hidden;
         transition: border-color 220ms, box-shadow 220ms, transform 200ms;
@@ -297,12 +301,12 @@
         font-size: 1.5rem;
         font-weight: 400;
         line-height: 1.1;
-        color: var(--charcoal);
+        color: #fff;
         margin-bottom: 8px;
       }
 
       .choice-desc {
-        color: var(--muted);
+        color: rgba(255,255,255,0.62);
         font-size: 0.92rem;
         line-height: 1.6;
       }
@@ -311,9 +315,9 @@
         margin-top: 12px;
         padding: 10px 14px;
         border-radius: 14px;
-        border: 1px solid rgba(26,26,31,0.08);
-        background: rgba(255,255,255,0.3);
-        color: rgba(26,26,31,0.72);
+        border: 1px solid rgba(255,255,255,0.08);
+        background: rgba(0,0,0,0.2);
+        color: rgba(255,255,255,0.68);
         font-size: 0.84rem;
         font-weight: 700;
         line-height: 1.45;
@@ -324,10 +328,10 @@
         position: relative;
         padding: 32px 28px;
         border-radius: var(--radius-card);
-        border: 1px solid var(--glass-border);
-        background: var(--glass-bg);
-        backdrop-filter: var(--glass-blur);
-        -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--g-border);
+        background: var(--g-bg);
+        backdrop-filter: var(--g-blur);
+        -webkit-backdrop-filter: var(--g-blur);
         box-shadow: var(--shadow-card);
         overflow: hidden;
       }
@@ -345,7 +349,7 @@
         font-family: "DM Serif Display", Georgia, serif;
         font-weight: 400;
         font-size: 1.5rem;
-        color: var(--charcoal);
+        color: #fff;
         margin-bottom: 22px;
         position: relative;
         z-index: 1;
@@ -369,7 +373,7 @@
         font-weight: 800;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        color: var(--muted);
+        color: rgba(255,255,255,0.62);
       }
 
       .field input,
@@ -378,10 +382,11 @@
         width: 100%;
         padding: 12px 16px;
         border-radius: 14px;
-        border: 1px solid rgba(255,255,255,0.6);
-        background: rgba(255,255,255,0.52);
-        backdrop-filter: blur(12px);
-        color: var(--charcoal);
+        border: 1px solid var(--g-border);
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: var(--g-blur-sm);
+        -webkit-backdrop-filter: var(--g-blur-sm);
+        color: #fff;
         font-family: "Manrope", sans-serif;
         font-size: 0.95rem;
         outline: none;
@@ -391,14 +396,15 @@
       }
 
       .field input::placeholder,
-      .field textarea::placeholder { color: rgba(26,26,31,0.35); }
+      .field textarea::placeholder { color: rgba(255,255,255,0.3); }
+      .field select option { background: #1a0f2e; color: #fff; }
 
       .field input:focus,
       .field select:focus,
       .field textarea:focus {
         border-color: var(--rose);
-        box-shadow: 0 0 0 3px rgba(198,91,124,0.12);
-        background: rgba(255,255,255,0.72);
+        box-shadow: 0 0 0 3px rgba(244,114,182,0.18);
+        background: rgba(255,255,255,0.12);
       }
 
       .field textarea {
@@ -462,7 +468,7 @@
       .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
       .submit-note {
-        color: var(--muted);
+        color: rgba(255,255,255,0.62);
         font-size: 0.82rem;
       }
 
@@ -472,10 +478,10 @@
         text-align: center;
         padding: 48px 28px;
         border-radius: var(--radius-card);
-        border: 1px solid var(--glass-border);
-        background: var(--glass-bg);
-        backdrop-filter: var(--glass-blur);
-        -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--g-border);
+        background: var(--g-bg);
+        backdrop-filter: var(--g-blur);
+        -webkit-backdrop-filter: var(--g-blur);
         box-shadow: var(--shadow-card);
       }
 
@@ -501,7 +507,7 @@
         margin-bottom: 10px;
       }
 
-      .success-card p { color: var(--muted); }
+      .success-card p { color: rgba(255,255,255,0.62); }
 
       /* ── VALIDATION ── */
       .field input:invalid:not(:placeholder-shown),
