@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Beta Application — Kelty Sage</title>
+    <meta name="description" content="Apply to beta test FetchNote or CycleCEO. Free access in exchange for honest feedback." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --rose:        #c65b7c;
+        --rose-dark:   #9f3f60;
+        --rose-glow:   rgba(198, 91, 124, 0.35);
+        --green:       #4f7a5a;
+        --green-glow:  rgba(79, 122, 90, 0.28);
+        --violet:      #7c5bbf;
+        --violet-glow: rgba(124, 91, 191, 0.28);
+        --charcoal:    #1a1a1f;
+        --muted:       rgba(26, 26, 31, 0.58);
+
+        --glass-bg:       rgba(255,255,255,0.13);
+        --glass-bg-heavy: rgba(255,255,255,0.24);
+        --glass-border:   rgba(255,255,255,0.68);
+        --glass-specular: rgba(255,255,255,0.92);
+        --glass-blur:     blur(52px) saturate(200%);
+        --glass-blur-sm:  blur(32px) saturate(180%);
+
+        --shadow-card: 0 2px 0 rgba(255,255,255,0.9) inset, 0 32px 80px rgba(100,70,90,0.16);
+        --shadow-btn:  0 16px 40px var(--rose-glow), 0 4px 12px rgba(0,0,0,0.1);
+
+        --radius-card: 24px;
+        --radius-pill: 999px;
+        --max: 680px;
+      }
+
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+
+      body {
+        min-height: 100vh;
+        font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+        font-size: 16px;
+        line-height: 1.65;
+        color: var(--charcoal);
+        background-color: #f5f0fa;
+        background-image:
+          radial-gradient(ellipse 70% 55% at 8% 12%,  rgba(247,183,200,0.72) 0%, transparent 65%),
+          radial-gradient(ellipse 55% 60% at 95% 5%,  rgba(198,178,248,0.58) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 50% at 50% 95%, rgba(150,210,180,0.54) 0%, transparent 60%),
+          radial-gradient(ellipse 45% 40% at 15% 80%, rgba(255,210,160,0.42) 0%, transparent 55%),
+          linear-gradient(160deg, #fdf8ff 0%, #f5f0fa 50%, #f0f7f2 100%);
+        overflow-x: hidden;
+      }
+
+      img { display: block; max-width: 100%; }
+      a { color: inherit; text-decoration: none; }
+
+      .container {
+        width: min(100% - 32px, var(--max));
+        margin: 0 auto;
+        padding-bottom: 80px;
+      }
+
+      /* ── NAV ── */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(245,240,250,0.55);
+        backdrop-filter: var(--glass-blur-sm);
+        -webkit-backdrop-filter: var(--glass-blur-sm);
+        border-bottom: 1px solid var(--glass-border);
+        margin-bottom: 0;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: min(100% - 32px, 1120px);
+        margin: 0 auto;
+        min-height: 64px;
+        gap: 16px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--charcoal);
+      }
+
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg-heavy);
+        backdrop-filter: var(--glass-blur-sm);
+        -webkit-backdrop-filter: var(--glass-blur-sm);
+        box-shadow: 0 0 18px var(--rose-glow), inset 0 1px 0 var(--glass-specular);
+        color: var(--rose-dark);
+        font-family: "DM Serif Display", Georgia, serif;
+        font-size: 1.1rem;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        border-radius: var(--radius-pill);
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg-heavy);
+        backdrop-filter: var(--glass-blur-sm);
+        -webkit-backdrop-filter: var(--glass-blur-sm);
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 800;
+        box-shadow: inset 0 1px 0 var(--glass-specular);
+        transition: transform 180ms;
+      }
+
+      .back-link:hover { transform: translateX(-2px); }
+
+      /* ── PAGE HEADER ── */
+      .page-header {
+        padding: 48px 0 32px;
+        text-align: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--green);
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 16px;
+      }
+
+      .eyebrow::before, .eyebrow::after {
+        content: "";
+        width: 20px;
+        height: 1.5px;
+        background: currentColor;
+        flex: 0 0 auto;
+      }
+
+      h1 {
+        font-family: "DM Serif Display", Georgia, serif;
+        font-weight: 400;
+        font-size: 2.8rem;
+        line-height: 1.04;
+        color: var(--charcoal);
+      }
+
+      .page-sub {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 1rem;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* ── PRODUCT SELECTOR ── */
+      .product-selector {
+        display: grid;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .product-choice {
+        position: relative;
+        cursor: pointer;
+        border-radius: var(--radius-card);
+        border: 2px solid var(--glass-border);
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        box-shadow: var(--shadow-card);
+        overflow: hidden;
+        transition: border-color 220ms, box-shadow 220ms, transform 200ms;
+        user-select: none;
+      }
+
+      .product-choice:hover { transform: translateY(-2px); }
+
+      .product-choice input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .product-choice.selected {
+        border-color: var(--rose);
+        box-shadow: 0 0 0 1px var(--rose), var(--shadow-card), 0 0 40px var(--rose-glow);
+      }
+
+      .product-choice.selected.violet-sel {
+        border-color: var(--violet);
+        box-shadow: 0 0 0 1px var(--violet), var(--shadow-card), 0 0 40px var(--violet-glow);
+      }
+
+      /* tinted glow blob per card */
+      .product-choice::after {
+        content: "";
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        filter: blur(44px);
+        opacity: 0.4;
+        pointer-events: none;
+        transition: opacity 220ms;
+      }
+
+      .product-choice.fn::after  { background: radial-gradient(circle, rgba(198,91,124,0.6), transparent 70%); }
+      .product-choice.cc::after  { background: radial-gradient(circle, rgba(124,91,191,0.6), transparent 70%); }
+      .product-choice.selected::after { opacity: 0.7; }
+
+      .product-choice-inner {
+        padding: 24px 22px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .choice-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .choice-tag {
+        display: inline-flex;
+        padding: 4px 10px;
+        border-radius: var(--radius-pill);
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        border: 1px solid;
+      }
+
+      .choice-tag.rose   { color: var(--rose-dark);  border-color: rgba(198,91,124,0.28);  background: rgba(247,183,200,0.22); }
+      .choice-tag.violet { color: var(--violet);      border-color: rgba(124,91,191,0.28);  background: rgba(198,178,248,0.22); }
+
+      .choice-radio-dot {
+        flex: 0 0 auto;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        border: 2px solid rgba(26,26,31,0.2);
+        background: rgba(255,255,255,0.5);
+        display: grid;
+        place-items: center;
+        transition: border-color 200ms, background 200ms;
+        margin-top: 2px;
+      }
+
+      .choice-radio-dot::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--rose);
+        transform: scale(0);
+        transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .product-choice.selected .choice-radio-dot {
+        border-color: var(--rose);
+        background: rgba(198,91,124,0.08);
+      }
+
+      .product-choice.selected .choice-radio-dot::after { transform: scale(1); }
+
+      .product-choice.violet-sel .choice-radio-dot { border-color: var(--violet); background: rgba(124,91,191,0.08); }
+      .product-choice.violet-sel .choice-radio-dot::after { background: var(--violet); }
+
+      .choice-name {
+        font-family: "DM Serif Display", Georgia, serif;
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 1.1;
+        color: var(--charcoal);
+        margin-bottom: 8px;
+      }
+
+      .choice-desc {
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+
+      .choice-fit {
+        margin-top: 12px;
+        padding: 10px 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(26,26,31,0.08);
+        background: rgba(255,255,255,0.3);
+        color: rgba(26,26,31,0.72);
+        font-size: 0.84rem;
+        font-weight: 700;
+        line-height: 1.45;
+      }
+
+      /* ── FORM CARD ── */
+      .form-card {
+        position: relative;
+        padding: 32px 28px;
+        border-radius: var(--radius-card);
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        box-shadow: var(--shadow-card);
+        overflow: hidden;
+      }
+
+      .form-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(150deg, rgba(255,255,255,0.48) 0%, rgba(255,255,255,0) 38%);
+        pointer-events: none;
+      }
+
+      .form-card h2 {
+        font-family: "DM Serif Display", Georgia, serif;
+        font-weight: 400;
+        font-size: 1.5rem;
+        color: var(--charcoal);
+        margin-bottom: 22px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .field-row {
+        display: grid;
+        gap: 14px;
+        margin-bottom: 14px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .field {
+        display: grid;
+        gap: 6px;
+      }
+
+      .field label {
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.6);
+        background: rgba(255,255,255,0.52);
+        backdrop-filter: blur(12px);
+        color: var(--charcoal);
+        font-family: "Manrope", sans-serif;
+        font-size: 0.95rem;
+        outline: none;
+        transition: border-color 180ms, box-shadow 180ms;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+
+      .field input::placeholder,
+      .field textarea::placeholder { color: rgba(26,26,31,0.35); }
+
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        border-color: var(--rose);
+        box-shadow: 0 0 0 3px rgba(198,91,124,0.12);
+        background: rgba(255,255,255,0.72);
+      }
+
+      .field textarea {
+        resize: vertical;
+        min-height: 100px;
+        line-height: 1.6;
+      }
+
+      .field select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238c7f76' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        padding-right: 38px;
+        cursor: pointer;
+      }
+
+      /* product-specific question — toggled by JS */
+      .product-question { display: none; }
+      .product-question.visible { display: grid; }
+
+      .divider {
+        margin: 24px 0;
+        border: none;
+        border-top: 1px solid rgba(26,26,31,0.07);
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ── SUBMIT ── */
+      .submit-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 14px;
+        margin-top: 24px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .btn-submit {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 48px;
+        padding: 13px 24px;
+        border-radius: var(--radius-pill);
+        border: none;
+        cursor: pointer;
+        font-family: "Manrope", sans-serif;
+        font-size: 0.92rem;
+        font-weight: 800;
+        color: #fff;
+        background: linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%);
+        box-shadow: var(--shadow-btn);
+        transition: transform 200ms, box-shadow 200ms, opacity 200ms;
+      }
+
+      .btn-submit:hover  { transform: translateY(-2px); box-shadow: 0 22px 52px var(--rose-glow), 0 4px 14px rgba(0,0,0,0.12); }
+      .btn-submit:active { transform: translateY(0); }
+      .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+      .submit-note {
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      /* ── SUCCESS STATE ── */
+      .success-card {
+        display: none;
+        text-align: center;
+        padding: 48px 28px;
+        border-radius: var(--radius-card);
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        box-shadow: var(--shadow-card);
+      }
+
+      .success-card.visible { display: block; }
+
+      .success-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        border: 1px solid rgba(79,122,90,0.28);
+        background: rgba(150,210,180,0.22);
+        box-shadow: 0 8px 28px var(--green-glow);
+        display: grid;
+        place-items: center;
+        margin: 0 auto 20px;
+        font-size: 1.5rem;
+      }
+
+      .success-card h2 {
+        font-family: "DM Serif Display", Georgia, serif;
+        font-size: 2rem;
+        font-weight: 400;
+        margin-bottom: 10px;
+      }
+
+      .success-card p { color: var(--muted); }
+
+      /* ── VALIDATION ── */
+      .field input:invalid:not(:placeholder-shown),
+      .field select:invalid:not(:placeholder-shown),
+      .field textarea:invalid:not(:placeholder-shown) {
+        border-color: rgba(198,91,124,0.4);
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (min-width: 560px) {
+        .container { width: min(100% - 48px, var(--max)); }
+        h1 { font-size: 3.2rem; }
+        .field-row.two-col { grid-template-columns: 1fr 1fr; }
+        .form-card { padding: 38px 36px; }
+        .product-choice-inner { padding: 28px 26px; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { transition-duration: 0.001ms !important; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="/" aria-label="Kelty Sage home">
+          <span class="brand-mark" aria-hidden="true">K</span>
+          <span>Kelty Sage</span>
+        </a>
+        <a class="back-link" href="/">&larr; Back to home</a>
+      </nav>
+    </header>
+
+    <div class="container">
+
+      <div class="page-header">
+        <p class="eyebrow">Beta Application</p>
+        <h1>Which one do you want to break?</h1>
+        <p class="page-sub">Pick a product, read what it actually does, and fill in a few details. I&rsquo;ll reach out within a week.</p>
+      </div>
+
+      <!-- ── PRODUCT SELECTOR ── -->
+      <div class="product-selector" role="group" aria-labelledby="product-selector-label">
+        <p id="product-selector-label" style="font-size:0.72rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">Select a product</p>
+
+        <label class="product-choice fn" for="pick-fn">
+          <input type="radio" id="pick-fn" name="product" value="FetchNote" />
+          <div class="product-choice-inner">
+            <div class="choice-header">
+              <span class="choice-tag rose">Dog Training</span>
+              <span class="choice-radio-dot" aria-hidden="true"></span>
+            </div>
+            <div class="choice-name">FetchNote</div>
+            <p class="choice-desc">
+              Dog trainers spend 15&ndash;20 minutes after every session typing out homework for their clients &mdash;
+              what was covered, what to practice, what the dog needs to work on. FetchNote cuts that down to about
+              2 minutes. You open the app after a session, speak your notes out loud, and it generates a clean,
+              branded PDF homework document ready to send or print. The PDF includes the dog&rsquo;s name,
+              the exercises from the session, what to practice at home, and any trainer notes.
+            </p>
+            <p class="choice-fit">
+              Good fit if: You&rsquo;re a dog trainer (or work with any kind of animal training clients) and you
+              spend time after sessions writing up homework or session notes.
+            </p>
+          </div>
+        </label>
+
+        <label class="product-choice cc" for="pick-cc">
+          <input type="radio" id="pick-cc" name="product" value="CycleCEO" />
+          <div class="product-choice-inner">
+            <div class="choice-header">
+              <span class="choice-tag violet">Cycle Planning</span>
+              <span class="choice-radio-dot" aria-hidden="true"></span>
+            </div>
+            <div class="choice-name">CycleCEO</div>
+            <p class="choice-desc">
+              Your energy, focus, and creativity shift throughout your cycle &mdash; but most business tools
+              ignore that completely. CycleCEO maps your menstrual cycle phases (follicular, ovulatory, luteal,
+              menstrual) to your business calendar so you can stop planning launches for the week you crash and
+              start front-loading your best work to the weeks you&rsquo;re actually sharp. It includes a daily
+              morning brief tailored to your current phase, an AI coach that understands where you are in your
+              cycle, a cycle-informed weekly schedule, and exportable calendar events.
+            </p>
+            <p class="choice-fit">
+              Good fit if: You run a business (coaching, freelance, product, service) and you track &mdash; or
+              want to start tracking &mdash; your cycle as part of how you plan and work.
+            </p>
+          </div>
+        </label>
+      </div>
+
+      <!-- ── APPLICATION FORM ── -->
+      <div id="form-wrap">
+        <form
+          id="beta-form"
+          class="form-card"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+          novalidate
+        >
+          <h2>Your details</h2>
+
+          <!-- hidden field carries selected product -->
+          <input type="hidden" name="product" id="form-product" value="" />
+
+          <div class="field-row two-col">
+            <div class="field">
+              <label for="f-name">First name</label>
+              <input type="text" id="f-name" name="name" placeholder="Kelty" required autocomplete="given-name" />
+            </div>
+            <div class="field">
+              <label for="f-email">Email address</label>
+              <input type="email" id="f-email" name="email" placeholder="you@example.com" required autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="f-biz">What kind of business do you have?</label>
+              <input type="text" id="f-biz" name="business" placeholder="e.g. Dog trainer, life coach, freelance designer…" required />
+            </div>
+          </div>
+
+          <hr class="divider" />
+
+          <!-- FetchNote-specific question -->
+          <div class="field-row product-question" id="q-fn">
+            <div class="field">
+              <label for="f-fn-q">How are you currently handling session notes and client homework?</label>
+              <textarea id="f-fn-q" name="fetchnote_current_process" placeholder="e.g. I type them up after each session, send a text message, use a notes app…" rows="3"></textarea>
+            </div>
+          </div>
+
+          <!-- CycleCEO-specific question -->
+          <div class="field-row product-question" id="q-cc">
+            <div class="field">
+              <label for="f-cc-q">Do you currently track your cycle, and how does it affect how you plan your work?</label>
+              <textarea id="f-cc-q" name="cycleceo_current_tracking" placeholder="e.g. I use an app, I don't track at all but notice patterns, I've tried but never stuck with it…" rows="3"></textarea>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="f-why">Why do you want to beta test this?</label>
+              <textarea id="f-why" name="motivation" placeholder="What made you apply? What are you hoping to get out of it?" rows="3" required></textarea>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="f-how">How did you hear about this?</label>
+              <select id="f-how" name="referral" required>
+                <option value="" disabled selected>Select one…</option>
+                <option value="instagram">Instagram</option>
+                <option value="tiktok">TikTok</option>
+                <option value="word-of-mouth">Word of mouth / friend</option>
+                <option value="google">Google</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="submit-row">
+            <button type="submit" class="btn-submit" id="submit-btn">
+              Submit Application
+            </button>
+            <p class="submit-note">Free access. No credit card. Honest feedback required.</p>
+          </div>
+
+          <div id="form-error" style="display:none;margin-top:14px;color:var(--rose-dark);font-size:0.88rem;font-weight:700;position:relative;z-index:1;"></div>
+        </form>
+      </div>
+
+      <!-- ── SUCCESS ── -->
+      <div class="success-card" id="success-card" role="alert">
+        <div class="success-icon" aria-hidden="true">✓</div>
+        <h2>You&rsquo;re in the queue.</h2>
+        <p>I&rsquo;ll reach out within a week. In the meantime, feel free to poke around the tools.</p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px;">
+          <a href="https://fetchnote.app" target="_blank" rel="noopener" style="padding:10px 18px;border-radius:999px;border:1px solid rgba(198,91,124,0.28);background:rgba(247,183,200,0.18);color:var(--rose-dark);font-size:0.86rem;font-weight:800;">Open FetchNote &rarr;</a>
+          <a href="https://cycleceo.app" target="_blank" rel="noopener" style="padding:10px 18px;border-radius:999px;border:1px solid rgba(124,91,191,0.28);background:rgba(198,178,248,0.18);color:var(--violet);font-size:0.86rem;font-weight:800;">Open CycleCEO &rarr;</a>
+        </div>
+      </div>
+
+    </div><!-- /.container -->
+
+    <script>
+      const choices   = document.querySelectorAll('.product-choice');
+      const radios    = document.querySelectorAll('.product-choice input[type="radio"]');
+      const formProd  = document.getElementById('form-product');
+      const qFn       = document.getElementById('q-fn');
+      const qCc       = document.getElementById('q-cc');
+      const form      = document.getElementById('beta-form');
+      const submitBtn = document.getElementById('submit-btn');
+      const errBox    = document.getElementById('form-error');
+      const successEl = document.getElementById('success-card');
+      const formWrap  = document.getElementById('form-wrap');
+
+      function applySelection(val) {
+        choices.forEach(c => {
+          const r = c.querySelector('input[type="radio"]');
+          c.classList.toggle('selected', r.value === val);
+          c.classList.toggle('violet-sel', r.value === val && r.value === 'CycleCEO');
+        });
+        formProd.value = val;
+        qFn.classList.toggle('visible', val === 'FetchNote');
+        qCc.classList.toggle('visible', val === 'CycleCEO');
+      }
+
+      // click on card
+      choices.forEach(card => {
+        card.addEventListener('click', () => {
+          const radio = card.querySelector('input[type="radio"]');
+          radio.checked = true;
+          applySelection(radio.value);
+        });
+      });
+
+      // keyboard on radio
+      radios.forEach(r => {
+        r.addEventListener('change', () => applySelection(r.value));
+      });
+
+      // form submit via fetch (prevents full page reload)
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        errBox.style.display = 'none';
+
+        if (!formProd.value) {
+          errBox.textContent = 'Please select a product above before submitting.';
+          errBox.style.display = 'block';
+          document.querySelector('.product-selector').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (res.ok) {
+            formWrap.style.display = 'none';
+            successEl.classList.add('visible');
+            successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            const data = await res.json();
+            errBox.textContent = data?.errors?.[0]?.message || 'Something went wrong. Try emailing keltysage01@gmail.com directly.';
+            errBox.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Application';
+          }
+        } catch {
+          errBox.textContent = 'Network error. Try emailing keltysage01@gmail.com directly.';
+          errBox.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Application';
+        }
+      });
+    </script>
+  </body>
+</html>
