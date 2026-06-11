@@ -4,91 +4,92 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kelty Sage — AI Tools for Small Business</title>
-    <meta
-      name="description"
-      content="Kelty Sage builds AI tools for small business owners. Explore Sage Systems AI, FetchNote, CycleCEO, and book a $100 AI coaching session."
-    />
+    <meta name="description" content="Kelty Sage builds AI tools for small business owners. Explore Sage Systems AI, FetchNote, CycleCEO, and book a $100 AI coaching session." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
       :root {
-        --warm-white: #faf7f2;
-        --cream: #fffdf9;
-        --blush: #f7b7c8;
-        --rose: #c65b7c;
-        --rose-dark: #9f3f60;
-        --green: #4f7a5a;
-        --sage: #dde8d8;
-        --lavender: #eee9ff;
-        --charcoal: #1f1f1f;
-        --taupe: #8c7f76;
-        --line: rgba(31, 31, 31, 0.1);
-        --glass: rgba(255, 255, 255, 0.58);
-        --glass-strong: rgba(255, 255, 255, 0.76);
-        --shadow: 0 24px 70px rgba(108, 87, 72, 0.14);
-        --radius-card: 8px;
+        --rose:       #c65b7c;
+        --rose-dark:  #9f3f60;
+        --rose-glow:  rgba(198, 91, 124, 0.38);
+        --green:      #4f7a5a;
+        --green-glow: rgba(79, 122, 90, 0.30);
+        --violet:     #7c5bbf;
+        --violet-glow:rgba(124, 91, 191, 0.30);
+        --charcoal:   #1a1a1f;
+        --muted:      rgba(26, 26, 31, 0.58);
+
+        --glass-bg:       rgba(255,255,255,0.13);
+        --glass-bg-heavy: rgba(255,255,255,0.22);
+        --glass-border:   rgba(255,255,255,0.68);
+        --glass-specular: rgba(255,255,255,0.92);
+        --glass-blur:     blur(52px) saturate(200%);
+        --glass-blur-sm:  blur(32px) saturate(180%);
+
+        --shadow-card: 0 2px 0 rgba(255,255,255,0.9) inset, 0 32px 80px rgba(100,70,90,0.18);
+        --shadow-btn:  0 16px 40px var(--rose-glow), 0 4px 12px rgba(0,0,0,0.12);
+
+        --radius-card: 24px;
         --radius-pill: 999px;
         --max: 1120px;
       }
 
-      * { box-sizing: border-box; }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
       html { scroll-behavior: smooth; }
 
       body {
-        margin: 0;
-        color: var(--charcoal);
-        font-family: "Manrope", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background:
-          linear-gradient(145deg, rgba(247, 183, 200, 0.28) 0%, rgba(250, 247, 242, 0) 34%),
-          linear-gradient(215deg, rgba(221, 232, 216, 0.64) 0%, rgba(250, 247, 242, 0) 42%),
-          linear-gradient(180deg, #fffdf9 0%, var(--warm-white) 40%, #fff8fb 100%);
+        min-height: 100vh;
+        font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
         font-size: 16px;
         line-height: 1.65;
-        min-height: 100vh;
-      }
-
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
+        color: var(--charcoal);
+        /* Layered color-blob background — glass elements blur and tint these */
+        background-color: #f5f0fa;
         background-image:
-          linear-gradient(rgba(255, 255, 255, 0.42) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.36) 1px, transparent 1px);
-        background-size: 58px 58px;
-        opacity: 0.42;
+          radial-gradient(ellipse 70% 55% at 8% 12%,  rgba(247,183,200,0.72) 0%, transparent 65%),
+          radial-gradient(ellipse 55% 60% at 95% 5%,  rgba(198,178,248,0.58) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 50% at 50% 95%, rgba(150,210,180,0.54) 0%, transparent 60%),
+          radial-gradient(ellipse 45% 40% at 15% 80%, rgba(255,210,160,0.42) 0%, transparent 55%),
+          radial-gradient(ellipse 50% 45% at 85% 65%, rgba(247,183,200,0.38) 0%, transparent 55%),
+          linear-gradient(160deg, #fdf8ff 0%, #f5f0fa 50%, #f0f7f2 100%);
+        overflow-x: hidden;
       }
 
       img { display: block; max-width: 100%; }
       a { color: inherit; text-decoration: none; }
-      .page-shell { overflow: hidden; }
 
       .container {
         width: min(100% - 32px, var(--max));
         margin: 0 auto;
       }
 
-      /* ── Nav ── */
+      /* ─── Glass surface mixin ─── */
+      .glass {
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--glass-border);
+        box-shadow: var(--shadow-card);
+      }
+
+      /* ─── NAV ─── */
       .site-header {
         position: sticky;
         top: 0;
-        z-index: 10;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-        background: rgba(250, 247, 242, 0.72);
-        backdrop-filter: blur(22px);
-        -webkit-backdrop-filter: blur(22px);
+        z-index: 100;
+        background: rgba(245, 240, 250, 0.55);
+        backdrop-filter: var(--glass-blur-sm);
+        -webkit-backdrop-filter: var(--glass-blur-sm);
+        border-bottom: 1px solid var(--glass-border);
       }
 
       .nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        min-height: 68px;
-        gap: 18px;
+        min-height: 64px;
+        gap: 16px;
       }
 
       .brand {
@@ -96,20 +97,21 @@
         align-items: center;
         gap: 10px;
         font-weight: 700;
+        font-size: 0.95rem;
         color: var(--charcoal);
       }
 
       .brand-mark {
         display: grid;
-        width: 34px;
-        height: 34px;
         place-items: center;
-        border: 1px solid rgba(198, 91, 124, 0.28);
+        width: 36px;
+        height: 36px;
         border-radius: 50%;
-        background:
-          linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.46)),
-          linear-gradient(135deg, rgba(247, 183, 200, 0.65), rgba(221, 232, 216, 0.65));
-        box-shadow: 0 10px 30px rgba(198, 91, 124, 0.18);
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg-heavy);
+        backdrop-filter: var(--glass-blur-sm);
+        -webkit-backdrop-filter: var(--glass-blur-sm);
+        box-shadow: 0 0 18px var(--rose-glow), inset 0 1px 0 var(--glass-specular);
         color: var(--rose-dark);
         font-family: "DM Serif Display", Georgia, serif;
         font-size: 1.1rem;
@@ -118,217 +120,228 @@
       .nav-links {
         display: none;
         align-items: center;
-        gap: 18px;
-        color: rgba(31, 31, 31, 0.64);
+        gap: 20px;
         font-size: 0.84rem;
-        font-weight: 800;
+        font-weight: 700;
+        color: var(--muted);
       }
 
       .nav-cta {
-        padding: 10px 14px;
-        border: 1px solid rgba(198, 91, 124, 0.22);
+        display: inline-flex;
+        align-items: center;
+        padding: 9px 16px;
         border-radius: var(--radius-pill);
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg-heavy);
+        backdrop-filter: var(--glass-blur-sm);
+        -webkit-backdrop-filter: var(--glass-blur-sm);
+        box-shadow: 0 8px 20px var(--rose-glow), inset 0 1px 0 var(--glass-specular);
         color: var(--rose-dark);
         font-size: 0.82rem;
-        font-weight: 700;
-        background: rgba(255, 255, 255, 0.62);
-        box-shadow: 0 12px 28px rgba(198, 91, 124, 0.12);
+        font-weight: 800;
         white-space: nowrap;
+        transition: box-shadow 200ms, transform 200ms;
       }
 
-      /* ── Hero ── */
-      .hero {
-        padding: 40px 0 32px;
-      }
+      .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 12px 28px var(--rose-glow), inset 0 1px 0 var(--glass-specular); }
 
-      .hero-inner {
-        display: grid;
-        gap: 0;
-        padding: 32px 24px;
-        border: 1px solid rgba(255, 255, 255, 0.68);
-        border-radius: var(--radius-card);
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.82) 100%);
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
+      /* ─── HERO ─── */
+      .hero { padding: 40px 0 36px; }
+
+      .hero-card {
         position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 36px 28px;
+        border-radius: var(--radius-card);
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg-heavy);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        box-shadow: var(--shadow-card);
         overflow: hidden;
       }
 
-      .hero-copy { display: grid; gap: 0; }
-
-      .hero-photo {
-        display: none;
-        position: relative;
-        z-index: 1;
-      }
-
-      .hero-photo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center 20%;
-        border-radius: calc(var(--radius-card) - 4px);
-        box-shadow: 0 18px 52px rgba(108, 87, 72, 0.15);
-      }
-
-      .founder-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 18px;
-        position: relative;
-        z-index: 1;
-      }
-
-      .founder-pill img {
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        object-fit: cover;
-        object-position: center 20%;
-        border: 2px solid rgba(255, 255, 255, 0.9);
-        box-shadow: 0 8px 24px rgba(108, 87, 72, 0.16);
-        flex: 0 0 auto;
-      }
-
-      .hero-inner::before {
+      /* specular rim light at top */
+      .hero-card::before {
         content: "";
         position: absolute;
-        top: -60px;
-        right: -60px;
-        width: 280px;
-        height: 280px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(247, 183, 200, 0.38) 0%, transparent 70%);
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(160deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 38%);
         pointer-events: none;
       }
 
-      .hero-inner::after {
-        content: "";
-        position: absolute;
-        bottom: -80px;
-        left: -40px;
-        width: 260px;
-        height: 260px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(221, 232, 216, 0.48) 0%, transparent 70%);
-        pointer-events: none;
-      }
+      .hero-copy { position: relative; z-index: 1; }
 
       .eyebrow {
         display: inline-flex;
         align-items: center;
         gap: 8px;
         color: var(--green);
-        font-size: 0.76rem;
+        font-size: 0.72rem;
         font-weight: 800;
         text-transform: uppercase;
-        position: relative;
-        z-index: 1;
+        letter-spacing: 0.08em;
+        margin-bottom: 16px;
       }
 
-      .eyebrow::before {
-        content: "";
-        width: 26px;
-        height: 1px;
-        background: currentColor;
-      }
+      .eyebrow::before { content: ""; width: 22px; height: 1.5px; background: currentColor; }
 
       h1, h2, h3 {
-        margin: 0;
-        color: var(--charcoal);
         font-family: "DM Serif Display", Georgia, serif;
         font-weight: 400;
-        line-height: 1.03;
+        line-height: 1.04;
+        color: var(--charcoal);
       }
 
-      h1 {
-        font-size: 3.2rem;
-        position: relative;
-        z-index: 1;
-      }
+      h1 { font-size: 3.4rem; }
 
       .hero-subhead {
-        margin: 12px 0 0;
+        margin-top: 14px;
         color: var(--rose-dark);
-        font-size: 1.14rem;
+        font-size: 1.12rem;
         font-weight: 700;
-        line-height: 1.35;
-        position: relative;
-        z-index: 1;
+        line-height: 1.38;
       }
 
       .hero-body {
-        margin: 10px 0 0;
-        color: rgba(31, 31, 31, 0.78);
-        position: relative;
-        z-index: 1;
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 1rem;
       }
 
       .button-row {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-top: 20px;
-        position: relative;
-        z-index: 1;
+        margin-top: 22px;
       }
 
-      .button {
+      /* ─── BUTTONS ─── */
+      .btn {
         display: inline-flex;
-        min-height: 46px;
         align-items: center;
         justify-content: center;
         gap: 8px;
+        min-height: 46px;
+        padding: 12px 20px;
         border-radius: var(--radius-pill);
-        font-size: 0.92rem;
+        font-size: 0.9rem;
         font-weight: 800;
-        line-height: 1.15;
-        text-align: center;
-        transition: transform 180ms ease, box-shadow 180ms ease;
+        line-height: 1;
+        transition: transform 200ms, box-shadow 200ms;
+        cursor: pointer;
+        border: none;
       }
 
-      .button:hover, .button:focus-visible { transform: translateY(-2px); }
-      .button:focus-visible, .nav-cta:focus-visible, .footer-link:focus-visible {
-        outline: 3px solid rgba(79, 122, 90, 0.28);
-        outline-offset: 4px;
-      }
+      .btn:hover, .btn:focus-visible { transform: translateY(-2px); }
+      .btn:focus-visible { outline: 3px solid rgba(198,91,124,0.35); outline-offset: 3px; }
 
-      .button-primary {
-        padding: 14px 19px;
+      .btn-primary {
         color: #fff;
-        background: linear-gradient(135deg, var(--rose), var(--rose-dark));
-        box-shadow: 0 18px 36px rgba(198, 91, 124, 0.27);
+        background: linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%);
+        box-shadow: var(--shadow-btn);
       }
 
-      .button-secondary {
-        padding: 13px 18px;
-        border: 1px solid rgba(79, 122, 90, 0.2);
+      .btn-primary:hover { box-shadow: 0 22px 52px var(--rose-glow), 0 4px 16px rgba(0,0,0,0.14); }
+
+      .btn-glass {
         color: var(--green);
-        background: rgba(255, 255, 255, 0.7);
-        box-shadow: 0 14px 32px rgba(79, 122, 90, 0.12);
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg-heavy);
+        backdrop-filter: var(--glass-blur-sm);
+        -webkit-backdrop-filter: var(--glass-blur-sm);
+        box-shadow: 0 8px 24px var(--green-glow), inset 0 1px 0 var(--glass-specular);
       }
 
-      /* ── Sections ── */
-      .section { padding: 52px 0; }
+      .btn-glass:hover { box-shadow: 0 14px 34px var(--green-glow), inset 0 1px 0 var(--glass-specular); }
 
-      .section-heading {
-        display: grid;
+      /* ─── HERO PHOTO ─── */
+      .hero-photo-wrap {
+        display: none;
+        position: relative;
+        z-index: 1;
+        align-self: center;
+        justify-self: center;
+      }
+
+      .hero-photo-ring {
+        position: relative;
+        width: 260px;
+        height: 260px;
+      }
+
+      /* outer glow ring */
+      .hero-photo-ring::before {
+        content: "";
+        position: absolute;
+        inset: -8px;
+        border-radius: 50%;
+        background: conic-gradient(
+          from 120deg,
+          rgba(247,183,200,0.6) 0%,
+          rgba(198,178,248,0.5) 30%,
+          rgba(150,210,180,0.5) 55%,
+          rgba(247,183,200,0.6) 100%
+        );
+        filter: blur(14px);
+        z-index: 0;
+      }
+
+      /* specular glass rim */
+      .hero-photo-ring::after {
+        content: "";
+        position: absolute;
+        inset: -3px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.4) 100%);
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .hero-photo-ring img {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 18%;
+        border-radius: 50%;
+        display: block;
+      }
+
+      /* mobile avatar pill */
+      .founder-pill {
+        display: flex;
+        align-items: center;
         gap: 12px;
-        margin-bottom: 28px;
+        margin-bottom: 20px;
       }
 
-      .section-heading h2 { font-size: 2.35rem; }
-
-      .section-heading p {
-        max-width: 640px;
-        margin: 0;
-        color: var(--taupe);
-        font-size: 1rem;
+      .founder-pill img {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center 18%;
+        border: 2px solid var(--glass-border);
+        box-shadow: 0 6px 20px var(--rose-glow), inset 0 1px 0 var(--glass-specular);
+        flex: 0 0 auto;
       }
 
-      /* ── Product cards ── */
+      /* ─── SECTIONS ─── */
+      .section { padding: 56px 0; }
+
+      .section-head {
+        margin-bottom: 32px;
+      }
+
+      .section-head h2 { font-size: 2.4rem; margin-bottom: 8px; }
+      .section-head p { color: var(--muted); max-width: 580px; }
+
+      /* ─── PRODUCT CARDS ─── */
       .products-grid {
         display: grid;
         gap: 16px;
@@ -336,73 +349,69 @@
 
       .product-card {
         position: relative;
-        display: grid;
-        gap: 0;
-        padding: 26px 24px 24px;
-        border: 1px solid rgba(255, 255, 255, 0.72);
+        padding: 28px 26px;
         border-radius: var(--radius-card);
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.44));
-        box-shadow: 0 18px 52px rgba(108, 87, 72, 0.1);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        transition: transform 180ms ease, box-shadow 180ms ease;
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        box-shadow: var(--shadow-card);
         overflow: hidden;
+        transition: transform 200ms, box-shadow 200ms;
       }
 
-      .product-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 28px 66px rgba(108, 87, 72, 0.14);
-      }
-
-      .product-card .card-bg {
+      /* per-card tinted glow blob */
+      .product-card::after {
+        content: "";
         position: absolute;
-        top: -40px;
-        right: -40px;
-        width: 200px;
-        height: 200px;
+        top: -60px;
+        right: -60px;
+        width: 220px;
+        height: 220px;
         border-radius: 50%;
         pointer-events: none;
-        opacity: 0.5;
+        filter: blur(48px);
+        opacity: 0.55;
+      }
+
+      .product-card.c-rose::after  { background: radial-gradient(circle, rgba(198,91,124,0.55), transparent 70%); }
+      .product-card.c-green::after { background: radial-gradient(circle, rgba(79,122,90,0.50), transparent 70%); }
+      .product-card.c-violet::after { background: radial-gradient(circle, rgba(124,91,191,0.50), transparent 70%); }
+
+      .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 2px 0 rgba(255,255,255,0.9) inset, 0 40px 100px rgba(100,70,90,0.22);
       }
 
       .card-tag {
         display: inline-flex;
-        width: fit-content;
+        padding: 5px 12px;
         margin-bottom: 14px;
-        padding: 5px 10px;
-        border: 1px solid rgba(198, 91, 124, 0.2);
         border-radius: var(--radius-pill);
-        color: var(--rose-dark);
-        background: rgba(247, 183, 200, 0.18);
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
         position: relative;
         z-index: 1;
+        border: 1px solid;
       }
 
-      .card-tag.green {
-        border-color: rgba(79, 122, 90, 0.22);
-        color: var(--green);
-        background: rgba(221, 232, 216, 0.32);
-      }
-
-      .card-tag.lavender {
-        border-color: rgba(130, 110, 200, 0.22);
-        color: #6655b8;
-        background: rgba(238, 233, 255, 0.4);
-      }
+      .card-tag.rose   { color: var(--rose-dark);  border-color: rgba(198,91,124,0.28);  background: rgba(247,183,200,0.22); }
+      .card-tag.green  { color: var(--green);       border-color: rgba(79,122,90,0.28);   background: rgba(150,210,180,0.22); }
+      .card-tag.violet { color: var(--violet);      border-color: rgba(124,91,191,0.28);  background: rgba(198,178,248,0.22); }
 
       .product-card h3 {
-        font-size: 1.6rem;
+        font-size: 1.7rem;
+        margin-bottom: 10px;
         position: relative;
         z-index: 1;
       }
 
       .product-card p {
-        margin: 10px 0 0;
-        color: rgba(31, 31, 31, 0.72);
+        color: var(--muted);
         font-size: 0.96rem;
-        line-height: 1.55;
+        line-height: 1.58;
         position: relative;
         z-index: 1;
       }
@@ -411,119 +420,138 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        margin-top: 18px;
+        margin-top: 20px;
         padding: 10px 16px;
         border-radius: var(--radius-pill);
-        font-size: 0.86rem;
+        font-size: 0.84rem;
         font-weight: 800;
-        border: 1px solid rgba(198, 91, 124, 0.22);
-        color: var(--rose-dark);
-        background: rgba(255, 255, 255, 0.7);
-        box-shadow: 0 10px 24px rgba(198, 91, 124, 0.1);
-        transition: transform 180ms ease;
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg-heavy);
+        backdrop-filter: var(--glass-blur-sm);
+        -webkit-backdrop-filter: var(--glass-blur-sm);
+        box-shadow: inset 0 1px 0 var(--glass-specular);
+        transition: transform 200ms, box-shadow 200ms;
         position: relative;
         z-index: 1;
-        width: fit-content;
       }
 
-      .product-link.green {
-        border-color: rgba(79, 122, 90, 0.22);
-        color: var(--green);
-        box-shadow: 0 10px 24px rgba(79, 122, 90, 0.1);
-      }
+      .product-link.rose   { color: var(--rose-dark);  box-shadow: 0 6px 18px var(--rose-glow),  inset 0 1px 0 var(--glass-specular); }
+      .product-link.green  { color: var(--green);       box-shadow: 0 6px 18px var(--green-glow), inset 0 1px 0 var(--glass-specular); }
+      .product-link.violet { color: var(--violet);      box-shadow: 0 6px 18px var(--violet-glow),inset 0 1px 0 var(--glass-specular); }
 
-      .product-link.lavender {
-        border-color: rgba(130, 110, 200, 0.22);
-        color: #6655b8;
-        box-shadow: 0 10px 24px rgba(130, 110, 200, 0.1);
-      }
+      .product-link:hover { transform: translateX(4px); }
 
-      .product-link:hover { transform: translateX(3px); }
-
-      /* ── Beta band ── */
+      /* ─── BETA BAND ─── */
       .beta-band {
-        margin: 30px 0;
-        padding: 62px 0;
-        border-top: 1px solid rgba(198, 91, 124, 0.14);
-        border-bottom: 1px solid rgba(198, 91, 124, 0.14);
+        padding: 64px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .beta-band::before {
+        content: "";
+        position: absolute;
+        inset: 0;
         background:
-          linear-gradient(135deg, rgba(247, 183, 200, 0.34), rgba(255, 255, 255, 0.2)),
-          linear-gradient(220deg, rgba(238, 233, 255, 0.46), rgba(221, 232, 216, 0.28));
+          radial-gradient(ellipse 80% 60% at 10% 50%, rgba(247,183,200,0.45) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 70% at 90% 50%, rgba(198,178,248,0.38) 0%, transparent 60%);
+        pointer-events: none;
       }
 
-      .beta-layout {
+      .beta-inner {
+        position: relative;
+        z-index: 1;
         display: grid;
-        gap: 24px;
-        align-items: start;
+        gap: 32px;
+        padding: 44px 36px;
+        border-radius: var(--radius-card);
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        box-shadow: var(--shadow-card);
       }
 
-      .beta-copy h2 { font-size: 2.5rem; }
-
-      .beta-copy p {
-        margin: 14px 0 0;
-        color: rgba(31, 31, 31, 0.76);
+      .beta-inner::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(150deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 40%);
+        pointer-events: none;
       }
+
+      .beta-inner h2 { font-size: 2.6rem; }
+      .beta-inner > p { color: var(--muted); margin-top: 12px; }
 
       .check-list {
         display: grid;
         gap: 12px;
-        margin: 0;
-        padding: 0;
         list-style: none;
+        padding: 0;
+        margin: 0;
       }
 
       .check-list li {
-        display: grid;
-        grid-template-columns: 28px 1fr;
-        align-items: start;
-        gap: 10px;
-        color: rgba(31, 31, 31, 0.78);
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        color: var(--muted);
+        font-size: 0.97rem;
       }
 
       .check-list li::before {
         content: "";
+        flex: 0 0 auto;
         width: 22px;
         height: 22px;
         margin-top: 2px;
-        border: 1px solid rgba(79, 122, 90, 0.24);
         border-radius: 50%;
+        border: 1px solid rgba(79,122,90,0.28);
         background:
-          radial-gradient(circle at 50% 50%, var(--green) 0 3px, transparent 4px),
-          rgba(255, 255, 255, 0.58);
+          radial-gradient(circle at 50% 50%, var(--green) 0 3.5px, transparent 4px),
+          rgba(255,255,255,0.6);
+        box-shadow: 0 3px 10px var(--green-glow);
       }
 
-      .beta-note {
-        margin-top: 14px;
-        color: var(--rose-dark);
-        font-size: 0.9rem;
-        font-weight: 800;
-      }
+      .beta-note { margin-top: 14px; color: var(--rose-dark); font-size: 0.88rem; font-weight: 800; }
 
-      /* ── Coaching ── */
+      /* ─── COACHING ─── */
       .coaching-panel {
+        position: relative;
         display: grid;
-        gap: 26px;
-        align-items: start;
-        padding: 28px 24px;
-        border: 1px solid rgba(255, 255, 255, 0.72);
+        gap: 32px;
+        padding: 36px 28px;
         border-radius: var(--radius-card);
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.46));
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        box-shadow: var(--shadow-card);
+        overflow: hidden;
       }
 
-      .coaching-panel h2 { font-size: 2.38rem; }
-      .coaching-panel p { margin: 14px 0 0; color: var(--taupe); }
+      .coaching-panel::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(150deg, rgba(255,255,255,0.48) 0%, rgba(255,255,255,0) 38%);
+        pointer-events: none;
+      }
+
+      .coaching-panel h2 { font-size: 2.4rem; }
+      .coaching-panel > div > p { color: var(--muted); margin-top: 12px; }
 
       .coaching-note {
         margin-top: 18px;
-        padding: 16px;
-        border: 1px solid rgba(79, 122, 90, 0.14);
-        border-radius: var(--radius-card);
-        color: rgba(31, 31, 31, 0.78);
-        background: rgba(221, 232, 216, 0.3);
-        font-size: 0.95rem;
+        padding: 16px 18px;
+        border-radius: 16px;
+        border: 1px solid rgba(79,122,90,0.22);
+        background: rgba(150,210,180,0.15);
+        backdrop-filter: blur(12px);
+        color: rgba(26,26,31,0.78);
+        font-size: 0.94rem;
         font-weight: 700;
         line-height: 1.5;
       }
@@ -531,29 +559,32 @@
       .work-list {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        margin: 0;
-        padding: 0;
+        gap: 8px;
         list-style: none;
+        padding: 0;
+        margin: 20px 0 0;
       }
 
       .work-list li {
-        padding: 10px 12px;
-        border: 1px solid rgba(79, 122, 90, 0.14);
+        padding: 9px 14px;
         border-radius: var(--radius-pill);
+        border: 1px solid rgba(79,122,90,0.18);
+        background: rgba(150,210,180,0.18);
+        backdrop-filter: blur(12px);
         color: var(--green);
-        background: rgba(221, 232, 216, 0.34);
-        font-size: 0.88rem;
+        font-size: 0.86rem;
         font-weight: 800;
         text-align: center;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
       }
 
       .calendar-card {
+        border-radius: 20px;
+        border: 1px solid var(--glass-border);
+        background: rgba(255,255,255,0.72);
+        backdrop-filter: blur(24px);
         overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.74);
-        border-radius: var(--radius-card);
-        background: rgba(255, 255, 255, 0.68);
-        box-shadow: 0 18px 52px rgba(108, 87, 72, 0.1);
+        box-shadow: inset 0 1px 0 var(--glass-specular), 0 20px 60px rgba(100,70,90,0.12);
       }
 
       .calendar-card iframe {
@@ -561,55 +592,51 @@
         width: 100%;
         min-height: 620px;
         border: 0;
-        background: #fff;
       }
 
-      /* ── Footer ── */
-      .site-footer { padding: 46px 0 38px; }
+      /* ─── FOOTER ─── */
+      .site-footer { padding: 48px 0 40px; }
 
       .footer-inner {
         display: grid;
         gap: 24px;
-        align-items: center;
-        border-top: 1px solid var(--line);
         padding-top: 28px;
+        border-top: 1px solid rgba(26,26,31,0.08);
       }
 
       .footer-statement {
-        margin: 0;
-        color: var(--charcoal);
         font-family: "DM Serif Display", Georgia, serif;
-        font-size: 1.75rem;
+        font-size: 1.8rem;
         line-height: 1.12;
+        color: var(--charcoal);
       }
 
-      .footer-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
+      .footer-links { display: flex; flex-wrap: wrap; gap: 8px; }
 
       .footer-link {
-        padding: 9px 12px;
-        border: 1px solid rgba(31, 31, 31, 0.08);
+        padding: 8px 14px;
         border-radius: var(--radius-pill);
-        background: rgba(255, 255, 255, 0.54);
-        color: rgba(31, 31, 31, 0.72);
-        font-size: 0.84rem;
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg-heavy);
+        backdrop-filter: var(--glass-blur-sm);
+        -webkit-backdrop-filter: var(--glass-blur-sm);
+        color: var(--muted);
+        font-size: 0.83rem;
         font-weight: 800;
+        box-shadow: inset 0 1px 0 var(--glass-specular);
+        transition: transform 180ms;
       }
 
-      /* ── Reveal animation ── */
+      .footer-link:hover { transform: translateY(-1px); }
+
+      /* ─── REVEAL ─── */
       .reveal {
         opacity: 0;
-        transform: translateY(14px);
-        transition: opacity 520ms ease, transform 520ms ease;
+        transform: translateY(16px);
+        transition: opacity 560ms ease, transform 560ms ease;
       }
 
-      .reveal.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after {
@@ -620,68 +647,56 @@
         .reveal { opacity: 1; transform: none; }
       }
 
+      /* ─── RESPONSIVE ─── */
       @media (min-width: 680px) {
         .container { width: min(100% - 48px, var(--max)); }
         .nav-links { display: flex; }
 
-        .hero { padding: 64px 0 40px; }
-        .hero-inner {
-          padding: 48px 44px;
-          grid-template-columns: 1fr 260px;
-          gap: 32px;
+        .hero { padding: 64px 0 44px; }
+        .hero-card {
+          grid-template-columns: 1fr auto;
+          gap: 40px;
           align-items: center;
+          padding: 48px 44px;
         }
-        .hero-photo { display: block; aspect-ratio: 3/4; min-height: 320px; }
+        .hero-photo-wrap { display: flex; align-items: center; justify-content: center; }
+        .hero-photo-ring { width: 280px; height: 280px; }
+        .founder-pill { display: none; }
         h1 { font-size: 5rem; }
 
-        .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .section-heading h2 { font-size: 2.8rem; }
+        .products-grid { grid-template-columns: repeat(2, 1fr); }
+        .beta-inner { grid-template-columns: 1fr 1fr; align-items: start; }
       }
 
       @media (min-width: 920px) {
-        .hero { padding: 72px 0 48px; }
-        .hero-inner {
-          grid-template-columns: 1fr 320px;
-          gap: 44px;
-          padding: 52px 52px;
-        }
-        .hero-photo { min-height: 400px; }
+        .hero { padding: 72px 0 52px; }
+        .hero-card { padding: 56px 56px; gap: 52px; }
+        .hero-photo-ring { width: 320px; height: 320px; }
         h1 { font-size: 5.8rem; }
-        .hero-subhead { font-size: 1.38rem; }
+        .hero-subhead { font-size: 1.32rem; }
 
-        .section { padding: 78px 0; }
+        .section { padding: 80px 0; }
 
-        .products-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .products-grid { grid-template-columns: repeat(3, 1fr); }
 
-        .section-heading {
-          grid-template-columns: minmax(0, 0.72fr) minmax(320px, 0.72fr);
-          align-items: end;
-          margin-bottom: 34px;
-        }
-
-        .section-heading h2, .beta-copy h2, .coaching-panel h2 { font-size: 3rem; }
-
-        .beta-layout {
-          grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.7fr);
-          gap: 54px;
-        }
+        .section-head { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 16px; margin-bottom: 36px; }
+        .section-head h2, .coaching-panel h2, .beta-inner h2 { font-size: 3rem; }
 
         .coaching-panel {
-          grid-template-columns: minmax(0, 0.7fr) minmax(430px, 0.9fr);
-          gap: 48px;
-          padding: 44px;
+          grid-template-columns: 1fr minmax(420px, 0.9fr);
+          gap: 52px;
+          padding: 52px 52px;
         }
 
-        .footer-inner {
-          grid-template-columns: minmax(0, 0.9fr) minmax(420px, 0.9fr);
-        }
-
+        .footer-inner { grid-template-columns: 1fr auto; align-items: center; }
         .footer-links { justify-content: flex-end; }
       }
     </style>
   </head>
   <body>
     <div class="page-shell">
+
+      <!-- ── NAV ── -->
       <header class="site-header">
         <nav class="container nav" aria-label="Primary navigation">
           <a class="brand" href="#top" aria-label="Kelty Sage home">
@@ -698,75 +713,84 @@
       </header>
 
       <main id="top">
+
+        <!-- ── HERO ── -->
         <section class="hero container" aria-labelledby="hero-title">
-          <div class="hero-inner reveal">
+          <div class="hero-card reveal">
+
             <div class="hero-copy">
-            <div class="founder-pill">
-              <img src="kelty.jpg" alt="Kelty smiling in front of her screen." width="700" height="700" />
-              <p class="eyebrow" style="margin:0;">Builder &amp; AI coach for small business</p>
+              <!-- avatar pill — mobile only -->
+              <div class="founder-pill">
+                <img src="kelty.jpg" alt="Kelty smiling in front of her screen." width="700" height="700" loading="eager" />
+                <p class="eyebrow" style="margin:0;">Builder &amp; AI coach</p>
+              </div>
+
+              <p class="eyebrow">Builder &amp; AI coach for small business</p>
+              <h1 id="hero-title">Hi, I&rsquo;m Kelty.</h1>
+              <p class="hero-subhead">I build AI tools and coach small business owners to use them.</p>
+              <p class="hero-body">
+                Education-first AI products for coaches, trainers, and founders &mdash; tools that teach
+                you the process so you can keep building on your own.
+              </p>
+              <div class="button-row">
+                <a class="btn btn-primary" href="#tools">See the Tools</a>
+                <a class="btn btn-glass" href="#coaching">Book a $100 Session</a>
+              </div>
             </div>
-            <h1 id="hero-title">Hi, I&rsquo;m Kelty.</h1>
-            <p class="hero-subhead">I build AI tools and coach small business owners to use them.</p>
-            <p class="hero-body">
-              I make education-first AI products for coaches, trainers, and founders — tools that teach
-              you the process so you can keep building on your own. Below are the products I&rsquo;m currently
-              shipping.
-            </p>
-            <div class="button-row" aria-label="Main calls to action">
-              <a class="button button-primary" href="#tools">See the Tools</a>
-              <a class="button button-secondary" href="#coaching">Book a $100 Coaching Session</a>
+
+            <!-- photo — tablet/desktop only -->
+            <div class="hero-photo-wrap" aria-hidden="true">
+              <div class="hero-photo-ring">
+                <img src="kelty.jpg" alt="Kelty smiling in front of her screen." width="700" height="700" loading="eager" />
+              </div>
             </div>
-            </div><!-- /.hero-copy -->
-            <div class="hero-photo" aria-hidden="true">
-              <img src="kelty.jpg" alt="Kelty smiling in front of her screen." width="700" height="700" loading="eager" />
-            </div>
+
           </div>
         </section>
 
+        <!-- ── TOOLS ── -->
         <section class="section container" id="tools" aria-labelledby="tools-title">
-          <div class="section-heading reveal">
-            <h2 id="tools-title">The Tools</h2>
-            <p>Three live products. Each one is education-first — built to teach you the process, not just do it for you.</p>
+          <div class="section-head reveal">
+            <div>
+              <h2 id="tools-title">The Tools</h2>
+              <p>Three live products. Education-first — built to teach you the process, not just do it for you.</p>
+            </div>
           </div>
 
           <div class="products-grid">
 
-            <article class="product-card reveal" aria-label="Sage Systems AI">
-              <div class="card-bg" style="background: radial-gradient(circle, rgba(33,230,138,0.22) 0%, transparent 70%);"></div>
+            <article class="product-card c-green reveal">
               <span class="card-tag green">AI Courses</span>
               <h3>Sage Systems AI</h3>
               <p>
-                A personalized AI fluency course for your specific business. Answer a few questions and get
-                a full course — custom prompts, tool recommendations, flashcards, and a business brain — in
-                under a minute.
+                A personalized AI fluency course for your specific business. Answer a few questions
+                and get custom prompts, tool recommendations, flashcards, and a business brain in under a minute.
               </p>
               <a class="product-link green" href="https://sage-systems-ai.netlify.app" target="_blank" rel="noopener">
                 Open Sage Systems AI &rarr;
               </a>
             </article>
 
-            <article class="product-card reveal" aria-label="FetchNote">
-              <div class="card-bg" style="background: radial-gradient(circle, rgba(247,183,100,0.24) 0%, transparent 70%);"></div>
-              <span class="card-tag">Dog Training</span>
+            <article class="product-card c-rose reveal">
+              <span class="card-tag rose">Dog Training</span>
               <h3>FetchNote</h3>
               <p>
-                Voice-to-PDF homework for dog trainers. Record session notes by voice after a lesson and
-                FetchNote generates a clean, branded homework PDF your client takes home. No typing required.
+                Voice-to-PDF homework for dog trainers. Record session notes by voice after a lesson
+                and FetchNote generates a clean, branded homework PDF for your client. No typing.
               </p>
-              <a class="product-link" href="https://fetchnote.app" target="_blank" rel="noopener">
+              <a class="product-link rose" href="https://fetchnote.app" target="_blank" rel="noopener">
                 Open FetchNote &rarr;
               </a>
             </article>
 
-            <article class="product-card reveal" aria-label="CycleCEO">
-              <div class="card-bg" style="background: radial-gradient(circle, rgba(238,233,255,0.5) 0%, transparent 70%);"></div>
-              <span class="card-tag lavender">Cycle Planning</span>
+            <article class="product-card c-violet reveal">
+              <span class="card-tag violet">Cycle Planning</span>
               <h3>CycleCEO</h3>
               <p>
-                A cycle-informed planning app for business owners. Track your energy phases, get a daily
+                A cycle-informed planning app for business owners. Track energy phases, get a daily
                 morning brief, and work with an AI coach that understands where you are in your cycle.
               </p>
-              <a class="product-link lavender" href="https://cycleceo.app" target="_blank" rel="noopener">
+              <a class="product-link violet" href="https://cycleceo.app" target="_blank" rel="noopener">
                 Open CycleCEO &rarr;
               </a>
             </article>
@@ -774,58 +798,50 @@
           </div>
         </section>
 
+        <!-- ── BETA ── -->
         <section class="beta-band" id="beta" aria-labelledby="beta-title">
-          <div class="container beta-layout">
-            <div class="beta-copy reveal">
-              <p class="eyebrow">Limited spots available</p>
-              <h2 id="beta-title">Beta Users Wanted</h2>
-              <p>
-                I&rsquo;m always building new AI tools for business owners and looking for real people to
-                test them first.
-              </p>
-              <p>
-                You might be a fit if you&rsquo;re a coach, trainer, consultant, or service provider who wants
-                help organizing ideas, building offers, creating content, or turning your knowledge into digital
-                products — and you want to learn the process, not just outsource it.
-              </p>
-              <div class="button-row">
-                <a class="button button-primary" href="mailto:keltysage01@gmail.com?subject=Beta%20User%20Application">Apply to Be a Beta User</a>
+          <div class="container">
+            <div class="beta-inner reveal">
+              <div>
+                <p class="eyebrow">Limited spots available</p>
+                <h2 id="beta-title">Beta Users Wanted</h2>
+                <p>I&rsquo;m always building new AI tools for business owners and looking for real people to test them first.</p>
+                <p style="margin-top:10px;">Coaches, trainers, consultants, service providers &mdash; you want to learn the process, not just outsource it.</p>
+                <div class="button-row" style="margin-top:22px;">
+                  <a class="btn btn-primary" href="mailto:keltysage01@gmail.com?subject=Beta%20User%20Application">Apply to Be a Beta User</a>
+                </div>
+                <p class="beta-note">Limited spots available.</p>
               </div>
-              <p class="beta-note">Limited beta spots available.</p>
+              <ul class="check-list" aria-label="Beta criteria">
+                <li>You have a lot of ideas but need structure</li>
+                <li>You want to use AI without feeling overwhelmed</li>
+                <li>You&rsquo;re building an offer, course, or digital product</li>
+                <li>You&rsquo;re open to testing and giving honest feedback</li>
+              </ul>
             </div>
-            <ul class="check-list reveal" aria-label="Beta user fit criteria">
-              <li>You have a lot of ideas but need structure</li>
-              <li>You want to use AI without feeling overwhelmed</li>
-              <li>You&rsquo;re building an offer, course, or digital product</li>
-              <li>You&rsquo;re open to testing and giving honest feedback</li>
-            </ul>
           </div>
         </section>
 
+        <!-- ── COACHING ── -->
         <section class="section container" id="coaching" aria-labelledby="coaching-title">
           <div class="coaching-panel reveal">
             <div>
               <p class="eyebrow">Education-first AI coaching</p>
               <h2 id="coaching-title">Book a $100 AI Coaching Session</h2>
               <p>
-                For business owners who want personalized coaching to use AI to simplify their ideas,
-                organize their next steps, and build something they can keep running on their own.
+                For business owners who want personalized coaching to simplify ideas, organize next
+                steps, and build something you can keep running on your own.
               </p>
               <div class="coaching-note">
-                This is not a done-for-you build. We work side by side so you understand what we create
+                Not a done-for-you build. We work side by side so you understand what we create
                 and can keep using AI after the session.
               </div>
               <div class="button-row">
-                <a
-                  class="button button-primary"
-                  href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0_HJqH5XlU8uIjPV98aDeJjWsXAwUB9X-KzosVSgzusqbgrnFKBolRwvMsWV8H6waBx344Y4TW?gv=true"
-                  target="_blank"
-                  rel="noopener"
-                >
+                <a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0_HJqH5XlU8uIjPV98aDeJjWsXAwUB9X-KzosVSgzusqbgrnFKBolRwvMsWV8H6waBx344Y4TW?gv=true" target="_blank" rel="noopener">
                   Book a $100 Session
                 </a>
               </div>
-              <ul class="work-list" style="margin-top:22px;" aria-label="Coaching call topics">
+              <ul class="work-list">
                 <li>your offer</li>
                 <li>your content system</li>
                 <li>your lead magnet</li>
@@ -847,11 +863,13 @@
             </div>
           </div>
         </section>
+
       </main>
 
+      <!-- ── FOOTER ── -->
       <footer class="site-footer">
         <div class="container footer-inner">
-          <p class="footer-statement">Your ideas are not random. They are raw material.</p>
+          <p class="footer-statement">Your ideas are not random.<br/>They are raw material.</p>
           <nav class="footer-links" aria-label="Footer links">
             <a class="footer-link" href="https://sage-systems-ai.netlify.app" target="_blank" rel="noopener">Sage Systems AI</a>
             <a class="footer-link" href="https://fetchnote.app" target="_blank" rel="noopener">FetchNote</a>
@@ -861,24 +879,18 @@
           </nav>
         </div>
       </footer>
+
     </div>
 
     <script>
       if ("IntersectionObserver" in window) {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.12 }
+        const obs = new IntersectionObserver(
+          entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("is-visible"); obs.unobserve(e.target); } }),
+          { threshold: 0.1 }
         );
-        document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+        document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
       } else {
-        document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
+        document.querySelectorAll(".reveal").forEach(el => el.classList.add("is-visible"));
       }
     </script>
   </body>
