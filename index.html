@@ -175,19 +175,22 @@
 
       .hero-copy { position: relative; z-index: 1; }
 
+      /* hide the standalone eyebrow on mobile — the pill already shows it */
+      .hero-copy > .eyebrow { display: none; }
+
       .eyebrow {
         display: inline-flex;
         align-items: center;
         gap: 8px;
         color: var(--green);
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         font-weight: 800;
         text-transform: uppercase;
-        letter-spacing: 0.08em;
-        margin-bottom: 16px;
+        letter-spacing: 0.1em;
+        margin-bottom: 18px;
       }
 
-      .eyebrow::before { content: ""; width: 22px; height: 1.5px; background: currentColor; }
+      .eyebrow::before { content: ""; width: 20px; height: 1.5px; background: currentColor; flex: 0 0 auto; }
 
       h1, h2, h3 {
         font-family: "DM Serif Display", Georgia, serif;
@@ -662,6 +665,8 @@
         .hero-photo-wrap { display: flex; align-items: center; justify-content: center; }
         .hero-photo-ring { width: 280px; height: 280px; }
         .founder-pill { display: none; }
+        /* show the standalone eyebrow once pill is hidden */
+        .hero-copy > .eyebrow { display: inline-flex; }
         h1 { font-size: 5rem; }
 
         .products-grid { grid-template-columns: repeat(2, 1fr); }
@@ -722,15 +727,14 @@
               <!-- avatar pill — mobile only -->
               <div class="founder-pill">
                 <img src="kelty.jpg" alt="Kelty smiling in front of her screen." width="700" height="700" loading="eager" />
-                <p class="eyebrow" style="margin:0;">Builder &amp; AI coach</p>
+                <p class="eyebrow" style="margin:0;">AI Education for Business Owners</p>
               </div>
 
-              <p class="eyebrow">Builder &amp; AI coach for small business</p>
-              <h1 id="hero-title">Hi, I&rsquo;m Kelty.</h1>
-              <p class="hero-subhead">I build AI tools and coach small business owners to use them.</p>
+              <p class="eyebrow">AI Education for Business Owners</p>
+              <h1 id="hero-title">Hi, I&rsquo;m Kelty!</h1>
+              <p class="hero-subhead">I help business owners learn how to utilize AI in their businesses.</p>
               <p class="hero-body">
-                Education-first AI products for coaches, trainers, and founders &mdash; tools that teach
-                you the process so you can keep building on your own.
+                It&rsquo;s not like you pay me to do it for you. I think education is the priority here.
               </p>
               <div class="button-row">
                 <a class="btn btn-primary" href="#tools">See the Tools</a>
@@ -753,7 +757,7 @@
           <div class="section-head reveal">
             <div>
               <h2 id="tools-title">The Tools</h2>
-              <p>Three live products. Education-first — built to teach you the process, not just do it for you.</p>
+              <p>These are the products I&rsquo;m currently building. Each one is designed to teach you the process — not just hand you an output.</p>
             </div>
           </div>
 
@@ -805,8 +809,8 @@
               <div>
                 <p class="eyebrow">Limited spots available</p>
                 <h2 id="beta-title">Beta Users Wanted</h2>
-                <p>I&rsquo;m always building new AI tools for business owners and looking for real people to test them first.</p>
-                <p style="margin-top:10px;">Coaches, trainers, consultants, service providers &mdash; you want to learn the process, not just outsource it.</p>
+                <p>I&rsquo;m always building new tools and I need real business owners to test them before they go live.</p>
+                <p style="margin-top:10px;">No experience required. You just have to be willing to try things, give honest feedback, and actually want to learn how it works.</p>
                 <div class="button-row" style="margin-top:22px;">
                   <a class="btn btn-primary" href="mailto:keltysage01@gmail.com?subject=Beta%20User%20Application">Apply to Be a Beta User</a>
                 </div>
@@ -827,14 +831,14 @@
           <div class="coaching-panel reveal">
             <div>
               <p class="eyebrow">Education-first AI coaching</p>
-              <h2 id="coaching-title">Book a Free AI Coaching Session</h2>
+              <h2 id="coaching-title">Book a Free Coaching Session</h2>
               <p>
-                For business owners who want personalized coaching to simplify ideas, organize next
-                steps, and build something you can keep running on your own.
+                We sit down and work through whatever you&rsquo;re stuck on — an offer, your content,
+                a workflow, a prompt system. Something real gets built.
               </p>
               <div class="coaching-note">
-                Not a done-for-you build. We work side by side so you understand what we create
-                and can keep using AI after the session.
+                I&rsquo;m not doing it for you. We do it together so you leave knowing how it works
+                and can keep going on your own.
               </div>
               <div class="button-row">
                 <a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0_HJqH5XlU8uIjPV98aDeJjWsXAwUB9X-KzosVSgzusqbgrnFKBolRwvMsWV8H6waBx344Y4TW?gv=true" target="_blank" rel="noopener">
