@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kelty Sage — AI Tools for Small Business</title>
+    <meta
+      name="description"
+      content="Kelty Sage builds AI tools for small business owners. Explore Sage Systems AI, FetchNote, CycleCEO, and book a $100 AI coaching session."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --warm-white: #faf7f2;
+        --cream: #fffdf9;
+        --blush: #f7b7c8;
+        --rose: #c65b7c;
+        --rose-dark: #9f3f60;
+        --green: #4f7a5a;
+        --sage: #dde8d8;
+        --lavender: #eee9ff;
+        --charcoal: #1f1f1f;
+        --taupe: #8c7f76;
+        --line: rgba(31, 31, 31, 0.1);
+        --glass: rgba(255, 255, 255, 0.58);
+        --glass-strong: rgba(255, 255, 255, 0.76);
+        --shadow: 0 24px 70px rgba(108, 87, 72, 0.14);
+        --radius-card: 8px;
+        --radius-pill: 999px;
+        --max: 1120px;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        color: var(--charcoal);
+        font-family: "Manrope", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          linear-gradient(145deg, rgba(247, 183, 200, 0.28) 0%, rgba(250, 247, 242, 0) 34%),
+          linear-gradient(215deg, rgba(221, 232, 216, 0.64) 0%, rgba(250, 247, 242, 0) 42%),
+          linear-gradient(180deg, #fffdf9 0%, var(--warm-white) 40%, #fff8fb 100%);
+        font-size: 16px;
+        line-height: 1.65;
+        min-height: 100vh;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.42) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.36) 1px, transparent 1px);
+        background-size: 58px 58px;
+        opacity: 0.42;
+      }
+
+      img { display: block; max-width: 100%; }
+      a { color: inherit; text-decoration: none; }
+      .page-shell { overflow: hidden; }
+
+      .container {
+        width: min(100% - 32px, var(--max));
+        margin: 0 auto;
+      }
+
+      /* ── Nav ── */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        background: rgba(250, 247, 242, 0.72);
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 68px;
+        gap: 18px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        color: var(--charcoal);
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border: 1px solid rgba(198, 91, 124, 0.28);
+        border-radius: 50%;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.46)),
+          linear-gradient(135deg, rgba(247, 183, 200, 0.65), rgba(221, 232, 216, 0.65));
+        box-shadow: 0 10px 30px rgba(198, 91, 124, 0.18);
+        color: var(--rose-dark);
+        font-family: "DM Serif Display", Georgia, serif;
+        font-size: 1.1rem;
+      }
+
+      .nav-links {
+        display: none;
+        align-items: center;
+        gap: 18px;
+        color: rgba(31, 31, 31, 0.64);
+        font-size: 0.84rem;
+        font-weight: 800;
+      }
+
+      .nav-cta {
+        padding: 10px 14px;
+        border: 1px solid rgba(198, 91, 124, 0.22);
+        border-radius: var(--radius-pill);
+        color: var(--rose-dark);
+        font-size: 0.82rem;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.62);
+        box-shadow: 0 12px 28px rgba(198, 91, 124, 0.12);
+        white-space: nowrap;
+      }
+
+      /* ── Hero ── */
+      .hero {
+        padding: 40px 0 32px;
+      }
+
+      .hero-inner {
+        display: grid;
+        gap: 14px;
+        padding: 32px 24px;
+        border: 1px solid rgba(255, 255, 255, 0.68);
+        border-radius: var(--radius-card);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.82) 100%);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-inner::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(247, 183, 200, 0.38) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      .hero-inner::after {
+        content: "";
+        position: absolute;
+        bottom: -80px;
+        left: -40px;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(221, 232, 216, 0.48) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--green);
+        font-size: 0.76rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 1;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 26px;
+        height: 1px;
+        background: currentColor;
+      }
+
+      h1, h2, h3 {
+        margin: 0;
+        color: var(--charcoal);
+        font-family: "DM Serif Display", Georgia, serif;
+        font-weight: 400;
+        line-height: 1.03;
+      }
+
+      h1 {
+        font-size: 3.2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-subhead {
+        margin: 12px 0 0;
+        color: var(--rose-dark);
+        font-size: 1.14rem;
+        font-weight: 700;
+        line-height: 1.35;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-body {
+        margin: 10px 0 0;
+        color: rgba(31, 31, 31, 0.78);
+        position: relative;
+        z-index: 1;
+      }
+
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border-radius: var(--radius-pill);
+        font-size: 0.92rem;
+        font-weight: 800;
+        line-height: 1.15;
+        text-align: center;
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .button:hover, .button:focus-visible { transform: translateY(-2px); }
+      .button:focus-visible, .nav-cta:focus-visible, .footer-link:focus-visible {
+        outline: 3px solid rgba(79, 122, 90, 0.28);
+        outline-offset: 4px;
+      }
+
+      .button-primary {
+        padding: 14px 19px;
+        color: #fff;
+        background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+        box-shadow: 0 18px 36px rgba(198, 91, 124, 0.27);
+      }
+
+      .button-secondary {
+        padding: 13px 18px;
+        border: 1px solid rgba(79, 122, 90, 0.2);
+        color: var(--green);
+        background: rgba(255, 255, 255, 0.7);
+        box-shadow: 0 14px 32px rgba(79, 122, 90, 0.12);
+      }
+
+      /* ── Sections ── */
+      .section { padding: 52px 0; }
+
+      .section-heading {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+
+      .section-heading h2 { font-size: 2.35rem; }
+
+      .section-heading p {
+        max-width: 640px;
+        margin: 0;
+        color: var(--taupe);
+        font-size: 1rem;
+      }
+
+      /* ── Product cards ── */
+      .products-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .product-card {
+        position: relative;
+        display: grid;
+        gap: 0;
+        padding: 26px 24px 24px;
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: var(--radius-card);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.44));
+        box-shadow: 0 18px 52px rgba(108, 87, 72, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        transition: transform 180ms ease, box-shadow 180ms ease;
+        overflow: hidden;
+      }
+
+      .product-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 28px 66px rgba(108, 87, 72, 0.14);
+      }
+
+      .product-card .card-bg {
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0.5;
+      }
+
+      .card-tag {
+        display: inline-flex;
+        width: fit-content;
+        margin-bottom: 14px;
+        padding: 5px 10px;
+        border: 1px solid rgba(198, 91, 124, 0.2);
+        border-radius: var(--radius-pill);
+        color: var(--rose-dark);
+        background: rgba(247, 183, 200, 0.18);
+        font-size: 0.72rem;
+        font-weight: 800;
+        position: relative;
+        z-index: 1;
+      }
+
+      .card-tag.green {
+        border-color: rgba(79, 122, 90, 0.22);
+        color: var(--green);
+        background: rgba(221, 232, 216, 0.32);
+      }
+
+      .card-tag.lavender {
+        border-color: rgba(130, 110, 200, 0.22);
+        color: #6655b8;
+        background: rgba(238, 233, 255, 0.4);
+      }
+
+      .product-card h3 {
+        font-size: 1.6rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .product-card p {
+        margin: 10px 0 0;
+        color: rgba(31, 31, 31, 0.72);
+        font-size: 0.96rem;
+        line-height: 1.55;
+        position: relative;
+        z-index: 1;
+      }
+
+      .product-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 18px;
+        padding: 10px 16px;
+        border-radius: var(--radius-pill);
+        font-size: 0.86rem;
+        font-weight: 800;
+        border: 1px solid rgba(198, 91, 124, 0.22);
+        color: var(--rose-dark);
+        background: rgba(255, 255, 255, 0.7);
+        box-shadow: 0 10px 24px rgba(198, 91, 124, 0.1);
+        transition: transform 180ms ease;
+        position: relative;
+        z-index: 1;
+        width: fit-content;
+      }
+
+      .product-link.green {
+        border-color: rgba(79, 122, 90, 0.22);
+        color: var(--green);
+        box-shadow: 0 10px 24px rgba(79, 122, 90, 0.1);
+      }
+
+      .product-link.lavender {
+        border-color: rgba(130, 110, 200, 0.22);
+        color: #6655b8;
+        box-shadow: 0 10px 24px rgba(130, 110, 200, 0.1);
+      }
+
+      .product-link:hover { transform: translateX(3px); }
+
+      /* ── Beta band ── */
+      .beta-band {
+        margin: 30px 0;
+        padding: 62px 0;
+        border-top: 1px solid rgba(198, 91, 124, 0.14);
+        border-bottom: 1px solid rgba(198, 91, 124, 0.14);
+        background:
+          linear-gradient(135deg, rgba(247, 183, 200, 0.34), rgba(255, 255, 255, 0.2)),
+          linear-gradient(220deg, rgba(238, 233, 255, 0.46), rgba(221, 232, 216, 0.28));
+      }
+
+      .beta-layout {
+        display: grid;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .beta-copy h2 { font-size: 2.5rem; }
+
+      .beta-copy p {
+        margin: 14px 0 0;
+        color: rgba(31, 31, 31, 0.76);
+      }
+
+      .check-list {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .check-list li {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        align-items: start;
+        gap: 10px;
+        color: rgba(31, 31, 31, 0.78);
+      }
+
+      .check-list li::before {
+        content: "";
+        width: 22px;
+        height: 22px;
+        margin-top: 2px;
+        border: 1px solid rgba(79, 122, 90, 0.24);
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 50% 50%, var(--green) 0 3px, transparent 4px),
+          rgba(255, 255, 255, 0.58);
+      }
+
+      .beta-note {
+        margin-top: 14px;
+        color: var(--rose-dark);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      /* ── Coaching ── */
+      .coaching-panel {
+        display: grid;
+        gap: 26px;
+        align-items: start;
+        padding: 28px 24px;
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: var(--radius-card);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.46));
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+
+      .coaching-panel h2 { font-size: 2.38rem; }
+      .coaching-panel p { margin: 14px 0 0; color: var(--taupe); }
+
+      .coaching-note {
+        margin-top: 18px;
+        padding: 16px;
+        border: 1px solid rgba(79, 122, 90, 0.14);
+        border-radius: var(--radius-card);
+        color: rgba(31, 31, 31, 0.78);
+        background: rgba(221, 232, 216, 0.3);
+        font-size: 0.95rem;
+        font-weight: 700;
+        line-height: 1.5;
+      }
+
+      .work-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .work-list li {
+        padding: 10px 12px;
+        border: 1px solid rgba(79, 122, 90, 0.14);
+        border-radius: var(--radius-pill);
+        color: var(--green);
+        background: rgba(221, 232, 216, 0.34);
+        font-size: 0.88rem;
+        font-weight: 800;
+        text-align: center;
+      }
+
+      .calendar-card {
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.74);
+        border-radius: var(--radius-card);
+        background: rgba(255, 255, 255, 0.68);
+        box-shadow: 0 18px 52px rgba(108, 87, 72, 0.1);
+      }
+
+      .calendar-card iframe {
+        display: block;
+        width: 100%;
+        min-height: 620px;
+        border: 0;
+        background: #fff;
+      }
+
+      /* ── Footer ── */
+      .site-footer { padding: 46px 0 38px; }
+
+      .footer-inner {
+        display: grid;
+        gap: 24px;
+        align-items: center;
+        border-top: 1px solid var(--line);
+        padding-top: 28px;
+      }
+
+      .footer-statement {
+        margin: 0;
+        color: var(--charcoal);
+        font-family: "DM Serif Display", Georgia, serif;
+        font-size: 1.75rem;
+        line-height: 1.12;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .footer-link {
+        padding: 9px 12px;
+        border: 1px solid rgba(31, 31, 31, 0.08);
+        border-radius: var(--radius-pill);
+        background: rgba(255, 255, 255, 0.54);
+        color: rgba(31, 31, 31, 0.72);
+        font-size: 0.84rem;
+        font-weight: 800;
+      }
+
+      /* ── Reveal animation ── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 520ms ease, transform 520ms ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.001ms !important;
+          animation-duration: 0.001ms !important;
+        }
+        .reveal { opacity: 1; transform: none; }
+      }
+
+      @media (min-width: 680px) {
+        .container { width: min(100% - 48px, var(--max)); }
+        .nav-links { display: flex; }
+
+        .hero { padding: 64px 0 40px; }
+        .hero-inner { padding: 48px 44px; }
+        h1 { font-size: 5rem; }
+
+        .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .section-heading h2 { font-size: 2.8rem; }
+      }
+
+      @media (min-width: 920px) {
+        .hero { padding: 72px 0 48px; }
+        h1 { font-size: 5.8rem; }
+        .hero-subhead { font-size: 1.38rem; }
+
+        .section { padding: 78px 0; }
+
+        .products-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+        .section-heading {
+          grid-template-columns: minmax(0, 0.72fr) minmax(320px, 0.72fr);
+          align-items: end;
+          margin-bottom: 34px;
+        }
+
+        .section-heading h2, .beta-copy h2, .coaching-panel h2 { font-size: 3rem; }
+
+        .beta-layout {
+          grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.7fr);
+          gap: 54px;
+        }
+
+        .coaching-panel {
+          grid-template-columns: minmax(0, 0.7fr) minmax(430px, 0.9fr);
+          gap: 48px;
+          padding: 44px;
+        }
+
+        .footer-inner {
+          grid-template-columns: minmax(0, 0.9fr) minmax(420px, 0.9fr);
+        }
+
+        .footer-links { justify-content: flex-end; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <nav class="container nav" aria-label="Primary navigation">
+          <a class="brand" href="#top" aria-label="Kelty Sage home">
+            <span class="brand-mark" aria-hidden="true">K</span>
+            <span>Kelty Sage</span>
+          </a>
+          <div class="nav-links" aria-label="Section links">
+            <a href="#tools">Tools</a>
+            <a href="#beta">Beta</a>
+            <a href="#coaching">Coaching</a>
+          </div>
+          <a class="nav-cta" href="#coaching">Book $100 Session</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero container" aria-labelledby="hero-title">
+          <div class="hero-inner reveal">
+            <p class="eyebrow">Builder &amp; AI coach for small business</p>
+            <h1 id="hero-title">Hi, I&rsquo;m Kelty.</h1>
+            <p class="hero-subhead">I build AI tools and coach small business owners to use them.</p>
+            <p class="hero-body">
+              I make education-first AI products for coaches, trainers, and founders — tools that teach
+              you the process so you can keep building on your own. Below are the products I&rsquo;m currently
+              shipping.
+            </p>
+            <div class="button-row" aria-label="Main calls to action">
+              <a class="button button-primary" href="#tools">See the Tools</a>
+              <a class="button button-secondary" href="#coaching">Book a $100 Coaching Session</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section container" id="tools" aria-labelledby="tools-title">
+          <div class="section-heading reveal">
+            <h2 id="tools-title">The Tools</h2>
+            <p>Three live products. Each one is education-first — built to teach you the process, not just do it for you.</p>
+          </div>
+
+          <div class="products-grid">
+
+            <article class="product-card reveal" aria-label="Sage Systems AI">
+              <div class="card-bg" style="background: radial-gradient(circle, rgba(33,230,138,0.22) 0%, transparent 70%);"></div>
+              <span class="card-tag green">AI Courses</span>
+              <h3>Sage Systems AI</h3>
+              <p>
+                A personalized AI fluency course for your specific business. Answer a few questions and get
+                a full course — custom prompts, tool recommendations, flashcards, and a business brain — in
+                under a minute.
+              </p>
+              <a class="product-link green" href="https://sage-systems-ai.netlify.app" target="_blank" rel="noopener">
+                Open Sage Systems AI &rarr;
+              </a>
+            </article>
+
+            <article class="product-card reveal" aria-label="FetchNote">
+              <div class="card-bg" style="background: radial-gradient(circle, rgba(247,183,100,0.24) 0%, transparent 70%);"></div>
+              <span class="card-tag">Dog Training</span>
+              <h3>FetchNote</h3>
+              <p>
+                Voice-to-PDF homework for dog trainers. Record session notes by voice after a lesson and
+                FetchNote generates a clean, branded homework PDF your client takes home. No typing required.
+              </p>
+              <a class="product-link" href="https://fetchnote.app" target="_blank" rel="noopener">
+                Open FetchNote &rarr;
+              </a>
+            </article>
+
+            <article class="product-card reveal" aria-label="CycleCEO">
+              <div class="card-bg" style="background: radial-gradient(circle, rgba(238,233,255,0.5) 0%, transparent 70%);"></div>
+              <span class="card-tag lavender">Cycle Planning</span>
+              <h3>CycleCEO</h3>
+              <p>
+                A cycle-informed planning app for business owners. Track your energy phases, get a daily
+                morning brief, and work with an AI coach that understands where you are in your cycle.
+              </p>
+              <a class="product-link lavender" href="https://cycleceo.app" target="_blank" rel="noopener">
+                Open CycleCEO &rarr;
+              </a>
+            </article>
+
+          </div>
+        </section>
+
+        <section class="beta-band" id="beta" aria-labelledby="beta-title">
+          <div class="container beta-layout">
+            <div class="beta-copy reveal">
+              <p class="eyebrow">Limited spots available</p>
+              <h2 id="beta-title">Beta Users Wanted</h2>
+              <p>
+                I&rsquo;m always building new AI tools for business owners and looking for real people to
+                test them first.
+              </p>
+              <p>
+                You might be a fit if you&rsquo;re a coach, trainer, consultant, or service provider who wants
+                help organizing ideas, building offers, creating content, or turning your knowledge into digital
+                products — and you want to learn the process, not just outsource it.
+              </p>
+              <div class="button-row">
+                <a class="button button-primary" href="mailto:keltysage01@gmail.com?subject=Beta%20User%20Application">Apply to Be a Beta User</a>
+              </div>
+              <p class="beta-note">Limited beta spots available.</p>
+            </div>
+            <ul class="check-list reveal" aria-label="Beta user fit criteria">
+              <li>You have a lot of ideas but need structure</li>
+              <li>You want to use AI without feeling overwhelmed</li>
+              <li>You&rsquo;re building an offer, course, or digital product</li>
+              <li>You&rsquo;re open to testing and giving honest feedback</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section container" id="coaching" aria-labelledby="coaching-title">
+          <div class="coaching-panel reveal">
+            <div>
+              <p class="eyebrow">Education-first AI coaching</p>
+              <h2 id="coaching-title">Book a $100 AI Coaching Session</h2>
+              <p>
+                For business owners who want personalized coaching to use AI to simplify their ideas,
+                organize their next steps, and build something they can keep running on their own.
+              </p>
+              <div class="coaching-note">
+                This is not a done-for-you build. We work side by side so you understand what we create
+                and can keep using AI after the session.
+              </div>
+              <div class="button-row">
+                <a
+                  class="button button-primary"
+                  href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0_HJqH5XlU8uIjPV98aDeJjWsXAwUB9X-KzosVSgzusqbgrnFKBolRwvMsWV8H6waBx344Y4TW?gv=true"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Book a $100 Session
+                </a>
+              </div>
+              <ul class="work-list" style="margin-top:22px;" aria-label="Coaching call topics">
+                <li>your offer</li>
+                <li>your content system</li>
+                <li>your lead magnet</li>
+                <li>your digital product</li>
+                <li>your prompt system</li>
+                <li>your workflow</li>
+                <li>your client journey</li>
+                <li>your AI tools</li>
+              </ul>
+            </div>
+            <div class="calendar-card">
+              <iframe
+                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0_HJqH5XlU8uIjPV98aDeJjWsXAwUB9X-KzosVSgzusqbgrnFKBolRwvMsWV8H6waBx344Y4TW?gv=true"
+                title="Book an AI coaching call with Kelty"
+                width="100%"
+                height="600"
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-inner">
+          <p class="footer-statement">Your ideas are not random. They are raw material.</p>
+          <nav class="footer-links" aria-label="Footer links">
+            <a class="footer-link" href="https://sage-systems-ai.netlify.app" target="_blank" rel="noopener">Sage Systems AI</a>
+            <a class="footer-link" href="https://fetchnote.app" target="_blank" rel="noopener">FetchNote</a>
+            <a class="footer-link" href="https://cycleceo.app" target="_blank" rel="noopener">CycleCEO</a>
+            <a class="footer-link" href="#coaching">Book $100 Session</a>
+            <a class="footer-link" href="#beta">Beta Users</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+        document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+      } else {
+        document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
+      }
+    </script>
+  </body>
+</html>
