@@ -46,6 +46,12 @@
         --radius-card: 28px;
         --radius-pill: 999px;
         --max: 1120px;
+
+        /* iOS HIG / UI Kit tokens */
+        --ios-font:   -apple-system, "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", "Manrope", sans-serif;
+        --ios-serif:  "New York", "DM Serif Display", Georgia, serif;
+        --ios-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --ios-ease:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
 
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -53,7 +59,7 @@
 
       body {
         min-height: 100vh;
-        font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+        font-family: var(--ios-font);
         font-size: 16px;
         line-height: 1.65;
         color: #fff;
@@ -132,6 +138,7 @@
         display: inline-flex;
         align-items: center;
         gap: 10px;
+        min-height: 44px;
         font-weight: 700;
         font-size: 0.95rem;
         color: #fff;
@@ -149,7 +156,7 @@
         border: 1px solid var(--g-border);
         box-shadow: 0 0 20px var(--rose-glow), inset 0 1.5px 0 var(--g-spec);
         color: var(--rose);
-        font-family: "DM Serif Display", Georgia, serif;
+        font-family: var(--ios-serif);
         font-size: 1.1rem;
       }
 
@@ -159,7 +166,7 @@
         gap: 22px;
         font-size: 0.84rem;
         font-weight: 700;
-        color: rgba(255,255,255,0.6);
+        color: rgba(255,255,255,0.72);
       }
 
       .nav-links a:hover { color: #fff; }
@@ -167,6 +174,7 @@
       .nav-cta {
         display: inline-flex;
         align-items: center;
+        min-height: 44px;
         padding: 9px 16px;
         border-radius: var(--radius-pill);
         background: var(--g-bg-mid);
@@ -212,7 +220,7 @@
       .eyebrow::before { content: ""; width: 20px; height: 1.5px; background: currentColor; flex: 0 0 auto; }
 
       h1, h2, h3 {
-        font-family: "DM Serif Display", Georgia, serif;
+        font-family: var(--ios-serif);
         font-weight: 400;
         line-height: 1.04;
         color: #fff;
@@ -254,7 +262,7 @@
         font-size: 0.9rem;
         font-weight: 800;
         line-height: 1;
-        transition: transform 200ms, box-shadow 200ms;
+        transition: transform 200ms var(--ios-spring), box-shadow 200ms var(--ios-ease);
         cursor: pointer;
         border: none;
         position: relative;
@@ -365,7 +373,7 @@
 
       .section-head { margin-bottom: 32px; }
       .section-head h2 { font-size: 2.4rem; }
-      .section-head p { color: rgba(255,255,255,0.58); margin-top: 8px; max-width: 560px; }
+      .section-head p { color: rgba(255,255,255,0.72); margin-top: 8px; max-width: 560px; }
 
       /* ─── PRODUCT CARDS ─── */
       .products-grid { display: grid; gap: 16px; }
@@ -446,6 +454,7 @@
         align-items: center;
         gap: 6px;
         margin-top: 18px;
+        min-height: 44px;
         padding: 10px 16px;
         border-radius: var(--radius-pill);
         font-size: 0.84rem;
@@ -604,7 +613,7 @@
       }
 
       .footer-statement {
-        font-family: "DM Serif Display", Georgia, serif;
+        font-family: var(--ios-serif);
         font-size: 1.8rem;
         line-height: 1.12;
         color: rgba(255,255,255,0.92);
@@ -613,13 +622,14 @@
       .footer-links { display: flex; flex-wrap: wrap; gap: 8px; }
 
       .footer-link {
+        min-height: 44px;
         padding: 8px 14px;
         border-radius: var(--radius-pill);
         border: 1px solid var(--g-border);
         background: var(--g-bg-mid);
         backdrop-filter: var(--g-blur-sm);
         -webkit-backdrop-filter: var(--g-blur-sm);
-        color: rgba(255,255,255,0.62);
+        color: rgba(255,255,255,0.72);
         font-size: 0.82rem;
         font-weight: 800;
         box-shadow: inset 0 1.5px 0 var(--g-spec);
@@ -731,6 +741,14 @@
         color: rgba(255,255,255,0.45);
         position: relative;
         z-index: 1;
+      }
+
+      /* ─── BACKDROP-FILTER FALLBACK ─── */
+      @supports not (backdrop-filter: blur(1px)) {
+        .g27           { background: rgba(20, 12, 38, 0.92); }
+        .site-header   { background: rgba(12, 8, 22, 0.96); }
+        .btn-glass     { background: rgba(20, 12, 38, 0.88); }
+        .nav-cta, .footer-link, .product-link { background: rgba(20, 12, 38, 0.88); }
       }
 
       /* ─── REVEAL ─── */
