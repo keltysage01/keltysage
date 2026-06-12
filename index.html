@@ -788,13 +788,20 @@
     </div>
 
     <script>
-      /* ── Hero video: slow playback + seamless loop crossfade ── */
+      /* ── Hero video: desktop only, slow playback + seamless loop crossfade ── */
       const heroVideo = document.querySelector('.hero-video');
+      const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
       if (heroVideo) {
-        /* respect reduced-motion: pause video, keep poster frame visible */
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          heroVideo.pause();
+        if (!isDesktop || reducedMotion) {
+          /* mobile / reduced-motion: remove video entirely, show CSS gradient */
           heroVideo.removeAttribute('autoplay');
+          heroVideo.src = '';
+          heroVideo.style.display = 'none';
+        } else {
+          /* desktop: load and play */
+          heroVideo.load();
         }
 
         heroVideo.addEventListener('loadedmetadata', () => {
