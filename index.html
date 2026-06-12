@@ -24,14 +24,14 @@
         --glass-frost:   0.3;
         --g-blur-px:     28;
         --g-sat:         155;
-        --g-bg-alpha:    0.08;
+        --g-bg-alpha:    0.14;
 
         --g-bg:         rgba(255,255,255,calc(var(--g-bg-alpha)));
-        --g-bg-mid:     rgba(255,255,255,0.13);
-        --g-bg-heavy:   rgba(255,255,255,0.20);
-        --g-border:     rgba(255,255,255,0.18);
-        --g-spec:       rgba(255,255,255,0.28);
-        --g-text-iso:   rgba(0,0,0,0.22);   /* text isolation layer — the iOS 27 fix */
+        --g-bg-mid:     rgba(255,255,255,0.17);
+        --g-bg-heavy:   rgba(255,255,255,0.24);
+        --g-border:     rgba(255,255,255,0.22);
+        --g-spec:       rgba(255,255,255,0.32);
+        --g-text-iso:   rgba(0,0,0,0.10);   /* text isolation layer — the iOS 27 fix */
         --g-blur:       saturate(180%) blur(28px);
         --g-blur-sm:    saturate(180%) blur(16px);
 
@@ -138,14 +138,14 @@
         color: #fff;
         overflow-x: hidden;
         /* iOS 27: rich dark gradient — glass refracts real color through it */
-        background-color: #1a0e38;
+        background-color: #2a1460;
         background-image:
-          radial-gradient(ellipse 85% 70% at 8%  12%,  rgba(236,72,153,0.58)  0%, transparent 55%),
-          radial-gradient(ellipse 75% 80% at 92% 5%,   rgba(149,101,240,0.62) 0%, transparent 55%),
-          radial-gradient(ellipse 80% 65% at 50% 96%,  rgba(52,211,153,0.45)  0%, transparent 52%),
-          radial-gradient(ellipse 55% 65% at 5%  85%,  rgba(251,191,36,0.30)  0%, transparent 50%),
-          radial-gradient(ellipse 65% 55% at 90% 72%,  rgba(244,114,182,0.40) 0%, transparent 52%),
-          linear-gradient(160deg, #22103e 0%, #301858 45%, #162248 100%);
+          radial-gradient(ellipse 90% 75% at 8%  10%,  rgba(236,72,153,0.65)  0%, transparent 55%),
+          radial-gradient(ellipse 80% 85% at 94% 4%,   rgba(149,101,240,0.70) 0%, transparent 55%),
+          radial-gradient(ellipse 85% 70% at 48% 98%,  rgba(52,211,153,0.52)  0%, transparent 52%),
+          radial-gradient(ellipse 60% 70% at 4%  86%,  rgba(251,191,36,0.36)  0%, transparent 50%),
+          radial-gradient(ellipse 70% 60% at 92% 70%,  rgba(244,114,182,0.48) 0%, transparent 52%),
+          linear-gradient(160deg, #321878 0%, #421e90 45%, #1e2e72 100%);
       }
 
       img { display: block; max-width: 100%; }
