@@ -791,6 +791,12 @@
       /* ── Hero video: slow playback + seamless loop crossfade ── */
       const heroVideo = document.querySelector('.hero-video');
       if (heroVideo) {
+        /* respect reduced-motion: pause video, keep poster frame visible */
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          heroVideo.pause();
+          heroVideo.removeAttribute('autoplay');
+        }
+
         heroVideo.addEventListener('loadedmetadata', () => {
           heroVideo.playbackRate = 0.5;
         });
