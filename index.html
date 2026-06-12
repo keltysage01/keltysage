@@ -180,21 +180,12 @@
         width:100%; height:100%;
         object-fit:cover;
         z-index:0;
-        /* hidden until loaded — CSS gradient shows as fallback */
-        opacity:0;
-        transition:opacity 800ms ease;
       }
-      .hero-video.is-loaded { opacity:1; }
 
-      /* tint overlay: blends the video into the palette and keeps contrast */
+      /* tint overlay: light blend so glass panels stay readable */
       .hero-video-overlay {
         position:absolute; inset:0; z-index:0; pointer-events:none;
-        background:linear-gradient(
-          135deg,
-          rgba(210,213,227,0.55) 0%,
-          rgba(180,160,220,0.35) 50%,
-          rgba(150,200,200,0.30) 100%
-        );
+        background:rgba(210,213,227,0.30);
       }
 
       /* faint vertical glass streaks (from starter) */
@@ -808,18 +799,6 @@
         document.querySelectorAll(".reveal").forEach(el => el.classList.add("is-visible"));
       }
 
-      /* ── Hero background video — fade in once enough data is loaded ── */
-      const heroVideo = document.querySelector('.hero-video');
-      if (heroVideo) {
-        const showVideo = () => heroVideo.classList.add('is-loaded');
-        if (heroVideo.readyState >= 3) {
-          showVideo();
-        } else {
-          heroVideo.addEventListener('canplaythrough', showVideo, { once: true });
-          /* fallback: show after 2s even if still buffering */
-          setTimeout(showVideo, 2000);
-        }
-      }
 
       /* ── iOS 27 Liquid Glass slider ── */
       const sliderBtn   = document.getElementById('glass-ctrl-btn');
