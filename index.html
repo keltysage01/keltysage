@@ -786,6 +786,30 @@
     </div>
 
     <script>
+      /* ── Hero video: slow playback + seamless loop crossfade ── */
+      const heroVideo = document.querySelector('.hero-video');
+      if (heroVideo) {
+        heroVideo.addEventListener('loadedmetadata', () => {
+          heroVideo.playbackRate = 0.3;
+        });
+
+        /* crossfade at loop boundary: fade out over last 1.5s, fade in over first 1.5s */
+        heroVideo.addEventListener('timeupdate', () => {
+          const t = heroVideo.currentTime;
+          const d = heroVideo.duration;
+          if (!d) return;
+          const fadeWindow = 1.5;
+          const remaining  = d - t;
+          if (remaining < fadeWindow) {
+            heroVideo.style.opacity = (remaining / fadeWindow).toFixed(3);
+          } else if (t < fadeWindow) {
+            heroVideo.style.opacity = (t / fadeWindow).toFixed(3);
+          } else {
+            heroVideo.style.opacity = 1;
+          }
+        });
+      }
+
       /* ── Reveal on scroll ── */
       if ("IntersectionObserver" in window) {
         const obs = new IntersectionObserver(
