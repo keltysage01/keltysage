@@ -7,7 +7,7 @@
     <meta name="description" content="Apply to beta test FetchNote or CycleCEO. Free access in exchange for honest feedback." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=optional" rel="stylesheet" />
     <style>
       :root {
         --rose:         #f472b6;
@@ -19,9 +19,9 @@
         --violet:       #a78bfa;
         --violet-glow:  rgba(167,139,250,0.28);
 
-        --g-bg:         rgba(255,255,255,0.08);
-        --g-bg-mid:     rgba(255,255,255,0.12);
-        --g-bg-heavy:   rgba(255,255,255,0.16);
+        --g-bg:         rgba(255,255,255,0.10);
+        --g-bg-mid:     rgba(255,255,255,0.13);
+        --g-bg-heavy:   rgba(255,255,255,0.20);
         --g-border:     rgba(255,255,255,0.18);
         --g-spec:       rgba(255,255,255,0.28);
         --g-text-iso:   rgba(0,0,0,0.22);
@@ -40,8 +40,8 @@
 
         /* ── iOS 27 UI Kit — Full Token Set ── */
 
-        --ios-font:        -apple-system, "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", "Manrope", sans-serif;
-        --ios-serif:       "New York", "DM Serif Display", Georgia, serif;
+        --ios-font:        -apple-system, ui-sans-serif, "SF Pro Text", BlinkMacSystemFont, "Helvetica Neue", "Manrope", sans-serif;
+        --ios-serif:       "New York", ui-serif, "DM Serif Display", Georgia, serif;
         --ios-font-mono:   "SF Mono", ui-monospace, Menlo, monospace;
 
         --ios-blue:   #007AFF; --ios-green-sys: #34C759; --ios-indigo: #5856D6;
@@ -107,13 +107,13 @@
         line-height: 1.65;
         color: #fff;
         overflow-x: hidden;
-        background-color: #180f2e;
+        background-color: #1a0e38;
         background-image:
-          radial-gradient(ellipse 65% 55% at 10% 15%,  rgba(236,72,153,0.42)  0%, transparent 60%),
-          radial-gradient(ellipse 55% 65% at 90% 8%,   rgba(167,139,250,0.46) 0%, transparent 60%),
-          radial-gradient(ellipse 60% 50% at 55% 92%,  rgba(52,211,153,0.32)  0%, transparent 58%),
-          radial-gradient(ellipse 45% 55% at 8%  80%,  rgba(251,191,36,0.20)  0%, transparent 55%),
-          linear-gradient(160deg, #1c1035 0%, #241545 42%, #14203a 100%);
+          radial-gradient(ellipse 85% 70% at 8%  12%,  rgba(236,72,153,0.58)  0%, transparent 55%),
+          radial-gradient(ellipse 75% 80% at 92% 5%,   rgba(149,101,240,0.62) 0%, transparent 55%),
+          radial-gradient(ellipse 80% 65% at 50% 96%,  rgba(52,211,153,0.45)  0%, transparent 52%),
+          radial-gradient(ellipse 55% 65% at 5%  85%,  rgba(251,191,36,0.30)  0%, transparent 50%),
+          linear-gradient(160deg, #22103e 0%, #301858 45%, #162248 100%);
       }
 
       img { display: block; max-width: 100%; }
