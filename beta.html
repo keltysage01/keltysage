@@ -152,18 +152,18 @@
       /* ── PRODUCT SELECTOR ── */
       .product-selector { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:24px; }
 
-      .choice-card {
+      .product-choice {
         border-radius:16px;
         border:1.5px solid rgba(255,255,255,0.50);
         background:rgba(255,255,255,0.22);
         padding:16px; cursor:pointer;
         transition:border-color 180ms, box-shadow 180ms, background 180ms;
       }
-      .choice-card:hover { background:rgba(255,255,255,0.36); box-shadow:var(--shadow-md); }
-      .choice-card input[type="radio"] { position:absolute; opacity:0; pointer-events:none; }
+      .product-choice:hover { background:rgba(255,255,255,0.36); box-shadow:var(--shadow-md); }
+      .product-choice input[type="radio"] { position:absolute; opacity:0; pointer-events:none; }
 
-      .choice-card.is-selected.rose   { border-color:var(--rose);   background:rgba(255,180,220,0.32); box-shadow:0 0 0 3px rgba(236,72,153,0.14); }
-      .choice-card.is-selected.violet { border-color:var(--violet); background:rgba(200,180,255,0.32); box-shadow:0 0 0 3px rgba(139,92,246,0.14); }
+      .product-choice.is-selected.rose   { border-color:var(--rose);   background:rgba(255,180,220,0.32); box-shadow:0 0 0 3px rgba(236,72,153,0.14); }
+      .product-choice.is-selected.violet { border-color:var(--violet); background:rgba(200,180,255,0.32); box-shadow:0 0 0 3px rgba(139,92,246,0.14); }
 
       .choice-icon {
         width:38px; height:38px; border-radius:12px;
@@ -228,6 +228,9 @@
 
       .questions-block { display:none; padding-top:4px; }
       .questions-block.active { display:grid; gap:16px; animation:fade-in 220ms var(--ios-ease); }
+
+      .product-question { display:none; }
+      .product-question.visible { display:grid; gap:16px; animation:fade-in 220ms var(--ios-ease); }
 
       @keyframes fade-in { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
 
@@ -309,14 +312,14 @@
       <div class="page-header">
         <p class="eyebrow">Beta Application</p>
         <h1>Which one do you want to break?</h1>
-        <p class="page-sub">Pick a product, read what it actually does, and fill in a few details. I&rsquo;ll reach out within a week.</p>
+        <p class="page-subhead">Pick a product, read what it actually does, and fill in a few details. I&rsquo;ll reach out within a week.</p>
       </div>
 
       <!-- ── PRODUCT SELECTOR ── -->
+      <p id="product-selector-label" style="font-size:0.72rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-2);margin-bottom:8px;">Select a product</p>
       <div class="product-selector" role="group" aria-labelledby="product-selector-label">
-        <p id="product-selector-label" style="font-size:0.72rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">Select a product</p>
 
-        <label class="product-choice fn" for="pick-fn">
+        <label class="product-choice rose" for="pick-fn">
           <input type="radio" id="pick-fn" name="product" value="FetchNote" />
           <div class="product-choice-inner">
             <div class="choice-header">
@@ -338,7 +341,7 @@
           </div>
         </label>
 
-        <label class="product-choice cc" for="pick-cc">
+        <label class="product-choice violet" for="pick-cc">
           <input type="radio" id="pick-cc" name="product" value="CycleCEO" />
           <div class="product-choice-inner">
             <div class="choice-header">
@@ -472,8 +475,7 @@
       function applySelection(val) {
         choices.forEach(c => {
           const r = c.querySelector('input[type="radio"]');
-          c.classList.toggle('selected', r.value === val);
-          c.classList.toggle('violet-sel', r.value === val && r.value === 'CycleCEO');
+          c.classList.toggle('is-selected', r.value === val);
         });
         formProd.value = val;
         qFn.classList.toggle('visible', val === 'FetchNote');

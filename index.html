@@ -1,17 +1,592 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CTA + Footer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/assets/index-D1f9uHOM.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DE5KpYz-.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kelty Sage — AI Coach for Business Owners</title>
+  <meta name="description" content="I teach business owners to use AI. Not for them — with them. You leave every session knowing exactly what we built and how to build it again." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --cream:        #faf7f2;
+      --cream-2:      #f2ede4;
+      --white:        #ffffff;
+      --ink:          #141210;
+      --ink-2:        #4a4540;
+      --ink-3:        #9c9590;
+      --border:       #e8e0d4;
+      --border-2:     #d4cbbf;
+
+      --pink:         #e8368c;
+      --pink-mid:     #d42d82;
+      --pink-light:   #fce8f3;
+      --pink-glow:    rgba(232,54,140,0.20);
+
+      --teal:         #1db8aa;
+      --teal-light:   #e3f6f4;
+
+      --violet:       #7c4ddb;
+      --violet-light: #ede8ff;
+
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans:  'Inter', system-ui, sans-serif;
+      --max:   1100px;
+      --radius: 18px;
+
+      --shadow-sm: 0 2px 12px rgba(20,18,16,0.06);
+      --shadow-md: 0 8px 32px rgba(20,18,16,0.10);
+      --shadow-lg: 0 20px 60px rgba(20,18,16,0.13);
+    }
+
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(100% - 48px, var(--max));
+      margin: 0 auto;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s cubic-bezier(0.25,0.46,0.45,0.94),
+                  transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .reveal.visible          { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1          { transition-delay: 0.10s; }
+    .reveal-delay-2          { transition-delay: 0.20s; }
+    .reveal-delay-3          { transition-delay: 0.30s; }
+    .reveal-delay-4          { transition-delay: 0.40s; }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: 999px;
+      background: var(--ink); color: var(--white);
+      font-family: var(--sans); font-size: 0.9rem; font-weight: 500;
+      letter-spacing: -0.01em; border: none; cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 2px 12px rgba(20,18,16,0.14);
+      transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+    }
+    .btn-primary:hover {
+      background: #2a2826;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(20,18,16,0.18);
+    }
+    .btn-pink {
+      background: var(--pink);
+      box-shadow: 0 4px 20px var(--pink-glow);
+    }
+    .btn-pink:hover {
+      background: var(--pink-mid);
+      box-shadow: 0 8px 30px rgba(232,54,140,0.28);
+    }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 12px 24px; border-radius: 999px;
+      background: transparent; color: var(--ink-2);
+      font-family: var(--sans); font-size: 0.9rem; font-weight: 400;
+      border: 1.5px solid var(--border-2); cursor: pointer;
+      white-space: nowrap;
+      transition: border-color 0.16s, color 0.16s, background 0.16s;
+    }
+    .btn-ghost:hover {
+      border-color: var(--ink-3);
+      color: var(--ink);
+      background: rgba(20,18,16,0.03);
+    }
+
+    /* ── NAV ── */
+    .nav-wrap {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,247,242,0.88);
+      backdrop-filter: blur(16px) saturate(120%);
+      -webkit-backdrop-filter: blur(16px) saturate(120%);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; gap: 24px;
+    }
+    .nav-brand {
+      font-family: var(--serif); font-style: italic;
+      font-size: 1.2rem; color: var(--ink);
+      letter-spacing: -0.01em; flex-shrink: 0;
+    }
+    .nav-right { display: flex; align-items: center; gap: 32px; }
+    .nav-link {
+      font-size: 0.875rem; font-weight: 400; color: var(--ink-2);
+      transition: color 0.14s;
+    }
+    .nav-link:hover { color: var(--ink); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 9px 20px; border-radius: 999px;
+      background: var(--ink); color: var(--white);
+      font-size: 0.85rem; font-weight: 500; white-space: nowrap;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .nav-cta:hover { background: #2a2826; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero { padding: 88px 0 96px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 80px; align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.74rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--pink); margin-bottom: 22px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 28px; height: 1.5px;
+      background: currentColor; flex-shrink: 0;
+    }
+
+    .hero-h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 4.8vw, 4.2rem);
+      font-weight: 400; line-height: 1.05;
+      letter-spacing: -0.025em; color: var(--ink);
+      margin-bottom: 22px;
+    }
+    .hero-h1 em { font-style: italic; color: var(--ink-2); }
+
+    .hero-sub {
+      font-size: 1.05rem; font-weight: 300; line-height: 1.72;
+      color: var(--ink-2); max-width: 500px; margin-bottom: 38px;
+    }
+
+    .hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+    .hero-photo-col { position: relative; }
+    .hero-photo {
+      width: 100%; aspect-ratio: 4 / 5;
+      object-fit: cover; object-position: center top;
+      border-radius: 24px; display: block;
+      box-shadow: var(--shadow-lg);
+    }
+    .photo-badge {
+      position: absolute; bottom: 28px; left: -22px;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 14px; padding: 14px 18px;
+      box-shadow: var(--shadow-md); min-width: 180px;
+    }
+    .photo-badge-title {
+      font-size: 0.8rem; font-weight: 600; color: var(--ink); margin-bottom: 3px;
+    }
+    .photo-badge-sub {
+      font-size: 0.72rem; font-weight: 300; color: var(--ink-3); line-height: 1.4;
+    }
+    .photo-pulse {
+      position: absolute; top: 22px; right: -10px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--pink);
+      box-shadow: 0 0 0 4px var(--pink-light);
+      animation: pulse 2.6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 4px var(--pink-light); }
+      50%       { box-shadow: 0 0 0 9px rgba(232,54,140,0.07); }
+    }
+
+    /* ── MARQUEE STRIP ── */
+    .strip {
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--cream-2);
+      padding: 17px 0;
+    }
+    .strip-track {
+      display: flex; width: max-content;
+      animation: marquee 26s linear infinite;
+    }
+    .strip-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .strip-item {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 0 44px;
+      font-size: 0.78rem; font-weight: 500;
+      color: var(--ink-2); letter-spacing: 0.03em; white-space: nowrap;
+    }
+    .strip-em {
+      font-family: var(--serif); font-style: italic;
+      color: var(--pink); font-size: 1.0rem;
+    }
+
+    /* ── SECTION SHARED ── */
+    .section       { padding: 96px 0; }
+    .section-white { background: var(--white); }
+
+    .sec-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-3); margin-bottom: 14px;
+    }
+    .sec-label::before {
+      content: ''; display: block;
+      width: 16px; height: 1px;
+      background: currentColor; flex-shrink: 0;
+    }
+    .sec-h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.4vw, 2.8rem);
+      font-weight: 400; line-height: 1.1;
+      letter-spacing: -0.02em; color: var(--ink);
+      margin-bottom: 14px;
+    }
+    .sec-sub {
+      font-size: 1rem; font-weight: 300; line-height: 1.68;
+      color: var(--ink-2); max-width: 560px;
+      margin-bottom: 52px;
+    }
+
+    /* ── PRODUCTS ── */
+    .products-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .product-card {
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 26px 24px;
+      display: flex; flex-direction: column;
+      transition: transform 0.22s cubic-bezier(0.25,0.46,0.45,0.94),
+                  box-shadow 0.22s;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .product-cat {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .product-name {
+      font-family: var(--serif); font-style: italic;
+      font-size: 1.45rem; line-height: 1.15;
+      color: var(--ink); margin-bottom: 12px;
+    }
+    .product-rule { height: 1px; background: var(--border); margin-bottom: 14px; }
+    .product-desc {
+      font-size: 0.875rem; font-weight: 300; line-height: 1.72;
+      color: var(--ink-2); flex: 1; margin-bottom: 22px;
+    }
+    .product-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.78rem; font-weight: 600;
+      padding: 8px 16px; border-radius: 999px;
+      align-self: flex-start;
+      transition: opacity 0.14s, transform 0.14s;
+    }
+    .product-link:hover { opacity: 0.78; transform: translateX(2px); }
+
+    .card-teal   .product-cat  { color: var(--teal); }
+    .card-teal   .product-link { background: var(--teal-light); color: var(--teal); }
+    .card-pink   .product-cat  { color: var(--pink); }
+    .card-pink   .product-link { background: var(--pink-light); color: var(--pink); }
+    .card-violet .product-cat  { color: var(--violet); }
+    .card-violet .product-link { background: var(--violet-light); color: var(--violet); }
+
+    /* ── BETA ── */
+    .beta-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+    .beta-pill {
+      display: inline-block; margin-bottom: 18px;
+      padding: 5px 14px; border-radius: 999px;
+      background: var(--pink-light); color: var(--pink);
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.09em; text-transform: uppercase;
+    }
+    .beta-list {
+      list-style: none; display: flex; flex-direction: column;
+      gap: 14px; margin: 30px 0 36px;
+    }
+    .beta-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 0.95rem; font-weight: 300;
+      color: var(--ink-2); line-height: 1.55;
+    }
+    .check {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--pink); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+      font-size: 0.58rem; font-weight: 700;
+    }
+
+    /* ── BOOK ── */
+    .book-card {
+      background: var(--ink); border-radius: 24px;
+      padding: 72px 60px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .book-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% -10%, rgba(232,54,140,0.14) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .book-card .sec-h2 { color: var(--white); }
+    .book-card .sec-sub { color: rgba(255,255,255,0.50); margin: 0 auto 36px; }
+    .book-note {
+      margin-top: 18px;
+      font-size: 0.76rem; font-weight: 300;
+      color: rgba(255,255,255,0.28);
+    }
+
+    /* ── FOOTER ── */
+    .footer { padding: 32px 0; border-top: 1px solid var(--border); }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; flex-wrap: wrap;
+    }
+    .footer-brand {
+      font-family: var(--serif); font-style: italic;
+      font-size: 1.05rem; color: var(--ink);
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-link {
+      font-size: 0.8rem; font-weight: 300; color: var(--ink-3);
+      transition: color 0.14s;
+    }
+    .footer-link:hover { color: var(--ink); }
+    .footer-copy { font-size: 0.76rem; font-weight: 300; color: var(--ink-3); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-photo-col { order: -1; max-width: 500px; }
+      .hero-photo { aspect-ratio: 16 / 10; }
+      .photo-badge { bottom: 16px; left: 16px; }
+      .photo-pulse { top: 16px; right: 8px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .beta-grid { grid-template-columns: 1fr; gap: 44px; }
+      .book-card { padding: 52px 32px; }
+      .nav-right .nav-link { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 52px 0 68px; }
+      .container { width: calc(100% - 32px); }
+      .section { padding: 68px 0; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+      .book-card { padding: 44px 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0.001ms !important;
+        animation-duration: 0.001ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <header class="nav-wrap">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="nav-brand" href="/">Kelty Sage</a>
+      <div class="nav-right">
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#beta">Beta</a>
+        <a class="nav-cta" href="#book">Book a Free Session</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+
+        <div>
+          <p class="hero-eyebrow reveal">AI Coach for Business Owners</p>
+          <h1 class="hero-h1 reveal reveal-delay-1">
+            The AI coach who<br><em>won't do it for you.</em>
+          </h1>
+          <p class="hero-sub reveal reveal-delay-2">
+            I teach business owners to use AI. Not for them&nbsp;&mdash;&nbsp;with them.
+            You leave every session knowing exactly what we built and how to build it again.
+          </p>
+          <div class="hero-ctas reveal reveal-delay-3">
+            <a class="btn-primary btn-pink" href="#book">
+              Book a Free Session
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn-ghost" href="#projects">See My Projects</a>
+          </div>
+        </div>
+
+        <div class="hero-photo-col reveal reveal-delay-2">
+          <img class="hero-photo" src="kelty.jpg" alt="Kelty Sage, AI Coach for Business Owners" />
+          <div class="photo-badge">
+            <p class="photo-badge-title">Free intro session</p>
+            <p class="photo-badge-sub">No credit card. Just show up.</p>
+          </div>
+          <div class="photo-pulse" aria-hidden="true"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MARQUEE STRIP ── -->
+  <div class="strip" aria-hidden="true">
+    <div class="strip-track">
+      <span class="strip-item">AI That Teaches <span class="strip-em">—</span> You learn by doing.</span>
+      <span class="strip-item">Real Workflows <span class="strip-em">—</span> No fluff. Just systems.</span>
+      <span class="strip-item">Built With You <span class="strip-em">—</span> Feedback drives everything.</span>
+      <span class="strip-item">Sustainable Growth <span class="strip-em">—</span> For your business and life.</span>
+      <span class="strip-item">AI That Teaches <span class="strip-em">—</span> You learn by doing.</span>
+      <span class="strip-item">Real Workflows <span class="strip-em">—</span> No fluff. Just systems.</span>
+      <span class="strip-item">Built With You <span class="strip-em">—</span> Feedback drives everything.</span>
+      <span class="strip-item">Sustainable Growth <span class="strip-em">—</span> For your business and life.</span>
+    </div>
+  </div>
+
+  <!-- ── PROJECTS ── -->
+  <section class="section section-white" id="projects">
+    <div class="container">
+      <p class="sec-label reveal">What I'm Building</p>
+      <h2 class="sec-h2 reveal reveal-delay-1">Current projects</h2>
+      <p class="sec-sub reveal reveal-delay-2">A look at what I'm building right now&nbsp;&mdash; what each one does, who it's for, and what you learn from using it.</p>
+
+      <div class="products-grid">
+        <div class="product-card card-teal reveal reveal-delay-1">
+          <p class="product-cat">AI Courses</p>
+          <p class="product-name">Sage Systems AI</p>
+          <div class="product-rule"></div>
+          <p class="product-desc">Answer a few questions about your business and get a full AI fluency course&nbsp;&mdash; custom prompts, tool picks, flashcards, a business brain&nbsp;&mdash; in about 60 seconds. Then you actually learn why every piece works.</p>
+          <a class="product-link" href="https://sage-systems-ai.netlify.app" target="_blank" rel="noopener">
+            Open Sage Systems AI
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="product-card card-pink reveal reveal-delay-2">
+          <p class="product-cat">Dog Training</p>
+          <p class="product-name">FetchNote</p>
+          <div class="product-rule"></div>
+          <p class="product-desc">Dog trainers spend 20 minutes typing homework after every session. FetchNote turns 2 minutes of voice notes into a polished, branded PDF. No typing. No forgetting what you said.</p>
+          <a class="product-link" href="https://fetchnote.app" target="_blank" rel="noopener">
+            Open FetchNote
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="product-card card-violet reveal reveal-delay-3">
+          <p class="product-cat">Cycle Planning</p>
+          <p class="product-name">CycleCEO</p>
+          <div class="product-rule"></div>
+          <p class="product-desc">Your energy isn't random. CycleCEO maps your cycle phases to your business schedule so you stop planning launches for the week you crash. AI coach included.</p>
+          <a class="product-link" href="https://cycleceo.app" target="_blank" rel="noopener">
+            Open CycleCEO
+            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BETA ── -->
+  <section class="section" id="beta">
+    <div class="container">
+      <div class="beta-grid">
+        <div>
+          <span class="beta-pill reveal">Free &middot; Limited Spots</span>
+          <h2 class="sec-h2 reveal reveal-delay-1">Be the First<br>to Break It</h2>
+          <p class="sec-sub reveal reveal-delay-2" style="margin-bottom:0;">I build things fast and I need people who will actually use them, get confused, and tell me exactly where. Free access. Honest opinions. No fluff.</p>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <ul class="beta-list">
+            <li><span class="check" aria-hidden="true">✓</span>You have ideas you can't execute yet</li>
+            <li><span class="check" aria-hidden="true">✓</span>You want to understand AI, not just have it</li>
+            <li><span class="check" aria-hidden="true">✓</span>You'll actually try the thing I send you</li>
+            <li><span class="check" aria-hidden="true">✓</span>You'll tell me when it doesn't work</li>
+          </ul>
+          <a class="btn-primary btn-pink" href="/beta">
+            Apply for Beta Access
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BOOK ── -->
+  <section class="section section-white" id="book">
+    <div class="container">
+      <div class="book-card reveal">
+        <h2 class="sec-h2">Book a Free Session</h2>
+        <p class="sec-sub">One hour. We figure out exactly where AI fits in your business and you leave with something you actually built. No pitch, no fluff.</p>
+        <a class="btn-primary btn-pink" style="display:inline-flex;" href="mailto:keltysage01@gmail.com?subject=Book%20a%20Free%20Session">
+          Email to Book
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <p class="book-note">Booking calendar coming soon&nbsp;&mdash;&nbsp;email works for now.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── */
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <a class="footer-brand" href="/">Kelty Sage</a>
+        <div class="footer-links">
+          <a class="footer-link" href="#projects">Projects</a>
+          <a class="footer-link" href="/beta">Beta</a>
+          <a class="footer-link" href="mailto:keltysage01@gmail.com">Contact</a>
+        </div>
+        <span class="footer-copy">&copy; 2026 Kelty Sage</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal hero immediately (above fold)
+    document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
+
+    // Scroll reveal for everything else
+    const io = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => io.observe(el));
+  </script>
+</body>
 </html>
