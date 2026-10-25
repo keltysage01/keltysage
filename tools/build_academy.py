@@ -86,6 +86,8 @@ def main():
     page = page.replace("<head>", '<head>\n<base href="/academy/">', 1)
     # phone: the lesson video fits on one screen with the title and button under it
     page = page.replace("</style>", "@media (max-width:560px){.watch{gap:18px}.watch video{width:auto;height:min(54vh,460px);max-width:100%;display:block;margin:0 auto}}\n</style>", 1)
+    # the top bar scrolls away with the page instead of staying pinned
+    page = page.replace(".bar{position:sticky;top:0;", ".bar{position:relative;top:0;", 1)
     # a clear way back to the main site from every academy screen
     page = page.replace('<div class="xp"', '<a class="home" href="/">&larr; Home</a><div class="xp"', 1)
     page = page.replace("</style>", ".bar .home{margin-left:auto;margin-right:10px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;padding:7px 14px;border:1px solid var(--line);border-radius:999px;background:#fff}.bar .home+.xp{margin-left:0}.bar .brand,.bar .home{white-space:nowrap}\n</style>", 1)
