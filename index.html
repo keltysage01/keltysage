@@ -43,6 +43,7 @@ h1,h2,h3{font-weight:600;letter-spacing:-.03em;line-height:1.05}
 .brand .tag{font-weight:500;font-size:15px;color:var(--ink-2);letter-spacing:-.01em}
 .brand,.nav .btn{white-space:nowrap}
 @media (max-width:600px){.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}}
+@media (max-width:440px){.nav .brand .sep,.nav .brand .tag{display:none}}
 .links{margin-left:auto;display:flex;align-items:center;gap:26px}
 .links a{text-decoration:none;font-size:15px;color:var(--ink-2)}
 .links a:hover{color:var(--ink)}
@@ -231,10 +232,11 @@ footer .links{gap:20px}
   <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
   <nav class="links">
     <a href="/robots">Robots</a>
+    <a href="/academy/">Academy</a>
     <a href="#stack">My tools</a>
     <a href="#learn">Lessons</a>
     <a href="#join">Pricing</a>
-    <a class="btn btn-ink" href="#top" onclick="document.querySelector('.signup input').focus();return false">Join free</a>
+    <a class="btn btn-ink" href="/academy/#/boot">Start free</a>
   </nav>
 </div></header>
 
@@ -398,7 +400,7 @@ footer .links{gap:20px}
       <h3>Boot</h3>
       <div class="price">free</div>
       <ul><li>The full day-one starter, free</li><li>Get set up from zero</li><li>Your first five sentences to a robot</li><li>Which robot to hire first</li></ul>
-      <a class="btn btn-line" href="/robots/boot">Start with Boot</a>
+      <a class="btn btn-line" href="/academy/#/boot">Start with Boot</a>
     </div>
     <div class="plan rise">
       <h3>One robot</h3>

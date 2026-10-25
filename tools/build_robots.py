@@ -75,7 +75,7 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 </style></head><body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
-  <nav class="links"><a href="/robots">Robots</a><a href="/#learn">Lessons</a><a href="/#join">Pricing</a><a class="btn btn-ink" href="/robots/boot">Get Boot free</a></nav>
+  <nav class="links"><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a><a class="btn btn-ink" href="/academy/#/boot">Get Boot free</a></nav>
 </div></header>
 <main>
 """
@@ -134,7 +134,8 @@ BOT_CSS = """
 .prof dt{font-family:var(--mono);font-size:13px;color:var(--teal);padding-top:2px}
 .prof dd{color:var(--ink-2)}
 .prof .quote{display:inline-block;margin-top:18px;font-weight:600;background:var(--soft);border-radius:12px;padding:8px 14px}
-.back{display:inline-block;margin-top:22px;font-size:15px;color:var(--ink-3);text-decoration:none}
+.acts{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:22px}
+.back{display:inline-block;font-size:15px;color:var(--ink-3);text-decoration:none}
 .lesson{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:30px;margin-top:24px}
 .lesson .n{font-family:var(--mono);font-size:13px;color:var(--ink-3);display:flex;justify-content:space-between}
 .lesson .n b{font-weight:500;color:var(--teal)}
@@ -263,7 +264,7 @@ def robot_page(r, lessons, cast):
       <div class="quote">"{esc(r['catchphrase'])}"</div>
     </div>
   </div>
-  <a class="back" href="/robots">&larr; the whole team</a>
+  <div class="acts"><a class="btn btn-ink" href="/academy/#/{r['id']}">{'Start free in the Academy' if free else 'Watch the free lesson'} &rarr;</a><a class="back" href="/robots">&larr; the whole team</a></div>
 </div></section>
 <section style="padding-top:8px"><div class="wrap" style="--soft:{soft(r['accent'])}">
 {chr(10).join(blocks)}
