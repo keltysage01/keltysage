@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<base href="/academy/">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Robot Academy</title>
+<meta name="description" content="Learn to run your business from one small window, one robot at a time.">
+<link rel="icon" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12181c;--ink-2:#3d4a50;--ink-3:#7b8a90;--bg:#f4f7f7;--card:#fff;--line:#e1e8e8;--sea:#9ed9c7;--sea-soft:#e3f4ef;--teal:#2f9a94;--deep:#2f8f78;--skip:#ffeeec;--skip-ink:#c8463c;--sans:'Geist',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;color-scheme:light}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;min-height:100vh}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+a{color:inherit}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none}
+.brand img{width:38px;height:38px}
+.xp{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:6px 14px 6px 8px;font-weight:700;font-size:15px}
+.xp i{width:24px;height:24px;border-radius:50%;background:var(--sea);display:grid;place-items:center;font-style:normal;font-size:11px;font-family:var(--mono);color:var(--ink)}
+/* views */
+.view{animation:rise .45s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+h1{font-size:clamp(34px,5.5vw,54px);line-height:1.05;letter-spacing:-.035em;font-weight:800}
+h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--sea) 62%)}
+h2{font-size:clamp(24px,3.6vw,32px);letter-spacing:-.03em;line-height:1.1}
+.eyebrow{font-family:var(--mono);font-size:13px;color:var(--deep);margin-bottom:10px}
+.lede{font-size:19px;color:var(--ink-2);margin-top:14px;max-width:48ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--ink);color:#fff;font-weight:700;border-radius:14px;padding:14px 22px;font-size:17px;text-decoration:none}
+.btn.big{padding:20px 28px;font-size:20px;border-radius:18px;width:100%}
+.btn.soft{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn.sea{background:var(--sea);color:var(--ink)}
+.btn:disabled{opacity:.45;cursor:default}
+/* team */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:26px 0 60px}
+.rb{text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;text-align:left;display:flex;flex-direction:column}
+.rb .art{background:linear-gradient(180deg,color-mix(in srgb,var(--c) 18%,#fff),#fff);display:grid;place-items:center;padding:16px 0 0;position:relative}
+.rb .art img{width:46%;transition:transform .5s ease}
+.rb:hover .art img{transform:translateY(-5px)}
+.rb .in{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.rb h3{font-size:24px;letter-spacing:-.02em}
+.tag{align-self:flex-start;font-family:var(--mono);font-weight:700;font-size:11px;text-transform:uppercase;background:var(--c);padding:3px 10px;border-radius:99px}
+.prog{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:auto}
+.prog b{display:block;height:100%;background:var(--sea);border-radius:99px;transition:width .6s ease}
+.meta{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-3)}
+.badge{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:11px;font-weight:700;background:var(--ink);color:#fff;border-radius:99px;padding:4px 10px}
+/* robot home */
+.rhero{display:grid;grid-template-columns:220px 1fr;gap:28px;align-items:center;padding:28px 0}
+.rhero .pic{background:linear-gradient(180deg,color-mix(in srgb,var(--c) 20%,#fff),#fff);border-radius:26px;display:grid;place-items:center;padding:16px}
+.rhero .pic img{width:78%}
+.quote{font-family:var(--mono);color:var(--deep);font-size:14px;margin-top:10px}
+.lessons{display:grid;gap:14px;padding-bottom:60px}
+.ls{display:grid;grid-template-columns:96px 1fr auto;gap:18px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px;text-align:left;width:100%}
+.ls img{width:96px;aspect-ratio:9/16;object-fit:cover;border-radius:12px;background:var(--bg)}
+.ls h3{font-size:19px;letter-spacing:-.02em;line-height:1.2}
+.ls p{color:var(--ink-2);font-size:15px}
+.ls .st{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-top:4px}
+.dot{width:40px;height:40px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-weight:800}
+.dot.done{background:var(--sea);border-color:var(--sea)}
+.dot.lock{border-style:dashed;color:var(--ink-3);font-size:12px;font-family:var(--mono)}
+.hire{background:var(--card);border:2px solid var(--sea);border-radius:22px;padding:22px;margin-bottom:60px}
+.hire ul{list-style:none;margin:12px 0 16px}
+.hire li{padding:6px 0 6px 24px;position:relative;color:var(--ink-2)}
+.hire li::before{content:'>';position:absolute;left:0;font-family:var(--mono);color:var(--deep)}
+/* lesson */
+.stage{min-height:calc(100vh - 64px);display:flex;flex-direction:column;padding:20px 0 40px}
+.steps-top{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.steps-top .prog{flex:1;margin:0}
+.x{width:40px;height:40px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;font-size:18px;color:var(--ink-2);flex:none}
+.watch{display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:32px;align-items:center}
+video{width:100%;max-height:72vh;aspect-ratio:9/16;border-radius:22px;background:#e9efef;object-fit:cover}
+.step{max-width:720px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:14px;flex:1}
+.pill{align-self:flex-start;font-family:var(--mono);font-size:13px;font-weight:700;color:var(--deep);background:var(--sea-soft);padding:6px 14px;border-radius:99px}
+.step h2{font-size:clamp(32px,6vw,48px);line-height:1.05;letter-spacing:-.035em;font-weight:800}
+.note{font-size:20px;color:var(--ink-2)}
+.why{font-weight:600;color:var(--deep)}
+.cmd{display:flex;gap:10px;align-items:center;background:var(--card);border:2px solid var(--sea);border-radius:16px;padding:14px 16px;font-family:var(--mono);font-size:15px;color:var(--deep)}
+.cmd span{flex:1;overflow-wrap:anywhere}
+.copy{font-family:var(--sans);font-size:13px;font-weight:700;background:var(--sea);border-radius:10px;padding:8px 12px;color:var(--ink);flex:none}
+.card{border-radius:18px;padding:16px 18px}
+.card small{display:block;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px}
+.card.pic{background:var(--sea-soft)} .card.pic small{color:var(--deep)}
+.card.skip{background:var(--skip)} .card.skip small{color:var(--skip-ink)}
+.os{display:flex;gap:8px}
+.os button{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:8px 16px;font-weight:600;font-size:15px}
+.os button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.howto{font-size:18px;font-weight:600}
+.stuck{font-size:15px;color:var(--ink-3);text-decoration:underline;text-underline-offset:3px;align-self:flex-start}
+.actions{display:flex;gap:10px;margin-top:auto;padding-top:20px}
+.actions .btn.big{flex:1}
+.pricecard{background:var(--sea-soft);border-radius:22px;padding:24px}
+.pricecard b{font-size:64px;letter-spacing:-.04em;display:block;line-height:1}
+/* full screen moment */
+.fullscreen{position:fixed;inset:0;z-index:50;background:var(--sea-soft);display:flex;flex-direction:column;padding:max(20px,env(safe-area-inset-top)) 20px max(24px,env(safe-area-inset-bottom));overflow:auto;animation:rise .45s ease both}
+.fullscreen .inner{max-width:760px;margin:auto;width:100%;display:flex;flex-direction:column;gap:18px}
+.fullscreen h2{font-size:clamp(44px,10vw,84px);line-height:1}
+.fullscreen .close{align-self:flex-start;font-size:15px;color:var(--ink-2);text-decoration:none;font-weight:600}
+/* game */
+.game h2{margin-bottom:6px}
+.qpic{background:var(--sea-soft);border-radius:20px;padding:22px;font-size:21px;font-weight:600;line-height:1.35}
+.choices{display:grid;gap:10px;margin-top:6px}
+.choice{text-align:left;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:16px 18px;font-weight:600;font-size:17px}
+.choice.right{border-color:var(--teal);background:#e9f8f3}
+.choice.wrong{border-color:#f0b2ab;background:var(--skip)}
+.feedback{min-height:24px;font-weight:600;color:var(--deep)}
+/* done */
+.done{text-align:center;align-items:center}
+.done img{width:180px}
+.earned{display:inline-flex;gap:8px;align-items:center;font-family:var(--mono);font-weight:700;background:var(--ink);color:#fff;border-radius:99px;padding:8px 16px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:99px;padding:10px 18px;font-weight:700;font-size:15px;z-index:60;animation:rise .35s ease both}
+footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px solid var(--line)}
+@media (max-width:820px){.team{grid-template-columns:1fr 1fr}.watch{grid-template-columns:1fr}.watch video{max-width:340px;margin:0 auto}}
+@media (max-width:560px){.wrap{padding:0 16px}.team{grid-template-columns:1fr}.rb{flex-direction:row}.rb .art{width:40%;padding:10px 0}.rb .art img{width:72%}.rhero{grid-template-columns:1fr}.rhero .pic{width:160px}.ls{grid-template-columns:72px 1fr auto;gap:12px}.ls img{width:72px}.xp span.lbl{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="brand" href="#/"><img src="logo.png" alt="">Robot Academy</a>
+  <div class="xp" title="Points you have earned"><i>XP</i><span id="xp">0</span><span class="lbl">&nbsp;points</span></div>
+</div></header>
+<main id="app" class="wrap"></main>
+
+<script>
+/* Progress lives in this browser only. Wrapped in try/catch so private windows still work. */
+const store = {
+  get(){ try { return JSON.parse(localStorage.getItem('ks_academy') || '{}') } catch(_) { return {} } },
+  set(v){ try { localStorage.setItem('ks_academy', JSON.stringify(v)) } catch(_) {} }
+};
+let S = Object.assign({xp:0, steps:{}, lessons:{}, owned:[]}, store.get());
+const save = () => { store.set(S); document.getElementById('xp').textContent = S.xp; };
+let C = null;
+const $ = (h) => { const t = document.createElement('template'); t.innerHTML = h.trim(); return t.content; };
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const app = document.getElementById('app');
+
+// Owned robots. The site's checkout can call window.ksUnlock('pixel') or 'all' after a purchase.
+window.ksUnlock = (id) => { if (!S.owned.includes(id)) S.owned.push(id); save(); route(); };
+const owns = (r) => r.free || S.owned.includes(r.id) || S.owned.includes('all');
+const open = (r, l) => l.free || owns(r);
+
+function toast(msg){ const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg; document.body.appendChild(t); setTimeout(() => t.remove(), 1800); }
+function award(n, why){ S.xp += n; save(); toast(`+${n} XP  ${why}`); }
+function copy(txt, btn){ try { navigator.clipboard.writeText(txt); btn.textContent = 'Copied'; setTimeout(() => btn.textContent = 'Copy', 1400); } catch(_) {} }
+function robotDone(r){ return r.lessons.filter(l => S.lessons[l.slug]).length; }
+const guessOS = () => /Win/i.test(navigator.userAgent) ? 'Windows PC' : 'Mac';
+
+/* ---------- team ---------- */
+function team(){
+  app.innerHTML = '';
+  app.append($(`<section class="view">
+    <div style="padding:34px 0 0"><p class="eyebrow">&gt;_ robot academy</p>
+    <h1>Pick a robot. <em>Learn one job.</em></h1>
+    <p class="lede">Every robot teaches one thing I do from my window. Watch the video, do each step, check it off. Start with Boot, it's free.</p></div>
+    <div class="team">${C.robots.map(r => {
+      const d = robotDone(r), n = r.lessons.length, full = d === n && n;
+      return `<a class="rb" href="#/${r.id}" style="--c:${r.accent}">
+        <div class="art"><img src="art/${r.id}.svg" alt="${esc(r.name)} the robot">${full ? '<span class="badge">BADGE</span>' : ''}</div>
+        <div class="in"><h3>${esc(r.name)}</h3><span class="tag">${esc(r.job)}</span>
+        <p style="color:var(--ink-2);font-size:15px">${esc(r.teaches[0].toUpperCase() + r.teaches.slice(1))}.</p>
+        <div class="meta"><span>${d} of ${n} done</span><span>${r.free ? 'Free' : owns(r) ? 'Hired' : esc(C.price)}</span></div>
+        <div class="prog"><b style="width:${n ? d / n * 100 : 0}%"></b></div></div></a>`;
+    }).join('')}</div></section>`));
+}
+
+/* ---------- robot home ---------- */
+function robotHome(r){
+  app.innerHTML = '';
+  const d = robotDone(r), n = r.lessons.length;
+  app.append($(`<section class="view" style="--c:${r.accent}">
+    <div class="rhero"><div class="pic"><img src="art/${r.id}.svg" alt="${esc(r.name)} the robot"></div>
+      <div><span class="tag">${esc(r.job)}</span><h1 style="margin-top:10px">${esc(r.name)}</h1>
+      <p class="lede" style="margin-top:8px">${esc(r.pitch || ('Teaches ' + r.teaches + '.'))}</p>
+      <p class="quote">"${esc(r.catchphrase)}"</p>
+      <div style="margin-top:16px;max-width:360px"><div class="meta"><span>${d} of ${n} lessons</span><span>${d === n ? 'Badge earned' : ''}</span></div><div class="prog"><b style="width:${n ? d / n * 100 : 0}%"></b></div></div></div></div>
+    <div class="lessons">${r.lessons.map((l, i) => {
+      const ok = open(r, l), done = S.lessons[l.slug];
+      const mins = l.secs ? Math.max(1, Math.round(l.secs / 60)) + ' min' : '';
+      return `<button class="ls" data-slug="${l.slug}" ${ok ? '' : 'data-locked="1"'}>
+        <img src="${l.cover}" alt="" loading="lazy">
+        <div><h3>${esc(l.title)}</h3><p>${esc(l.summary)}</p><p class="st">LESSON ${i + 1} · ${l.steps.length} STEPS · ${mins}${l.long ? ' · DEEP DIVE' : ''}${!r.free && l.free ? ' · FREE PREVIEW' : ''}</p></div>
+        <span class="dot ${done ? 'done' : ok ? '' : 'lock'}">${done ? '&#10003;' : ok ? i + 1 : 'HIRE'}</span></button>`;
+    }).join('')}</div>
+    ${owns(r) ? '' : `<div class="hire"><h2>Hire ${esc(r.name)}</h2><p style="color:var(--ink-2);margin-top:6px">One time, yours to keep. Unlocks every lesson, video and copyable prompt.</p>
+      <ul>${(r.hire || []).map(h => `<li>Hire ${esc(r.name)} if ${esc(h[0].toLowerCase() + h.slice(1))}</li>`).join('')}</ul>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="/robots/${r.id === 'postie' ? 'tempo' : r.id}">Hire ${esc(r.name)}: ${esc(C.price)}</a>${C.bundle_price ? `<a class="btn soft" href="/robots">Whole team: ${esc(C.bundle_price)}</a>` : ''}</div></div>`}
+  </section>`));
+  app.querySelectorAll('.ls').forEach(b => b.onclick = () => {
+    if (b.dataset.locked) { document.querySelector('.hire')?.scrollIntoView({behavior:'smooth'}); return; }
+    location.hash = `#/${r.id}/${b.dataset.slug}`;
+  });
+}
+
+/* ---------- lesson: watch, steps, game, done ---------- */
+function lesson(r, l, stage){
+  const steps = l.steps, N = steps.length;
+  const total = N + 2; // watch + steps + game
+  const top = (pos) => `<div class="steps-top"><a class="x" href="#/${r.id}" aria-label="Back to ${esc(r.name)}">&#8592;</a><div class="prog"><b style="width:${pos / total * 100}%"></b></div><img src="art/${r.id}.svg" alt="" style="width:34px"></div>`;
+  app.innerHTML = '';
+  if (stage === 'watch') {
+    app.append($(`<section class="stage view" style="--c:${r.accent}">${top(0)}
+      <div class="watch"><video src="${l.video}" poster="${l.cover}" controls playsinline preload="metadata"></video>
+      <div><p class="eyebrow">${esc(r.name.toUpperCase())} · LESSON</p><h1>${esc(l.title)}</h1><p class="lede">${esc(l.summary)}</p>
+      <p style="color:var(--ink-3);margin-top:12px">${N} steps. Watch first, then do each one and check it off.</p>
+      <div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap"><button class="btn" id="go">Start step one</button></div></div></div></section>`));
+    document.getElementById('go').onclick = () => lesson(r, l, 0);
+    return;
+  }
+  if (typeof stage === 'number') {
+    const st = steps[stage], key = `${l.slug}:${stage}`, isCheck = /check your work/i.test(st.title);
+    const os = guessOS();
+    const platformHTML = (st.platforms || []).length ? `<div class="os">${st.platforms.map(p => `<button aria-pressed="${p.label === os}" data-os="${esc(p.label)}">${esc(p.label)}</button>`).join('')}</div>
+      ${st.platforms.map(p => `<div class="osp" data-os="${esc(p.label)}" ${p.label === os ? '' : 'hidden'}><p class="howto">${esc(p.how)}</p>${p.cmd ? `<div class="cmd" style="margin-top:10px"><span>${esc(p.cmd)}</span><button class="copy" data-t="${esc(p.cmd)}">Copy</button></div>` : ''}</div>`).join('')}` : '';
+    const body = `
+      <span class="pill">STEP ${stage + 1} OF ${N}</span>
+      <h2>${esc(st.screen_title || st.title)}</h2>
+      ${st.note ? `<p class="note">${esc(st.note)}</p>` : ''}
+      ${st.big ? `<div class="pricecard"><small style="font-family:var(--mono);color:var(--deep);font-weight:700">${esc(st.big.label || '')}</small><b>${esc(st.big.value)}</b><p style="color:var(--ink-2)">${esc(st.big.sub || '')}</p></div>` : ''}
+      ${platformHTML}
+      ${(st.prompts || []).map(p => `<div class="cmd"><span>&gt; ${esc(p)}</span><button class="copy" data-t="${esc(p)}">Copy</button></div>`).join('')}
+      ${st.why ? `<p class="why">Why: ${esc(st.why)}</p>` : ''}
+      ${st.picture ? `<div class="card pic"><small>Picture it</small>${esc(st.picture)}</div>` : ''}
+      ${st.skip ? `<div class="card skip"><small>If you skip it</small>${esc(st.skip)}</div>` : ''}
+      <button class="stuck" id="stuck">Stuck on this step?</button>
+      <div id="help" hidden class="card pic"><small>Just ask it</small>Paste this into Claude:<div class="cmd" style="margin-top:8px"><span>&gt; I'm stuck on this step: ${esc(st.title)}. Walk me through it slowly.</span><button class="copy" data-t="I'm stuck on this step: ${esc(st.title)}. Walk me through it slowly.">Copy</button></div></div>
+      <div class="actions">${stage > 0 ? '<button class="btn soft" id="back">Back</button>' : ''}<button class="btn big sea" id="did">${isCheck ? 'I checked it' : st.screen_title ? 'I installed it' : 'I did it'}</button></div>`;
+    // the install moment takes over the whole screen
+    if (st.screen_title) {
+      app.append($(`<div class="fullscreen" style="--c:${r.accent}"><div class="inner"><a class="close" href="#/${r.id}">&#8592; ${esc(r.name)}</a>${body}</div></div>`));
+    } else {
+      app.append($(`<section class="stage view" style="--c:${r.accent}">${top(stage + 1)}<div class="step">${body}</div></section>`));
+    }
+    app.querySelectorAll('.copy').forEach(b => b.onclick = () => copy(b.dataset.t, b));
+    app.querySelectorAll('.os button').forEach(b => b.onclick = () => {
+      app.querySelectorAll('.os button').forEach(x => x.setAttribute('aria-pressed', x === b));
+      app.querySelectorAll('.osp').forEach(p => p.hidden = p.dataset.os !== b.dataset.os);
+    });
+    document.getElementById('stuck').onclick = () => { document.getElementById('help').hidden = false; };
+    if (document.getElementById('back')) document.getElementById('back').onclick = () => lesson(r, l, stage - 1);
+    document.getElementById('did').onclick = () => {
+      if (!S.steps[key]) { S.steps[key] = 1; award(10, 'step done'); }
+      window.scrollTo(0, 0);
+      lesson(r, l, stage + 1 < N ? stage + 1 : 'game');
+    };
+    return;
+  }
+  if (stage === 'game') return game(r, l, top(N + 1));
+  if (stage === 'done') return done(r, l);
+}
+
+/* "Remember the picture": match each picture to its step. */
+function game(r, l, topHTML){
+  const pool = l.steps.filter(s => s.picture && !/check your work/i.test(s.title));
+  const rounds = pool.sort(() => Math.random() - .5).slice(0, 3);
+  if (rounds.length < 2) return lesson(r, l, 'done');
+  let i = 0, right = 0;
+  const show = () => {
+    const q = rounds[i];
+    const opts = l.steps.filter(s => !/check your work/i.test(s.title)).map(s => s.title).sort(() => Math.random() - .5);
+    app.innerHTML = '';
+    app.append($(`<section class="stage view game" style="--c:${r.accent}">${topHTML}<div class="step">
+      <span class="pill">MEMORY GAME · ${i + 1} OF ${rounds.length}</span>
+      <h2>Which step goes with this picture?</h2>
+      <div class="qpic">${esc(q.picture)}</div>
+      <div class="choices">${opts.map(o => `<button class="choice" data-o="${esc(o)}">${esc(o)}</button>`).join('')}</div>
+      <p class="feedback" id="fb"></p></div></section>`));
+    let answered = false;
+    app.querySelectorAll('.choice').forEach(b => b.onclick = () => {
+      if (answered) return;
+      answered = true;
+      const ok = b.dataset.o === q.title;
+      b.classList.add(ok ? 'right' : 'wrong');
+      if (!ok) app.querySelector(`.choice[data-o="${CSS.escape(q.title)}"]`)?.classList.add('right');
+      document.getElementById('fb').textContent = ok ? 'Yes. That picture will stick.' : `Close. It was "${q.title}".`;
+      if (ok) { right++; award(5, 'remembered it'); }
+      setTimeout(() => { i++; i < rounds.length ? show() : lesson(r, l, 'done'); }, 1300);
+    });
+  };
+  show();
+}
+
+function done(r, l){
+  const first = !S.lessons[l.slug];
+  if (first) { S.lessons[l.slug] = 1; award(25, 'lesson complete'); }
+  const d = robotDone(r), n = r.lessons.length, badge = d === n;
+  const idx = r.lessons.indexOf(l), next = r.lessons[idx + 1];
+  app.innerHTML = '';
+  app.append($(`<section class="stage view done" style="--c:${r.accent}"><div class="step" style="align-items:center;justify-content:center">
+    <img src="art/${r.id}-talk.svg" alt="${esc(r.name)} cheering">
+    <h1>${badge ? `${esc(r.name)} badge earned.` : 'Lesson done.'}</h1>
+    <p class="lede" style="margin:0 auto">${badge ? `You finished every ${esc(r.name)} lesson. ${esc(r.catchphrase)}` : `${d} of ${n} ${esc(r.name)} lessons done. ${esc(r.catchphrase)}`}</p>
+    <span class="earned">${S.xp} XP total</span>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:10px">
+      ${next ? `<a class="btn" href="#/${r.id}/${next.slug}">Next lesson</a>` : ''}
+      <a class="btn soft" href="#/${r.id}">Back to ${esc(r.name)}</a><a class="btn soft" href="#/">All robots</a></div>
+  </div></section>`));
+}
+
+/* ---------- router ---------- */
+function route(){
+  if (!C) return;
+  window.scrollTo(0, 0);
+  const [rid, slug] = location.hash.replace(/^#\/?/, '').split('/');
+  const r = C.robots.find(x => x.id === rid || (rid === 'tempo' && x.id === 'postie'));
+  if (!r) return team();
+  const l = slug && r.lessons.find(x => x.slug === slug);
+  if (!l) return robotHome(r);
+  if (!open(r, l)) return robotHome(r);
+  lesson(r, l, 'watch');
+}
+addEventListener('hashchange', route);
+fetch('course-data.json').then(x => x.json()).then(d => { C = d; save(); route(); })
+  .catch(() => { app.innerHTML = '<p style="padding:40px 0">The course could not load. Refresh to try again.</p>'; });
+</script>
+</body>
+</html>

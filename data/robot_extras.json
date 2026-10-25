@@ -31,13 +31,17 @@
       ]
     },
     "officer-keys": {
-      "pitch": "Officer Keys keeps your accounts and secret keys safe, so the robots never do anything you didn't OK.",
+      "pitch": "Bouncer guards your accounts and secret keys, so nothing gets in or goes out without your OK.",
       "hire": [
         "You're about to connect AI to your email, payments or website",
         "You're not sure where your passwords and keys should live",
         "You want rules your assistant can never break, like never send without asking",
         "You want to sleep at night while robots work for you"
-      ]
+      ],
+      "name": "Bouncer",
+      "slug": "bouncer",
+      "intro": "Bouncer here. Nothing gets into your accounts without your OK. I guard your keys and passwords, and nothing gets sent unless you say so.",
+      "catchphrase": "Not on the list? Not getting in."
     },
     "ledger": {
       "pitch": "Ledger tracks your money, so you always know who still owes you.",

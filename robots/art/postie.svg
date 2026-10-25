@@ -24,5 +24,6 @@
   <circle cx="253.2" cy="253.60000000000002" r="7" fill="#ffffff"/>
   <circle cx="358.8" cy="253.60000000000002" r="7" fill="#ffffff"/>
   <path d="M262 319.6 Q300 349.6 338 319.6" fill="none" stroke="#4dabf7" stroke-width="10" stroke-linecap="round"/>
+  
   <path d="M160 260 Q160 90 300 90 Q440 90 440 260" fill="none" stroke="#2b3437" stroke-width="22" stroke-linecap="round"/><rect x="116" y="230" width="52" height="96" rx="24" fill="#4dabf7" stroke="#2b3437" stroke-width="6"/><rect x="432" y="230" width="52" height="96" rx="24" fill="#4dabf7" stroke="#2b3437" stroke-width="6"/>
 </svg>
