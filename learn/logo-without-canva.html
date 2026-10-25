@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Logo Without Canva</title>
+<link rel="icon" href="/brand/logo.png"><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12181c;--ink-2:#3d4a50;--ink-3:#7b8a90;--bg:#f4f7f7;--card:#fff;--line:#e1e8e8;--sea:#9ed9c7;--teal:#2f9a94}
+*{margin:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:Geist,system-ui,sans-serif;line-height:1.55}
+.wrap{max-width:760px;margin:0 auto;padding:28px 20px 72px}
+.top{display:flex;align-items:center;gap:12px}
+.top img{width:58px}
+.top b{font-weight:600;letter-spacing:-.02em;font-size:20px}
+.top span{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink-3)}
+.eb{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--teal);margin-top:40px}
+h1{font-size:44px;line-height:1.05;letter-spacing:-.03em;font-weight:600;margin-top:10px}
+.lead{font-size:20px;color:var(--ink-2);margin-top:16px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.meta span{font-size:14px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:6px 14px;color:var(--ink-2)}
+.hero{background:var(--card);border:1px solid var(--line);border-radius:26px;margin-top:28px;padding:28px;display:grid;place-items:center}
+.hero img{width:min(320px,80%)}
+h2{font-size:28px;letter-spacing:-.02em;font-weight:600;margin-top:48px}
+p{margin-top:12px;font-size:18px;color:var(--ink-2)}
+.step{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;margin-top:20px}
+.step .n{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink-3)}
+.step h3{font-size:22px;font-weight:600;letter-spacing:-.01em;margin-top:4px}
+.said{margin-top:14px;background:#1b2a30;color:#e6f4ef;border-radius:14px;padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:15px;line-height:1.5}
+.said:before{content:"> ";color:var(--sea)}
+.step img{width:100%;border-radius:14px;margin-top:14px;border:1px solid var(--line)}
+.why{margin-top:12px;font-size:17px;color:var(--ink-2)}
+.why b{color:var(--ink)}
+.copy{background:#e3f4ef;border-radius:22px;padding:24px;margin-top:20px}
+.copy ol{margin:12px 0 0 20px;font-size:18px;color:var(--ink-2)}
+.copy li{margin-top:8px}
+.copy code{font-family:'JetBrains Mono',monospace;font-size:15px;background:#fff;padding:2px 6px;border-radius:6px}
+.end{margin-top:48px;font-size:22px;font-weight:600;letter-spacing:-.01em}
+@media (max-width:480px){h1{font-size:34px}.lead{font-size:18px}h2{font-size:24px}}
+</style></head>
+<body><div class="wrap">
+  <div class="top"><a href="/" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit"><img src="/learn/img/final.png" alt="Kelty Sage logo"><b>Kelty Sage</b></a><span>lesson 01 · free</span></div>
+
+  <div class="eb">&gt; watch me build</div>
+  <h1>How I made my logo without opening Canva</h1>
+  <p class="lead">Three rounds of talking to Claude. No design app, no dragging boxes around. Here is every round, including the one I hated.</p>
+  <div class="meta"><span>Tool: Claude Code</span><span>Skill level: none</span><span>Cost: what you already pay for Claude</span></div>
+
+  <div class="hero"><img src="/learn/img/final.png" alt="Final logo: a silver laptop with cartoon terminal windows popping off the screen"></div>
+
+  <h2>The rounds</h2>
+  <p>I did not write a design brief. I just said what I wanted the way I would say it to a friend, looked at what came back, and said what was wrong.</p>
+
+  <div class="step">
+    <div class="n">round 1</div>
+    <h3>Cute, but too cartoon</h3>
+    <div class="said">I want to maybe create a logo of my Mac, but in that cute teal color, with the keys being blue and cartoon.</div>
+    <img src="/learn/img/round1.png" alt="Round one: cartoon teal laptop with a smiley face, shown with four name ideas">
+    <p class="why"><b>What I learned:</b> it did exactly what I said. That told me what I said was not what I wanted.</p>
+  </div>
+
+  <div class="step">
+    <div class="n">round 2</div>
+    <h3>Clean, but boring</h3>
+    <div class="said">I want a more simple, bougie laptop, similar to what you see in my profile picture on TikTok. No smiley face.</div>
+    <img src="/learn/img/round2.png" alt="Round two: plain silver laptop with seafoam keys and a black screen">
+    <p class="why"><b>What I learned:</b> it went and looked at my real profile picture and matched my actual laptop and keyboard cover. Pointing at something real beats describing it.</p>
+  </div>
+
+  <div class="step">
+    <div class="n">round 3</div>
+    <h3>Four options, pick one</h3>
+    <div class="said">Instead of the screen being black, do a cartoon version of all the terminals on the screen.</div>
+    <img src="/learn/img/round3.png" alt="Round three: four options, a tidy grid, stacked windows, windows popping out, and an app icon">
+    <p class="why"><b>What I learned:</b> asking for a few options at once is faster than going back and forth on one. I typed one letter: C.</p>
+  </div>
+
+  <h2>Why the terminals</h2>
+  <p>My real screen is six terminal windows open at once. It looks complicated. It is the opposite. Those windows are doing the marketing so I do not have to. Complicated on my screen, simple on yours.</p>
+
+  <h2>Copy this</h2>
+  <div class="copy">
+    <ol>
+      <li>Open Claude Code on your computer.</li>
+      <li>Say what you want in plain words. Mention something real it can look at, like your website or your profile picture.</li>
+      <li>When you do not love it, say why in one sentence. "Too cartoon." "No face." That is enough.</li>
+      <li>Ask for three or four options at once, then pick a letter.</li>
+      <li>Ask it to save the logo as <code>logo.svg</code> and <code>logo.png</code> so you can use it anywhere.</li>
+    </ol>
+  </div>
+
+  <p class="end">No design app. Just one small window.</p>
+</div></body></html>

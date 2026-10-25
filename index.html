@@ -1,592 +1,436 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kelty Sage — AI Coach for Business Owners</title>
-  <meta name="description" content="I teach business owners to use AI. Not for them — with them. You leave every session knowing exactly what we built and how to build it again." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    /* ── RESET ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kelty Sage, AI Business Coach</title>
+<meta name="description" content="I run a dog training company. I never wanted to be a marketer, a bookkeeper or a web designer, so I taught AI to do those jobs. Watch how, then copy it.">
+<meta property="og:title" content="Kelty Sage, AI Business Coach">
+<meta property="og:description" content="I type what I need in plain English. AI does it. Here is exactly how.">
+<meta property="og:image" content="https://www.keltysage.com/brand/logo.png">
+<link rel="icon" href="/brand/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#12181c; --ink-2:#3d4a50; --ink-3:#7b8a90;
+  --bg:#f4f7f7; --card:#ffffff; --line:#e1e8e8;
+  --sea:#9ed9c7; --sea-soft:#e3f4ef; --teal:#2f9a94;
+  --green:#b9f09c; --pink:#ff9fd6; --blue:#9ccff8; --violet:#dcbcf8; --tan:#f1e4c3;
+  --term:#1b2a30;
+  --sans:'Geist',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  --r:24px; --max:1140px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.eb{font-family:var(--mono);font-size:14px;color:var(--teal)}
+h1,h2,h3{font-weight:600;letter-spacing:-.03em;line-height:1.05}
+.hl-g{background:linear-gradient(transparent 60%,var(--green) 60%,var(--green) 92%,transparent 92%)}
+.hl-p{background:linear-gradient(transparent 60%,var(--pink) 60%,var(--pink) 92%,transparent 92%)}
+.hl-b{background:linear-gradient(transparent 60%,var(--blue) 60%,var(--blue) 92%,transparent 92%)}
 
-    :root {
-      --cream:        #faf7f2;
-      --cream-2:      #f2ede4;
-      --white:        #ffffff;
-      --ink:          #141210;
-      --ink-2:        #4a4540;
-      --ink-3:        #9c9590;
-      --border:       #e8e0d4;
-      --border-2:     #d4cbbf;
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:rgba(244,247,247,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav .wrap{display:flex;align-items:center;gap:12px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:19px;letter-spacing:-.02em}
+.brand img{width:44px}
+.links{margin-left:auto;display:flex;align-items:center;gap:26px}
+.links a{text-decoration:none;font-size:15px;color:var(--ink-2)}
+.links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;text-decoration:none;
+  font-family:var(--sans);font-weight:600;font-size:16px;border-radius:999px;padding:14px 24px;transition:transform .15s,background .15s}
+.btn-ink,.links a.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{background:#26343a;transform:translateY(-1px)}
+.btn-line{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.nav .btn{padding:10px 18px;font-size:14px}
 
-      --pink:         #e8368c;
-      --pink-mid:     #d42d82;
-      --pink-light:   #fce8f3;
-      --pink-glow:    rgba(232,54,140,0.20);
+/* hero */
+.hero{padding:48px 0 32px;position:relative}
+.hero:before{content:"";position:absolute;width:620px;height:620px;border-radius:50%;left:-260px;top:-200px;background:radial-gradient(circle,rgba(185,240,156,.35),transparent 65%);pointer-events:none}
+.hero:after{content:"";position:absolute;width:560px;height:560px;border-radius:50%;right:-200px;top:120px;background:radial-gradient(circle,rgba(255,159,214,.25),transparent 65%);pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;position:relative;z-index:1}
+.kick{font-size:24px;font-weight:500;color:var(--ink-2);margin-top:14px;letter-spacing:-.01em}
+.hero h1{font-size:58px;margin-top:8px}
+.hero .lead{font-size:20px;color:var(--ink-2);margin-top:20px;max-width:560px}
+.signup{display:flex;gap:10px;margin-top:28px;max-width:520px}
+.signup input{flex:1;min-width:0;font:inherit;font-size:16px;padding:14px 20px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.signup input:focus{outline:2px solid var(--sea);border-color:var(--teal)}
+.fine{font-size:14px;color:var(--ink-3);margin-top:12px}
+.photo{position:relative;padding:0}
+.photo .frame{border-radius:32px;overflow:hidden;box-shadow:0 24px 60px rgba(18,24,28,.16);border:6px solid #fff}
+.photo .frame img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 30%}
+.mint{border-radius:14px;overflow:hidden;background:#effbf7;box-shadow:0 30px 70px rgba(18,24,28,.18),0 0 0 1px rgba(23,59,53,.10);position:relative}
+.mbar{display:flex;align-items:center;gap:8px;padding:11px 14px;background:linear-gradient(#d3f1e8,#c2eadf);border-bottom:1px solid #a9dccf}
+.mbar i{width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.18)}
+.mbar span{flex:1;text-align:center;font-family:var(--sans);font-size:13px;font-weight:500;color:#3c665e;margin-right:52px}
+.mbody{height:440px;overflow:hidden;padding:14px 16px 18px;font-family:var(--mono);font-size:13.5px;line-height:1.6;color:#173b35}
+.feed{display:flex;flex-direction:column;gap:6px}
+.ln{white-space:pre-wrap;word-break:break-word}
+.ps{color:#2f9a94}.ps b{font-weight:500;color:#e2559b}
+.work{color:#5f8d84;display:flex;align-items:center;gap:8px}
+.spin{display:inline-block;width:1.1em;color:#2f9a94}
+.bot{display:flex;gap:10px;align-items:flex-start;margin:2px 0 8px;opacity:0;transform:translateY(6px);transition:opacity .45s ease,transform .45s ease}
+.bot.in{opacity:1;transform:none}
+.bot svg{flex:none;width:40px;height:40px;margin-top:-2px}
+.bot .out{background:#fff;border:1px solid #cdeee4;border-radius:12px;padding:8px 12px;box-shadow:0 4px 14px rgba(23,59,53,.06);flex:1;min-width:0}
+.bot .who{font-size:11px;color:#2f9a94;letter-spacing:.04em}
+.row{display:flex;gap:8px;align-items:baseline;opacity:0;transition:opacity .35s ease}
+.row.in{opacity:1}
+.pill{flex:none;font-size:11px;font-weight:500;padding:0 7px;border-radius:6px;color:#173b35}
+.p-done{background:#b9f09c}.p-found{background:#9ccff8}.p-ask{background:#ff9fd6}.p-wait{background:#f1e4c3}
+.caret{display:inline-block;width:8px;height:16px;background:#2f9a94;vertical-align:-3px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.replay{position:absolute;right:12px;bottom:12px;font-family:var(--mono);font-size:12px;background:#fff;color:#2f9a94;border:1px solid #bfe6dc;border-radius:999px;padding:5px 12px;cursor:pointer}
+.replay:hover{background:#e3f4ef}
+@media (max-width:600px){.mbody{height:400px;font-size:12.5px;padding:12px}}
+.chip{position:relative;display:flex;align-items:center;gap:8px;background:#fff;border-radius:999px;padding:8px 14px 8px 8px;
+  box-shadow:0 10px 26px rgba(18,24,28,.14);font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap}
+.chip i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--bg)}
+.chip i img{width:18px;height:18px;object-fit:contain}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:18px}
 
-      --teal:         #1db8aa;
-      --teal-light:   #e3f6f4;
+/* sections */
+section{padding:72px 0}
+.sec-h{font-size:46px;margin-top:10px;max-width:760px}
+.sec-p{font-size:19px;color:var(--ink-2);margin-top:14px;max-width:640px}
 
-      --violet:       #7c4ddb;
-      --violet-light: #ede8ff;
+/* stack */
+.stack{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.tool{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px 20px;text-decoration:none;
+  transition:transform .2s,box-shadow .2s,border-color .2s}
+.tool:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(18,24,28,.09);border-color:#cfdcdc}
+.tool .ico{flex:none;width:58px;height:58px;border-radius:16px;display:grid;place-items:center}
+.tool .ico img{width:30px;height:30px;object-fit:contain}
+.tool .ico b{font-weight:700;font-size:17px;letter-spacing:-.02em}
+.tool h3{font-size:19px;letter-spacing:-.02em;line-height:1.2}
+.tool p{font-size:15px;color:var(--ink-2);margin-top:2px;line-height:1.35}
+.tool .go{margin-left:auto;font-size:18px;color:var(--ink-3);transition:color .2s}
+.tool:hover .go{color:var(--ink)}
 
-      --serif: 'DM Serif Display', Georgia, serif;
-      --sans:  'Inter', system-ui, sans-serif;
-      --max:   1100px;
-      --radius: 18px;
+/* how */
+.how{display:grid;grid-template-columns:1.15fr .85fr;gap:32px;margin-top:32px;align-items:center}
+.term{background:var(--term);border-radius:24px;overflow:hidden;box-shadow:0 24px 60px rgba(18,24,28,.2)}
+.term .bar{display:flex;align-items:center;gap:7px;padding:14px 16px;background:#24363e}
+.term .bar i{width:12px;height:12px;border-radius:50%}
+.term .bar span{margin-left:10px;font-family:var(--mono);font-size:13px;color:#8fa6ad}
+.term pre{font-family:var(--mono);font-size:15px;line-height:1.75;color:#d8e8e3;padding:20px 22px 24px;white-space:pre-wrap}
+.term .you{color:#fff}
+.term .you:before{content:"> ";color:var(--sea)}
+.term .ok{color:#9aa9ad}
+.term .ok b{font-weight:500;color:var(--green)}
+.term .tg{display:inline-block;font-size:12px;padding:0 8px;border-radius:6px;margin-left:6px;color:var(--term);vertical-align:1px}
+.steps{display:flex;flex-direction:column;gap:14px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px}
+.step .n{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-family:var(--mono);font-size:15px}
+.step h3{font-size:22px;margin-top:12px;letter-spacing:-.02em}
+.step p{font-size:16px;color:var(--ink-2);margin-top:4px}
 
-      --shadow-sm: 0 2px 12px rgba(20,18,16,0.06);
-      --shadow-md: 0 8px 32px rgba(20,18,16,0.10);
-      --shadow-lg: 0 20px 60px rgba(20,18,16,0.13);
-    }
+/* lessons */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+.lesson{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;text-decoration:none;transition:transform .2s,box-shadow .2s}
+a.lesson:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(18,24,28,.08)}
+.lesson .n{font-family:var(--mono);font-size:13px;display:flex;justify-content:space-between}
+.lesson .n b{font-weight:500;color:var(--teal)}
+.lesson .n i{font-style:normal;color:var(--ink-3)}
+.lesson h3{font-size:23px;letter-spacing:-.02em;margin-top:12px;line-height:1.15}
+.lesson p{font-size:16px;color:var(--ink-2);margin-top:8px}
+.lesson .thumb{margin-top:auto;padding-top:18px}
+.lesson .thumb div{height:120px;border-radius:14px;display:grid;place-items:center;font-family:var(--mono);font-size:15px;color:rgba(18,24,28,.6)}
+.lesson .thumb img{height:120px;width:100%;object-fit:contain;background:var(--bg);border-radius:14px;padding:10px}
 
-    body {
-      font-family: var(--sans);
-      color: var(--ink);
-      background: var(--cream);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+/* pricing */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column}
+.plan.main{border:2px solid var(--ink);position:relative}
+.plan.main .flag{position:absolute;top:-14px;left:24px;background:var(--ink);color:#fff;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px}
+.plan h3{font-size:26px}
+.plan .price{font-size:15px;color:var(--ink-3);margin-top:6px;font-family:var(--mono)}
+.plan ul{list-style:none;margin:20px 0 24px}
+.plan li{font-size:16px;color:var(--ink-2);padding:8px 0 8px 28px;position:relative;border-top:1px solid var(--line)}
+.plan li:before{content:">";position:absolute;left:4px;font-family:var(--mono);color:var(--teal)}
+.plan .btn{margin-top:auto}
 
-    img { display: block; max-width: 100%; }
-    a   { color: inherit; text-decoration: none; }
+/* built */
+.built{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+.app{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;text-decoration:none;display:flex;flex-direction:column;border-top:6px solid var(--c)}
+.app .k{font-family:var(--mono);font-size:13px;color:var(--teal)}
+.app h3{font-size:24px;margin-top:8px}
+.app p{font-size:16px;color:var(--ink-2);margin-top:8px;flex:1}
+.app span{margin-top:16px;font-weight:600;font-size:15px}
 
-    .container {
-      width: min(100% - 48px, var(--max));
-      margin: 0 auto;
-    }
+footer{padding:40px 0 56px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+footer p{font-size:14px;color:var(--ink-3);width:100%}
+footer .links{gap:20px}
 
-    /* ── SCROLL REVEAL ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.65s cubic-bezier(0.25,0.46,0.45,0.94),
-                  transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);
-    }
-    .reveal.visible          { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1          { transition-delay: 0.10s; }
-    .reveal-delay-2          { transition-delay: 0.20s; }
-    .reveal-delay-3          { transition-delay: 0.30s; }
-    .reveal-delay-4          { transition-delay: 0.40s; }
+/* soft fade and small rise on scroll, nothing else */
+.rise{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.rise.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rise{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
-    /* ── BUTTONS ── */
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 26px; border-radius: 999px;
-      background: var(--ink); color: var(--white);
-      font-family: var(--sans); font-size: 0.9rem; font-weight: 500;
-      letter-spacing: -0.01em; border: none; cursor: pointer;
-      white-space: nowrap;
-      box-shadow: 0 2px 12px rgba(20,18,16,0.14);
-      transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
-    }
-    .btn-primary:hover {
-      background: #2a2826;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 24px rgba(20,18,16,0.18);
-    }
-    .btn-pink {
-      background: var(--pink);
-      box-shadow: 0 4px 20px var(--pink-glow);
-    }
-    .btn-pink:hover {
-      background: var(--pink-mid);
-      box-shadow: 0 8px 30px rgba(232,54,140,0.28);
-    }
-
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 12px 24px; border-radius: 999px;
-      background: transparent; color: var(--ink-2);
-      font-family: var(--sans); font-size: 0.9rem; font-weight: 400;
-      border: 1.5px solid var(--border-2); cursor: pointer;
-      white-space: nowrap;
-      transition: border-color 0.16s, color 0.16s, background 0.16s;
-    }
-    .btn-ghost:hover {
-      border-color: var(--ink-3);
-      color: var(--ink);
-      background: rgba(20,18,16,0.03);
-    }
-
-    /* ── NAV ── */
-    .nav-wrap {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(250,247,242,0.88);
-      backdrop-filter: blur(16px) saturate(120%);
-      -webkit-backdrop-filter: blur(16px) saturate(120%);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav {
-      display: flex; align-items: center; justify-content: space-between;
-      height: 64px; gap: 24px;
-    }
-    .nav-brand {
-      font-family: var(--serif); font-style: italic;
-      font-size: 1.2rem; color: var(--ink);
-      letter-spacing: -0.01em; flex-shrink: 0;
-    }
-    .nav-right { display: flex; align-items: center; gap: 32px; }
-    .nav-link {
-      font-size: 0.875rem; font-weight: 400; color: var(--ink-2);
-      transition: color 0.14s;
-    }
-    .nav-link:hover { color: var(--ink); }
-    .nav-cta {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 9px 20px; border-radius: 999px;
-      background: var(--ink); color: var(--white);
-      font-size: 0.85rem; font-weight: 500; white-space: nowrap;
-      transition: background 0.15s, transform 0.15s;
-    }
-    .nav-cta:hover { background: #2a2826; transform: translateY(-1px); }
-
-    /* ── HERO ── */
-    .hero { padding: 88px 0 96px; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 80px; align-items: center;
-    }
-
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 0.74rem; font-weight: 600;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--pink); margin-bottom: 22px;
-    }
-    .hero-eyebrow::before {
-      content: ''; display: block;
-      width: 28px; height: 1.5px;
-      background: currentColor; flex-shrink: 0;
-    }
-
-    .hero-h1 {
-      font-family: var(--serif);
-      font-size: clamp(2.8rem, 4.8vw, 4.2rem);
-      font-weight: 400; line-height: 1.05;
-      letter-spacing: -0.025em; color: var(--ink);
-      margin-bottom: 22px;
-    }
-    .hero-h1 em { font-style: italic; color: var(--ink-2); }
-
-    .hero-sub {
-      font-size: 1.05rem; font-weight: 300; line-height: 1.72;
-      color: var(--ink-2); max-width: 500px; margin-bottom: 38px;
-    }
-
-    .hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-
-    .hero-photo-col { position: relative; }
-    .hero-photo {
-      width: 100%; aspect-ratio: 4 / 5;
-      object-fit: cover; object-position: center top;
-      border-radius: 24px; display: block;
-      box-shadow: var(--shadow-lg);
-    }
-    .photo-badge {
-      position: absolute; bottom: 28px; left: -22px;
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: 14px; padding: 14px 18px;
-      box-shadow: var(--shadow-md); min-width: 180px;
-    }
-    .photo-badge-title {
-      font-size: 0.8rem; font-weight: 600; color: var(--ink); margin-bottom: 3px;
-    }
-    .photo-badge-sub {
-      font-size: 0.72rem; font-weight: 300; color: var(--ink-3); line-height: 1.4;
-    }
-    .photo-pulse {
-      position: absolute; top: 22px; right: -10px;
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--pink);
-      box-shadow: 0 0 0 4px var(--pink-light);
-      animation: pulse 2.6s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 0 4px var(--pink-light); }
-      50%       { box-shadow: 0 0 0 9px rgba(232,54,140,0.07); }
-    }
-
-    /* ── MARQUEE STRIP ── */
-    .strip {
-      overflow: hidden;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--cream-2);
-      padding: 17px 0;
-    }
-    .strip-track {
-      display: flex; width: max-content;
-      animation: marquee 26s linear infinite;
-    }
-    .strip-track:hover { animation-play-state: paused; }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .strip-item {
-      display: inline-flex; align-items: center; gap: 9px;
-      padding: 0 44px;
-      font-size: 0.78rem; font-weight: 500;
-      color: var(--ink-2); letter-spacing: 0.03em; white-space: nowrap;
-    }
-    .strip-em {
-      font-family: var(--serif); font-style: italic;
-      color: var(--pink); font-size: 1.0rem;
-    }
-
-    /* ── SECTION SHARED ── */
-    .section       { padding: 96px 0; }
-    .section-white { background: var(--white); }
-
-    .sec-label {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--ink-3); margin-bottom: 14px;
-    }
-    .sec-label::before {
-      content: ''; display: block;
-      width: 16px; height: 1px;
-      background: currentColor; flex-shrink: 0;
-    }
-    .sec-h2 {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 3.4vw, 2.8rem);
-      font-weight: 400; line-height: 1.1;
-      letter-spacing: -0.02em; color: var(--ink);
-      margin-bottom: 14px;
-    }
-    .sec-sub {
-      font-size: 1rem; font-weight: 300; line-height: 1.68;
-      color: var(--ink-2); max-width: 560px;
-      margin-bottom: 52px;
-    }
-
-    /* ── PRODUCTS ── */
-    .products-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-    }
-    .product-card {
-      background: var(--cream); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 28px 26px 24px;
-      display: flex; flex-direction: column;
-      transition: transform 0.22s cubic-bezier(0.25,0.46,0.45,0.94),
-                  box-shadow 0.22s;
-    }
-    .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-    .product-cat {
-      font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.13em; text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .product-name {
-      font-family: var(--serif); font-style: italic;
-      font-size: 1.45rem; line-height: 1.15;
-      color: var(--ink); margin-bottom: 12px;
-    }
-    .product-rule { height: 1px; background: var(--border); margin-bottom: 14px; }
-    .product-desc {
-      font-size: 0.875rem; font-weight: 300; line-height: 1.72;
-      color: var(--ink-2); flex: 1; margin-bottom: 22px;
-    }
-    .product-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.78rem; font-weight: 600;
-      padding: 8px 16px; border-radius: 999px;
-      align-self: flex-start;
-      transition: opacity 0.14s, transform 0.14s;
-    }
-    .product-link:hover { opacity: 0.78; transform: translateX(2px); }
-
-    .card-teal   .product-cat  { color: var(--teal); }
-    .card-teal   .product-link { background: var(--teal-light); color: var(--teal); }
-    .card-pink   .product-cat  { color: var(--pink); }
-    .card-pink   .product-link { background: var(--pink-light); color: var(--pink); }
-    .card-violet .product-cat  { color: var(--violet); }
-    .card-violet .product-link { background: var(--violet-light); color: var(--violet); }
-
-    /* ── BETA ── */
-    .beta-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: start;
-    }
-    .beta-pill {
-      display: inline-block; margin-bottom: 18px;
-      padding: 5px 14px; border-radius: 999px;
-      background: var(--pink-light); color: var(--pink);
-      font-size: 0.7rem; font-weight: 700;
-      letter-spacing: 0.09em; text-transform: uppercase;
-    }
-    .beta-list {
-      list-style: none; display: flex; flex-direction: column;
-      gap: 14px; margin: 30px 0 36px;
-    }
-    .beta-list li {
-      display: flex; align-items: flex-start; gap: 12px;
-      font-size: 0.95rem; font-weight: 300;
-      color: var(--ink-2); line-height: 1.55;
-    }
-    .check {
-      width: 20px; height: 20px; border-radius: 50%;
-      background: var(--pink); color: #fff;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; margin-top: 2px;
-      font-size: 0.58rem; font-weight: 700;
-    }
-
-    /* ── BOOK ── */
-    .book-card {
-      background: var(--ink); border-radius: 24px;
-      padding: 72px 60px; text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .book-card::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 50% -10%, rgba(232,54,140,0.14) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .book-card .sec-h2 { color: var(--white); }
-    .book-card .sec-sub { color: rgba(255,255,255,0.50); margin: 0 auto 36px; }
-    .book-note {
-      margin-top: 18px;
-      font-size: 0.76rem; font-weight: 300;
-      color: rgba(255,255,255,0.28);
-    }
-
-    /* ── FOOTER ── */
-    .footer { padding: 32px 0; border-top: 1px solid var(--border); }
-    .footer-inner {
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 16px; flex-wrap: wrap;
-    }
-    .footer-brand {
-      font-family: var(--serif); font-style: italic;
-      font-size: 1.05rem; color: var(--ink);
-    }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-link {
-      font-size: 0.8rem; font-weight: 300; color: var(--ink-3);
-      transition: color 0.14s;
-    }
-    .footer-link:hover { color: var(--ink); }
-    .footer-copy { font-size: 0.76rem; font-weight: 300; color: var(--ink-3); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 960px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
-      .hero-photo-col { order: -1; max-width: 500px; }
-      .hero-photo { aspect-ratio: 16 / 10; }
-      .photo-badge { bottom: 16px; left: 16px; }
-      .photo-pulse { top: 16px; right: 8px; }
-      .products-grid { grid-template-columns: 1fr; }
-      .beta-grid { grid-template-columns: 1fr; gap: 44px; }
-      .book-card { padding: 52px 32px; }
-      .nav-right .nav-link { display: none; }
-    }
-
-    @media (max-width: 600px) {
-      .hero { padding: 52px 0 68px; }
-      .container { width: calc(100% - 32px); }
-      .section { padding: 68px 0; }
-      .hero-ctas { flex-direction: column; align-items: flex-start; }
-      .book-card { padding: 44px 24px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        transition-duration: 0.001ms !important;
-        animation-duration: 0.001ms !important;
-      }
-      .reveal { opacity: 1; transform: none; }
-    }
-  </style>
+@media (max-width:960px){
+  .hero .wrap,.how{grid-template-columns:1fr}
+  .stack{grid-template-columns:1fr 1fr}
+  .grid3,.plans,.built{grid-template-columns:1fr}
+  .hero h1{font-size:44px}
+  .sec-h{font-size:34px}
+  .photo{max-width:440px;margin:0 auto;width:100%}
+}
+@media (max-width:600px){
+  .links a:not(.btn){display:none}
+  .hero{padding-top:28px}
+  .kick{font-size:20px}
+  .hero h1{font-size:38px}
+  .hero .lead{font-size:18px}
+  .signup{flex-direction:column}
+  .stack{grid-template-columns:1fr}
+  section{padding:52px 0}
+  .term pre{font-size:13px;padding:16px}
+}
+</style>
 </head>
 <body>
 
-  <!-- ── NAV ── -->
-  <header class="nav-wrap">
-    <nav class="nav container" aria-label="Primary navigation">
-      <a class="nav-brand" href="/">Kelty Sage</a>
-      <div class="nav-right">
-        <a class="nav-link" href="#projects">Projects</a>
-        <a class="nav-link" href="#beta">Beta</a>
-        <a class="nav-cta" href="#book">Book a Free Session</a>
-      </div>
-    </nav>
-  </header>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage</a>
+  <nav class="links">
+    <a href="#stack">My tools</a>
+    <a href="#learn">Lessons</a>
+    <a href="#join">Pricing</a>
+    <a class="btn btn-ink" href="#top" onclick="document.querySelector('.signup input').focus();return false">Join free</a>
+  </nav>
+</div></header>
 
-  <!-- ── HERO ── -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-grid">
-
-        <div>
-          <p class="hero-eyebrow reveal">AI Coach for Business Owners</p>
-          <h1 class="hero-h1 reveal reveal-delay-1">
-            The AI coach who<br><em>won't do it for you.</em>
-          </h1>
-          <p class="hero-sub reveal reveal-delay-2">
-            I teach business owners to use AI. Not for them&nbsp;&mdash;&nbsp;with them.
-            You leave every session knowing exactly what we built and how to build it again.
-          </p>
-          <div class="hero-ctas reveal reveal-delay-3">
-            <a class="btn-primary btn-pink" href="#book">
-              Book a Free Session
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-            <a class="btn-ghost" href="#projects">See My Projects</a>
-          </div>
-        </div>
-
-        <div class="hero-photo-col reveal reveal-delay-2">
-          <img class="hero-photo" src="kelty.jpg" alt="Kelty Sage, AI Coach for Business Owners" />
-          <div class="photo-badge">
-            <p class="photo-badge-title">Free intro session</p>
-            <p class="photo-badge-sub">No credit card. Just show up.</p>
-          </div>
-          <div class="photo-pulse" aria-hidden="true"></div>
-        </div>
-
-      </div>
+<main id="top">
+<section class="hero"><div class="wrap">
+  <div>
+    <div class="eb">&gt; hi, I'm Kelty</div>
+    <p class="kick">I run a dog training company.</p>
+    <h1>I never wanted to be a <span class="hl-g">marketer</span>, a <span class="hl-p">bookkeeper</span> or a <span class="hl-b">web designer.</span></h1>
+    <p class="lead">But running a business means being all three. So I taught AI to do those jobs. Now I type what I need in plain English, and it gets done. I'll show you exactly how.</p>
+    <form class="signup" onsubmit="return joined(event)">
+      <input type="email" required placeholder="Your email" aria-label="Your email">
+      <button class="btn btn-ink" type="submit">Get the weekly build</button>
+    </form>
+    <p class="fine" id="fine">One email a week: what I built, how, and the file so you can use it. Free. Opens your email app.</p>
+  </div>
+  <div class="photo">
+    <div class="mint" id="mint" role="img" aria-label="A mint green Mac terminal where Kelty types requests and a cute AI robot answers each one">
+      <div class="mbar"><i style="background:#ff6159"></i><i style="background:#ffbd2e"></i><i style="background:#28c840"></i><span>kelty: zsh, 80x24</span></div>
+      <div class="mbody" id="mbody"><div class="feed" id="feed"></div></div>
+      <button class="replay" id="replay" type="button" hidden>replay</button>
     </div>
-  </section>
-
-  <!-- ── MARQUEE STRIP ── -->
-  <div class="strip" aria-hidden="true">
-    <div class="strip-track">
-      <span class="strip-item">AI That Teaches <span class="strip-em">—</span> You learn by doing.</span>
-      <span class="strip-item">Real Workflows <span class="strip-em">—</span> No fluff. Just systems.</span>
-      <span class="strip-item">Built With You <span class="strip-em">—</span> Feedback drives everything.</span>
-      <span class="strip-item">Sustainable Growth <span class="strip-em">—</span> For your business and life.</span>
-      <span class="strip-item">AI That Teaches <span class="strip-em">—</span> You learn by doing.</span>
-      <span class="strip-item">Real Workflows <span class="strip-em">—</span> No fluff. Just systems.</span>
-      <span class="strip-item">Built With You <span class="strip-em">—</span> Feedback drives everything.</span>
-      <span class="strip-item">Sustainable Growth <span class="strip-em">—</span> For your business and life.</span>
+    <div class="chips"><a class="chip" href="https://claude.com/product/claude-code" target="_blank" rel="noopener"><i><img src="/brand/tools/claude.svg" alt=""></i>Claude Code</a>
+    <a class="chip" href="https://stripe.com" target="_blank" rel="noopener"><i><img src="/brand/tools/stripe.svg" alt=""></i>Stripe</a>
+    <a class="chip" href="https://www.metricool.com" target="_blank" rel="noopener"><i><img src="/brand/tools/metricool.png" alt=""></i>Metricool</a>
+    <a class="chip" href="https://quickbooks.intuit.com" target="_blank" rel="noopener"><i><img src="/brand/tools/quickbooks.svg" alt=""></i>QuickBooks</a>
+    <a class="chip" href="https://higgsfield.ai" target="_blank" rel="noopener"><i><img src="/brand/tools/higgsfield.png" alt=""></i>Higgsfield</a>
+      <a class="chip" href="https://elevenlabs.io" target="_blank" rel="noopener"><i><img src="/brand/tools/elevenlabs.svg" alt=""></i>ElevenLabs</a>
     </div>
   </div>
+</div></section>
 
-  <!-- ── PROJECTS ── -->
-  <section class="section section-white" id="projects">
-    <div class="container">
-      <p class="sec-label reveal">What I'm Building</p>
-      <h2 class="sec-h2 reveal reveal-delay-1">Current projects</h2>
-      <p class="sec-sub reveal reveal-delay-2">A look at what I'm building right now&nbsp;&mdash; what each one does, who it's for, and what you learn from using it.</p>
+<section id="stack"><div class="wrap">
+  <div class="eb rise">&gt; my tools</div>
+  <h2 class="sec-h rise">The tools I run my business on</h2>
+  <p class="sec-p rise">I don't open most of these anymore. AI works in them for me. Tap any one to check it out.</p>
+  <div class="stack">
+    <a class="tool rise" href="https://claude.com/product/claude-code" target="_blank" rel="noopener"><div class="ico" style="background:#fbe9e2"><img src="/brand/tools/claude.svg" alt=""></div><div><h3>Claude Code</h3><p>The brain. It builds and runs everything.</p></div><span class="go">&rarr;</span></a>
+    <a class="tool rise" href="https://openai.com" target="_blank" rel="noopener"><div class="ico" style="background:#ececec"><img src="/brand/tools/openai.svg" alt=""></div><div><h3>OpenAI</h3><p>Images and second opinions.</p></div><span class="go">&rarr;</span></a>
+    <a class="tool rise" href="https://www.metricool.com" target="_blank" rel="noopener"><div class="ico" style="background:#e4f0ff"><img src="/brand/tools/metricool.png" alt=""></div><div><h3>Metricool</h3><p>Schedules my posts everywhere.</p></div><span class="go">&rarr;</span></a>
+    <a class="tool rise" href="https://higgsfield.ai" target="_blank" rel="noopener"><div class="ico" style="background:#ecf8e4"><img src="/brand/tools/higgsfield.png" alt=""></div><div><h3>Higgsfield</h3><p>AI video and images.</p></div><span class="go">&rarr;</span></a>
+    <a class="tool rise" href="https://github.com" target="_blank" rel="noopener"><div class="ico" style="background:#eceef0"><img src="/brand/tools/github.svg" alt=""></div><div><h3>GitHub</h3><p>Where all my code lives.</p></div><span class="go">&rarr;</span></a>
+    <a class="tool rise" href="https://www.gohighlevel.com" target="_blank" rel="noopener"><div class="ico" style="background:#e3ecff"><b style="color:#155eef">GHL</b></div><div><h3>GHL</h3><p>Clients, bookings and texts.</p></div><span class="go">&rarr;</span></a>
+    <a class="tool rise" href="https://quickbooks.intuit.com" target="_blank" rel="noopener"><div class="ico" style="background:#e5f6e2"><img src="/brand/tools/quickbooks.svg" alt=""></div><div><h3>QuickBooks</h3><p>The books.</p></div><span class="go">&rarr;</span></a>
+    <a class="tool rise" href="https://stripe.com" target="_blank" rel="noopener"><div class="ico" style="background:#ecebff"><img src="/brand/tools/stripe.svg" alt=""></div><div><h3>Stripe</h3><p>Payments and payment plans.</p></div><span class="go">&rarr;</span></a>
+    <a class="tool rise" href="https://www.cloudflare.com" target="_blank" rel="noopener"><div class="ico" style="background:#feeedf"><img src="/brand/tools/cloudflare.svg" alt=""></div><div><h3>Cloudflare</h3><p>Hosts my websites.</p></div><span class="go">&rarr;</span></a>
+    <a class="tool rise" href="https://elevenlabs.io" target="_blank" rel="noopener"><div class="ico" style="background:#efefef"><img src="/brand/tools/elevenlabs.svg" alt=""></div><div><h3>ElevenLabs</h3><p>Voiceovers and music for my videos.</p></div><span class="go">&rarr;</span></a>
+    <a class="tool rise" href="https://skills.sh" target="_blank" rel="noopener"><div class="ico" style="background:#eef0ff"><img src="/brand/tools/skills.png" alt=""></div><div><h3>skills.sh</h3><p>Where I find new skills to teach Claude.</p></div><span class="go">&rarr;</span></a>
+    <a class="tool rise" href="#join"><div class="ico" style="background:var(--term)"><b style="color:var(--sea);font-family:var(--mono)">&gt;_</b></div><div><h3>My own skills</h3><p>The ones I build myself. Members get them.</p></div><span class="go">&rarr;</span></a>
+  </div>
+</div></section>
 
-      <div class="products-grid">
-        <div class="product-card card-teal reveal reveal-delay-1">
-          <p class="product-cat">AI Courses</p>
-          <p class="product-name">Sage Systems AI</p>
-          <div class="product-rule"></div>
-          <p class="product-desc">Answer a few questions about your business and get a full AI fluency course&nbsp;&mdash; custom prompts, tool picks, flashcards, a business brain&nbsp;&mdash; in about 60 seconds. Then you actually learn why every piece works.</p>
-          <a class="product-link" href="https://sage-systems-ai.netlify.app" target="_blank" rel="noopener">
-            Open Sage Systems AI
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
+<section><div class="wrap">
+  <div class="eb rise">&gt; how it works</div>
+  <h2 class="sec-h rise">I type it. <span class="hl-g">AI does it.</span></h2>
+  <p class="sec-p rise">No more ten tabs open. I write what I want like I'm texting an assistant, and it works across all my tools.</p>
+  <div class="how">
+    <div class="term rise">
+      <div class="bar"><i style="background:#ff6159"></i><i style="background:#ffbd2e"></i><i style="background:#28c840"></i><span>what my screen looks like</span></div>
+<pre><span class="you">make a post for Saturday's pack walk and schedule it</span>
+<span class="ok"><b>done</b>  made the graphic in my brand colors</span>
+<span class="ok"><b>done</b>  wrote the caption in my voice</span>
+<span class="ok"><b>done</b>  scheduled it<span class="tg" style="background:var(--blue)">Metricool</span></span>
 
-        <div class="product-card card-pink reveal reveal-delay-2">
-          <p class="product-cat">Dog Training</p>
-          <p class="product-name">FetchNote</p>
-          <div class="product-rule"></div>
-          <p class="product-desc">Dog trainers spend 20 minutes typing homework after every session. FetchNote turns 2 minutes of voice notes into a polished, branded PDF. No typing. No forgetting what you said.</p>
-          <a class="product-link" href="https://fetchnote.app" target="_blank" rel="noopener">
-            Open FetchNote
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-
-        <div class="product-card card-violet reveal reveal-delay-3">
-          <p class="product-cat">Cycle Planning</p>
-          <p class="product-name">CycleCEO</p>
-          <div class="product-rule"></div>
-          <p class="product-desc">Your energy isn't random. CycleCEO maps your cycle phases to your business schedule so you stop planning launches for the week you crash. AI coach included.</p>
-          <a class="product-link" href="https://cycleceo.app" target="_blank" rel="noopener">
-            Open CycleCEO
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
+<span class="you">get this month's invoices ready</span>
+<span class="ok"><b>done</b>  drafted the invoices<span class="tg" style="background:var(--violet)">Stripe</span></span>
+<span class="ok"><b>done</b>  checked them against the books<span class="tg" style="background:var(--green)">QuickBooks</span></span>
+<span class="ok"><b>wait</b>  ready for you to say send</span></pre>
     </div>
-  </section>
-
-  <!-- ── BETA ── -->
-  <section class="section" id="beta">
-    <div class="container">
-      <div class="beta-grid">
-        <div>
-          <span class="beta-pill reveal">Free &middot; Limited Spots</span>
-          <h2 class="sec-h2 reveal reveal-delay-1">Be the First<br>to Break It</h2>
-          <p class="sec-sub reveal reveal-delay-2" style="margin-bottom:0;">I build things fast and I need people who will actually use them, get confused, and tell me exactly where. Free access. Honest opinions. No fluff.</p>
-        </div>
-        <div class="reveal reveal-delay-1">
-          <ul class="beta-list">
-            <li><span class="check" aria-hidden="true">✓</span>You have ideas you can't execute yet</li>
-            <li><span class="check" aria-hidden="true">✓</span>You want to understand AI, not just have it</li>
-            <li><span class="check" aria-hidden="true">✓</span>You'll actually try the thing I send you</li>
-            <li><span class="check" aria-hidden="true">✓</span>You'll tell me when it doesn't work</li>
-          </ul>
-          <a class="btn-primary btn-pink" href="/beta">
-            Apply for Beta Access
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
+    <div class="steps">
+      <div class="step rise"><div class="n" style="background:var(--green)">1</div><h3>Say what you need</h3><p>Plain English. No code, no menus.</p></div>
+      <div class="step rise"><div class="n" style="background:var(--pink)">2</div><h3>AI does the work</h3><p>It opens the right tools and does the job.</p></div>
+      <div class="step rise"><div class="n" style="background:var(--blue)">3</div><h3>You say yes</h3><p>Nothing goes out until you check it.</p></div>
     </div>
-  </section>
+  </div>
+</div></section>
 
-  <!-- ── BOOK ── -->
-  <section class="section section-white" id="book">
-    <div class="container">
-      <div class="book-card reveal">
-        <h2 class="sec-h2">Book a Free Session</h2>
-        <p class="sec-sub">One hour. We figure out exactly where AI fits in your business and you leave with something you actually built. No pitch, no fluff.</p>
-        <a class="btn-primary btn-pink" style="display:inline-flex;" href="mailto:keltysage01@gmail.com?subject=Book%20a%20Free%20Session">
-          Email to Book
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <p class="book-note">Booking calendar coming soon&nbsp;&mdash;&nbsp;email works for now.</p>
-      </div>
+<section id="learn"><div class="wrap">
+  <div class="eb rise">&gt; watch me build</div>
+  <h2 class="sec-h rise">Lessons from things I actually built</h2>
+  <p class="sec-p rise">Every lesson is a real build from my own business. What I typed, what came back, and how to copy it.</p>
+  <div class="grid3">
+    <a class="lesson rise" href="/learn/logo-without-canva">
+      <div class="n"><b>lesson 01</b><i>free</i></div>
+      <h3>How I made my logo with AI</h3>
+      <p>Three rounds of plain talk. Including the one I hated.</p>
+      <div class="thumb"><img src="/learn/img/round3.png" alt=""></div>
+    </a>
+    <div class="lesson rise">
+      <div class="n"><b>lesson 02</b><i>coming soon</i></div>
+      <h3>Make videos without a video app</h3>
+      <p>Captions, music and cuts from a few sentences.</p>
+      <div class="thumb"><div style="background:var(--pink)">&gt;_ video.mp4</div></div>
     </div>
-  </section>
-
-  <!-- ── FOOTER ── */
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <a class="footer-brand" href="/">Kelty Sage</a>
-        <div class="footer-links">
-          <a class="footer-link" href="#projects">Projects</a>
-          <a class="footer-link" href="/beta">Beta</a>
-          <a class="footer-link" href="mailto:keltysage01@gmail.com">Contact</a>
-        </div>
-        <span class="footer-copy">&copy; 2026 Kelty Sage</span>
-      </div>
+    <div class="lesson rise">
+      <div class="n"><b>lesson 03</b><i>coming soon</i></div>
+      <h3>Download your first skill</h3>
+      <p>Find one on skills.sh, install it in a minute. Claude remembers the job forever.</p>
+      <div class="thumb"><div style="background:var(--blue)">&gt;_ skill install</div></div>
     </div>
-  </footer>
+    <div class="lesson rise">
+      <div class="n"><b>lesson 04</b><i>coming soon</i></div>
+      <h3>A brand kit that makes your posts</h3>
+      <p>Type the words. Get a finished TikTok slide.</p>
+      <div class="thumb"><div style="background:var(--green)">&gt;_ render post</div></div>
+    </div>
+    <div class="lesson rise">
+      <div class="n"><b>lesson 05</b><i>coming soon</i></div>
+      <h3>Reply to comments in your voice</h3>
+      <p>Drafts every reply. You hit send.</p>
+      <div class="thumb"><div style="background:var(--violet)">&gt;_ comeback</div></div>
+    </div>
+    <div class="lesson rise">
+      <div class="n"><b>lesson 06</b><i>coming soon</i></div>
+      <h3>Invoices and books on autopilot</h3>
+      <p>Stripe and QuickBooks, handled by AI.</p>
+      <div class="thumb"><div style="background:var(--tan)">&gt;_ invoices</div></div>
+    </div>
+  </div>
+</div></section>
 
-  <script>
-    // Reveal hero immediately (above fold)
-    document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('visible'));
+<section id="join"><div class="wrap">
+  <div class="eb rise">&gt; pricing</div>
+  <h2 class="sec-h rise">Watch for free. Copy everything when you're ready.</h2>
+  <div class="plans">
+    <div class="plan rise">
+      <h3>Free</h3>
+      <div class="price">$0</div>
+      <ul><li>The weekly build email</li><li>Free lessons</li><li>New tools as I make them</li></ul>
+      <a class="btn btn-line" href="#top" onclick="document.querySelector('.signup input').focus();return false">Join free</a>
+    </div>
+    <div class="plan main rise">
+      <div class="flag">The full library</div>
+      <h3>The Build Room</h3>
+      <div class="price">monthly · price coming soon</div>
+      <ul><li>Every lesson, start to finish</li><li>Every skill and template I use, to download</li><li>A new build every week</li><li>Cancel anytime</li></ul>
+      <a class="btn btn-ink" href="#top" onclick="document.querySelector('.signup input').focus();return false">Get on the list</a>
+    </div>
+    <div class="plan rise">
+      <h3>Skill packs</h3>
+      <div class="price">one time · price coming soon</div>
+      <ul><li>One finished system, ready to install</li><li>Brand kit, comment replies, carousels</li><li>Yours to keep</li></ul>
+      <a class="btn btn-line" href="#top" onclick="document.querySelector('.signup input').focus();return false">Get on the list</a>
+    </div>
+  </div>
+</div></section>
 
-    // Scroll reveal for everything else
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-      }),
-      { threshold: 0.12 }
-    );
-    document.querySelectorAll('.reveal:not(.visible)').forEach(el => io.observe(el));
-  </script>
+<section><div class="wrap">
+  <div class="eb rise">&gt; things I built</div>
+  <h2 class="sec-h rise">Apps I made with AI</h2>
+  <div class="built">
+    <a class="app rise" style="--c:var(--green)" href="https://sage-systems-ai.netlify.app" target="_blank" rel="noopener">
+      <div class="k">AI courses</div><h3>Sage Systems AI</h3>
+      <p>Answer a few questions about your business and get a custom AI course in about a minute.</p><span>Open &rarr;</span>
+    </a>
+    <a class="app rise" style="--c:var(--blue)" href="https://fetchnote.app" target="_blank" rel="noopener">
+      <div class="k">Dog trainers</div><h3>FetchNote</h3>
+      <p>Two minutes of voice notes become a polished, branded homework PDF. No typing.</p><span>Open &rarr;</span>
+    </a>
+    <a class="app rise" style="--c:var(--pink)" href="https://cycleceo.app" target="_blank" rel="noopener">
+      <div class="k">Planning</div><h3>CycleCEO</h3>
+      <p>Plan your business around your energy, so launches don't land on the week you crash.</p><span>Open &rarr;</span>
+    </a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage</a>
+  <nav class="links">
+    <a href="https://www.tiktok.com/@keltysage" target="_blank" rel="noopener">TikTok</a>
+    <a href="mailto:keltysage01@gmail.com">Contact</a>
+  </nav>
+  <p>I type it. AI does it.</p>
+</div></footer>
+
+<script>
+// soft fade and rise as sections come into view
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12});
+document.querySelectorAll('.rise').forEach(el => io.observe(el));
+// signup is not connected to an email service yet
+// no email service yet: open the visitor's email app with a note to Kelty, so no signup is lost
+function joined(e){ e.preventDefault(); location.href = 'mailto:keltysage01@gmail.com?subject=' + encodeURIComponent('Add me to the weekly build') + '&body=' + encodeURIComponent('Hi Kelty, please add me to the weekly build email.'); document.getElementById('fine').textContent = "Your email app should open. Hit send and you're on the list."; return false; }
+
+// terminal: types each request, robot thinks, then answers line by line. Plays once when seen.
+(function(){
+  const feed = document.getElementById('feed'), body = document.getElementById('mbody'), replay = document.getElementById('replay');
+  const ROBOT = '<svg viewBox="0 0 30 30" aria-hidden="true"><line x1="15" y1="2.5" x2="15" y2="7" stroke="#2f9a94" stroke-width="1.6"/><circle cx="15" cy="2.5" r="2.2" fill="#ff9fd6"/><rect x="4" y="7" width="22" height="18" rx="7" fill="#9ed9c7"/><rect x="7.5" y="11" width="15" height="9.5" rx="4.5" fill="#173b35"/><circle cx="12" cy="15.6" r="1.7" fill="#b9f09c"/><circle cx="18" cy="15.6" r="1.7" fill="#b9f09c"/><path d="M12.6 18.4q2.4 1.6 4.8 0" stroke="#b9f09c" stroke-width="1.1" fill="none" stroke-linecap="round"/><rect x="2" y="13" width="2.4" height="6" rx="1.2" fill="#7cc6b2"/><rect x="25.6" y="13" width="2.4" height="6" rx="1.2" fill="#7cc6b2"/></svg>';
+  const SCRIPT = [
+    {you:"post saturday's pack walk reminder", work:"making the graphic", bot:[["done","graphic made in your colors"],["done","caption written in your voice"],["done","scheduled in Metricool"]]},
+    {you:"who still owes me money?", work:"checking Stripe", bot:[["found","a few invoices are still open"],["ask","want friendly reminders drafted?"]]},
+    {you:"yes, but don't send yet", work:"drafting", bot:[["done","reminders drafted"],["wait","waiting for you to say send"]]},
+    {you:"make a tiktok about my new logo", work:"writing the script", bot:[["done","voiceover from ElevenLabs"],["done","captions added, ready to watch"]]}
+  ];
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wait = ms => new Promise(r => setTimeout(r, still ? 0 : ms));
+  const esc = t => t.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const down = () => body.scrollTo({top: body.scrollHeight, behavior: still ? 'auto' : 'smooth'});
+  const prompt = () => '<span class="ps">kelty@MacBook <b>~</b> %</span> ';
+  let run = 0;
+  async function play(){
+    const me = ++run; feed.innerHTML = ''; replay.hidden = true;
+    for (const step of SCRIPT){
+      const ln = document.createElement('div'); ln.className = 'ln'; ln.innerHTML = prompt() + '<span class="t"></span><span class="caret"></span>';
+      feed.appendChild(ln); down();
+      const t = ln.querySelector('.t');
+      await wait(500);
+      for (const ch of step.you){ if (me !== run) return; t.textContent += ch; await wait(38 + Math.random()*40); }
+      await wait(350); ln.querySelector('.caret').remove();
+      const w = document.createElement('div'); w.className = 'ln work'; w.innerHTML = '<span class="spin"></span>' + esc(step.work) + '...';
+      feed.appendChild(w); down();
+      const frames = ['\u280b','\u2819','\u2839','\u2838','\u283c','\u2834','\u2826','\u2827','\u2807','\u280f'];
+      for (let i = 0; i < (still ? 1 : 14); i++){ if (me !== run) return; w.firstChild.textContent = frames[i % frames.length]; await wait(80); }
+      w.remove();
+      const bot = document.createElement('div'); bot.className = 'bot';
+      bot.innerHTML = ROBOT + '<div class="out"><div class="who">robot</div>' + step.bot.map(([k,v]) => '<div class="row"><span class="pill p-'+k+'">'+k+'</span><span>'+esc(v)+'</span></div>').join('') + '</div>';
+      feed.appendChild(bot); down();
+      await wait(30); bot.classList.add('in');
+      for (const r of bot.querySelectorAll('.row')){ await wait(380); r.classList.add('in'); down(); }
+      await wait(700);
+    }
+    const end = document.createElement('div'); end.className = 'ln'; end.innerHTML = prompt() + '<span class="caret"></span>';
+    feed.appendChild(end); down(); replay.hidden = false;
+  }
+  replay.addEventListener('click', play);
+  const seen = new IntersectionObserver(es => { if (es[0].isIntersecting){ seen.disconnect(); play(); } }, {threshold:.3});
+  seen.observe(document.getElementById('mint'));
+})();
+</script>
 </body>
 </html>
