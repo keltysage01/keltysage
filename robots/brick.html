@@ -33,6 +33,9 @@ footer .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 footer p{font-size:14px;color:var(--ink-3);width:100%}
 @media (max-width:600px){.links a:not(.btn){display:none}.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}section{padding:40px 0}}
 @media (max-width:440px){.nav .brand .sep,.nav .brand .tag{display:none}}
+.mnav{display:none}
+@media (max-width:600px){.mnav{display:flex;justify-content:space-around;gap:6px;padding:0 16px 10px;max-width:420px;margin:0 auto}.mnav a{font-size:14px;color:var(--ink-2);text-decoration:none;padding:6px 2px}}
+html,body{overflow-x:clip}
 
 .prof{padding:40px 0 0}
 .prof .card{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:center;background:var(--card);border:1px solid var(--line);border-top:8px solid var(--c);border-radius:30px;padding:32px}
@@ -80,13 +83,26 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 .buy p{flex:1;min-width:220px;font-size:16px;color:var(--ink-2)}
 .buy b{color:var(--ink)}
 @media (max-width:900px){.prof .card{grid-template-columns:1fr;padding:24px}.prof .art{width:160px;height:160px;border-radius:30px}.prof .art img{width:130px;height:130px}.lhead{grid-template-columns:1fr}.cover{width:180px}}
+.steps.minis{gap:8px;margin-top:16px}
+.step.mini{padding:10px 14px;background:transparent}
+.step.mini h3{font-size:16px;font-weight:500}
+.step.mini h3 span{width:26px;height:26px;font-size:13px}
+.lesson .watch{margin-top:16px;padding:11px 18px;font-size:15px}
+.more{margin-top:16px}
+.more summary{cursor:pointer;font-weight:600;font-size:15px;color:var(--ink);list-style:none;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--soft)}
+.more summary::-webkit-details-marker{display:none}
+.more summary:after{content:"+";font-family:var(--mono);color:var(--teal)}
+.more[open] summary:after{content:"-"}
+@media (max-width:600px){.cover{display:none}.steps{gap:10px}.step{padding:14px 16px}.lesson h2{font-size:23px}.lesson .sum{font-size:16px}.prof .card{padding:20px}.prof .art{width:120px;height:120px;border-radius:26px}.prof .art img{width:96px;height:96px}}
 @media (max-width:600px){.prof h1{font-size:40px}.prof .intro{font-size:18px}.lesson{padding:20px}.lesson h2{font-size:25px}}
 
 </style></head><body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
   <nav class="links"><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a><a class="btn btn-ink" href="/academy/#/boot">Get Boot free</a></nav>
-</div></header>
+</div>
+<nav class="mnav" aria-label="Menu"><a href="/">Home</a><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a></nav>
+</header>
 <main>
 <section class="prof"><div class="wrap">
   <div class="card" style="--c:#ff8a3d;--soft:#ffe5d4">
@@ -105,35 +121,38 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 </div></section>
 <section style="padding-top:8px"><div class="wrap" style="--soft:#ffe5d4">
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 1</b><span>in the pack</span></div><h2>Build a one-page website by describing it</h2><p class="sum">Describe your business in plain words and Claude Code builds a one-page website you can preview.</p></div><img class="cover" src="/robots/covers/brick-1-one-page-website-cover.png" alt="Video cover for Build a one-page website by describing it"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Describe your business</h3><p class="note">Say what you do, who for, and the feel.</p><p class="why"><em>why</em>I build what you say, so say it.</p><p class="pic">It&#x27;s directions for a brilliant new hire. Say make it nice, and you get a pink castle.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Add the parts you need</h3><p class="note">Ask for sections, like services and contact.</p><p class="why"><em>why</em>Visitors look for the same few things.</p><p class="pic">It&#x27;s pizza toppings. Pick the ones you want, skip the anchovies.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>Open the page</h3><p class="note">Open it and see your page before anyone else.</p><p class="why"><em>why</em>Seeing it shows what words cannot.</p><p class="pic">It&#x27;s walking through the house before the open house. You spot the crooked picture.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Read it like a customer would.</p><p class="why"><em>why</em>Anything it invented needs your sign-off.</p><p class="pic">It&#x27;s a dog proudly bringing the wrong shoe. Thank it, then check which shoe.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 1</b><span>free</span></div><h2>Build a one-page website by describing it</h2><p class="sum">Describe your business in plain words and Claude Code builds a one-page website you can preview.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Describe your business</h3></li>
+<li class="step mini"><h3><span>2</span>Add the parts you need</h3></li>
+<li class="step mini"><h3><span>3</span>Open the page</h3></li>
+<li class="step mini"><h3><span>4</span>Check your work</h3></li>
+</ol>
+  <a class="btn btn-line watch" href="/academy/#/brick/brick-1-one-page-website">Watch this lesson free &rarr;</a>
 </article>
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 2</b><span>in the pack</span></div><h2>Change your website by talking to it</h2><p class="sum">Ask Claude Code in plain words to change your headline, add a photo, and fix your page on phones.</p></div><img class="cover" src="/robots/covers/brick-2-change-website-by-talking-cover.png" alt="Video cover for Change your website by talking to it"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Fix the headline</h3><p class="note">Ask for a bigger, bolder headline.</p><p class="why"><em>why</em>The headline is the first thing people read.</p><p class="pic">It&#x27;s the sign over the shop. Nobody walks in if they can&#x27;t read it.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Add a photo</h3><p class="note">Point to a photo and say where it goes.</p><p class="why"><em>why</em>A real photo makes the page feel like you.</p><p class="pic">It&#x27;s hanging a picture. Say which wall, and I&#x27;ll find the nail.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>Fix it for phones</h3><p class="note">Ask it to look good on small screens.</p><p class="why"><em>why</em>Most visitors will be on a phone.</p><p class="pic">It&#x27;s a couch that has to fit through a narrow door. Measure first.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Open the page on your own phone.</p><p class="why"><em>why</em>You see what visitors really see.</p><p class="pic">It&#x27;s checking your teeth for spinach before a meeting. Two seconds now, no awkward later.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 2</b><span>in the pack</span></div><h2>Change your website by talking to it</h2><p class="sum">Ask Claude Code in plain words to change your headline, add a photo, and fix your page on phones.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Fix the headline</h3></li>
+<li class="step mini"><h3><span>2</span>Add a photo</h3></li>
+<li class="step mini"><h3><span>3</span>Fix it for phones</h3></li>
+<li class="step mini"><h3><span>4</span>Check your work</h3></li>
+</ol>
+  
 </article>
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 3</b><span>long lesson · in the pack</span></div><h2>Change your prices, booking link and hours today</h2><p class="sum">Update your website&#x27;s prices, booking link and hours in one pass, preview first, then publish only when you say so.</p></div><img class="cover" src="/robots/covers/brick-3-change-prices-booking-hours-cover.png" alt="Video cover for Change your prices, booking link and hours today"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Say what is changing</h3><p class="note">Tell Brick the new price, link and hours.</p><p class="why"><em>why</em>Brick can only build what you describe.</p><p class="pic">It&#x27;s a work order. Vague order, crooked shelf.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Find every old copy</h3><p class="note">Ask where the old price and hours appear.</p><p class="why"><em>why</em>Old prices hide on other pages.</p><p class="pic">It&#x27;s finding every sock after laundry day.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>Swap the booking link</h3><p class="note">Give the new link and replace every old one.</p><p class="why"><em>why</em>One old button sends clients to a dead end.</p><p class="pic">It&#x27;s changing the sign and the doorbell together.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Preview before it goes live</h3><p class="note">Ask to see the changes before publishing.</p><p class="why"><em>why</em>You see mistakes before your customers do.</p><p class="pic">It&#x27;s a dress rehearsal. Nobody boos a rehearsal.</p><p class="skip"><em>if you skip it</em>If you skip it: Customers see the wrong price before you do. Surprise party, wrong guest.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>5</span>Say go to publish</h3><p class="note">Only say publish when the preview looks right.</p><p class="why"><em>why</em>You decide when the change is real.</p><p class="pic">It&#x27;s the intern. You&#x27;re the one who signs.</p><p class="skip"><em>if you skip it</em>If you skip it: A half-finished price goes live on a busy day. Customers will notice.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>6</span>Check your work</h3><p class="note">Open the live site on your phone.</p><p class="why"><em>why</em>Phones are where most clients look.</p><p class="pic">It&#x27;s the wrong shoe again. Check the price it brought.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 3</b><span>long lesson · in the pack</span></div><h2>Change your prices, booking link and hours today</h2><p class="sum">Update your website&#x27;s prices, booking link and hours in one pass, preview first, then publish only when you say so.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Say what is changing</h3></li>
+<li class="step mini"><h3><span>2</span>Find every old copy</h3></li>
+<li class="step mini"><h3><span>3</span>Swap the booking link</h3></li>
+<li class="step mini"><h3><span>4</span>Preview before it goes live</h3></li>
+<li class="step mini"><h3><span>5</span>Say go to publish</h3></li>
+<li class="step mini"><h3><span>6</span>Check your work</h3></li>
+</ol>
+  
 </article>
-<div class="buy"><p><b>Hire Brick:</b> both lessons, every prompt, the skill file and a check-your-work list. Buy once, keep forever. $2.99, or the whole team for $14.99.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>
+<div class="buy"><p><b>Hire Brick:</b> every lesson, every prompt, the skill file and a check-your-work list. Buy once, keep forever. $2.99, or the whole team for $14.99.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>
 </div></section>
 </main>
 <footer><div class="wrap">

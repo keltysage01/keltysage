@@ -33,6 +33,9 @@ footer .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 footer p{font-size:14px;color:var(--ink-3);width:100%}
 @media (max-width:600px){.links a:not(.btn){display:none}.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}section{padding:40px 0}}
 @media (max-width:440px){.nav .brand .sep,.nav .brand .tag{display:none}}
+.mnav{display:none}
+@media (max-width:600px){.mnav{display:flex;justify-content:space-around;gap:6px;padding:0 16px 10px;max-width:420px;margin:0 auto}.mnav a{font-size:14px;color:var(--ink-2);text-decoration:none;padding:6px 2px}}
+html,body{overflow-x:clip}
 
 .prof{padding:40px 0 0}
 .prof .card{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:center;background:var(--card);border:1px solid var(--line);border-top:8px solid var(--c);border-radius:30px;padding:32px}
@@ -80,13 +83,26 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 .buy p{flex:1;min-width:220px;font-size:16px;color:var(--ink-2)}
 .buy b{color:var(--ink)}
 @media (max-width:900px){.prof .card{grid-template-columns:1fr;padding:24px}.prof .art{width:160px;height:160px;border-radius:30px}.prof .art img{width:130px;height:130px}.lhead{grid-template-columns:1fr}.cover{width:180px}}
+.steps.minis{gap:8px;margin-top:16px}
+.step.mini{padding:10px 14px;background:transparent}
+.step.mini h3{font-size:16px;font-weight:500}
+.step.mini h3 span{width:26px;height:26px;font-size:13px}
+.lesson .watch{margin-top:16px;padding:11px 18px;font-size:15px}
+.more{margin-top:16px}
+.more summary{cursor:pointer;font-weight:600;font-size:15px;color:var(--ink);list-style:none;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--soft)}
+.more summary::-webkit-details-marker{display:none}
+.more summary:after{content:"+";font-family:var(--mono);color:var(--teal)}
+.more[open] summary:after{content:"-"}
+@media (max-width:600px){.cover{display:none}.steps{gap:10px}.step{padding:14px 16px}.lesson h2{font-size:23px}.lesson .sum{font-size:16px}.prof .card{padding:20px}.prof .art{width:120px;height:120px;border-radius:26px}.prof .art img{width:96px;height:96px}}
 @media (max-width:600px){.prof h1{font-size:40px}.prof .intro{font-size:18px}.lesson{padding:20px}.lesson h2{font-size:25px}}
 
 </style></head><body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
   <nav class="links"><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a><a class="btn btn-ink" href="/academy/#/boot">Get Boot free</a></nav>
-</div></header>
+</div>
+<nav class="mnav" aria-label="Menu"><a href="/">Home</a><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a></nav>
+</header>
 <main>
 <section class="prof"><div class="wrap">
   <div class="card" style="--c:#ff6159;--soft:#ffdcda">
@@ -105,35 +121,38 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 </div></section>
 <section style="padding-top:8px"><div class="wrap" style="--soft:#ffdcda">
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 1</b><span>in the pack</span></div><h2>Teach it how you talk in 3 minutes</h2><p class="sum">Paste a few of your real emails or captions and ask Claude to learn your voice and save notes about it.</p></div><img class="cover" src="/robots/covers/echo-1-teach-it-how-you-talk-cover.png" alt="Video cover for Teach it how you talk in 3 minutes"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Paste your real writing</h3><p class="note">Paste three to five things you actually wrote.</p><p class="why"><em>why</em>I learn from real words, not guesses.</p><p class="pic">It&#x27;s showing a tailor your favorite shirt, not describing it.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Ask what makes it yours</h3><p class="note">Ask me to describe your voice.</p><p class="why"><em>why</em>Seeing it in words shows what to keep.</p><p class="pic">It&#x27;s a friend telling you that you always say &#x27;honestly&#x27; first.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>Save the notes</h3><p class="note">Have me keep a voice notes file.</p><p class="why"><em>why</em>Otherwise I forget you next chat.</p><p class="pic">It&#x27;s the recipe card on the fridge. Same dish, every time.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Read the notes. Fix anything that isn&#x27;t you.</p><p class="why"><em>why</em>I can describe you a little wrong.</p><p class="pic">It&#x27;s the dog bringing the wrong shoe. Thank me, then check it&#x27;s yours.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 1</b><span>free</span></div><h2>Teach it how you talk in 3 minutes</h2><p class="sum">Paste a few of your real emails or captions and ask Claude to learn your voice and save notes about it.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Paste your real writing</h3></li>
+<li class="step mini"><h3><span>2</span>Ask what makes it yours</h3></li>
+<li class="step mini"><h3><span>3</span>Save the notes</h3></li>
+<li class="step mini"><h3><span>4</span>Check your work</h3></li>
+</ol>
+  <a class="btn btn-line watch" href="/academy/#/echo/echo-1-teach-it-how-you-talk">Watch this lesson free &rarr;</a>
 </article>
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 2</b><span>in the pack</span></div><h2>Write this week&#x27;s email and posts in your voice</h2><p class="sum">Use your saved voice notes to have Claude draft this week&#x27;s email and social posts for you to edit.</p></div><img class="cover" src="/robots/covers/echo-2-weekly-email-and-posts-cover.png" alt="Video cover for Write this week&#x27;s email and posts in your voice"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Give me the news</h3><p class="note">Tell me what happened this week.</p><p class="why"><em>why</em>I can&#x27;t write about what I don&#x27;t know.</p><p class="pic">It&#x27;s a reporter with a pen and no story. Hand over the story first.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Ask for the email</h3><p class="note">Say how long and what people should do.</p><p class="why"><em>why</em>A clear next step gets more replies.</p><p class="pic">It&#x27;s a sign with an arrow. Without the arrow, folks just stand there.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>Turn it into posts</h3><p class="note">Ask for short posts from the same email.</p><p class="why"><em>why</em>One story can feed the whole week.</p><p class="pic">It&#x27;s one big pot of soup, then three lunches.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Read every draft out loud before posting.</p><p class="why"><em>why</em>Anything off will sound off.</p><p class="pic">It&#x27;s checking your teeth for spinach. Two seconds now, no awkward later.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 2</b><span>in the pack</span></div><h2>Write this week&#x27;s email and posts in your voice</h2><p class="sum">Use your saved voice notes to have Claude draft this week&#x27;s email and social posts for you to edit.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Give me the news</h3></li>
+<li class="step mini"><h3><span>2</span>Ask for the email</h3></li>
+<li class="step mini"><h3><span>3</span>Turn it into posts</h3></li>
+<li class="step mini"><h3><span>4</span>Check your work</h3></li>
+</ol>
+  
 </article>
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 3</b><span>long lesson · in the pack</span></div><h2>Answer repeat client questions with saved replies</h2><p class="sum">Collect the questions clients ask most, write one reply for each in your voice, save them, and use them with your approval.</p></div><img class="cover" src="/robots/covers/echo-3-saved-client-replies-cover.png" alt="Video cover for Answer repeat client questions with saved replies"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Find the repeat questions</h3><p class="note">Ask for the questions clients ask most.</p><p class="why"><em>why</em>You can&#x27;t save answers to questions you haven&#x27;t listed.</p><p class="pic">It&#x27;s a greatest hits list. Same songs, every request.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Write one reply for each</h3><p class="note">Ask for a reply per question, in your voice.</p><p class="why"><em>why</em>Your voice is why clients trust the reply.</p><p class="pic">It&#x27;s your handwriting. A typed note feels cold.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>Fix the facts yourself</h3><p class="note">Correct every price, time and address.</p><p class="why"><em>why</em>Echo copies your tone, but can&#x27;t see your facts.</p><p class="pic">It&#x27;s a parrot. Perfect accent, no idea what it&#x27;s saying.</p><p class="skip"><em>if you skip it</em>If you skip it: Every client gets a polite, confident, wrong answer.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Save them for next time</h3><p class="note">Ask for them in a skill file you can reuse.</p><p class="why"><em>why</em>Saved once, used forever.</p><p class="pic">It&#x27;s the recipe card on the fridge. Same dish every time.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>5</span>Use one, drafted only</h3><p class="note">Pick a real question and ask for a draft.</p><p class="why"><em>why</em>A draft lets you read before anyone else does.</p><p class="pic">It&#x27;s the intern writing. You&#x27;re the one who signs.</p><p class="skip"><em>if you skip it</em>If you skip it: A reply goes out before you&#x27;ve read it. Your name is on it.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>6</span>Check your work</h3><p class="note">Ask which saved reply it used and what changed.</p><p class="why"><em>why</em>You should know every word that goes out.</p><p class="pic">It&#x27;s checking your teeth for spinach before the meeting.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 3</b><span>long lesson · in the pack</span></div><h2>Answer repeat client questions with saved replies</h2><p class="sum">Collect the questions clients ask most, write one reply for each in your voice, save them, and use them with your approval.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Find the repeat questions</h3></li>
+<li class="step mini"><h3><span>2</span>Write one reply for each</h3></li>
+<li class="step mini"><h3><span>3</span>Fix the facts yourself</h3></li>
+<li class="step mini"><h3><span>4</span>Save them for next time</h3></li>
+<li class="step mini"><h3><span>5</span>Use one, drafted only</h3></li>
+<li class="step mini"><h3><span>6</span>Check your work</h3></li>
+</ol>
+  
 </article>
-<div class="buy"><p><b>Hire Echo:</b> both lessons, every prompt, the skill file and a check-your-work list. Buy once, keep forever. $2.99, or the whole team for $14.99.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>
+<div class="buy"><p><b>Hire Echo:</b> every lesson, every prompt, the skill file and a check-your-work list. Buy once, keep forever. $2.99, or the whole team for $14.99.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>
 </div></section>
 </main>
 <footer><div class="wrap">

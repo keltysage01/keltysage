@@ -35,6 +35,13 @@ def main():
     page = (OUT / "index.html").read_text()
     if "<base " not in page:
         page = page.replace("<head>", '<head>\n<base href="/academy/">', 1)
+    # phone: the lesson video fits on one screen with the title and button under it
+    if "ks-phone-fit" not in page:
+        page = page.replace("</style>", "@media (max-width:560px){.watch{gap:18px}.watch video{width:auto;height:min(54vh,460px);max-width:100%;display:block;margin:0 auto}} /* ks-phone-fit */\n</style>", 1)
+    # a way back to the main site from the academy top bar
+    if 'class="home"' not in page:
+        page = page.replace('<div class="xp"', '<a class="home" href="/">Home</a><div class="xp"', 1)
+        page = page.replace("</style>", ".bar .home{margin-left:auto;margin-right:14px;font-size:15px;color:var(--ink-2);text-decoration:none}.bar .home+.xp{margin-left:0}\n</style>", 1)
     (OUT / "index.html").write_text(page)
     print(f"academy: {kept} free lessons with video, {locked} locked lessons stripped")
 

@@ -71,12 +71,17 @@ footer .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 footer p{font-size:14px;color:var(--ink-3);width:100%}
 @media (max-width:600px){.links a:not(.btn){display:none}.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}section{padding:40px 0}}
 @media (max-width:440px){.nav .brand .sep,.nav .brand .tag{display:none}}
+.mnav{display:none}
+@media (max-width:600px){.mnav{display:flex;justify-content:space-around;gap:6px;padding:0 16px 10px;max-width:420px;margin:0 auto}.mnav a{font-size:14px;color:var(--ink-2);text-decoration:none;padding:6px 2px}}
+html,body{overflow-x:clip}
 {css}
 </style></head><body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
   <nav class="links"><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a><a class="btn btn-ink" href="/academy/#/boot">Get Boot free</a></nav>
-</div></header>
+</div>
+<nav class="mnav" aria-label="Menu"><a href="/">Home</a><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a></nav>
+</header>
 <main>
 """
 
@@ -164,6 +169,17 @@ BOT_CSS = """
 .buy p{flex:1;min-width:220px;font-size:16px;color:var(--ink-2)}
 .buy b{color:var(--ink)}
 @media (max-width:900px){.prof .card{grid-template-columns:1fr;padding:24px}.prof .art{width:160px;height:160px;border-radius:30px}.prof .art img{width:130px;height:130px}.lhead{grid-template-columns:1fr}.cover{width:180px}}
+.steps.minis{gap:8px;margin-top:16px}
+.step.mini{padding:10px 14px;background:transparent}
+.step.mini h3{font-size:16px;font-weight:500}
+.step.mini h3 span{width:26px;height:26px;font-size:13px}
+.lesson .watch{margin-top:16px;padding:11px 18px;font-size:15px}
+.more{margin-top:16px}
+.more summary{cursor:pointer;font-weight:600;font-size:15px;color:var(--ink);list-style:none;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--soft)}
+.more summary::-webkit-details-marker{display:none}
+.more summary:after{content:"+";font-family:var(--mono);color:var(--teal)}
+.more[open] summary:after{content:"-"}
+@media (max-width:600px){.cover{display:none}.steps{gap:10px}.step{padding:14px 16px}.lesson h2{font-size:23px}.lesson .sum{font-size:16px}.prof .card{padding:20px}.prof .art{width:120px;height:120px;border-radius:26px}.prof .art img{width:96px;height:96px}}
 @media (max-width:600px){.prof h1{font-size:40px}.prof .intro{font-size:18px}.lesson{padding:20px}.lesson h2{font-size:25px}}
 """
 
@@ -215,6 +231,9 @@ def grid(cast, lessons):
 def steps_html(lesson, free):
     out = []
     for s in [x for x in lesson["scenes"] if x["type"] == "step"]:
+        if not free:
+            out.append(f'<li class="step mini"><h3><span>{s["n"]}</span>{esc(s["title"])}</h3></li>')
+            continue
         parts = [f'<li class="step"><h3><span>{s["n"]}</span>{esc(s["title"])}</h3>']
         if s.get("note"): parts.append(f'<p class="note">{esc(s["note"])}</p>')
         if s.get("why"): parts.append(f'<p class="why"><em>why</em>{esc(s["why"])}</p>')
@@ -239,18 +258,23 @@ def robot_page(r, lessons, cast):
         if cover_src.exists():
             shutil.copy(cover_src, OUT / "covers" / cover_src.name)
             cover = f'<img class="cover" src="/robots/covers/{cover_src.name}" alt="Video cover for {esc(l["title"])}">'
-        tag = "free" if free else "in the pack"
+        tag = "free" if free or i == 1 else "in the pack"
+        if not free: cover = ""
+        n = len([x for x in l["scenes"] if x["type"] == "step"])
+        if free:
+            steps_block = f'<details class="more"><summary>Show the {n} steps and prompts</summary><ol class="steps">\n{steps_html(l, free)}\n</ol></details>'
+        else:
+            steps_block = f'<ol class="steps minis">\n{steps_html(l, free)}\n</ol>'
         if l.get("format") == "long": tag = "long lesson · " + tag
         blocks.append(f"""<article class="lesson">
   <div class="lhead"><div><div class="n"><b>lesson {i}</b><span>{tag}</span></div><h2>{esc(l['title'])}</h2><p class="sum">{esc(l['summary'])}</p></div>{cover}</div>
-  <ol class="steps">
-{steps_html(l, free)}
-  </ol>
+  {steps_block}
+  {'' if not (free or i == 1) else f'<a class="btn btn-line watch" href="/academy/#/{r["id"]}/{l["slug"]}">Watch this lesson free &rarr;</a>'}
 </article>""")
     if free:
         buy = f'<div class="buy"><p><b>{esc(r["name"])} is free.</b> When you are ready, hire your next robot for {esc(PRICE)}, or the whole team for {esc(BUNDLE or "one price")}.</p><a class="btn btn-ink" href="/robots">Meet the team</a></div>'
     else:
-        buy = f'<div class="buy"><p><b>Hire {esc(r["name"])}:</b> both lessons, every prompt, the skill file and a check-your-work list. Buy once, keep forever. {esc(PRICE)}, or the whole team for {esc(BUNDLE or "one price")}.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>'
+        buy = f'<div class="buy"><p><b>Hire {esc(r["name"])}:</b> every lesson, every prompt, the skill file and a check-your-work list. Buy once, keep forever. {esc(PRICE)}, or the whole team for {esc(BUNDLE or "one price")}.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>'
     body = f"""<section class="prof"><div class="wrap">
   <div class="card" style="--c:{r['accent']};--soft:{soft(r['accent'])}">
     <div class="art"><img src="/robots/art/{r['id']}.svg" alt="{esc(r['name'])}, the {esc(r['job'])}"></div>

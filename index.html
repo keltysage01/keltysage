@@ -223,7 +223,29 @@ footer .links{gap:20px}
   .stack{grid-template-columns:1fr}
   section{padding:52px 0}
   .term pre{font-size:13px;padding:16px}
+  /* phone: shorter page, two-up tools, lesson cards without the art */
+  section{padding:40px 0}
+  .stack{grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+  .tool{flex-direction:column;align-items:flex-start;gap:10px;padding:14px;border-radius:18px}
+  .tool .ico{width:42px;height:42px;border-radius:12px}
+  .tool .ico img{width:24px;height:24px}
+  .tool h3{font-size:16px}
+  .tool p{font-size:13px}
+  .tool .go{display:none}
+  .lesson{padding:18px}
+  .lesson h3{font-size:19px;margin-top:8px}
+  .lesson p{font-size:15px}
+  .lesson .thumb{display:none}
+  .mbody{height:330px}
 }
+/* phone menu: one row of links under the top bar */
+.mnav{display:none}
+@media (max-width:600px){
+  .mnav{display:flex;justify-content:space-between;gap:6px;padding:0 16px 10px;max-width:420px;margin:0 auto}
+  .mnav a{font-size:14px;color:var(--ink-2);text-decoration:none;padding:6px 2px}
+}
+html,body{overflow-x:clip}
+.hero{overflow-x:clip}
 </style>
 </head>
 <body>
@@ -238,7 +260,9 @@ footer .links{gap:20px}
     <a href="#join">Pricing</a>
     <a class="btn btn-ink" href="/academy/#/boot">Start free</a>
   </nav>
-</div></header>
+</div>
+<nav class="mnav" aria-label="Menu"><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="#stack">Tools</a><a href="#learn">Lessons</a><a href="#join">Pricing</a></nav>
+</header>
 
 <main id="top">
 <section class="hero"><div class="wrap">

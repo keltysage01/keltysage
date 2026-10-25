@@ -117,12 +117,14 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px soli
 @media (max-width:820px){.team{grid-template-columns:1fr 1fr}.watch{grid-template-columns:1fr}.watch video{max-width:340px;margin:0 auto}}
 @media (max-width:560px){.wrap{padding:0 16px}.team{grid-template-columns:1fr}.rb{flex-direction:row}.rb .art{width:40%;padding:10px 0}.rb .art img{width:72%}.rhero{grid-template-columns:1fr}.rhero .pic{width:160px}.ls{grid-template-columns:72px 1fr auto;gap:12px}.ls img{width:72px}.xp span.lbl{display:none}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:560px){.watch{gap:18px}.watch video{width:auto;height:min(54vh,460px);max-width:100%;display:block;margin:0 auto}} /* ks-phone-fit */
+.bar .home{margin-left:auto;margin-right:14px;font-size:15px;color:var(--ink-2);text-decoration:none}.bar .home+.xp{margin-left:0}
 </style>
 </head>
 <body>
 <header class="bar"><div class="wrap">
   <a class="brand" href="#/"><img src="logo.png" alt="">Robot Academy</a>
-  <div class="xp" title="Points you have earned"><i>XP</i><span id="xp">0</span><span class="lbl">&nbsp;points</span></div>
+  <a class="home" href="/">Home</a><div class="xp" title="Points you have earned"><i>XP</i><span id="xp">0</span><span class="lbl">&nbsp;points</span></div>
 </div></header>
 <main id="app" class="wrap"></main>
 

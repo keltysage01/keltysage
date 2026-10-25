@@ -33,6 +33,9 @@ footer .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 footer p{font-size:14px;color:var(--ink-3);width:100%}
 @media (max-width:600px){.links a:not(.btn){display:none}.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}section{padding:40px 0}}
 @media (max-width:440px){.nav .brand .sep,.nav .brand .tag{display:none}}
+.mnav{display:none}
+@media (max-width:600px){.mnav{display:flex;justify-content:space-around;gap:6px;padding:0 16px 10px;max-width:420px;margin:0 auto}.mnav a{font-size:14px;color:var(--ink-2);text-decoration:none;padding:6px 2px}}
+html,body{overflow-x:clip}
 
 .prof{padding:40px 0 0}
 .prof .card{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:center;background:var(--card);border:1px solid var(--line);border-top:8px solid var(--c);border-radius:30px;padding:32px}
@@ -80,13 +83,26 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 .buy p{flex:1;min-width:220px;font-size:16px;color:var(--ink-2)}
 .buy b{color:var(--ink)}
 @media (max-width:900px){.prof .card{grid-template-columns:1fr;padding:24px}.prof .art{width:160px;height:160px;border-radius:30px}.prof .art img{width:130px;height:130px}.lhead{grid-template-columns:1fr}.cover{width:180px}}
+.steps.minis{gap:8px;margin-top:16px}
+.step.mini{padding:10px 14px;background:transparent}
+.step.mini h3{font-size:16px;font-weight:500}
+.step.mini h3 span{width:26px;height:26px;font-size:13px}
+.lesson .watch{margin-top:16px;padding:11px 18px;font-size:15px}
+.more{margin-top:16px}
+.more summary{cursor:pointer;font-weight:600;font-size:15px;color:var(--ink);list-style:none;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--soft)}
+.more summary::-webkit-details-marker{display:none}
+.more summary:after{content:"+";font-family:var(--mono);color:var(--teal)}
+.more[open] summary:after{content:"-"}
+@media (max-width:600px){.cover{display:none}.steps{gap:10px}.step{padding:14px 16px}.lesson h2{font-size:23px}.lesson .sum{font-size:16px}.prof .card{padding:20px}.prof .art{width:120px;height:120px;border-radius:26px}.prof .art img{width:96px;height:96px}}
 @media (max-width:600px){.prof h1{font-size:40px}.prof .intro{font-size:18px}.lesson{padding:20px}.lesson h2{font-size:25px}}
 
 </style></head><body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
   <nav class="links"><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a><a class="btn btn-ink" href="/academy/#/boot">Get Boot free</a></nav>
-</div></header>
+</div>
+<nav class="mnav" aria-label="Menu"><a href="/">Home</a><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a></nav>
+</header>
 <main>
 <section class="prof"><div class="wrap">
   <div class="card" style="--c:#ff7cc6;--soft:#ffe2f2">
@@ -105,35 +121,38 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 </div></section>
 <section style="padding-top:8px"><div class="wrap" style="--soft:#ffe2f2">
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 1</b><span>in the pack</span></div><h2>Make 3 post graphics in your brand from one sentence</h2><p class="sum">Describe your brand and your post in one sentence and Claude Code makes three graphics for you.</p></div><img class="cover" src="/robots/covers/pixel-1-three-post-graphics-cover.png" alt="Video cover for Make 3 post graphics in your brand from one sentence"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Describe your brand</h3><p class="note">Say your colors, your fonts, and your business.</p><p class="why"><em>why</em>I can only match what you tell me.</p><p class="pic">It&#x27;s handing a painter a paint swatch. No swatch, and you get beige.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Ask for the post</h3><p class="note">Say what the posts are about and how many.</p><p class="why"><em>why</em>Each post needs its own job.</p><p class="pic">It&#x27;s ordering three coffees with names on the cups. Nobody gets the wrong drink.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>Tweak what you see</h3><p class="note">Ask for changes in plain words, like to a designer.</p><p class="why"><em>why</em>Small changes are easy when you say them.</p><p class="pic">It&#x27;s telling the hairdresser a little shorter. Say it, and I&#x27;ll trim it.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Read every word on every graphic.</p><p class="why"><em>why</em>Typos hide in big headlines.</p><p class="pic">It&#x27;s checking your teeth for spinach before a meeting. Two seconds now, no awkward later.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 1</b><span>free</span></div><h2>Make 3 post graphics in your brand from one sentence</h2><p class="sum">Describe your brand and your post in one sentence and Claude Code makes three graphics for you.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Describe your brand</h3></li>
+<li class="step mini"><h3><span>2</span>Ask for the post</h3></li>
+<li class="step mini"><h3><span>3</span>Tweak what you see</h3></li>
+<li class="step mini"><h3><span>4</span>Check your work</h3></li>
+</ol>
+  <a class="btn btn-line watch" href="/academy/#/pixel/pixel-1-three-post-graphics">Watch this lesson free &rarr;</a>
 </article>
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 2</b><span>in the pack</span></div><h2>Save your brand colors and fonts once so every graphic matches</h2><p class="sum">Tell Claude Code your brand colors and fonts once and ask it to save them so every graphic matches.</p></div><img class="cover" src="/robots/covers/pixel-2-save-brand-once-cover.png" alt="Video cover for Save your brand colors and fonts once so every graphic matches"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Tell it your brand</h3><p class="note">List your colors and fonts in plain words.</p><p class="why"><em>why</em>I need the details before I can save them.</p><p class="pic">It&#x27;s telling a new hire the dress code on day one.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Ask it to save them</h3><p class="note">Ask it to write them in a CLAUDE.md file.</p><p class="why"><em>why</em>I read that file every time I start.</p><p class="pic">It&#x27;s a recipe card on the fridge. Anyone makes the dish the same way.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>Test a new post</h3><p class="note">Ask for a graphic without repeating your brand.</p><p class="why"><em>why</em>A test shows whether the saving worked.</p><p class="pic">It&#x27;s asking the cook for your usual order, without saying a word.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Compare the graphic to your brand.</p><p class="why"><em>why</em>I can still pick the wrong shade.</p><p class="pic">It&#x27;s a dog proudly bringing the wrong shoe. Thank it, then check which shoe.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 2</b><span>in the pack</span></div><h2>Save your brand colors and fonts once so every graphic matches</h2><p class="sum">Tell Claude Code your brand colors and fonts once and ask it to save them so every graphic matches.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Tell it your brand</h3></li>
+<li class="step mini"><h3><span>2</span>Ask it to save them</h3></li>
+<li class="step mini"><h3><span>3</span>Test a new post</h3></li>
+<li class="step mini"><h3><span>4</span>Check your work</h3></li>
+</ol>
+  
 </article>
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 3</b><span>long lesson · in the pack</span></div><h2>Make a class or sale flyer by tonight</h2><p class="sum">Go from nothing to a finished, on-brand flyer for a class or sale in one sitting, then check every detail.</p></div><img class="cover" src="/robots/covers/pixel-3-flyer-by-tonight-cover.png" alt="Video cover for Make a class or sale flyer by tonight"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Tell me what it&#x27;s for</h3><p class="note">Say the event, the day, and the place.</p><p class="why"><em>why</em>A flyer with no date is just a nice picture.</p><p class="pic">It&#x27;s a party invitation. Guests need the when and where.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Use your saved brand</h3><p class="note">Ask for your colors, fonts and logo.</p><p class="why"><em>why</em>Matching flyers look like a real business.</p><p class="pic">It&#x27;s a team uniform. One shirt, everyone knows who you are.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>Pick one size</h3><p class="note">Choose a single size, like a printed page.</p><p class="why"><em>why</em>One size done well beats three done badly.</p><p class="pic">It&#x27;s one suit, tailored. Not three off the rack.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Ask for two looks</h3><p class="note">Ask for two different designs and pick one.</p><p class="why"><em>why</em>Choosing is faster than describing.</p><p class="pic">It&#x27;s a menu. Pointing beats explaining.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>5</span>Change one thing only</h3><p class="note">Fix one detail, like making the date bigger.</p><p class="why"><em>why</em>Many changes at once break the good parts.</p><p class="pic">It&#x27;s seasoning soup. One pinch, then taste.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>6</span>Check your work</h3><p class="note">Read the date, time and place out loud.</p><p class="why"><em>why</em>A typo on a flyer gets printed a hundred times.</p><p class="pic">It&#x27;s the wrong shoe again. Thank Pixel, then check the date.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 3</b><span>long lesson · in the pack</span></div><h2>Make a class or sale flyer by tonight</h2><p class="sum">Go from nothing to a finished, on-brand flyer for a class or sale in one sitting, then check every detail.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Tell me what it&#x27;s for</h3></li>
+<li class="step mini"><h3><span>2</span>Use your saved brand</h3></li>
+<li class="step mini"><h3><span>3</span>Pick one size</h3></li>
+<li class="step mini"><h3><span>4</span>Ask for two looks</h3></li>
+<li class="step mini"><h3><span>5</span>Change one thing only</h3></li>
+<li class="step mini"><h3><span>6</span>Check your work</h3></li>
+</ol>
+  
 </article>
-<div class="buy"><p><b>Hire Pixel:</b> both lessons, every prompt, the skill file and a check-your-work list. Buy once, keep forever. $2.99, or the whole team for $14.99.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>
+<div class="buy"><p><b>Hire Pixel:</b> every lesson, every prompt, the skill file and a check-your-work list. Buy once, keep forever. $2.99, or the whole team for $14.99.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>
 </div></section>
 </main>
 <footer><div class="wrap">

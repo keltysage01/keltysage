@@ -33,6 +33,9 @@ footer .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 footer p{font-size:14px;color:var(--ink-3);width:100%}
 @media (max-width:600px){.links a:not(.btn){display:none}.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}section{padding:40px 0}}
 @media (max-width:440px){.nav .brand .sep,.nav .brand .tag{display:none}}
+.mnav{display:none}
+@media (max-width:600px){.mnav{display:flex;justify-content:space-around;gap:6px;padding:0 16px 10px;max-width:420px;margin:0 auto}.mnav a{font-size:14px;color:var(--ink-2);text-decoration:none;padding:6px 2px}}
+html,body{overflow-x:clip}
 
 .prof{padding:40px 0 0}
 .prof .card{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:center;background:var(--card);border:1px solid var(--line);border-top:8px solid var(--c);border-radius:30px;padding:32px}
@@ -80,13 +83,26 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 .buy p{flex:1;min-width:220px;font-size:16px;color:var(--ink-2)}
 .buy b{color:var(--ink)}
 @media (max-width:900px){.prof .card{grid-template-columns:1fr;padding:24px}.prof .art{width:160px;height:160px;border-radius:30px}.prof .art img{width:130px;height:130px}.lhead{grid-template-columns:1fr}.cover{width:180px}}
+.steps.minis{gap:8px;margin-top:16px}
+.step.mini{padding:10px 14px;background:transparent}
+.step.mini h3{font-size:16px;font-weight:500}
+.step.mini h3 span{width:26px;height:26px;font-size:13px}
+.lesson .watch{margin-top:16px;padding:11px 18px;font-size:15px}
+.more{margin-top:16px}
+.more summary{cursor:pointer;font-weight:600;font-size:15px;color:var(--ink);list-style:none;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--soft)}
+.more summary::-webkit-details-marker{display:none}
+.more summary:after{content:"+";font-family:var(--mono);color:var(--teal)}
+.more[open] summary:after{content:"-"}
+@media (max-width:600px){.cover{display:none}.steps{gap:10px}.step{padding:14px 16px}.lesson h2{font-size:23px}.lesson .sum{font-size:16px}.prof .card{padding:20px}.prof .art{width:120px;height:120px;border-radius:26px}.prof .art img{width:96px;height:96px}}
 @media (max-width:600px){.prof h1{font-size:40px}.prof .intro{font-size:18px}.lesson{padding:20px}.lesson h2{font-size:25px}}
 
 </style></head><body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
   <nav class="links"><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a><a class="btn btn-ink" href="/academy/#/boot">Get Boot free</a></nav>
-</div></header>
+</div>
+<nav class="mnav" aria-label="Menu"><a href="/">Home</a><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a></nav>
+</header>
 <main>
 <section class="prof"><div class="wrap">
   <div class="card" style="--c:#3b5bdb;--soft:#d4dbf7">
@@ -105,35 +121,38 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 </div></section>
 <section style="padding-top:8px"><div class="wrap" style="--soft:#d4dbf7">
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 1</b><span>in the pack</span></div><h2>What an API key is, and the 3 rules for keeping it safe</h2><p class="sum">An API key is a secret password that lets one app use another, and three simple rules keep yours safe.</p></div><img class="cover" src="/robots/covers/officer-keys-1-api-key-three-rules-cover.png" alt="Video cover for What an API key is, and the 3 rules for keeping it safe"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Never paste it in public</h3><p class="note">Not in a chat, a post, or a screenshot.</p><p class="why"><em>why</em>Anyone who sees it can use your account.</p><p class="pic">It&#x27;s your house key. You don&#x27;t tape it to the front door.</p><p class="skip"><em>if you skip it</em>If you skip it: you taped your house key to the front door. Strangers drop by, and they don&#x27;t bring snacks.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Use a private file</h3><p class="note">Store it in a file your assistant reads.</p><p class="why"><em>why</em>A private file keeps it out of sight.</p><p class="pic">It&#x27;s a locked drawer inside the house, not the doormat everyone checks.</p><p class="skip"><em>if you skip it</em>If you skip it: the key sits under the doormat. Everyone checks the doormat.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>If it leaks, replace it</h3><p class="note">Turn it off, then make a new one.</p><p class="why"><em>why</em>A new key makes the old one useless.</p><p class="pic">It&#x27;s changing the locks after losing your keys. The finder gets a useless key.</p><p class="skip"><em>if you skip it</em>If you skip it: you never change the locks. The finder keeps visiting, and now has a favorite chair.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Ask where your key lives, then look.</p><p class="why"><em>why</em>You sign off that no key is sitting in the open.</p><p class="pic">It&#x27;s checking your teeth for spinach before a meeting. Two seconds now, no awkward later.</p><p class="skip"><em>if you skip it</em>If you skip it: spinach in your teeth, all meeting long. Everyone saw. Nobody said.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 1</b><span>free</span></div><h2>What an API key is, and the 3 rules for keeping it safe</h2><p class="sum">An API key is a secret password that lets one app use another, and three simple rules keep yours safe.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Never paste it in public</h3></li>
+<li class="step mini"><h3><span>2</span>Use a private file</h3></li>
+<li class="step mini"><h3><span>3</span>If it leaks, replace it</h3></li>
+<li class="step mini"><h3><span>4</span>Check your work</h3></li>
+</ol>
+  <a class="btn btn-line watch" href="/academy/#/officer-keys/officer-keys-1-api-key-three-rules">Watch this lesson free &rarr;</a>
 </article>
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 2</b><span>in the pack</span></div><h2>Set the rules your assistant can never break</h2><p class="sum">Claude Code asks permission before acting, and you can write house rules it must always follow.</p></div><img class="cover" src="/robots/covers/officer-keys-2-rules-assistant-never-breaks-cover.png" alt="Video cover for Set the rules your assistant can never break"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Read each permission ask</h3><p class="note">It stops and asks. You say yes or no.</p><p class="why"><em>why</em>Yes means go. No means stop.</p><p class="pic">It&#x27;s a bouncer at the door. Nobody gets in until you nod.</p><p class="skip"><em>if you skip it</em>If you skip it: you nod at everything, and the raccoon gets in. Raccoons love an open door.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Write your house rules</h3><p class="note">Put your rules in a CLAUDE.md file.</p><p class="why"><em>why</em>It reads that file every time it starts.</p><p class="pic">It&#x27;s the house rules sign by the door. No shoes, no exceptions.</p><p class="skip"><em>if you skip it</em>If you skip it: no sign by the door. Muddy shoes end up on the couch.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>Approve every send</h3><p class="note">Check the draft, then say yes or no.</p><p class="why"><em>why</em>Sending cannot be undone.</p><p class="pic">The robot is the intern. You&#x27;re the one who signs the letter.</p><p class="skip"><em>if you skip it</em>If you skip it: the intern mails your grocery list to your biggest client. Eggs, milk, hello.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Ask it to list your rules and what it did.</p><p class="why"><em>why</em>You sign off that the rules are real.</p><p class="pic">It&#x27;s checking your teeth for spinach before a meeting. Two seconds now, no awkward later.</p><p class="skip"><em>if you skip it</em>If you skip it: spinach in your teeth, all meeting long. Nobody told you.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 2</b><span>in the pack</span></div><h2>Set the rules your assistant can never break</h2><p class="sum">Claude Code asks permission before acting, and you can write house rules it must always follow.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Read each permission ask</h3></li>
+<li class="step mini"><h3><span>2</span>Write your house rules</h3></li>
+<li class="step mini"><h3><span>3</span>Approve every send</h3></li>
+<li class="step mini"><h3><span>4</span>Check your work</h3></li>
+</ol>
+  
 </article>
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 3</b><span>long lesson · in the pack</span></div><h2>A safety checklist before you connect email or payments</h2><p class="sum">Five quick checks to run before connecting AI to your email, payments or website, so nothing happens without your OK.</p></div><img class="cover" src="/robots/covers/officer-keys-3-before-you-connect-cover.png" alt="Video cover for A safety checklist before you connect email or payments"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Connect only what you need</h3><p class="note">List the one thing you want connected first.</p><p class="why"><em>why</em>Less access means less that can go wrong.</p><p class="pic">It&#x27;s a spare key for the dog walker, not the safe.</p><p class="skip"><em>if you skip it</em>If you skip it: Everything is connected, nobody remembers why. It&#x27;s a house with fifty spare keys.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Connect in your settings</h3><p class="note">Use connectors in your Claude account settings.</p><p class="why"><em>why</em>Settings keep your login private, chat does not.</p><p class="pic">It&#x27;s your house key. You don&#x27;t tape it to the front door.</p><p class="skip"><em>if you skip it</em>If you skip it: A secret key sits in your chat for anyone to see. Loud and very expensive.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>See what is connected</h3><p class="note">Type the command that lists connections.</p><p class="why"><em>why</em>You can&#x27;t guard what you can&#x27;t see.</p><p class="pic">It&#x27;s counting the keys on the hook before you leave.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Set the ask first rule</h3><p class="note">Tell Claude to ask before sending, paying or deleting.</p><p class="why"><em>why</em>A rule you set once protects every chat.</p><p class="pic">It&#x27;s the intern. You&#x27;re the one who signs the letter.</p><p class="skip"><em>if you skip it</em>If you skip it: A robot sends an email at midnight. Very punctual, very awkward.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>5</span>Test with a draft</h3><p class="note">Ask for a test draft addressed to you.</p><p class="why"><em>why</em>A test costs nothing. A mistake might.</p><p class="pic">It&#x27;s a dress rehearsal. Nobody boos a rehearsal.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>6</span>Check your work</h3><p class="note">Ask Claude to list what it can reach and do.</p><p class="why"><em>why</em>Plain words show if something is too open.</p><p class="pic">It&#x27;s checking every door before you leave for vacation.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 3</b><span>long lesson · in the pack</span></div><h2>A safety checklist before you connect email or payments</h2><p class="sum">Five quick checks to run before connecting AI to your email, payments or website, so nothing happens without your OK.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Connect only what you need</h3></li>
+<li class="step mini"><h3><span>2</span>Connect in your settings</h3></li>
+<li class="step mini"><h3><span>3</span>See what is connected</h3></li>
+<li class="step mini"><h3><span>4</span>Set the ask first rule</h3></li>
+<li class="step mini"><h3><span>5</span>Test with a draft</h3></li>
+<li class="step mini"><h3><span>6</span>Check your work</h3></li>
+</ol>
+  
 </article>
-<div class="buy"><p><b>Hire Bouncer:</b> both lessons, every prompt, the skill file and a check-your-work list. Buy once, keep forever. $2.99, or the whole team for $14.99.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>
+<div class="buy"><p><b>Hire Bouncer:</b> every lesson, every prompt, the skill file and a check-your-work list. Buy once, keep forever. $2.99, or the whole team for $14.99.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>
 </div></section>
 </main>
 <footer><div class="wrap">

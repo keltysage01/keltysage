@@ -33,6 +33,9 @@ footer .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 footer p{font-size:14px;color:var(--ink-3);width:100%}
 @media (max-width:600px){.links a:not(.btn){display:none}.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}section{padding:40px 0}}
 @media (max-width:440px){.nav .brand .sep,.nav .brand .tag{display:none}}
+.mnav{display:none}
+@media (max-width:600px){.mnav{display:flex;justify-content:space-around;gap:6px;padding:0 16px 10px;max-width:420px;margin:0 auto}.mnav a{font-size:14px;color:var(--ink-2);text-decoration:none;padding:6px 2px}}
+html,body{overflow-x:clip}
 
 .prof{padding:40px 0 0}
 .prof .card{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:center;background:var(--card);border:1px solid var(--line);border-top:8px solid var(--c);border-radius:30px;padding:32px}
@@ -80,13 +83,26 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 .buy p{flex:1;min-width:220px;font-size:16px;color:var(--ink-2)}
 .buy b{color:var(--ink)}
 @media (max-width:900px){.prof .card{grid-template-columns:1fr;padding:24px}.prof .art{width:160px;height:160px;border-radius:30px}.prof .art img{width:130px;height:130px}.lhead{grid-template-columns:1fr}.cover{width:180px}}
+.steps.minis{gap:8px;margin-top:16px}
+.step.mini{padding:10px 14px;background:transparent}
+.step.mini h3{font-size:16px;font-weight:500}
+.step.mini h3 span{width:26px;height:26px;font-size:13px}
+.lesson .watch{margin-top:16px;padding:11px 18px;font-size:15px}
+.more{margin-top:16px}
+.more summary{cursor:pointer;font-weight:600;font-size:15px;color:var(--ink);list-style:none;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--soft)}
+.more summary::-webkit-details-marker{display:none}
+.more summary:after{content:"+";font-family:var(--mono);color:var(--teal)}
+.more[open] summary:after{content:"-"}
+@media (max-width:600px){.cover{display:none}.steps{gap:10px}.step{padding:14px 16px}.lesson h2{font-size:23px}.lesson .sum{font-size:16px}.prof .card{padding:20px}.prof .art{width:120px;height:120px;border-radius:26px}.prof .art img{width:96px;height:96px}}
 @media (max-width:600px){.prof h1{font-size:40px}.prof .intro{font-size:18px}.lesson{padding:20px}.lesson h2{font-size:25px}}
 
 </style></head><body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
   <nav class="links"><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a><a class="btn btn-ink" href="/academy/#/boot">Get Boot free</a></nav>
-</div></header>
+</div>
+<nav class="mnav" aria-label="Menu"><a href="/">Home</a><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a></nav>
+</header>
 <main>
 <section class="prof"><div class="wrap">
   <div class="card" style="--c:#ffbd2e;--soft:#fff0d1">
@@ -105,35 +121,38 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 </div></section>
 <section style="padding-top:8px"><div class="wrap" style="--soft:#fff0d1">
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 1</b><span>in the pack</span></div><h2>Trim a clip and add captions with one sentence</h2><p class="sum">Ask Claude to trim a video and add captions in plain English, no editing app needed.</p></div><img class="cover" src="/robots/covers/cutter-1-trim-and-caption-cover.png" alt="Video cover for Trim a clip and add captions with one sentence"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Name your clip</h3><p class="note">Say which video and how much to keep.</p><p class="why"><em>why</em>I can&#x27;t cut a clip I can&#x27;t find.</p><p class="pic">It&#x27;s telling a barber exactly how much to take off, not just a little.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Ask for captions</h3><p class="note">Describe how you want them to look.</p><p class="why"><em>why</em>Most people watch with the sound off.</p><p class="pic">It&#x27;s a movie with subtitles. Nobody at the airport hears your video.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>Fix what looks off</h3><p class="note">Ask for changes in plain words.</p><p class="why"><em>why</em>Small tweaks are cheaper than starting over.</p><p class="pic">It&#x27;s asking the barber to take a little more off the left, not a new head.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Watch the whole clip before you post it.</p><p class="why"><em>why</em>I can miss a typo or a bad cut.</p><p class="pic">It&#x27;s checking your teeth for spinach before the meeting. Two seconds now, no awkward later.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 1</b><span>free</span></div><h2>Trim a clip and add captions with one sentence</h2><p class="sum">Ask Claude to trim a video and add captions in plain English, no editing app needed.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Name your clip</h3></li>
+<li class="step mini"><h3><span>2</span>Ask for captions</h3></li>
+<li class="step mini"><h3><span>3</span>Fix what looks off</h3></li>
+<li class="step mini"><h3><span>4</span>Check your work</h3></li>
+</ol>
+  <a class="btn btn-line watch" href="/academy/#/cutter/cutter-1-trim-and-caption">Watch this lesson free &rarr;</a>
 </article>
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 2</b><span>in the pack</span></div><h2>Turn one long video into three short ones</h2><p class="sum">Ask Claude to find the best moments in one long video and cut them into three short clips.</p></div><img class="cover" src="/robots/covers/cutter-2-one-long-three-short-cover.png" alt="Video cover for Turn one long video into three short ones"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Point to the video</h3><p class="note">Tell me where the long video lives.</p><p class="why"><em>why</em>I can&#x27;t watch a video I can&#x27;t find.</p><p class="pic">It&#x27;s telling a friend which drawer has the batteries. Otherwise they dig through the whole kitchen.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Ask for three clips</h3><p class="note">Say how many clips and how long.</p><p class="why"><em>why</em>Short clips are easier to watch and share.</p><p class="pic">It&#x27;s ordering a taco, not the whole buffet. Small, fast, finished.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>Ask for adjustments</h3><p class="note">Not right? Say what to change.</p><p class="why"><em>why</em>Picking the starting point is your call.</p><p class="pic">It&#x27;s a dog that trots a little past the mailbox. Just say, a bit earlier.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Watch all three clips before posting.</p><p class="why"><em>why</em>I might pick a moment you wouldn&#x27;t.</p><p class="pic">It&#x27;s the dog proudly bringing the wrong shoe. Thank them, then check which shoe.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 2</b><span>in the pack</span></div><h2>Turn one long video into three short ones</h2><p class="sum">Ask Claude to find the best moments in one long video and cut them into three short clips.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Point to the video</h3></li>
+<li class="step mini"><h3><span>2</span>Ask for three clips</h3></li>
+<li class="step mini"><h3><span>3</span>Ask for adjustments</h3></li>
+<li class="step mini"><h3><span>4</span>Check your work</h3></li>
+</ol>
+  
 </article>
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 3</b><span>long lesson · in the pack</span></div><h2>Turn one video into a vertical post with captions</h2><p class="sum">Reshape one finished video for TikTok and Reels, keep the best part in frame, and add captions that are easy to read.</p></div><img class="cover" src="/robots/covers/cutter-3-vertical-with-captions-cover.png" alt="Video cover for Turn one video into a vertical post with captions"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Pick one finished video</h3><p class="note">Choose a video you already like.</p><p class="why"><em>why</em>Starting from something good saves hours.</p><p class="pic">It&#x27;s good dough. You can bake any shape from it.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Ask for the tall shape</h3><p class="note">Ask for a version shaped for phone screens.</p><p class="why"><em>why</em>TikTok and Reels fill a tall screen.</p><p class="pic">It&#x27;s a door frame. A wide couch won&#x27;t fit through.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>Keep the face in frame</h3><p class="note">Tell Cutter what must stay visible.</p><p class="why"><em>why</em>Cropping can cut off the best part.</p><p class="pic">It&#x27;s a family photo. Nobody wants a missing head.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Add big captions</h3><p class="note">Ask for large captions in your brand font.</p><p class="why"><em>why</em>Many people watch with the sound off.</p><p class="pic">It&#x27;s subtitles at a loud party. You still get the joke.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>5</span>Open on the best line</h3><p class="note">Start the video on your strongest sentence.</p><p class="why"><em>why</em>People decide in seconds whether to keep watching.</p><p class="pic">It&#x27;s a restaurant window. Show the best dish first.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>6</span>Check your work</h3><p class="note">Watch it on a phone with the sound off.</p><p class="why"><em>why</em>One caption typo is very easy to see.</p><p class="pic">It&#x27;s spinach in your teeth. Two seconds now, no regrets later.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 3</b><span>long lesson · in the pack</span></div><h2>Turn one video into a vertical post with captions</h2><p class="sum">Reshape one finished video for TikTok and Reels, keep the best part in frame, and add captions that are easy to read.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Pick one finished video</h3></li>
+<li class="step mini"><h3><span>2</span>Ask for the tall shape</h3></li>
+<li class="step mini"><h3><span>3</span>Keep the face in frame</h3></li>
+<li class="step mini"><h3><span>4</span>Add big captions</h3></li>
+<li class="step mini"><h3><span>5</span>Open on the best line</h3></li>
+<li class="step mini"><h3><span>6</span>Check your work</h3></li>
+</ol>
+  
 </article>
-<div class="buy"><p><b>Hire Cutter:</b> both lessons, every prompt, the skill file and a check-your-work list. Buy once, keep forever. $2.99, or the whole team for $14.99.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>
+<div class="buy"><p><b>Hire Cutter:</b> every lesson, every prompt, the skill file and a check-your-work list. Buy once, keep forever. $2.99, or the whole team for $14.99.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>
 </div></section>
 </main>
 <footer><div class="wrap">

@@ -33,6 +33,9 @@ footer .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 footer p{font-size:14px;color:var(--ink-3);width:100%}
 @media (max-width:600px){.links a:not(.btn){display:none}.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}section{padding:40px 0}}
 @media (max-width:440px){.nav .brand .sep,.nav .brand .tag{display:none}}
+.mnav{display:none}
+@media (max-width:600px){.mnav{display:flex;justify-content:space-around;gap:6px;padding:0 16px 10px;max-width:420px;margin:0 auto}.mnav a{font-size:14px;color:var(--ink-2);text-decoration:none;padding:6px 2px}}
+html,body{overflow-x:clip}
 
 .prof{padding:40px 0 0}
 .prof .card{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:center;background:var(--card);border:1px solid var(--line);border-top:8px solid var(--c);border-radius:30px;padding:32px}
@@ -80,13 +83,26 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 .buy p{flex:1;min-width:220px;font-size:16px;color:var(--ink-2)}
 .buy b{color:var(--ink)}
 @media (max-width:900px){.prof .card{grid-template-columns:1fr;padding:24px}.prof .art{width:160px;height:160px;border-radius:30px}.prof .art img{width:130px;height:130px}.lhead{grid-template-columns:1fr}.cover{width:180px}}
+.steps.minis{gap:8px;margin-top:16px}
+.step.mini{padding:10px 14px;background:transparent}
+.step.mini h3{font-size:16px;font-weight:500}
+.step.mini h3 span{width:26px;height:26px;font-size:13px}
+.lesson .watch{margin-top:16px;padding:11px 18px;font-size:15px}
+.more{margin-top:16px}
+.more summary{cursor:pointer;font-weight:600;font-size:15px;color:var(--ink);list-style:none;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;background:var(--soft)}
+.more summary::-webkit-details-marker{display:none}
+.more summary:after{content:"+";font-family:var(--mono);color:var(--teal)}
+.more[open] summary:after{content:"-"}
+@media (max-width:600px){.cover{display:none}.steps{gap:10px}.step{padding:14px 16px}.lesson h2{font-size:23px}.lesson .sum{font-size:16px}.prof .card{padding:20px}.prof .art{width:120px;height:120px;border-radius:26px}.prof .art img{width:96px;height:96px}}
 @media (max-width:600px){.prof h1{font-size:40px}.prof .intro{font-size:18px}.lesson{padding:20px}.lesson h2{font-size:25px}}
 
 </style></head><body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
   <nav class="links"><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a><a class="btn btn-ink" href="/academy/#/boot">Get Boot free</a></nav>
-</div></header>
+</div>
+<nav class="mnav" aria-label="Menu"><a href="/">Home</a><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a></nav>
+</header>
 <main>
 <section class="prof"><div class="wrap">
   <div class="card" style="--c:#28c840;--soft:#d0f3d5">
@@ -105,35 +121,38 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 </div></section>
 <section style="padding-top:8px"><div class="wrap" style="--soft:#d0f3d5">
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 1</b><span>in the pack</span></div><h2>Who still owes you? Ask instead of digging in QuickBooks</h2><p class="sum">Connect QuickBooks once, then ask Claude plain questions about unpaid invoices.</p></div><img class="cover" src="/robots/covers/ledger-1-who-owes-you-cover.png" alt="Video cover for Who still owes you? Ask instead of digging in QuickBooks"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Connect it once</h3><p class="note">Link QuickBooks in your Claude account settings.</p><p class="why"><em>why</em>I can&#x27;t read books I can&#x27;t open.</p><p class="pic">It&#x27;s giving the bookkeeper a key to the filing cabinet, not the whole house.</p><p class="skip"><em>if you skip it</em>If you skip it: I guess your numbers like a weather forecaster. Confident, charming, and often soaked.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Ask who owes you</h3><p class="note">Use the words you&#x27;d use with a bookkeeper.</p><p class="why"><em>why</em>Plain questions get plain answers.</p><p class="pic">It&#x27;s asking a waiter what&#x27;s good, not reading the whole kitchen manual.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>Ask a follow up</h3><p class="note">Narrow the list with one more question.</p><p class="why"><em>why</em>Each question trims the pile.</p><p class="pic">It&#x27;s a dog sniffing out the one sock in the laundry.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Compare my answer with your own records.</p><p class="why"><em>why</em>Money answers deserve a second look.</p><p class="pic">It&#x27;s counting your change at the register. Friendly, but you still count.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 1</b><span>free</span></div><h2>Who still owes you? Ask instead of digging in QuickBooks</h2><p class="sum">Connect QuickBooks once, then ask Claude plain questions about unpaid invoices.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Connect it once</h3></li>
+<li class="step mini"><h3><span>2</span>Ask who owes you</h3></li>
+<li class="step mini"><h3><span>3</span>Ask a follow up</h3></li>
+<li class="step mini"><h3><span>4</span>Check your work</h3></li>
+</ol>
+  <a class="btn btn-line watch" href="/academy/#/ledger/ledger-1-who-owes-you">Watch this lesson free &rarr;</a>
 </article>
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 2</b><span>in the pack</span></div><h2>Draft friendly payment reminders you approve before they send</h2><p class="sum">Have Claude draft kind payment reminders for overdue invoices, then review each one before anything goes out.</p></div><img class="cover" src="/robots/covers/ledger-2-friendly-payment-reminders-cover.png" alt="Video cover for Draft friendly payment reminders you approve before they send"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Find who is late</h3><p class="note">Start with the overdue invoices.</p><p class="why"><em>why</em>You can&#x27;t remind people you haven&#x27;t listed.</p><p class="pic">It&#x27;s a guest list. Know who&#x27;s coming before you set the table.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Ask for drafts only</h3><p class="note">Ask for drafts and say do not send.</p><p class="why"><em>why</em>A draft can be fixed. A sent email cannot.</p><p class="pic">It&#x27;s the intern writing the letter. You&#x27;re the one who signs.</p><p class="skip"><em>if you skip it</em>If you skip it: Your best client gets a robot&#x27;s reminder at midnight. Awkward, but at least it&#x27;s punctual.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>Review each one</h3><p class="note">Edit anything. Approve only what you like.</p><p class="why"><em>why</em>You know each client. I only know invoices.</p><p class="pic">It&#x27;s proofreading a toast before you stand up and give it.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Match every draft to the right client and amount.</p><p class="why"><em>why</em>A wrong amount costs trust.</p><p class="pic">It&#x27;s the wrong shoe again. Thank me, then check the name and amount.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 2</b><span>in the pack</span></div><h2>Draft friendly payment reminders you approve before they send</h2><p class="sum">Have Claude draft kind payment reminders for overdue invoices, then review each one before anything goes out.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Find who is late</h3></li>
+<li class="step mini"><h3><span>2</span>Ask for drafts only</h3></li>
+<li class="step mini"><h3><span>3</span>Review each one</h3></li>
+<li class="step mini"><h3><span>4</span>Check your work</h3></li>
+</ol>
+  
 </article>
 <article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson 3</b><span>long lesson · in the pack</span></div><h2>How much did I make this month, in plain English</h2><p class="sum">Ask your books a plain English question, see what came in and what went out, and tie the answer back to real records.</p></div><img class="cover" src="/robots/covers/ledger-3-how-much-did-i-make-cover.png" alt="Video cover for How much did I make this month, in plain English"></div>
-  <ol class="steps">
-<li class="step"><h3><span>1</span>Connect your accounting</h3><p class="note">Turn on your accounting connector in account settings.</p><p class="why"><em>why</em>Ledger can only read what it can reach.</p><p class="pic">It&#x27;s a map with no roads. Nothing to follow.</p><p class="skip"><em>if you skip it</em>If you skip it: Ledger guesses, and guessing about money is a hobby for gamblers.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>2</span>Ask what came in</h3><p class="note">Ask how much money came in last month.</p><p class="why"><em>why</em>You need the top line before anything else.</p><p class="pic">It&#x27;s the front door count. Who walked in, before who bought.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>3</span>Ask what went out</h3><p class="note">Ask what you spent and on what.</p><p class="why"><em>why</em>Money out hides in small bills.</p><p class="pic">It&#x27;s the leaky bucket. Find the drips before the flood.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>4</span>Ask what is left</h3><p class="note">Ask what stayed in your pocket.</p><p class="why"><em>why</em>Money in is not profit. Money kept is.</p><p class="pic">It&#x27;s the paycheck after the bills. The only number you eat.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>5</span>Compare to last month</h3><p class="note">Ask if this month beat the one before.</p><p class="why"><em>why</em>One month alone tells you very little.</p><p class="pic">It&#x27;s a dog&#x27;s weight. One weigh-in means nothing, a trend does.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-<li class="step"><h3><span>6</span>Check your work</h3><p class="note">Ask which records add up to each total.</p><p class="why"><em>why</em>Money numbers must tie to something real.</p><p class="pic">It&#x27;s the wrong shoe again. Check the receipts it carried.</p><p class="skip"><em>if you skip it</em>If you skip it: You plan your month around a number nobody checked. Bold, and bouncy.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
-  </ol>
+  <div class="lhead"><div><div class="n"><b>lesson 3</b><span>long lesson · in the pack</span></div><h2>How much did I make this month, in plain English</h2><p class="sum">Ask your books a plain English question, see what came in and what went out, and tie the answer back to real records.</p></div></div>
+  <ol class="steps minis">
+<li class="step mini"><h3><span>1</span>Connect your accounting</h3></li>
+<li class="step mini"><h3><span>2</span>Ask what came in</h3></li>
+<li class="step mini"><h3><span>3</span>Ask what went out</h3></li>
+<li class="step mini"><h3><span>4</span>Ask what is left</h3></li>
+<li class="step mini"><h3><span>5</span>Compare to last month</h3></li>
+<li class="step mini"><h3><span>6</span>Check your work</h3></li>
+</ol>
+  
 </article>
-<div class="buy"><p><b>Hire Ledger:</b> both lessons, every prompt, the skill file and a check-your-work list. Buy once, keep forever. $2.99, or the whole team for $14.99.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>
+<div class="buy"><p><b>Hire Ledger:</b> every lesson, every prompt, the skill file and a check-your-work list. Buy once, keep forever. $2.99, or the whole team for $14.99.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>
 </div></section>
 </main>
 <footer><div class="wrap">
