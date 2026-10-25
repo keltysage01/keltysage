@@ -140,8 +140,8 @@ BOT_CSS = """
 .lesson .n b{font-weight:500;color:var(--teal)}
 .lesson h2{font-size:32px;margin-top:8px}
 .lesson .sum{font-size:18px;color:var(--ink-2);margin-top:8px}
-.lhead{display:grid;grid-template-columns:1fr 220px;gap:28px;align-items:start}
-.cover{width:220px;border-radius:18px;box-shadow:0 12px 30px rgba(18,24,28,.12)}
+.lhead{display:grid;grid-template-columns:1fr 150px;gap:28px;align-items:start}
+.cover{width:150px;border-radius:14px;box-shadow:0 12px 30px rgba(18,24,28,.12)}
 .steps{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:14px}
 .step{border:1px solid var(--line);border-radius:20px;padding:18px 20px;background:#fbfdfd}
 .step h3{font-size:20px;display:flex;gap:12px;align-items:baseline}
@@ -239,6 +239,7 @@ def robot_page(r, lessons, cast):
             shutil.copy(cover_src, OUT / "covers" / cover_src.name)
             cover = f'<img class="cover" src="/robots/covers/{cover_src.name}" alt="Video cover for {esc(l["title"])}">'
         tag = "free" if free else "in the pack"
+        if l.get("format") == "long": tag = "long lesson · " + tag
         blocks.append(f"""<article class="lesson">
   <div class="lhead"><div><div class="n"><b>lesson {i}</b><span>{tag}</span></div><h2>{esc(l['title'])}</h2><p class="sum">{esc(l['summary'])}</p></div>{cover}</div>
   <ol class="steps">
@@ -275,7 +276,8 @@ def robot_page(r, lessons, cast):
 def main():
     cast, lessons = load()
     (OUT / "art").mkdir(parents=True, exist_ok=True)
-    (OUT / "covers").mkdir(exist_ok=True)
+    shutil.rmtree(OUT / "covers", ignore_errors=True)
+    (OUT / "covers").mkdir()
     for r in cast:
         shutil.copy(SRC / "robots/art" / f"{r['id']}.svg", OUT / "art" / f"{r['id']}.svg")
         robot_page(r, lessons.get(r["id"], []), cast)
