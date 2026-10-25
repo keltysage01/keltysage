@@ -43,7 +43,8 @@ h1,h2,h3{font-weight:600;letter-spacing:-.03em;line-height:1.05}
 .brand .tag{font-weight:500;font-size:15px;color:var(--ink-2);letter-spacing:-.01em}
 .brand,.nav .btn{white-space:nowrap}
 @media (max-width:600px){.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}}
-@media (max-width:440px){.nav .brand .sep,.nav .brand .tag{display:none}}
+@media (max-width:600px){.nav .brand .sur,.nav .lg{display:none}}
+@media (max-width:359px){.nav .brand .sep,.nav .brand .tag{display:none}}
 .links{margin-left:auto;display:flex;align-items:center;gap:26px}
 .links a{text-decoration:none;font-size:15px;color:var(--ink-2)}
 .links a:hover{color:var(--ink)}
@@ -63,6 +64,7 @@ h1,h2,h3{font-weight:600;letter-spacing:-.03em;line-height:1.05}
 .hero h1{font-size:58px;margin-top:8px}
 .hero .lead{font-size:20px;color:var(--ink-2);margin-top:20px;max-width:560px}
 .signup{display:flex;gap:10px;margin-top:28px;max-width:520px}
+.ctas{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
 .signup input{flex:1;min-width:0;font:inherit;font-size:16px;padding:14px 20px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 .signup input:focus{outline:2px solid var(--sea);border-color:var(--teal)}
 .fine{font-size:14px;color:var(--ink-3);margin-top:12px}
@@ -220,6 +222,7 @@ footer .links{gap:20px}
   .hero h1{font-size:38px}
   .hero .lead{font-size:18px}
   .signup{flex-direction:column}
+  .ctas{flex-direction:column}.ctas .btn{width:100%}
   .stack{grid-template-columns:1fr}
   section{padding:52px 0}
   .term pre{font-size:13px;padding:16px}
@@ -251,14 +254,14 @@ html,body{overflow-x:clip}
 <body>
 
 <header class="nav"><div class="wrap">
-  <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
+  <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty<span class="sur">&nbsp;Sage</span><span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
   <nav class="links">
     <a href="/robots">Robots</a>
     <a href="/academy/">Academy</a>
     <a href="#stack">My tools</a>
     <a href="#learn">Lessons</a>
     <a href="#join">Pricing</a>
-    <a class="btn btn-ink" href="/academy/#/boot">Start free</a>
+    <a class="btn btn-ink" href="/academy/"><span class="lg">Robot </span>Academy</a>
   </nav>
 </div>
 <nav class="mnav" aria-label="Menu"><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="#stack">Tools</a><a href="#learn">Lessons</a><a href="#join">Pricing</a></nav>
@@ -271,12 +274,11 @@ html,body{overflow-x:clip}
     <p class="kick">I run a dog training company.</p>
     <h1>I never wanted to be a <span class="hl-g">marketer</span>, a <span class="hl-p">bookkeeper</span> or a <span class="hl-b">web designer.</span></h1>
     <p class="lead">But running a business means being all three. So I taught AI to do those jobs. Now I type what I need in plain English, and it gets done. I'll show you exactly how.</p>
-    <form class="signup" onsubmit="return joined(event)">
-      <input type="email" required placeholder="Your email" aria-label="Your email">
-      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-      <button class="btn btn-ink" type="submit">Get the weekly build</button>
-    </form>
-    <p class="fine" id="fine">One email a week: what I built, how, and the file so you can use it. Free.</p>
+    <div class="ctas">
+      <a class="btn btn-ink" href="/academy/">Open the Robot Academy</a>
+      <a class="btn btn-line" href="/academy/#/boot">Start free with Boot</a>
+    </div>
+    <p class="fine">Learn free with Boot. Then hire a robot to teach you one job, $2.99 each.</p>
   </div>
   <div class="photo">
     <div class="mint" id="mint" role="img" aria-label="A mint green Mac terminal where Kelty types requests and a cute AI robot answers each one">
@@ -301,7 +303,7 @@ html,body{overflow-x:clip}
       <h2>The website you're scrolling right now was built by my robots.</h2>
       <p>No designer. No developer. My team of AI robots designed it, wrote the code and put it live, while I told them what I wanted in plain English.</p>
       <p>That's the exact system I teach. A simple, step-by-step process for scaling your business, with branding and messaging that stay consistent and high class. None of the complicated part.</p>
-      <a class="btn btn-ink" href="#join">Learn the exact process</a>
+      <a class="btn btn-ink" href="/academy/">Learn it in the Robot Academy</a>
     </div>
     <div class="receipt" aria-label="The real build log for this website, from today">
       <div class="rbar"><i style="background:#ff6159"></i><i style="background:#ffbd2e"></i><i style="background:#28c840"></i><span>build log: keltysage.com, today</span></div>
@@ -418,7 +420,7 @@ html,body{overflow-x:clip}
 
 <section id="join"><div class="wrap">
   <div class="eb rise">&gt; pricing</div>
-  <h2 class="sec-h rise">Start free with Boot. Hire the rest when you're ready.</h2>
+  <h2 class="sec-h rise">Learn free in the Robot Academy. Hire a robot when you're ready.</h2>
   <div class="plans">
     <div class="plan rise">
       <h3>Boot</h3>
@@ -430,14 +432,14 @@ html,body{overflow-x:clip}
       <h3>One robot</h3>
       <div class="price">$2.99 · one time</div>
       <ul><li>One job off your plate</li><li>Longer step-by-step lessons</li><li>Every prompt and the skill file</li><li>A check-your-work list</li></ul>
-      <a class="btn btn-line" href="/robots">Pick a robot</a>
+      <a class="btn btn-line" href="/academy/">Pick a robot</a>
     </div>
     <div class="plan main rise">
       <div class="flag">Best deal</div>
       <h3>The whole team</h3>
       <div class="price">$14.99 · one time <s style="color:var(--ink-3);margin-left:6px">$23.92</s></div>
       <ul><li>All eight working robots</li><li>Every lesson, prompt and skill file</li><li>Buy once, keep forever</li><li>No subscription</li></ul>
-      <a class="btn btn-ink" href="#top" onclick="document.querySelector('.signup input').focus();return false">Get on the list</a>
+      <a class="btn btn-ink" href="/api/checkout?item=all">Hire the whole team</a>
     </div>
   </div>
 </div></section>

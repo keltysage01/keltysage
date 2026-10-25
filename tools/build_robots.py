@@ -70,15 +70,16 @@ footer{padding:40px 0 56px;border-top:1px solid var(--line)}
 footer .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 footer p{font-size:14px;color:var(--ink-3);width:100%}
 @media (max-width:600px){.links a:not(.btn){display:none}.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}section{padding:40px 0}}
-@media (max-width:440px){.nav .brand .sep,.nav .brand .tag{display:none}}
+@media (max-width:600px){.nav .brand .sur,.nav .lg{display:none}}
+@media (max-width:359px){.nav .brand .sep,.nav .brand .tag{display:none}}
 .mnav{display:none}
 @media (max-width:600px){.mnav{display:flex;justify-content:space-around;gap:6px;padding:0 16px 10px;max-width:420px;margin:0 auto}.mnav a{font-size:14px;color:var(--ink-2);text-decoration:none;padding:6px 2px}}
 html,body{overflow-x:clip}
 {css}
 </style></head><body>
 <header class="nav"><div class="wrap">
-  <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
-  <nav class="links"><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a><a class="btn btn-ink" href="/academy/#/boot">Get Boot free</a></nav>
+  <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty<span class="sur">&nbsp;Sage</span><span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
+  <nav class="links"><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a><a class="btn btn-ink" href="/academy/"><span class="lg">Robot </span>Academy</a></nav>
 </div>
 <nav class="mnav" aria-label="Menu"><a href="/">Home</a><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a></nav>
 </header>
@@ -274,7 +275,7 @@ def robot_page(r, lessons, cast):
     if free:
         buy = f'<div class="buy"><p><b>{esc(r["name"])} is free.</b> When you are ready, hire your next robot for {esc(PRICE)}, or the whole team for {esc(BUNDLE or "one price")}.</p><a class="btn btn-ink" href="/robots">Meet the team</a></div>'
     else:
-        buy = f'<div class="buy"><p><b>Hire {esc(r["name"])}:</b> every lesson, every prompt, the skill file and a check-your-work list. Buy once, keep forever. {esc(PRICE)}, or the whole team for {esc(BUNDLE or "one price")}.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>'
+        buy = f'<div class="buy"><p><b>Hire {esc(r["name"])}:</b> every lesson, every prompt, the skill file and a check-your-work list. Buy once, keep forever. {esc(PRICE)}, or the whole team for {esc(BUNDLE or "one price")}.</p><a class="btn btn-ink" href="/api/checkout?item={r["id"]}">Hire {esc(r["name"])}: {esc(PRICE)}</a><a class="btn btn-line" href="/api/checkout?item=all">Whole team: {esc(BUNDLE)}</a></div>'
     body = f"""<section class="prof"><div class="wrap">
   <div class="card" style="--c:{r['accent']};--soft:{soft(r['accent'])}">
     <div class="art"><img src="/robots/art/{r['id']}.svg" alt="{esc(r['name'])}, the {esc(r['job'])}"></div>

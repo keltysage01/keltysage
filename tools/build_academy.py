@@ -2,24 +2,67 @@
 """Copy the course player into /academy, keeping paid content off the public site.
 
     python3 ~/keltysage-course/build.py   # refresh the player's data first
-    python3 tools/build_academy.py
+    python3 tools/build_academy.py           # add --upload to push paid lessons to Blob
 
 Free lessons (all of Boot, lesson 1 of each paid robot) ship complete.
 Locked lessons ship as title, summary, cover and step titles only: no prompts,
-no why/picture text and no video file. The player's localStorage unlock is soft,
-so anything shipped here is readable by anyone. Paid files belong behind checkout.
+no why/picture text and no video file. This repo is public on GitHub, so anything
+committed here is readable by anyone.
+
+The full locked lessons go to Vercel Blob instead (with --upload). Video URLs get a
+random suffix, and the lesson data sits at a secret path that only the PAID_DATA_URL
+env var knows. /api/lessons hands them out after Stripe confirms the purchase.
+Upload state lives in ~/.keltysage-paid, outside the repo.
 """
-import json, shutil
+import hashlib, json, re, secrets, shutil, subprocess, sys
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parent.parent
 SRC = Path.home() / "keltysage-course/dist"
-OUT = Path(__file__).resolve().parent.parent / "academy"
+OUT = ROOT / "academy"
+PAID = Path.home() / ".keltysage-paid"
+EXTRAS = json.loads((ROOT / "data/robot_extras.json").read_text())
+
+def cents(price):
+    return round(float(price.strip("$")) * 100)
+
+def blob_put(path, pathname, overwrite=False):
+    cmd = ["vercel", "blob", "put", str(path), "--access", "public", "--pathname", pathname]
+    cmd += ["--allow-overwrite", "true", "--cache-control-max-age", "60"] if overwrite \
+        else ["--add-random-suffix", "true"]
+    p = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True); out = p.stdout + p.stderr
+    m = re.search(r"https://\S+\.blob\.vercel-storage\.com/\S+", out)
+    if not m:
+        sys.exit(f"blob upload failed for {pathname}")
+    return m.group(0)
+
+def upload_paid(paid):
+    """Upload changed locked videos, then the paid lesson data. Returns the data URL."""
+    PAID.mkdir(exist_ok=True)
+    seen_f = PAID / "videos.json"
+    seen = json.loads(seen_f.read_text()) if seen_f.exists() else {}
+    for lessons in paid["robots"].values():
+        for l in lessons:
+            f = SRC / l["video"]
+            sha = hashlib.sha1(f.read_bytes()).hexdigest()
+            if seen.get(l["slug"], {}).get("sha") != sha:
+                seen[l["slug"]] = {"sha": sha, "url": blob_put(f, f"lessons/{f.name}")}
+                print(f"  uploaded {f.name}")
+            l["video"] = seen[l["slug"]]["url"]
+    seen_f.write_text(json.dumps(seen, indent=1))
+    key_f = PAID / "data-key"
+    if not key_f.exists():
+        key_f.write_text(secrets.token_urlsafe(24))
+    tmp = PAID / "course.json"
+    tmp.write_text(json.dumps(paid))
+    return blob_put(tmp, f"paid/{key_f.read_text().strip()}/course.json", overwrite=True)
 
 def main():
     shutil.rmtree(OUT, ignore_errors=True)
     shutil.copytree(SRC, OUT, ignore=shutil.ignore_patterns("media"))
     (OUT / "media").mkdir()
     data = json.loads((SRC / "course-data.json").read_text())
+    paid = {"robots": {}}
     kept = locked = 0
     for r in data["robots"]:
         for l in r["lessons"]:
@@ -27,23 +70,37 @@ def main():
                 shutil.copy(SRC / l["video"], OUT / l["video"])
                 kept += 1
             else:
+                paid["robots"].setdefault(r["id"], []).append(json.loads(json.dumps(l)))
                 l["video"] = ""
                 l["steps"] = [{"title": s.get("title", "")} for s in l.get("steps", [])]
                 locked += 1
     (OUT / "course-data.json").write_text(json.dumps(data))
-    # relative paths have to resolve under /academy/ even when the URL has no trailing slash
+
+    # what checkout is allowed to sell; names and prices only, nothing paid
+    catalog = {"price_cents": cents(EXTRAS["price"]), "bundle_cents": cents(EXTRAS["bundle_price"]),
+               "robots": {r["id"]: r["name"] for r in data["robots"] if not r.get("free")}}
+    (ROOT / "api/_catalog.json").write_text(json.dumps(catalog, indent=1) + "\n")
+
     page = (OUT / "index.html").read_text()
-    if "<base " not in page:
-        page = page.replace("<head>", '<head>\n<base href="/academy/">', 1)
+    # relative paths have to resolve under /academy/ even when the URL has no trailing slash
+    page = page.replace("<head>", '<head>\n<base href="/academy/">', 1)
     # phone: the lesson video fits on one screen with the title and button under it
-    if "ks-phone-fit" not in page:
-        page = page.replace("</style>", "@media (max-width:560px){.watch{gap:18px}.watch video{width:auto;height:min(54vh,460px);max-width:100%;display:block;margin:0 auto}} /* ks-phone-fit */\n</style>", 1)
-    # a way back to the main site from the academy top bar
-    if 'class="home"' not in page:
-        page = page.replace('<div class="xp"', '<a class="home" href="/">Home</a><div class="xp"', 1)
-        page = page.replace("</style>", ".bar .home{margin-left:auto;margin-right:14px;font-size:15px;color:var(--ink-2);text-decoration:none}.bar .home+.xp{margin-left:0}\n</style>", 1)
+    page = page.replace("</style>", "@media (max-width:560px){.watch{gap:18px}.watch video{width:auto;height:min(54vh,460px);max-width:100%;display:block;margin:0 auto}}\n</style>", 1)
+    # a clear way back to the main site from every academy screen
+    page = page.replace('<div class="xp"', '<a class="home" href="/">&larr; Home</a><div class="xp"', 1)
+    page = page.replace("</style>", ".bar .home{margin-left:auto;margin-right:10px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;padding:7px 14px;border:1px solid var(--line);border-radius:999px;background:#fff}.bar .home+.xp{margin-left:0}.bar .brand,.bar .home{white-space:nowrap}\n</style>", 1)
+    page = page.replace("</style>", ".paidbox{position:fixed;left:16px;right:16px;bottom:16px;max-width:520px;margin:0 auto;z-index:60;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 18px 50px rgba(18,24,28,.18);display:flex;flex-direction:column;gap:10px}.paidbox .cmd span{word-break:break-all;font-size:12px}\n</style>", 1)
+    # hire buttons go to Stripe Checkout
+    hire = '''<a class="btn" href="/robots/${r.id === 'postie' ? 'tempo' : r.id}">'''
+    team = '''<a class="btn soft" href="/robots">'''
+    assert hire in page and team in page, "player hire buttons changed, update build_academy.py"
+    page = page.replace(hire, '<a class="btn" href="/api/checkout?item=${r.id}">').replace(team, '<a class="btn soft" href="/api/checkout?item=all">')
+    page = page.replace("</body>", (ROOT / "tools/academy_pay.js").read_text().join(["<script>\n", "</script>\n</body>"]), 1)
     (OUT / "index.html").write_text(page)
     print(f"academy: {kept} free lessons with video, {locked} locked lessons stripped")
+
+    if "--upload" in sys.argv:
+        print("PAID_DATA_URL =", upload_paid(paid))
 
 if __name__ == "__main__":
     main()

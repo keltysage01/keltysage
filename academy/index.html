@@ -117,14 +117,15 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px soli
 @media (max-width:820px){.team{grid-template-columns:1fr 1fr}.watch{grid-template-columns:1fr}.watch video{max-width:340px;margin:0 auto}}
 @media (max-width:560px){.wrap{padding:0 16px}.team{grid-template-columns:1fr}.rb{flex-direction:row}.rb .art{width:40%;padding:10px 0}.rb .art img{width:72%}.rhero{grid-template-columns:1fr}.rhero .pic{width:160px}.ls{grid-template-columns:72px 1fr auto;gap:12px}.ls img{width:72px}.xp span.lbl{display:none}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-@media (max-width:560px){.watch{gap:18px}.watch video{width:auto;height:min(54vh,460px);max-width:100%;display:block;margin:0 auto}} /* ks-phone-fit */
-.bar .home{margin-left:auto;margin-right:14px;font-size:15px;color:var(--ink-2);text-decoration:none}.bar .home+.xp{margin-left:0}
+@media (max-width:560px){.watch{gap:18px}.watch video{width:auto;height:min(54vh,460px);max-width:100%;display:block;margin:0 auto}}
+.bar .home{margin-left:auto;margin-right:10px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;padding:7px 14px;border:1px solid var(--line);border-radius:999px;background:#fff}.bar .home+.xp{margin-left:0}.bar .brand,.bar .home{white-space:nowrap}
+.paidbox{position:fixed;left:16px;right:16px;bottom:16px;max-width:520px;margin:0 auto;z-index:60;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 18px 50px rgba(18,24,28,.18);display:flex;flex-direction:column;gap:10px}.paidbox .cmd span{word-break:break-all;font-size:12px}
 </style>
 </head>
 <body>
 <header class="bar"><div class="wrap">
   <a class="brand" href="#/"><img src="logo.png" alt="">Robot Academy</a>
-  <a class="home" href="/">Home</a><div class="xp" title="Points you have earned"><i>XP</i><span id="xp">0</span><span class="lbl">&nbsp;points</span></div>
+  <a class="home" href="/">&larr; Home</a><div class="xp" title="Points you have earned"><i>XP</i><span id="xp">0</span><span class="lbl">&nbsp;points</span></div>
 </div></header>
 <main id="app" class="wrap"></main>
 
@@ -190,7 +191,7 @@ function robotHome(r){
     }).join('')}</div>
     ${owns(r) ? '' : `<div class="hire"><h2>Hire ${esc(r.name)}</h2><p style="color:var(--ink-2);margin-top:6px">One time, yours to keep. Unlocks every lesson, video and copyable prompt.</p>
       <ul>${(r.hire || []).map(h => `<li>Hire ${esc(r.name)} if ${esc(h[0].toLowerCase() + h.slice(1))}</li>`).join('')}</ul>
-      <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="/robots/${r.id === 'postie' ? 'tempo' : r.id}">Hire ${esc(r.name)}: ${esc(C.price)}</a>${C.bundle_price ? `<a class="btn soft" href="/robots">Whole team: ${esc(C.bundle_price)}</a>` : ''}</div></div>`}
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="/api/checkout?item=${r.id}">Hire ${esc(r.name)}: ${esc(C.price)}</a>${C.bundle_price ? `<a class="btn soft" href="/api/checkout?item=all">Whole team: ${esc(C.bundle_price)}</a>` : ''}</div></div>`}
   </section>`));
   app.querySelectorAll('.ls').forEach(b => b.onclick = () => {
     if (b.dataset.locked) { document.querySelector('.hire')?.scrollIntoView({behavior:'smooth'}); return; }
@@ -318,6 +319,47 @@ function route(){
 addEventListener('hashchange', route);
 fetch('course-data.json').then(x => x.json()).then(d => { C = d; save(); route(); })
   .catch(() => { app.innerHTML = '<p style="padding:40px 0">The course could not load. Refresh to try again.</p>'; });
+</script>
+<script>
+/* Paid lessons. After Stripe Checkout the buyer lands on /academy/?paid=<session id>.
+   The id is saved in this browser, and /api/lessons swaps in the full lessons once
+   Stripe confirms the payment. The same link opens them on any other device. */
+(function () {
+  const KEY = 'ks_paid';
+  const get = () => { try { return JSON.parse(localStorage.getItem(KEY) || '[]') } catch (_) { return [] } };
+  const put = (v) => { try { localStorage.setItem(KEY, JSON.stringify(v)) } catch (_) {} };
+  const q = new URLSearchParams(location.search);
+  const fresh = /^cs_/.test(q.get('paid') || '') ? q.get('paid') : null;
+  const ids = get();
+  if (fresh && !ids.includes(fresh)) { ids.push(fresh); put(ids); }
+  const ready = new Promise((res) => { const t = setInterval(() => { if (C) { clearInterval(t); res(); } }, 100); });
+  if (q.has('soon')) ready.then(() => toast('Checkout opens soon. Boot is free right now.'));
+  if (fresh || q.has('soon')) history.replaceState(null, '', location.pathname + location.hash);
+  if (!ids.length) return;
+
+  fetch('/api/lessons?s=' + encodeURIComponent(ids.join(','))).then((x) => x.json()).then(async (d) => {
+    await ready;
+    for (const r of C.robots) {
+      const full = d.lessons && d.lessons[r.id];
+      if (full) r.lessons = r.lessons.map((l) => full.find((f) => f.slug === l.slug) || l);
+    }
+    (d.owned || []).forEach((id) => { if (!S.owned.includes(id)) S.owned.push(id); });
+    save(); route();
+    if (fresh && d.owned && d.owned.length) saved(fresh, d.owned);
+  }).catch(() => {});
+
+  function saved(id, owned) {
+    const who = owned.includes('all') ? 'the whole team' : owned.map((o) => (C.robots.find((r) => r.id === o) || {}).name).join(' and ');
+    const link = `https://www.keltysage.com/academy/?paid=${id}`;
+    const box = document.createElement('div');
+    box.className = 'paidbox';
+    box.innerHTML = `<b>You hired ${esc(who)}.</b><p>Every lesson is unlocked in this browser. To open them on your phone or another computer, save this link:</p>
+      <div class="cmd"><span>${esc(link)}</span><button class="copy">Copy</button></div><button class="btn soft" id="paidok">Got it</button>`;
+    document.body.appendChild(box);
+    box.querySelector('.copy').onclick = (e) => copy(link, e.target);
+    box.querySelector('#paidok').onclick = () => box.remove();
+  }
+})();
 </script>
 </body>
 </html>

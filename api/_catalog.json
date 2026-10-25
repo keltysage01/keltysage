@@ -1,0 +1,14 @@
+{
+ "price_cents": 299,
+ "bundle_cents": 1499,
+ "robots": {
+  "pixel": "Pixel",
+  "cutter": "Cutter",
+  "officer-keys": "Bouncer",
+  "ledger": "Ledger",
+  "echo": "Echo",
+  "brick": "Brick",
+  "postie": "Tempo",
+  "scout": "Scout"
+ }
+}
