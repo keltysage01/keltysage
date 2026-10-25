@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#c8d1f5"/></linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#18343e"/><stop offset="1" stop-color="#0e2028"/></linearGradient>
+  </defs>
+  <ellipse cx="300" cy="772" rx="180" ry="18" fill="#111816" opacity=".09"/>
+  
+  
+  <rect x="234" y="692" width="44" height="60" rx="16" fill="#cfd6dc"/><rect x="322" y="692" width="44" height="60" rx="16" fill="#cfd6dc"/><rect x="212" y="726" width="74" height="40" rx="20" fill="#2c44a4" stroke="#2c44a4" stroke-width="0"/><rect x="308" y="726" width="74" height="40" rx="20" fill="#2c44a4" stroke="#2c44a4" stroke-width="0"/>
+  <path d="M158 514 Q80 484 104 440" fill="none" stroke="#cfd6dc" stroke-width="30" stroke-linecap="round"/><path d="M442 514 Q510 554 506 634" fill="none" stroke="#cfd6dc" stroke-width="30" stroke-linecap="round"/>
+  <rect x="140" y="444" width="320" height="268" rx="70" fill="url(#body)" stroke="#93a5eb" stroke-width="5"/>
+  <rect x="162" y="460" width="89.60000000000001" height="14" rx="7" fill="#ffffff" opacity=".8"/>
+  <rect x="230" y="531.36" width="140" height="104" rx="26" fill="#eff2fc" stroke="#93a5eb" stroke-width="4"/>
+  <rect x="238" y="565.36" width="124" height="36" rx="10" fill="#3b5bdb"/><text x="300" y="591.36" font-family="Helvetica,Arial,sans-serif" font-size="21" font-weight="800" letter-spacing="2" text-anchor="middle" fill="#ffffff">SECURITY</text>
+  <rect x="74" y="380" width="60" height="70" rx="26" fill="#3b5bdb"/><rect x="78" y="354" width="14" height="40" rx="7" fill="#3b5bdb"/><rect x="96" y="348" width="14" height="44" rx="7" fill="#3b5bdb"/><rect x="114" y="354" width="14" height="40" rx="7" fill="#3b5bdb"/><circle cx="506" cy="644" r="30" fill="#3b5bdb"/><rect x="460" y="554" width="92" height="120" rx="12" fill="#b9825a"/><rect x="470" y="570" width="72" height="96" rx="6" fill="#ffffff"/><rect x="488" y="544" width="36" height="20" rx="6" fill="#24303a"/><path d="M480 590 l6 6 10 -12" fill="none" stroke="#28c840" stroke-width="4" stroke-linecap="round"/><rect x="500" y="588" width="34" height="6" rx="3" fill="#cfd6dc"/><path d="M480 610 l6 6 10 -12" fill="none" stroke="#28c840" stroke-width="4" stroke-linecap="round"/><rect x="500" y="608" width="34" height="6" rx="3" fill="#cfd6dc"/><path d="M480 630 l6 6 10 -12" fill="none" stroke="#28c840" stroke-width="4" stroke-linecap="round"/><rect x="500" y="628" width="34" height="6" rx="3" fill="#cfd6dc"/><path d="M480 650 l6 6 10 -12" fill="none" stroke="#28c840" stroke-width="4" stroke-linecap="round"/><rect x="500" y="648" width="34" height="6" rx="3" fill="#cfd6dc"/>
+  <rect x="270" y="418" width="60" height="32" rx="10" fill="#cfd6dc"/>
+  <rect x="100" y="264.0" width="28" height="72" rx="12" fill="#3b5bdb"/>
+  <rect x="472" y="264.0" width="28" height="72" rx="12" fill="#3b5bdb"/>
+  <rect x="120" y="170" width="360" height="260" rx="52" fill="url(#body)" stroke="#93a5eb" stroke-width="5"/>
+  <rect x="150" y="204" width="300" height="186" rx="37.44" fill="url(#screen)"/>
+  <path d="M168 306.3 Q170 222 300.0 218" fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" opacity=".12"/>
+  <rect x="190" y="252.12" width="100" height="60" rx="24" fill="#05090b" stroke="#93a5eb" stroke-width="5"/><rect x="310" y="252.12" width="100" height="60" rx="24" fill="#05090b" stroke="#93a5eb" stroke-width="5"/><rect x="290" y="276.12" width="20" height="10" rx="5" fill="#05090b"/><path d="M206 266.12 l22 0" stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity=".5"/><path d="M326 266.12 l22 0" stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity=".5"/>
+  <path d="M266 341.64 Q300 369.64 334 341.64" fill="none" stroke="#3b5bdb" stroke-width="10" stroke-linecap="round"/>
+  <path d="M496 340.0 q24 16 6 34 q-18 18 6 36" fill="none" stroke="#24303a" stroke-width="5" stroke-linecap="round"/>
+  
+</svg>

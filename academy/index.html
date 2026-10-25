@@ -181,6 +181,7 @@ function robotHome(r){
       <p class="lede" style="margin-top:8px">${esc(r.pitch || ('Teaches ' + r.teaches + '.'))}</p>
       <p class="quote">"${esc(r.catchphrase)}"</p>
       <div style="margin-top:16px;max-width:360px"><div class="meta"><span>${d} of ${n} lessons</span><span>${d === n ? 'Badge earned' : ''}</span></div><div class="prog"><b style="width:${n ? d / n * 100 : 0}%"></b></div></div></div></div>
+    ${r.id === 'boot' ? `<a class="hire" href="/academy/boot/" style="display:block;text-decoration:none;margin-bottom:18px"><p class="eyebrow">&gt;_ new</p><h2>The robots made their own version</h2><p style="color:var(--ink-2);margin-top:6px">Same seven lessons, taught by the robots messing up first. With voice notes.</p><span class="btn" style="margin-top:14px">Watch them mess up</span></a>` : ''}
     <div class="lessons">${r.lessons.map((l, i) => {
       const ok = open(r, l), done = S.lessons[l.slug];
       const mins = l.secs ? Math.max(1, Math.round(l.secs / 60)) + ' min' : '';

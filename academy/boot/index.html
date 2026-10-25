@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<base href="/academy/boot/">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Robot Academy: Boot</title>
+<meta name="description" content="Boot's free lessons, made by the robots. Every robot mistake is a lesson.">
+<link rel="icon" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12181c;--ink-2:#3d4a50;--ink-3:#7b8a90;--bg:#f4f7f7;--card:#fff;--line:#e1e8e8;--sea:#9ed9c7;--sea-soft:#e3f4ef;--teal:#2f9a94;--deep:#2f8f78;--skip:#ffeeec;--skip-ink:#c8463c;--note:#fff6c9;--note-ink:#6b5a12;--sans:'Geist',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;color-scheme:light}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;min-height:100vh}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+.bar{background:color-mix(in srgb,var(--bg) 88%,transparent);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;color:inherit}
+.brand img{width:38px;height:38px}
+.draft{font-family:var(--mono);font-size:11px;font-weight:700;background:var(--note);color:var(--note-ink);border-radius:99px;padding:5px 12px}
+h1{font-size:clamp(34px,7vw,52px);line-height:1.05;letter-spacing:-.035em;font-weight:800}
+h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--sea) 62%)}
+h2{font-size:clamp(24px,5vw,32px);letter-spacing:-.03em;line-height:1.1}
+h3{font-size:19px;letter-spacing:-.02em;line-height:1.2}
+.eyebrow{font-family:var(--mono);font-size:13px;color:var(--deep);margin-bottom:10px}
+.lede{font-size:19px;color:var(--ink-2);margin-top:12px}
+.sec{padding:26px 0;display:flex;flex-direction:column;gap:12px}
+.sec + .sec{border-top:1px solid var(--line)}
+.kicker{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3)}
+.fade{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.fade.in{opacity:1;transform:none}
+/* hero */
+.hero{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;padding:28px 0 20px}
+.hero .pic{background:linear-gradient(180deg,color-mix(in srgb,var(--sea) 30%,#fff),#fff);border-radius:24px;display:grid;place-items:center;padding:14px}
+.hero .pic img{width:84%}
+/* Kelty sticky note */
+.sticky{background:var(--note);color:var(--note-ink);border-radius:6px 6px 18px 6px;padding:18px 20px;box-shadow:0 8px 20px -14px rgba(0,0,0,.35);font-size:18px;font-weight:600;max-width:520px}
+.sticky small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;font-weight:700}
+/* chat lines */
+.chat{display:flex;flex-direction:column;gap:10px}
+.line{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:start}
+.line img{width:44px;height:44px;border-radius:50%;background:var(--card);border:1px solid var(--line);padding:4px}
+.line .b{background:var(--card);border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:10px 14px}
+.line .who{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em}
+.line.kelty .b{background:var(--note);border-color:#f0e3a0;color:var(--note-ink)}
+.line.kelty .av{width:44px;height:44px;border-radius:50%;background:var(--note);display:grid;place-items:center;font-weight:800;color:var(--note-ink)}
+/* terminal */
+.term{background:var(--ink);color:#e9f1f1;border-radius:16px;padding:16px 18px;font-family:var(--mono);font-size:14px;line-height:1.6;overflow-wrap:anywhere}
+.term .p{color:var(--sea)}
+.term .p::before{content:'> ';color:var(--ink-3)}
+.term .o{color:#fff;margin-top:8px}
+/* HR report */
+.hr{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.hr header{background:var(--ink);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.hr dl{display:grid;grid-template-columns:150px 1fr}
+.hr dt,.hr dd{padding:10px 18px;border-top:1px solid var(--line)}
+.hr dt{font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;color:var(--ink-3);letter-spacing:.03em}
+.hr dd.key{background:var(--sea-soft);font-weight:700}
+.hr dt.key{background:var(--sea-soft);color:var(--deep)}
+/* real teaching steps */
+.steps{display:grid;gap:12px}
+.st{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.pill{align-self:flex-start;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--deep);background:var(--sea-soft);padding:4px 12px;border-radius:99px}
+.why{font-weight:600;color:var(--deep)}
+.picnote{background:var(--sea-soft);border-radius:12px;padding:10px 14px;color:var(--ink-2);font-size:16px}
+.cmd{display:flex;gap:10px;align-items:center;background:var(--card);border:2px solid var(--sea);border-radius:14px;padding:12px 14px;font-family:var(--mono);font-size:14px;color:var(--deep)}
+.cmd span{flex:1;overflow-wrap:anywhere}
+.copy{font-family:var(--sans);font-size:13px;font-weight:700;background:var(--sea);border-radius:10px;padding:8px 12px;color:var(--ink);flex:none}
+/* rejected folder */
+.folder{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.side{border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px;position:relative}
+.side.bad{background:var(--skip)}
+.side.good{background:#e9f8f3}
+.side .kicker{color:inherit}
+.side.bad .kicker{color:var(--skip-ink)}
+.side.good .kicker{color:var(--deep)}
+.side .term{font-size:13px}
+.stamp{position:absolute;top:14px;right:12px;transform:rotate(-8deg);border:3px solid var(--skip-ink);color:var(--skip-ink);font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:.08em;padding:2px 8px;border-radius:6px;background:color-mix(in srgb,var(--skip) 70%,transparent)}
+.stamp.ok{border-color:var(--deep);color:var(--deep);background:transparent}
+.pen{font-family:var(--mono);font-size:13px;color:var(--skip-ink);font-weight:700}
+/* try it */
+.try{background:var(--card);border:2px solid var(--sea);border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.try ol{padding-left:20px;display:grid;gap:6px;color:var(--ink-2)}
+/* review card */
+.review{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:center}
+.grade{grid-row:span 2;font-size:56px;font-weight:800;letter-spacing:-.04em;color:var(--skip-ink);line-height:1}
+.cameo{display:flex;gap:12px;align-items:center;background:color-mix(in srgb,#ff8a3d 12%,#fff);border:1px dashed #ffb37f;border-radius:16px;padding:12px 14px;font-size:16px}
+.cameo img{width:48px;flex:none}
+.cameo i{font-style:normal;color:var(--ink-3);font-size:14px}
+.cameo b{display:block;font-size:14px;margin-top:6px}
+/* voice notes */
+.vn{--p:0;display:flex;align-items:center;gap:10px;margin:4px 0 2px;min-width:0}
+.play{width:38px;height:38px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;flex:none}
+.play svg{fill:currentColor}
+.play .i-pause,.vn.on .play .i-play{display:none}
+.vn.on .play .i-pause{display:inline}
+.wave{flex:1;display:flex;align-items:center;gap:2px;height:30px;min-width:0;
+  -webkit-mask:linear-gradient(90deg,#000 0 calc(var(--p)*100%),rgba(0,0,0,.35) calc(var(--p)*100%));mask:linear-gradient(90deg,#000 0 calc(var(--p)*100%),rgba(0,0,0,.35) calc(var(--p)*100%))}
+.wave i{flex:1;background:var(--deep);border-radius:2px;min-width:2px}
+.dur{font-family:var(--mono);font-size:12px;color:var(--ink-3);flex:none}
+.tx{font-size:15px;color:var(--ink-2);margin-top:4px}
+.playall{align-self:flex-start;font-weight:700;font-size:15px;background:var(--sea);border-radius:99px;padding:8px 16px}
+footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px solid var(--line);margin-top:10px}
+/* lesson nav */
+.lnav{display:flex;gap:8px;overflow-x:auto;padding:16px 0 0;scrollbar-width:none}
+.lnav::-webkit-scrollbar{display:none}
+.chip{flex:none;width:40px;height:40px;border-radius:50%;border:2px solid var(--line);background:var(--card);display:grid;place-items:center;font-weight:800;text-decoration:none;color:var(--ink-2)}
+.chip[aria-current=page]{background:var(--ink);border-color:var(--ink);color:#fff}
+/* platforms + skip */
+.os{display:flex;gap:8px}
+.os button{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:6px 14px;font-weight:600;font-size:15px}
+.os button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.howto{font-weight:600}
+.skipnote{background:var(--skip);border-radius:12px;padding:10px 14px;font-size:16px;color:var(--ink-2)}
+.skipnote b{color:var(--skip-ink)}
+/* closing bits */
+.letter{background:var(--card);border:1px solid var(--line);border-radius:6px 6px 18px 6px;padding:20px 22px;font-size:18px;line-height:1.55;box-shadow:0 8px 20px -14px rgba(0,0,0,.25)}
+.small{font-size:15px;color:var(--ink-2)}
+.sign{background:var(--card);border:3px solid var(--ink);border-radius:14px;padding:18px 20px}
+.sign ul{list-style:none;display:grid;gap:8px}
+.sign li{font-weight:700;font-size:18px;padding-left:26px;position:relative}
+.sign li::before{content:'>';position:absolute;left:0;font-family:var(--mono);color:var(--deep)}
+.trophy{display:grid;grid-template-columns:96px 1fr;gap:16px;align-items:center;background:var(--card);border:2px solid var(--sea);border-radius:18px;padding:16px 18px}
+.trophy img{width:96px}
+.bloops{list-style:none;display:grid;gap:8px;counter-reset:b}
+.bloops li{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px}
+/* pager */
+.pager{display:flex;gap:10px;padding:10px 0 30px}
+.pager a{flex:1;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+.pager a.next{background:var(--ink);color:#fff;border-color:var(--ink);text-align:right}
+.pager small{font-family:var(--mono);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;opacity:.7}
+.pager b{font-size:16px;line-height:1.25}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .hero{grid-template-columns:96px 1fr;gap:14px}
+  .hr dl{grid-template-columns:1fr}
+  .hr dt{padding-bottom:0}
+  .hr dd{border-top:0;padding-top:2px}
+  .folder{grid-template-columns:1fr}
+  .trophy{grid-template-columns:72px 1fr}
+  .trophy img{width:72px}
+  h1{font-size:31px}
+}
+@media (prefers-reduced-motion:reduce){.fade{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="brand" href="/academy/"><img src="logo.png" alt="">Robot Academy</a>
+  <a class="draft" href="/academy/#/boot" style="text-decoration:none">ALL ROBOTS</a>
+</div></header>
+<main id="app" class="wrap"></main>
+<footer><div class="wrap">Made by the robots. Checked by Kelty. Mostly.</div></footer>
+
+<script src="lessons.js"></script>
+<script src="voices.js"></script>
+<script>
+/* Comedy lessons. Each segment from the brief is one render function, fed by a lesson
+   in lessons.js (python3 build.py). Voice notes come from voices.js (python3 voices.py). */
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const LESSONS = window.LESSONS || [], VOICES = window.VOICES || {};
+const CAST = {
+  boot:{name:'Boot', art:'boot'}, pixel:{name:'Pixel', art:'pixel'}, penny:{name:'Penny', art:'ledger'},
+  dot:{name:'Dot', art:'brick'}, reel:{name:'Reel', art:'cutter'}, bouncer:{name:'Bouncer', art:'officer-keys'},
+  echo:{name:'Echo', art:'echo'}, tempo:{name:'Tempo', art:'postie'}, scout:{name:'Scout', art:'scout'},
+};
+const art = (who) => `art/${CAST[who].art}.svg`;
+let os = /Win/i.test(navigator.userAgent) ? 'Windows PC' : 'Mac';
+
+/* ---------- small pieces ---------- */
+// Bar heights come from the words, so each note has its own fixed waveform.
+const bars = (text) => { let h = 7; return Array.from({length:28}, (_, i) => { h = (h * 31 + text.charCodeAt(i % text.length)) % 997; return 22 + h % 78; }); };
+const fmt = (s) => `0:${String(Math.max(1, Math.round(s))).padStart(2, '0')}`;
+function voiceNote(who, text){
+  const v = VOICES[`${who}|${text}`];
+  if (!v) return esc(text);
+  return `<div class="vn" data-src="${v.src}">
+      <button class="play" aria-label="Play ${esc(CAST[who].name)}'s voice note"><svg viewBox="0 0 24 24" width="18" height="18"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg></button>
+      <span class="wave">${bars(text).map(h => `<i style="height:${h}%"></i>`).join('')}</span>
+      <span class="dur">${fmt(v.secs)}</span></div>
+    <p class="tx">${esc(text)}</p>`;
+}
+const line = ([who, text]) => `<div class="line"><img src="${art(who)}" alt=""><div class="b"><div class="who">${esc(CAST[who].name)}</div>${voiceNote(who, text)}</div></div>`;
+const chat = (lines) => `<div class="chat">${lines.map(line).join('')}</div>`;
+const playAll = (lines) => lines.some(([w, t]) => VOICES[`${w}|${t}`]) ? `<button class="playall">Play the whole thing</button>` : '';
+const term = (p, o) => `<div class="term"><div class="p">${esc(p)}</div>${o ? `<div class="o">${esc(o)}</div>` : ''}</div>`;
+const cmd = (t) => `<div class="cmd"><span>${esc(t)}</span><button class="copy" data-copy="${esc(t)}">Copy</button></div>`;
+const sec = (kicker, inner) => `<section class="sec fade"><p class="kicker">${kicker}</p>${inner}</section>`;
+// Highlight the back half of a title: after the first comma or colon, else the last two words.
+function headline(t){
+  const m = t.match(/^(.+?[,:])\s(.+)$/);
+  if (m) return `${esc(m[1])} <em>${esc(m[2])}</em>`;
+  const w = t.split(' '); return `${esc(w.slice(0, -2).join(' '))} <em>${esc(w.slice(-2).join(' '))}</em>`;
+}
+
+/* ---------- segments ---------- */
+const ColdOpen = (c) => sec('Cold open: a sticky note from Kelty',
+  `<div class="sticky"><small>From Kelty</small>${esc(c.note)}</div>
+   <p class="kicker" style="margin-top:8px">Leaked meeting voice notes</p>${playAll(c.meeting)}${chat(c.meeting)}`);
+const Attempt = (a) => sec('The attempt', `<p>${esc(a.intro)}</p>${term(a.prompt, a.output)}<p style="color:var(--ink-2)">${esc(a.after)}</p>`);
+const Cameo = (c) => `<div class="cameo fade"><img src="${art('dot')}" alt=""><div style="flex:1">
+  ${c.lines.map(([w, t]) => `<div><b>${esc(CAST[w].name)}</b>${voiceNote(w, t)}</div>`).join('')}<i>${esc(c.aside)}</i></div></div>`;
+const BlameGame = (b) => sec('The blame game', playAll(b) + chat(b));
+function IncidentReport(h, n){
+  const rows = [['Robot involved', h.robot], ['What happened', h.what], ['Witnesses', h.witnesses], ['Blame assigned to', h.blame]];
+  return sec('Robot HR',
+    `<div class="hr"><header><span>Incident report</span><span>No. ${String(n).padStart(3, '0')}</span></header><dl>
+      ${rows.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}
+      <dt class="key">Root cause</dt><dd class="key">${esc(h.root)}</dd>
+      <dt class="key">Corrective action</dt><dd class="key">${esc(h.fix)}</dd></dl></div>`);
+}
+function stepBody(s){
+  const plats = s.platforms ? `<div class="os" role="group" aria-label="Your computer">${s.platforms.map(p => `<button data-os="${esc(p.label)}" aria-pressed="${p.label === os}">${esc(p.label)}</button>`).join('')}</div>
+    ${s.platforms.map(p => `<div class="plat" data-for="${esc(p.label)}" ${p.label === os ? '' : 'hidden'}><p class="howto">${esc(p.how)}</p>${p.cmd ? cmd(p.cmd) : ''}</div>`).join('')}` : '';
+  return `<p>${esc(s.note)} <span class="why">${esc(s.why)}</span></p>
+    <div class="picnote">${esc(s.picture)}</div>${plats}${(s.prompts || []).map(cmd).join('')}
+    ${s.skip ? `<div class="skipnote"><b>If you skip it:</b> ${esc(s.skip)}</div>` : ''}`;
+}
+const RealTeaching = (t) => sec('The real lesson',
+  `<h2>${esc(t.title)}</h2><p class="lede" style="margin-top:0">${esc(t.intro)}</p>
+   <div class="steps">${t.steps.map((s, i) => `<div class="st"><span class="pill">STEP ${i + 1} OF ${t.steps.length}</span><h3>${esc(s.title)}</h3>${stepBody(s)}</div>`).join('')}</div>`);
+const RejectedFolder = (r) => sec('Kelty rejected this folder',
+  `<div class="folder">
+    <div class="side bad"><span class="stamp">REJECTED</span><p class="kicker">Before</p>${term(r.badPrompt, r.badOutput)}<p class="pen">Kelty: ${esc(r.pen)}</p></div>
+    <div class="side good"><span class="stamp ok">APPROVED</span><p class="kicker">After</p>${term(r.goodPrompt, r.goodOutput)}</div></div>`);
+const TryIt = (t) => sec('Your turn', `<div class="try"><h2>Try it yourself</h2><ol>${t.steps.map(s => `<li>${esc(s)}</li>`).join('')}</ol></div>`);
+function Closing(c, L){
+  const tip = c.lesson ? `<p class="small">${esc(c.lesson)}</p>` : '';
+  let body;
+  if (c.grade) body = `<div class="review"><div><p class="kicker">${esc(CAST[L.robot].name)}, lesson ${L.number}</p><p style="font-weight:600;margin-top:4px">"${esc(c.kelty)}"</p></div>
+      <span class="grade">${esc(c.grade)}</span><p class="small">${esc(c.reaction)}</p></div>`;
+  else if (c.letter) body = `<div class="letter">${esc(c.letter)}</div>`;
+  else if (c.lines) body = playAll(c.lines) + chat(c.lines);
+  else if (c.demands) body = `<div class="sign"><ul>${c.demands.map(d => `<li>${esc(d)}</li>`).join('')}</ul></div>`;
+  else if (c.winner) body = `<div class="trophy"><img src="${art(c.winner)}" alt=""><div><p class="kicker">This month's winner</p><h2>${esc(CAST[c.winner].name)}</h2><p class="small">${esc(c.reason)}</p></div></div>`;
+  else if (c.bloopers) body = `<ul class="bloops">${c.bloopers.map(b => `<li>${esc(b)}</li>`).join('')}</ul>`;
+  return sec(`Closing bit: ${esc(c.kind)}`, body + tip);
+}
+function Pager(i){
+  const p = LESSONS[i - 1], n = LESSONS[i + 1];
+  return `<nav class="pager">${p ? `<a href="#${p.id}"><small>Back</small><b>${esc(p.title)}</b></a>` : ''}${n ? `<a class="next" href="#${n.id}"><small>Next lesson</small><b>${esc(n.title)}</b></a>` : ''}</nav>`;
+}
+
+/* ---------- page ---------- */
+function render(){
+  const i = Math.max(0, LESSONS.findIndex(l => l.id === location.hash.slice(1)));
+  const L = LESSONS[i]; if (!L) return;
+  document.title = `${CAST[L.robot].name} lesson ${L.number}: ${L.title}`;
+  document.getElementById('app').innerHTML = `
+    <nav class="lnav" aria-label="Lessons">${LESSONS.map((l, j) => `<a class="chip" href="#${l.id}" ${j === i ? 'aria-current="page"' : ''} title="${esc(l.title)}">${l.number}</a>`).join('')}</nav>
+    <div class="hero fade"><div class="pic"><img src="${art(L.robot)}" alt="${esc(CAST[L.robot].name)} the robot"></div>
+      <div><p class="eyebrow">&gt;_ ${esc(CAST[L.robot].name)} · lesson ${L.number} · free</p><h1>${headline(L.title)}</h1>
+      <p class="lede">${esc(L.intro)}</p></div></div>
+    ${ColdOpen(L.coldOpen)}${Attempt(L.attempt)}${Cameo(L.cameo)}${BlameGame(L.blame)}
+    ${IncidentReport(L.hr, L.number)}${RealTeaching(L.teach)}${RejectedFolder(L.rejected)}${TryIt(L.tryIt)}${Closing(L.closing, L)}
+    ${Pager(i)}`;
+  wire();
+}
+
+/* One shared player. Tapping a note plays it; "Play the whole thing" runs that section's notes in order. */
+const audio = new Audio();
+let current = null, queue = [];
+function stopNote(){ if (current) { current.classList.remove('on'); current.style.setProperty('--p', 0); } current = null; }
+function playNote(vn){
+  if (current === vn && !audio.paused) { audio.pause(); vn.classList.remove('on'); queue = []; return; }
+  stopNote(); current = vn; vn.classList.add('on');
+  audio.src = vn.dataset.src; audio.play().catch(() => stopNote());
+}
+audio.ontimeupdate = () => { if (current && audio.duration) current.style.setProperty('--p', audio.currentTime / audio.duration); };
+audio.onended = () => { stopNote(); const next = queue.shift(); if (next) setTimeout(() => playNote(next), 350); };
+
+function wire(){
+  const app = document.getElementById('app');
+  app.querySelectorAll('.vn .play').forEach(b => b.onclick = () => { queue = []; playNote(b.closest('.vn')); });
+  app.querySelectorAll('.playall').forEach(b => b.onclick = () => {
+    const notes = [...b.closest('.sec').querySelectorAll('.vn')];
+    queue = notes.slice(1); playNote(notes[0]);
+  });
+  app.querySelectorAll('.copy').forEach(b => b.onclick = () => {
+    try { navigator.clipboard.writeText(b.dataset.copy); b.textContent = 'Copied'; setTimeout(() => b.textContent = 'Copy', 1400); } catch(_) {}
+  });
+  app.querySelectorAll('.os button').forEach(b => b.onclick = () => {
+    os = b.dataset.os;
+    app.querySelectorAll('.os button').forEach(x => x.setAttribute('aria-pressed', x.dataset.os === os));
+    app.querySelectorAll('.plat').forEach(p => p.hidden = p.dataset.for !== os);
+  });
+  // Soft fade and small rise as each section scrolls into view.
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12}) : null;
+  app.querySelectorAll('.fade').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+}
+window.addEventListener('hashchange', () => { audio.pause(); stopNote(); queue = []; render(); window.scrollTo(0, 0); });
+render();
+</script>
+</body>
+</html>
