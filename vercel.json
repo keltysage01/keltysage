@@ -10,6 +10,21 @@
       "source": "/robots/postie",
       "destination": "/robots/tempo",
       "permanent": true
+    },
+    {
+      "source": "/robots/cutter",
+      "destination": "/robots/reel",
+      "permanent": true
+    },
+    {
+      "source": "/robots/ledger",
+      "destination": "/robots/penny",
+      "permanent": true
+    },
+    {
+      "source": "/robots/brick",
+      "destination": "/robots/dot",
+      "permanent": true
     }
   ]
 }

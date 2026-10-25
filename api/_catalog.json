@@ -3,11 +3,11 @@
  "bundle_cents": 1499,
  "robots": {
   "pixel": "Pixel",
-  "cutter": "Cutter",
+  "cutter": "Reel",
   "officer-keys": "Bouncer",
-  "ledger": "Ledger",
+  "ledger": "Penny",
   "echo": "Echo",
-  "brick": "Brick",
+  "brick": "Dot",
   "postie": "Tempo",
   "scout": "Scout"
  }

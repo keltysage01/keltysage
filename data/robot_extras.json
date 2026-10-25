@@ -22,13 +22,16 @@
       ]
     },
     "cutter": {
-      "pitch": "Cutter edits your videos, so one recording turns into a week of posts.",
+      "pitch": "Reel edits your videos, so one recording turns into a week of posts.",
       "hire": [
         "You record great videos and never get around to editing them",
         "You spend an hour adding captions by hand",
         "You want one long video cut into three short ones",
         "You need vertical versions for TikTok and Reels"
-      ]
+      ],
+      "name": "Reel",
+      "slug": "reel",
+      "intro": "Reel here. I make the videos. I'll show you how to replace CapCut. Let's skip the intro."
     },
     "officer-keys": {
       "pitch": "Bouncer guards your accounts and secret keys, so nothing gets in or goes out without your OK.",
@@ -44,13 +47,16 @@
       "catchphrase": "Not on the list? Not getting in."
     },
     "ledger": {
-      "pitch": "Ledger tracks your money, so you always know who still owes you.",
+      "pitch": "Penny tracks your money, so you always know who still owes you.",
       "hire": [
         "You dread opening QuickBooks",
         "You're not sure which clients still owe you",
         "You hate writing awkward payment reminders",
         "You want a plain English answer to how much did I make this month"
-      ]
+      ],
+      "name": "Penny",
+      "slug": "penny",
+      "intro": "Penny here. I handle the money. Invoices, payments, and who still owes you. No spreadsheets."
     },
     "echo": {
       "pitch": "Echo writes in your voice, so your emails and posts still sound like you.",
@@ -62,13 +68,16 @@
       ]
     },
     "brick": {
-      "pitch": "Brick builds and fixes your website, so you never wait on a web person again.",
+      "pitch": "Dot builds and fixes your website, so you never wait on a web person again.",
       "hire": [
         "You need a one-page site for a new service or class",
         "You want your prices, booking link or hours changed today",
         "You're paying a monthly website builder fee you don't need",
         "You want a landing page for a sale or event"
-      ]
+      ],
+      "name": "Dot",
+      "slug": "dot",
+      "intro": "Hey, I'm Dot. I build websites. You describe it, I build it. No website builder, no dragging boxes."
     },
     "postie": {
       "name": "Tempo",
