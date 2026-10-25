@@ -215,9 +215,10 @@ footer .links{gap:20px}
     <p class="lead">But running a business means being all three. So I taught AI to do those jobs. Now I type what I need in plain English, and it gets done. I'll show you exactly how.</p>
     <form class="signup" onsubmit="return joined(event)">
       <input type="email" required placeholder="Your email" aria-label="Your email">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button class="btn btn-ink" type="submit">Get the weekly build</button>
     </form>
-    <p class="fine" id="fine">One email a week: what I built, how, and the file so you can use it. Free. Opens your email app.</p>
+    <p class="fine" id="fine">One email a week: what I built, how, and the file so you can use it. Free.</p>
   </div>
   <div class="photo">
     <div class="mint" id="mint" role="img" aria-label="A mint green Mac terminal where Kelty types requests and a cute AI robot answers each one">
@@ -384,8 +385,24 @@ footer .links{gap:20px}
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12});
 document.querySelectorAll('.rise').forEach(el => io.observe(el));
 // signup is not connected to an email service yet
-// no email service yet: open the visitor's email app with a note to Kelty, so no signup is lost
-function joined(e){ e.preventDefault(); location.href = 'mailto:keltysage01@gmail.com?subject=' + encodeURIComponent('Add me to the weekly build') + '&body=' + encodeURIComponent('Hi Kelty, please add me to the weekly build email.'); document.getElementById('fine').textContent = "Your email app should open. Hit send and you're on the list."; return false; }
+// saves the signup to Resend; if that fails, falls back to opening an email to Kelty so nobody is lost
+async function joined(e){
+  e.preventDefault();
+  const f = e.target, fine = document.getElementById('fine'), btn = f.querySelector('button');
+  const email = f.querySelector('input[type=email]').value.trim();
+  btn.disabled = true;
+  try {
+    const r = await fetch('/api/subscribe', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email, website: f.website ? f.website.value : ''})});
+    if (!r.ok) throw new Error(r.status);
+    fine.textContent = "You're on the list. First email comes this week.";
+    f.reset();
+  } catch (err) {
+    location.href = 'mailto:keltysage01@gmail.com?subject=' + encodeURIComponent('Add me to the weekly build') + '&body=' + encodeURIComponent('Hi Kelty, please add me to the weekly build email.');
+    fine.textContent = "Your email app should open. Hit send and you're on the list.";
+  }
+  btn.disabled = false;
+  return false;
+}
 
 // terminal: types each request, robot thinks, then answers line by line. Plays once when seen.
 (function(){
