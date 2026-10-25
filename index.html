@@ -39,6 +39,10 @@ h1,h2,h3{font-weight:600;letter-spacing:-.03em;line-height:1.05}
 .nav .wrap{display:flex;align-items:center;gap:12px;height:68px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:19px;letter-spacing:-.02em}
 .brand img{width:44px}
+.brand .sep{flex:none;width:1.5px;height:20px;background:#aebcbc;margin:0 2px}
+.brand .tag{font-weight:500;font-size:15px;color:var(--ink-2);letter-spacing:-.01em}
+.brand,.nav .btn{white-space:nowrap}
+@media (max-width:600px){.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}}
 .links{margin-left:auto;display:flex;align-items:center;gap:26px}
 .links a{text-decoration:none;font-size:15px;color:var(--ink-2)}
 .links a:hover{color:var(--ink)}
@@ -197,7 +201,7 @@ footer .links{gap:20px}
 <body>
 
 <header class="nav"><div class="wrap">
-  <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage</a>
+  <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
   <nav class="links">
     <a href="#stack">My tools</a>
     <a href="#learn">Lessons</a>
@@ -351,24 +355,6 @@ footer .links{gap:20px}
   </div>
 </div></section>
 
-<section><div class="wrap">
-  <div class="eb rise">&gt; things I built</div>
-  <h2 class="sec-h rise">Apps I made with AI</h2>
-  <div class="built">
-    <a class="app rise" style="--c:var(--green)" href="https://sage-systems-ai.netlify.app" target="_blank" rel="noopener">
-      <div class="k">AI courses</div><h3>Sage Systems AI</h3>
-      <p>Answer a few questions about your business and get a custom AI course in about a minute.</p><span>Open &rarr;</span>
-    </a>
-    <a class="app rise" style="--c:var(--blue)" href="https://fetchnote.app" target="_blank" rel="noopener">
-      <div class="k">Dog trainers</div><h3>FetchNote</h3>
-      <p>Two minutes of voice notes become a polished, branded homework PDF. No typing.</p><span>Open &rarr;</span>
-    </a>
-    <a class="app rise" style="--c:var(--pink)" href="https://cycleceo.app" target="_blank" rel="noopener">
-      <div class="k">Planning</div><h3>CycleCEO</h3>
-      <p>Plan your business around your energy, so launches don't land on the week you crash.</p><span>Open &rarr;</span>
-    </a>
-  </div>
-</div></section>
 </main>
 
 <footer><div class="wrap">
