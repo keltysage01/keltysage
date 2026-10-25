@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Boot, the Day One Guide, Kelty Sage</title>
+<meta name="description" content="Boot teaches how to get set up from zero, even if you have never coded.">
+<link rel="icon" href="/brand/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12181c;--ink-2:#3d4a50;--ink-3:#7b8a90;--bg:#f4f7f7;--card:#fff;--line:#e1e8e8;--sea:#9ed9c7;--sea-soft:#e3f4ef;--teal:#2f9a94;
+  --green:#b9f09c;--pink:#ff9fd6;--blue:#9ccff8;--sans:'Geist',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+.eb{font-family:var(--mono);font-size:14px;color:var(--teal)}
+h1,h2,h3{font-weight:600;letter-spacing:-.03em;line-height:1.08}
+.nav{position:sticky;top:0;z-index:20;background:rgba(244,247,247,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav .wrap{display:flex;align-items:center;gap:12px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:19px;letter-spacing:-.02em;white-space:nowrap}
+.brand img{width:44px}
+.brand .sep{flex:none;width:1.5px;height:20px;background:#aebcbc;margin:0 2px}
+.brand .tag{font-weight:500;font-size:15px;color:var(--ink-2)}
+.links{margin-left:auto;display:flex;align-items:center;gap:26px}
+.links a{text-decoration:none;font-size:15px;color:var(--ink-2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:0;cursor:pointer;text-decoration:none;font-family:var(--sans);font-weight:600;font-size:16px;border-radius:999px;padding:14px 24px;white-space:nowrap}
+.btn-ink,.links a.btn-ink{background:var(--ink);color:#fff}
+.btn-line{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.nav .btn{padding:10px 18px;font-size:14px}
+section{padding:56px 0}
+footer{padding:40px 0 56px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+footer p{font-size:14px;color:var(--ink-3);width:100%}
+@media (max-width:600px){.links a:not(.btn){display:none}.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}section{padding:40px 0}}
+@media (max-width:440px){.nav .brand .sep,.nav .brand .tag{display:none}}
+
+.prof{padding:40px 0 0}
+.prof .card{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:center;background:var(--card);border:1px solid var(--line);border-top:8px solid var(--c);border-radius:30px;padding:32px}
+.prof .art{width:220px;height:220px;border-radius:40px;background:var(--soft);display:grid;place-items:center}
+.prof .art img{width:180px;height:180px}
+.prof .job{font-family:var(--mono);font-size:14px;color:var(--ink-3)}
+.prof h1{font-size:54px;margin-top:4px}
+.prof .intro{font-size:20px;color:var(--ink-2);margin-top:12px}
+.pitchline{font-size:17px;font-weight:600;margin-top:10px}
+.hirebox{margin-top:18px}.hirebox b{font-size:15px}
+.hire{list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:6px;background:var(--soft);border-radius:14px;padding:12px 14px}
+.hire li{font-size:15.5px;color:var(--ink-2);padding-left:18px;position:relative;line-height:1.4}
+.hire li:before{content:">";position:absolute;left:0;font-family:var(--mono);color:var(--teal)}
+.prof dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;margin-top:20px;font-size:16px}
+.prof dt{font-family:var(--mono);font-size:13px;color:var(--teal);padding-top:2px}
+.prof dd{color:var(--ink-2)}
+.prof .quote{display:inline-block;margin-top:18px;font-weight:600;background:var(--soft);border-radius:12px;padding:8px 14px}
+.back{display:inline-block;margin-top:22px;font-size:15px;color:var(--ink-3);text-decoration:none}
+.lesson{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:30px;margin-top:24px}
+.lesson .n{font-family:var(--mono);font-size:13px;color:var(--ink-3);display:flex;justify-content:space-between}
+.lesson .n b{font-weight:500;color:var(--teal)}
+.lesson h2{font-size:32px;margin-top:8px}
+.lesson .sum{font-size:18px;color:var(--ink-2);margin-top:8px}
+.lhead{display:grid;grid-template-columns:1fr 220px;gap:28px;align-items:start}
+.cover{width:220px;border-radius:18px;box-shadow:0 12px 30px rgba(18,24,28,.12)}
+.steps{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:14px}
+.step{border:1px solid var(--line);border-radius:20px;padding:18px 20px;background:#fbfdfd}
+.step h3{font-size:20px;display:flex;gap:12px;align-items:baseline}
+.step h3 span{flex:none;width:30px;height:30px;border-radius:10px;background:var(--soft);display:grid;place-items:center;font-family:var(--mono);font-size:14px}
+.step .note{color:var(--ink-2);margin-top:6px}
+.why{margin-top:8px;font-size:16px;color:var(--ink-2)}
+.why em,.skip em{font-style:normal;font-family:var(--mono);font-size:12.5px;color:var(--teal);margin-right:6px}
+.pic{margin-top:10px;background:var(--sea-soft);border-radius:12px;padding:10px 14px;font-size:16px}
+.skip{margin-top:8px;font-size:16px;color:#8a3d63;background:#fdeef6;border-radius:12px;padding:10px 14px}
+.skip em{color:#c2477f}
+.prompt{margin-top:12px;display:flex;align-items:stretch;background:#1b2a30;border-radius:12px;overflow:hidden}
+.prompt code{flex:1;font-family:var(--mono);font-size:14px;color:#e6f4ef;padding:12px 14px;white-space:pre-wrap;word-break:break-word}
+.prompt code:before{content:"> ";color:var(--sea)}
+.prompt button{flex:none;font-family:var(--mono);font-size:12px;background:#24363e;color:var(--sea);border:0;padding:0 14px;cursor:pointer}
+.prompt button:hover{background:#2e444d}
+.out{margin-top:6px;font-size:14px;color:var(--ink-3);font-family:var(--mono)}
+.locked{margin-top:12px;display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;color:var(--ink-3);background:var(--bg);border:1px dashed #cdd9d9;border-radius:12px;padding:10px 14px}
+.buy{margin-top:22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:var(--soft);border-radius:20px;padding:18px 22px}
+.buy p{flex:1;min-width:220px;font-size:16px;color:var(--ink-2)}
+.buy b{color:var(--ink)}
+@media (max-width:900px){.prof .card{grid-template-columns:1fr;padding:24px}.prof .art{width:160px;height:160px;border-radius:30px}.prof .art img{width:130px;height:130px}.lhead{grid-template-columns:1fr}.cover{width:180px}}
+@media (max-width:600px){.prof h1{font-size:40px}.prof .intro{font-size:18px}.lesson{padding:20px}.lesson h2{font-size:25px}}
+
+</style></head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
+  <nav class="links"><a href="/robots">Robots</a><a href="/#learn">Lessons</a><a href="/#join">Pricing</a><a class="btn btn-ink" href="/robots/boot">Get Boot free</a></nav>
+</div></header>
+<main>
+<section class="prof"><div class="wrap">
+  <div class="card" style="--c:#9ed9c7;--soft:#eaf7f3">
+    <div class="art"><img src="/robots/art/boot.svg" alt="Boot, the Day One Guide"></div>
+    <div>
+      <div class="job">Day One Guide</div>
+      <h1>Boot</h1>
+      <p class="intro">Hi, I&#x27;m Boot. I teach day one. If you have never typed a single command, start with me.</p>
+      <p class="pitchline">Boot gets you from never coded to talking to your first robot, in one sitting. Totally free.</p>
+      <div class="hirebox"><b>Hire Boot if:</b><ul class="hire"><li>You have never opened a terminal and it looks scary</li><li>You want to try AI on your business before spending a dime</li><li>You need the five sentences that work for almost anything</li><li>You want to know which robot to hire first</li></ul></div>
+      <dl><dt>teaches</dt><dd>How to get set up from zero, even if you have never coded.</dd><dt>personality</dt><dd>Patient and encouraging. Never makes you feel behind.</dd></dl>
+      <div class="quote">"Stuck? Just ask it."</div>
+    </div>
+  </div>
+  <a class="back" href="/robots">&larr; the whole team</a>
+</div></section>
+<section style="padding-top:8px"><div class="wrap" style="--soft:#eaf7f3">
+<article class="lesson">
+  <div class="lhead"><div><div class="n"><b>lesson 1</b><span>free</span></div><h2>What a terminal actually is, and why it is not scary</h2><p class="sum">A terminal is just a text window where you type and the computer answers, and it is safe to try.</p></div><img class="cover" src="/robots/covers/boot-1-what-a-terminal-is-cover.png" alt="Video cover for What a terminal actually is, and why it is not scary"></div>
+  <ol class="steps">
+<li class="step"><h3><span>1</span>Open the window</h3><p class="note">Search your computer for Terminal, then open it.</p><p class="why"><em>why</em>You need somewhere to type.</p><p class="pic">It&#x27;s a text thread with your computer, like texting a friend who never leaves you on read.</p><div class="prompt"><code>claude</code><button type="button">copy</button></div><p class="out">Claude Code opens in the same window.</p></li>
+<li class="step"><h3><span>2</span>Ask in plain English</h3><p class="note">Type what you want, like you would text a person.</p><p class="why"><em>why</em>There is nothing to memorize.</p><p class="pic">It&#x27;s like ordering a coffee. You say what you want, not the chemistry.</p><div class="prompt"><code>What files are on my desktop?</code><button type="button">copy</button></div><p class="out">A plain list of your desktop files.</p></li>
+<li class="step"><h3><span>3</span>Read before you say yes</h3><p class="note">It asks before changing files. Read the ask, then answer.</p><p class="why"><em>why</em>You stay in charge of every change.</p><p class="pic">Claude is the intern handing you a letter. You sign it, not the intern.</p><p class="skip"><em>if you skip it</em>If you skip it: you sign the intern&#x27;s letter without reading. Your neighbor now has opinions about their fence.</p><div class="prompt"><code>Before you change anything, ask me first</code><button type="button">copy</button></div><p class="out">It agrees to ask before every change.</p></li>
+<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Ask it to explain what it just did.</p><p class="why"><em>why</em>You sign off, so you catch mistakes early.</p><p class="pic">It&#x27;s checking your teeth for spinach before a meeting. Two seconds now, no awkward later.</p><div class="prompt"><code>Explain what you just did, in plain English</code><button type="button">copy</button></div><p class="out">It explains, and asks before changing files.</p></li>
+  </ol>
+</article>
+<article class="lesson">
+  <div class="lhead"><div><div class="n"><b>lesson 2</b><span>free</span></div><h2>Your first 5 sentences to try in Claude Code</h2><p class="sum">Five plain sentences that show a first-time user what Claude Code can do for a small business.</p></div><img class="cover" src="/robots/covers/boot-2-first-five-sentences-cover.png" alt="Video cover for Your first 5 sentences to try in Claude Code"></div>
+  <ol class="steps">
+<li class="step"><h3><span>1</span>Look around</h3><p class="note">Sentences one and two: see files, summarize a PDF.</p><p class="why"><em>why</em>Seeing what is there comes before changing anything.</p><p class="pic">It&#x27;s a flashlight in a dark garage. You look first, then you move things.</p><div class="prompt"><code>What files are on my desktop?</code><button type="button">copy</button></div><p class="out">A short list of your desktop files.</p></li>
+<li class="step"><h3><span>2</span>Do the busywork</h3><p class="note">Sentences three and four: lists and photo names.</p><p class="why"><em>why</em>Boring jobs are what it does best.</p><p class="pic">It&#x27;s a helper who loves alphabetizing the spice rack, and never complains.</p><div class="prompt"><code>Make a to-do list from these notes. Then rename my photos by date.</code><button type="button">copy</button></div><p class="out">A tidy list, and photos named by date.</p></li>
+<li class="step"><h3><span>3</span>Ask about your business</h3><p class="note">Sentence five: let it suggest where to start.</p><p class="why"><em>why</em>It gives better ideas when it knows what you do.</p><p class="pic">Ask it like a brand new hire. Tell them what you do first, or you get random chores.</p><div class="prompt"><code>What can you help me with in my business?</code><button type="button">copy</button></div><p class="out">Ideas based on what you tell it.</p></li>
+<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Read the answers and fix what is wrong.</p><p class="why"><em>why</em>It can be confidently wrong, so you sign off.</p><p class="pic">It&#x27;s a dog proudly bringing the wrong shoe. Thank it, then check which shoe.</p><div class="prompt"><code>Show me what you did and what you were unsure about</code><button type="button">copy</button></div><p class="out">It lists what it did and what it guessed.</p></li>
+  </ol>
+</article>
+<div class="buy"><p><b>Boot is free.</b> When you are ready, hire your next robot for $2.99, or the whole team for $14.99.</p><a class="btn btn-ink" href="/robots">Meet the team</a></div>
+</div></section>
+</main>
+<footer><div class="wrap">
+  <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage</a>
+  <nav class="links"><a href="https://www.tiktok.com/@keltysage" target="_blank" rel="noopener">TikTok</a><a href="mailto:keltysage01@gmail.com">Contact</a></nav>
+  <p>I type it. AI does it.</p>
+</div></footer>
+<script>
+document.querySelectorAll('.prompt button').forEach(b => b.addEventListener('click', async () => {
+  const t = b.previousElementSibling.textContent;
+  try { await navigator.clipboard.writeText(t); b.textContent = 'copied'; } catch (e) { b.textContent = 'select it'; }
+  setTimeout(() => b.textContent = 'copy', 1600);
+}));
+</script>
+</body></html>

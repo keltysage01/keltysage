@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Echo, the Voice Robot, Kelty Sage</title>
+<meta name="description" content="Echo teaches how to write emails and posts that sound like you, not like a robot.">
+<link rel="icon" href="/brand/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12181c;--ink-2:#3d4a50;--ink-3:#7b8a90;--bg:#f4f7f7;--card:#fff;--line:#e1e8e8;--sea:#9ed9c7;--sea-soft:#e3f4ef;--teal:#2f9a94;
+  --green:#b9f09c;--pink:#ff9fd6;--blue:#9ccff8;--sans:'Geist',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+.eb{font-family:var(--mono);font-size:14px;color:var(--teal)}
+h1,h2,h3{font-weight:600;letter-spacing:-.03em;line-height:1.08}
+.nav{position:sticky;top:0;z-index:20;background:rgba(244,247,247,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav .wrap{display:flex;align-items:center;gap:12px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:19px;letter-spacing:-.02em;white-space:nowrap}
+.brand img{width:44px}
+.brand .sep{flex:none;width:1.5px;height:20px;background:#aebcbc;margin:0 2px}
+.brand .tag{font-weight:500;font-size:15px;color:var(--ink-2)}
+.links{margin-left:auto;display:flex;align-items:center;gap:26px}
+.links a{text-decoration:none;font-size:15px;color:var(--ink-2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:0;cursor:pointer;text-decoration:none;font-family:var(--sans);font-weight:600;font-size:16px;border-radius:999px;padding:14px 24px;white-space:nowrap}
+.btn-ink,.links a.btn-ink{background:var(--ink);color:#fff}
+.btn-line{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.nav .btn{padding:10px 18px;font-size:14px}
+section{padding:56px 0}
+footer{padding:40px 0 56px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+footer p{font-size:14px;color:var(--ink-3);width:100%}
+@media (max-width:600px){.links a:not(.btn){display:none}.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}section{padding:40px 0}}
+@media (max-width:440px){.nav .brand .sep,.nav .brand .tag{display:none}}
+
+.prof{padding:40px 0 0}
+.prof .card{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:center;background:var(--card);border:1px solid var(--line);border-top:8px solid var(--c);border-radius:30px;padding:32px}
+.prof .art{width:220px;height:220px;border-radius:40px;background:var(--soft);display:grid;place-items:center}
+.prof .art img{width:180px;height:180px}
+.prof .job{font-family:var(--mono);font-size:14px;color:var(--ink-3)}
+.prof h1{font-size:54px;margin-top:4px}
+.prof .intro{font-size:20px;color:var(--ink-2);margin-top:12px}
+.pitchline{font-size:17px;font-weight:600;margin-top:10px}
+.hirebox{margin-top:18px}.hirebox b{font-size:15px}
+.hire{list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:6px;background:var(--soft);border-radius:14px;padding:12px 14px}
+.hire li{font-size:15.5px;color:var(--ink-2);padding-left:18px;position:relative;line-height:1.4}
+.hire li:before{content:">";position:absolute;left:0;font-family:var(--mono);color:var(--teal)}
+.prof dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;margin-top:20px;font-size:16px}
+.prof dt{font-family:var(--mono);font-size:13px;color:var(--teal);padding-top:2px}
+.prof dd{color:var(--ink-2)}
+.prof .quote{display:inline-block;margin-top:18px;font-weight:600;background:var(--soft);border-radius:12px;padding:8px 14px}
+.back{display:inline-block;margin-top:22px;font-size:15px;color:var(--ink-3);text-decoration:none}
+.lesson{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:30px;margin-top:24px}
+.lesson .n{font-family:var(--mono);font-size:13px;color:var(--ink-3);display:flex;justify-content:space-between}
+.lesson .n b{font-weight:500;color:var(--teal)}
+.lesson h2{font-size:32px;margin-top:8px}
+.lesson .sum{font-size:18px;color:var(--ink-2);margin-top:8px}
+.lhead{display:grid;grid-template-columns:1fr 220px;gap:28px;align-items:start}
+.cover{width:220px;border-radius:18px;box-shadow:0 12px 30px rgba(18,24,28,.12)}
+.steps{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:14px}
+.step{border:1px solid var(--line);border-radius:20px;padding:18px 20px;background:#fbfdfd}
+.step h3{font-size:20px;display:flex;gap:12px;align-items:baseline}
+.step h3 span{flex:none;width:30px;height:30px;border-radius:10px;background:var(--soft);display:grid;place-items:center;font-family:var(--mono);font-size:14px}
+.step .note{color:var(--ink-2);margin-top:6px}
+.why{margin-top:8px;font-size:16px;color:var(--ink-2)}
+.why em,.skip em{font-style:normal;font-family:var(--mono);font-size:12.5px;color:var(--teal);margin-right:6px}
+.pic{margin-top:10px;background:var(--sea-soft);border-radius:12px;padding:10px 14px;font-size:16px}
+.skip{margin-top:8px;font-size:16px;color:#8a3d63;background:#fdeef6;border-radius:12px;padding:10px 14px}
+.skip em{color:#c2477f}
+.prompt{margin-top:12px;display:flex;align-items:stretch;background:#1b2a30;border-radius:12px;overflow:hidden}
+.prompt code{flex:1;font-family:var(--mono);font-size:14px;color:#e6f4ef;padding:12px 14px;white-space:pre-wrap;word-break:break-word}
+.prompt code:before{content:"> ";color:var(--sea)}
+.prompt button{flex:none;font-family:var(--mono);font-size:12px;background:#24363e;color:var(--sea);border:0;padding:0 14px;cursor:pointer}
+.prompt button:hover{background:#2e444d}
+.out{margin-top:6px;font-size:14px;color:var(--ink-3);font-family:var(--mono)}
+.locked{margin-top:12px;display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;color:var(--ink-3);background:var(--bg);border:1px dashed #cdd9d9;border-radius:12px;padding:10px 14px}
+.buy{margin-top:22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:var(--soft);border-radius:20px;padding:18px 22px}
+.buy p{flex:1;min-width:220px;font-size:16px;color:var(--ink-2)}
+.buy b{color:var(--ink)}
+@media (max-width:900px){.prof .card{grid-template-columns:1fr;padding:24px}.prof .art{width:160px;height:160px;border-radius:30px}.prof .art img{width:130px;height:130px}.lhead{grid-template-columns:1fr}.cover{width:180px}}
+@media (max-width:600px){.prof h1{font-size:40px}.prof .intro{font-size:18px}.lesson{padding:20px}.lesson h2{font-size:25px}}
+
+</style></head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
+  <nav class="links"><a href="/robots">Robots</a><a href="/#learn">Lessons</a><a href="/#join">Pricing</a><a class="btn btn-ink" href="/robots/boot">Get Boot free</a></nav>
+</div></header>
+<main>
+<section class="prof"><div class="wrap">
+  <div class="card" style="--c:#ff6159;--soft:#ffdcda">
+    <div class="art"><img src="/robots/art/echo.svg" alt="Echo, the Voice Robot"></div>
+    <div>
+      <div class="job">Voice Robot</div>
+      <h1>Echo</h1>
+      <p class="intro">Hi, I&#x27;m Echo. I teach your assistant to write like you. Emails and posts in your voice. Ironic, coming from a robot.</p>
+      <p class="pitchline">Echo writes in your voice, so your emails and posts still sound like you.</p>
+      <div class="hirebox"><b>Hire Echo if:</b><ul class="hire"><li>AI writing sounds like a robot and you hate it</li><li>You stare at a blank page every time you write a newsletter</li><li>You answer the same client questions over and over</li><li>You want a week of captions that sound like you wrote them</li></ul></div>
+      <dl><dt>teaches</dt><dd>How to write emails and posts that sound like you, not like a robot.</dd><dt>personality</dt><dd>Warm and chatty. Studies how you talk.</dd></dl>
+      <div class="quote">"Sounds like you. Because it is."</div>
+    </div>
+  </div>
+  <a class="back" href="/robots">&larr; the whole team</a>
+</div></section>
+<section style="padding-top:8px"><div class="wrap" style="--soft:#ffdcda">
+<article class="lesson">
+  <div class="lhead"><div><div class="n"><b>lesson 1</b><span>in the pack</span></div><h2>Teach it how you talk in 3 minutes</h2><p class="sum">Paste a few of your real emails or captions and ask Claude to learn your voice and save notes about it.</p></div><img class="cover" src="/robots/covers/echo-1-teach-it-how-you-talk-cover.png" alt="Video cover for Teach it how you talk in 3 minutes"></div>
+  <ol class="steps">
+<li class="step"><h3><span>1</span>Paste your real writing</h3><p class="note">Paste three to five things you actually wrote.</p><p class="why"><em>why</em>I learn from real words, not guesses.</p><p class="pic">It&#x27;s showing a tailor your favorite shirt, not describing it.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
+<li class="step"><h3><span>2</span>Ask what makes it yours</h3><p class="note">Ask me to describe your voice.</p><p class="why"><em>why</em>Seeing it in words shows what to keep.</p><p class="pic">It&#x27;s a friend telling you that you always say &#x27;honestly&#x27; first.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
+<li class="step"><h3><span>3</span>Save the notes</h3><p class="note">Have me keep a voice notes file.</p><p class="why"><em>why</em>Otherwise I forget you next chat.</p><p class="pic">It&#x27;s the recipe card on the fridge. Same dish, every time.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
+<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Read the notes. Fix anything that isn&#x27;t you.</p><p class="why"><em>why</em>I can describe you a little wrong.</p><p class="pic">It&#x27;s the dog bringing the wrong shoe. Thank me, then check it&#x27;s yours.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
+  </ol>
+</article>
+<article class="lesson">
+  <div class="lhead"><div><div class="n"><b>lesson 2</b><span>in the pack</span></div><h2>Write this week&#x27;s email and posts in your voice</h2><p class="sum">Use your saved voice notes to have Claude draft this week&#x27;s email and social posts for you to edit.</p></div><img class="cover" src="/robots/covers/echo-2-weekly-email-and-posts-cover.png" alt="Video cover for Write this week&#x27;s email and posts in your voice"></div>
+  <ol class="steps">
+<li class="step"><h3><span>1</span>Give me the news</h3><p class="note">Tell me what happened this week.</p><p class="why"><em>why</em>I can&#x27;t write about what I don&#x27;t know.</p><p class="pic">It&#x27;s a reporter with a pen and no story. Hand over the story first.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
+<li class="step"><h3><span>2</span>Ask for the email</h3><p class="note">Say how long and what people should do.</p><p class="why"><em>why</em>A clear next step gets more replies.</p><p class="pic">It&#x27;s a sign with an arrow. Without the arrow, folks just stand there.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
+<li class="step"><h3><span>3</span>Turn it into posts</h3><p class="note">Ask for short posts from the same email.</p><p class="why"><em>why</em>One story can feed the whole week.</p><p class="pic">It&#x27;s one big pot of soup, then three lunches.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
+<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Read every draft out loud before posting.</p><p class="why"><em>why</em>Anything off will sound off.</p><p class="pic">It&#x27;s checking your teeth for spinach. Two seconds now, no awkward later.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
+  </ol>
+</article>
+<div class="buy"><p><b>Hire Echo:</b> both lessons, every prompt, the skill file and a check-your-work list. Buy once, keep forever. $2.99, or the whole team for $14.99.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>
+</div></section>
+</main>
+<footer><div class="wrap">
+  <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage</a>
+  <nav class="links"><a href="https://www.tiktok.com/@keltysage" target="_blank" rel="noopener">TikTok</a><a href="mailto:keltysage01@gmail.com">Contact</a></nav>
+  <p>I type it. AI does it.</p>
+</div></footer>
+<script>
+document.querySelectorAll('.prompt button').forEach(b => b.addEventListener('click', async () => {
+  const t = b.previousElementSibling.textContent;
+  try { await navigator.clipboard.writeText(t); b.textContent = 'copied'; } catch (e) { b.textContent = 'select it'; }
+  setTimeout(() => b.textContent = 'copy', 1600);
+}));
+</script>
+</body></html>

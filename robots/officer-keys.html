@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Officer Keys, the Security Robot, Kelty Sage</title>
+<meta name="description" content="Officer Keys teaches how to keep your secret keys, passwords and accounts safe, and set the rules your assistant can never break.">
+<link rel="icon" href="/brand/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12181c;--ink-2:#3d4a50;--ink-3:#7b8a90;--bg:#f4f7f7;--card:#fff;--line:#e1e8e8;--sea:#9ed9c7;--sea-soft:#e3f4ef;--teal:#2f9a94;
+  --green:#b9f09c;--pink:#ff9fd6;--blue:#9ccff8;--sans:'Geist',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+.eb{font-family:var(--mono);font-size:14px;color:var(--teal)}
+h1,h2,h3{font-weight:600;letter-spacing:-.03em;line-height:1.08}
+.nav{position:sticky;top:0;z-index:20;background:rgba(244,247,247,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav .wrap{display:flex;align-items:center;gap:12px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:19px;letter-spacing:-.02em;white-space:nowrap}
+.brand img{width:44px}
+.brand .sep{flex:none;width:1.5px;height:20px;background:#aebcbc;margin:0 2px}
+.brand .tag{font-weight:500;font-size:15px;color:var(--ink-2)}
+.links{margin-left:auto;display:flex;align-items:center;gap:26px}
+.links a{text-decoration:none;font-size:15px;color:var(--ink-2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:0;cursor:pointer;text-decoration:none;font-family:var(--sans);font-weight:600;font-size:16px;border-radius:999px;padding:14px 24px;white-space:nowrap}
+.btn-ink,.links a.btn-ink{background:var(--ink);color:#fff}
+.btn-line{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.nav .btn{padding:10px 18px;font-size:14px}
+section{padding:56px 0}
+footer{padding:40px 0 56px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+footer p{font-size:14px;color:var(--ink-3);width:100%}
+@media (max-width:600px){.links a:not(.btn){display:none}.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}section{padding:40px 0}}
+@media (max-width:440px){.nav .brand .sep,.nav .brand .tag{display:none}}
+
+.prof{padding:40px 0 0}
+.prof .card{display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:center;background:var(--card);border:1px solid var(--line);border-top:8px solid var(--c);border-radius:30px;padding:32px}
+.prof .art{width:220px;height:220px;border-radius:40px;background:var(--soft);display:grid;place-items:center}
+.prof .art img{width:180px;height:180px}
+.prof .job{font-family:var(--mono);font-size:14px;color:var(--ink-3)}
+.prof h1{font-size:54px;margin-top:4px}
+.prof .intro{font-size:20px;color:var(--ink-2);margin-top:12px}
+.pitchline{font-size:17px;font-weight:600;margin-top:10px}
+.hirebox{margin-top:18px}.hirebox b{font-size:15px}
+.hire{list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:6px;background:var(--soft);border-radius:14px;padding:12px 14px}
+.hire li{font-size:15.5px;color:var(--ink-2);padding-left:18px;position:relative;line-height:1.4}
+.hire li:before{content:">";position:absolute;left:0;font-family:var(--mono);color:var(--teal)}
+.prof dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;margin-top:20px;font-size:16px}
+.prof dt{font-family:var(--mono);font-size:13px;color:var(--teal);padding-top:2px}
+.prof dd{color:var(--ink-2)}
+.prof .quote{display:inline-block;margin-top:18px;font-weight:600;background:var(--soft);border-radius:12px;padding:8px 14px}
+.back{display:inline-block;margin-top:22px;font-size:15px;color:var(--ink-3);text-decoration:none}
+.lesson{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:30px;margin-top:24px}
+.lesson .n{font-family:var(--mono);font-size:13px;color:var(--ink-3);display:flex;justify-content:space-between}
+.lesson .n b{font-weight:500;color:var(--teal)}
+.lesson h2{font-size:32px;margin-top:8px}
+.lesson .sum{font-size:18px;color:var(--ink-2);margin-top:8px}
+.lhead{display:grid;grid-template-columns:1fr 220px;gap:28px;align-items:start}
+.cover{width:220px;border-radius:18px;box-shadow:0 12px 30px rgba(18,24,28,.12)}
+.steps{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:14px}
+.step{border:1px solid var(--line);border-radius:20px;padding:18px 20px;background:#fbfdfd}
+.step h3{font-size:20px;display:flex;gap:12px;align-items:baseline}
+.step h3 span{flex:none;width:30px;height:30px;border-radius:10px;background:var(--soft);display:grid;place-items:center;font-family:var(--mono);font-size:14px}
+.step .note{color:var(--ink-2);margin-top:6px}
+.why{margin-top:8px;font-size:16px;color:var(--ink-2)}
+.why em,.skip em{font-style:normal;font-family:var(--mono);font-size:12.5px;color:var(--teal);margin-right:6px}
+.pic{margin-top:10px;background:var(--sea-soft);border-radius:12px;padding:10px 14px;font-size:16px}
+.skip{margin-top:8px;font-size:16px;color:#8a3d63;background:#fdeef6;border-radius:12px;padding:10px 14px}
+.skip em{color:#c2477f}
+.prompt{margin-top:12px;display:flex;align-items:stretch;background:#1b2a30;border-radius:12px;overflow:hidden}
+.prompt code{flex:1;font-family:var(--mono);font-size:14px;color:#e6f4ef;padding:12px 14px;white-space:pre-wrap;word-break:break-word}
+.prompt code:before{content:"> ";color:var(--sea)}
+.prompt button{flex:none;font-family:var(--mono);font-size:12px;background:#24363e;color:var(--sea);border:0;padding:0 14px;cursor:pointer}
+.prompt button:hover{background:#2e444d}
+.out{margin-top:6px;font-size:14px;color:var(--ink-3);font-family:var(--mono)}
+.locked{margin-top:12px;display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;color:var(--ink-3);background:var(--bg);border:1px dashed #cdd9d9;border-radius:12px;padding:10px 14px}
+.buy{margin-top:22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:var(--soft);border-radius:20px;padding:18px 22px}
+.buy p{flex:1;min-width:220px;font-size:16px;color:var(--ink-2)}
+.buy b{color:var(--ink)}
+@media (max-width:900px){.prof .card{grid-template-columns:1fr;padding:24px}.prof .art{width:160px;height:160px;border-radius:30px}.prof .art img{width:130px;height:130px}.lhead{grid-template-columns:1fr}.cover{width:180px}}
+@media (max-width:600px){.prof h1{font-size:40px}.prof .intro{font-size:18px}.lesson{padding:20px}.lesson h2{font-size:25px}}
+
+</style></head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
+  <nav class="links"><a href="/robots">Robots</a><a href="/#learn">Lessons</a><a href="/#join">Pricing</a><a class="btn btn-ink" href="/robots/boot">Get Boot free</a></nav>
+</div></header>
+<main>
+<section class="prof"><div class="wrap">
+  <div class="card" style="--c:#3b5bdb;--soft:#d4dbf7">
+    <div class="art"><img src="/robots/art/officer-keys.svg" alt="Officer Keys, the Security Robot"></div>
+    <div>
+      <div class="job">Security Robot</div>
+      <h1>Officer Keys</h1>
+      <p class="intro">Officer Keys, robot security. I guard your secret keys and passwords, and I make sure nothing gets sent without your OK.</p>
+      <p class="pitchline">Officer Keys keeps your accounts and secret keys safe, so the robots never do anything you didn&#x27;t OK.</p>
+      <div class="hirebox"><b>Hire Officer Keys if:</b><ul class="hire"><li>You&#x27;re about to connect AI to your email, payments or website</li><li>You&#x27;re not sure where your passwords and keys should live</li><li>You want rules your assistant can never break, like never send without asking</li><li>You want to sleep at night while robots work for you</li></ul></div>
+      <dl><dt>teaches</dt><dd>How to keep your secret keys, passwords and accounts safe, and set the rules your assistant can never break.</dd><dt>personality</dt><dd>Friendly but firm. Checks every badge.</dd></dl>
+      <div class="quote">"Never paste a key in a chat."</div>
+    </div>
+  </div>
+  <a class="back" href="/robots">&larr; the whole team</a>
+</div></section>
+<section style="padding-top:8px"><div class="wrap" style="--soft:#d4dbf7">
+<article class="lesson">
+  <div class="lhead"><div><div class="n"><b>lesson 1</b><span>in the pack</span></div><h2>What an API key is, and the 3 rules for keeping it safe</h2><p class="sum">An API key is a secret password that lets one app use another, and three simple rules keep yours safe.</p></div><img class="cover" src="/robots/covers/officer-keys-1-api-key-three-rules-cover.png" alt="Video cover for What an API key is, and the 3 rules for keeping it safe"></div>
+  <ol class="steps">
+<li class="step"><h3><span>1</span>Never paste it in public</h3><p class="note">Not in a chat, a post, or a screenshot.</p><p class="why"><em>why</em>Anyone who sees it can use your account.</p><p class="pic">It&#x27;s your house key. You don&#x27;t tape it to the front door.</p><p class="skip"><em>if you skip it</em>If you skip it: you taped your house key to the front door. Strangers drop by, and they don&#x27;t bring snacks.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
+<li class="step"><h3><span>2</span>Use a private file</h3><p class="note">Store it in a file your assistant reads.</p><p class="why"><em>why</em>A private file keeps it out of sight.</p><p class="pic">It&#x27;s a locked drawer inside the house, not the doormat everyone checks.</p><p class="skip"><em>if you skip it</em>If you skip it: the key sits under the doormat. Everyone checks the doormat.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
+<li class="step"><h3><span>3</span>If it leaks, replace it</h3><p class="note">Turn it off, then make a new one.</p><p class="why"><em>why</em>A new key makes the old one useless.</p><p class="pic">It&#x27;s changing the locks after losing your keys. The finder gets a useless key.</p><p class="skip"><em>if you skip it</em>If you skip it: you never change the locks. The finder keeps visiting, and now has a favorite chair.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
+<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Ask where your key lives, then look.</p><p class="why"><em>why</em>You sign off that no key is sitting in the open.</p><p class="pic">It&#x27;s checking your teeth for spinach before a meeting. Two seconds now, no awkward later.</p><p class="skip"><em>if you skip it</em>If you skip it: spinach in your teeth, all meeting long. Everyone saw. Nobody said.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
+  </ol>
+</article>
+<article class="lesson">
+  <div class="lhead"><div><div class="n"><b>lesson 2</b><span>in the pack</span></div><h2>Set the rules your assistant can never break</h2><p class="sum">Claude Code asks permission before acting, and you can write house rules it must always follow.</p></div><img class="cover" src="/robots/covers/officer-keys-2-rules-assistant-never-breaks-cover.png" alt="Video cover for Set the rules your assistant can never break"></div>
+  <ol class="steps">
+<li class="step"><h3><span>1</span>Read each permission ask</h3><p class="note">It stops and asks. You say yes or no.</p><p class="why"><em>why</em>Yes means go. No means stop.</p><p class="pic">It&#x27;s a bouncer at the door. Nobody gets in until you nod.</p><p class="skip"><em>if you skip it</em>If you skip it: you nod at everything, and the raccoon gets in. Raccoons love an open door.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
+<li class="step"><h3><span>2</span>Write your house rules</h3><p class="note">Put your rules in a CLAUDE.md file.</p><p class="why"><em>why</em>It reads that file every time it starts.</p><p class="pic">It&#x27;s the house rules sign by the door. No shoes, no exceptions.</p><p class="skip"><em>if you skip it</em>If you skip it: no sign by the door. Muddy shoes end up on the couch.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
+<li class="step"><h3><span>3</span>Approve every send</h3><p class="note">Check the draft, then say yes or no.</p><p class="why"><em>why</em>Sending cannot be undone.</p><p class="pic">The robot is the intern. You&#x27;re the one who signs the letter.</p><p class="skip"><em>if you skip it</em>If you skip it: the intern mails your grocery list to your biggest client. Eggs, milk, hello.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
+<li class="step"><h3><span>4</span>Check your work</h3><p class="note">Ask it to list your rules and what it did.</p><p class="why"><em>why</em>You sign off that the rules are real.</p><p class="pic">It&#x27;s checking your teeth for spinach before a meeting. Two seconds now, no awkward later.</p><p class="skip"><em>if you skip it</em>If you skip it: spinach in your teeth, all meeting long. Nobody told you.</p><div class="locked">&gt;_ the exact prompt for this step is in the pack</div></li>
+  </ol>
+</article>
+<div class="buy"><p><b>Hire Officer Keys:</b> both lessons, every prompt, the skill file and a check-your-work list. Buy once, keep forever. $2.99, or the whole team for $14.99.</p><a class="btn btn-ink" href="/#join">Get on the list</a></div>
+</div></section>
+</main>
+<footer><div class="wrap">
+  <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage</a>
+  <nav class="links"><a href="https://www.tiktok.com/@keltysage" target="_blank" rel="noopener">TikTok</a><a href="mailto:keltysage01@gmail.com">Contact</a></nav>
+  <p>I type it. AI does it.</p>
+</div></footer>
+<script>
+document.querySelectorAll('.prompt button').forEach(b => b.addEventListener('click', async () => {
+  const t = b.previousElementSibling.textContent;
+  try { await navigator.clipboard.writeText(t); b.textContent = 'copied'; } catch (e) { b.textContent = 'select it'; }
+  setTimeout(() => b.textContent = 'copy', 1600);
+}));
+</script>
+</body></html>

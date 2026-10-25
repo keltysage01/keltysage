@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="600" height="800">
+  <ellipse cx="300" cy="770" rx="170" ry="18" fill="#111816" opacity=".08"/>
+  <polyline points="300,150 285,125 315,105 290,82" fill="none" stroke="#ffbd2e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- arms: left waves -->
+  <path d="M160 560 Q90 520 80 440" fill="none" stroke="#c9ced4" stroke-width="30" stroke-linecap="round"/>
+  <circle cx="80" cy="428" r="28" fill="#ffbd2e"/>
+  <path d="M440 560 Q500 620 490 680" fill="none" stroke="#c9ced4" stroke-width="30" stroke-linecap="round"/>
+  <circle cx="490" cy="690" r="28" fill="#ffbd2e"/>
+  <!-- legs -->
+  <rect x="225" y="700" width="50" height="62" rx="18" fill="#c9ced4"/>
+  <rect x="325" y="700" width="50" height="62" rx="18" fill="#c9ced4"/>
+  <!-- body -->
+  <rect x="160" y="430" width="280" height="280" rx="56" fill="#eef0f2" stroke="#dfe2e6" stroke-width="6"/>
+  <rect x="225" y="575" width="150" height="100" rx="24" fill="#ffffff" stroke="#dfe2e6" stroke-width="4"/>
+  <path d="M278 590 L336 622 L278 654 Z" fill="#ffbd2e"/>
+  <!-- neck + head -->
+  <rect x="270" y="410" width="60" height="34" rx="10" fill="#c9ced4"/>
+  <rect x="150" y="150" width="300" height="270" rx="40" fill="#eef0f2" stroke="#dfe2e6" stroke-width="6"/>
+  <rect x="132" y="251.0" width="24" height="68" rx="10" fill="#ffbd2e"/>
+  <rect x="444" y="251.0" width="24" height="68" rx="10" fill="#ffbd2e"/>
+  <rect x="180" y="190" width="240" height="190" rx="28.0" fill="#16302a"/>
+  <rect x="229.2" y="239.8" width="36" height="60" rx="18" fill="#9ed9c7"/>
+  <rect x="334.8" y="239.8" width="36" height="60" rx="18" fill="#9ed9c7"/>
+  <circle cx="253.2" cy="257.8" r="7" fill="#ffffff"/>
+  <circle cx="358.8" cy="257.8" r="7" fill="#ffffff"/>
+  <path d="M262 326.79999999999995 Q300 356.79999999999995 338 326.79999999999995" fill="none" stroke="#ffbd2e" stroke-width="10" stroke-linecap="round"/>
+  
+</svg>

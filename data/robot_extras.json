@@ -1,0 +1,90 @@
+{
+  "_note": "Website-only extras, merged over ~/keltysage-videos/robots/robots.json by tools/build_robots.py. name overrides the display name. price is per robot. Draft, Kelty approves.",
+  "price": "$2.99",
+  "bundle_price": "$14.99",
+  "robots": {
+    "boot": {
+      "pitch": "Boot gets you from never coded to talking to your first robot, in one sitting. Totally free.",
+      "hire": [
+        "You have never opened a terminal and it looks scary",
+        "You want to try AI on your business before spending a dime",
+        "You need the five sentences that work for almost anything",
+        "You want to know which robot to hire first"
+      ]
+    },
+    "pixel": {
+      "pitch": "Pixel makes your graphics, so you never scroll a template site again.",
+      "hire": [
+        "You make the same post graphic every week by hand",
+        "Your posts never look like the same brand twice",
+        "You need a flyer for a class or sale by tonight",
+        "You want your logo, colors and fonts saved so every graphic matches"
+      ]
+    },
+    "cutter": {
+      "pitch": "Cutter edits your videos, so one recording turns into a week of posts.",
+      "hire": [
+        "You record great videos and never get around to editing them",
+        "You spend an hour adding captions by hand",
+        "You want one long video cut into three short ones",
+        "You need vertical versions for TikTok and Reels"
+      ]
+    },
+    "officer-keys": {
+      "pitch": "Officer Keys keeps your accounts and secret keys safe, so the robots never do anything you didn't OK.",
+      "hire": [
+        "You're about to connect AI to your email, payments or website",
+        "You're not sure where your passwords and keys should live",
+        "You want rules your assistant can never break, like never send without asking",
+        "You want to sleep at night while robots work for you"
+      ]
+    },
+    "ledger": {
+      "pitch": "Ledger tracks your money, so you always know who still owes you.",
+      "hire": [
+        "You dread opening QuickBooks",
+        "You're not sure which clients still owe you",
+        "You hate writing awkward payment reminders",
+        "You want a plain English answer to how much did I make this month"
+      ]
+    },
+    "echo": {
+      "pitch": "Echo writes in your voice, so your emails and posts still sound like you.",
+      "hire": [
+        "AI writing sounds like a robot and you hate it",
+        "You stare at a blank page every time you write a newsletter",
+        "You answer the same client questions over and over",
+        "You want a week of captions that sound like you wrote them"
+      ]
+    },
+    "brick": {
+      "pitch": "Brick builds and fixes your website, so you never wait on a web person again.",
+      "hire": [
+        "You need a one-page site for a new service or class",
+        "You want your prices, booking link or hours changed today",
+        "You're paying a monthly website builder fee you don't need",
+        "You want a landing page for a sale or event"
+      ]
+    },
+    "postie": {
+      "name": "Tempo",
+      "intro": "Tempo here. I keep your inbox and calendar on beat. I sort it, draft your replies, and you just say yes.",
+      "pitch": "Tempo runs your inbox and calendar, so client emails and bookings stop eating your day.",
+      "hire": [
+        "Your inbox has hundreds of unread emails",
+        "You answer booking questions all day long",
+        "You double book or forget to confirm appointments",
+        "You want replies drafted for you, and you just hit send"
+      ]
+    },
+    "scout": {
+      "pitch": "Scout does your research, so you make decisions without forty open tabs.",
+      "hire": [
+        "You're choosing between three tools and can't decide",
+        "You have a long PDF or contract you'll never finish reading",
+        "You want to know what your competitors charge",
+        "You need a quick answer you can trust, with sources"
+      ]
+    }
+  }
+}
