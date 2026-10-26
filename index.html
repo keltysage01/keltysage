@@ -600,7 +600,7 @@ async function joined(e){
   // reading bar across the top, and the soft hero glows drift as you scroll
   const bar = document.querySelector('.prog'), hero = document.querySelector('.hero'), root = document.documentElement;
   let ticking = false;
-  const onScroll = () => { if (ticking) return; ticking = true; requestAnimationFrame(() => { const y = root.scrollTop; bar.style.transform = 'scaleX(' + y / ((root.scrollHeight - root.clientHeight) || 1) + ')'; if (y < 1000) hero.style.setProperty('--sy', y); ticking = false; }); };
+  const onScroll = () => { if (ticking) return; ticking = true; requestAnimationFrame(() => { const y = root.scrollTop; bar.style.transform = 'scaleX(' + y / ((root.scrollHeight - root.clientHeight) || 1) + ')'; document.querySelectorAll('.rise:not(.in)').forEach(el => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add('in', 'done'); }); if (y < 1000) hero.style.setProperty('--sy', y); ticking = false; }); };
   addEventListener('scroll', onScroll, {passive:true}); onScroll();
 })();
 </script>

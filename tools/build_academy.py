@@ -57,6 +57,38 @@ def upload_paid(paid):
     tmp.write_text(json.dumps(paid))
     return blob_put(tmp, f"paid/{key_f.read_text().strip()}/course.json", overwrite=True)
 
+ACADEMY_MOTION_CSS = """/* soft motion: cards fade in as you reach them, highlights sweep, progress bars fill */
+.readbar{position:fixed;top:0;left:0;width:100%;height:3px;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--sea),var(--deep));z-index:70;pointer-events:none}
+.ks-rv{opacity:0;transform:translateY(14px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);transition-delay:calc(var(--i,0) * 70ms)}
+.ks-rv.ks-in{opacity:1;transform:none}
+.ks-rv.ks-done{transition:transform .2s,box-shadow .2s}
+.view h1 em{background-repeat:no-repeat;background-size:0% 100%;animation:ksSweep 1s .45s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes ksSweep{to{background-size:100% 100%}}
+.view .prog b{transform-origin:0 50%;animation:ksFill 1.1s .35s cubic-bezier(.22,1,.36,1) both}
+@keyframes ksFill{from{transform:scaleX(0)}}
+@media (prefers-reduced-motion:reduce){.view h1 em{background-size:100% 100%}}
+"""
+
+ACADEMY_MOTION_JS = """// soft motion: reading bar, and cards fade in as each screen is drawn and scrolled
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const root = document.documentElement, bar = document.createElement('div');
+  bar.className = 'readbar'; document.body.prepend(bar);
+  let ticking = false;
+  const onScroll = () => { if (ticking) return; ticking = true; requestAnimationFrame(() => { bar.style.transform = 'scaleX(' + root.scrollTop / ((root.scrollHeight - root.clientHeight) || 1) + ')'; document.querySelectorAll('.ks-rv:not(.ks-in)').forEach(el => { if (el.getBoundingClientRect().top < innerHeight) { io.unobserve(el); el.classList.add('ks-in', 'ks-done'); } }); ticking = false; }); };
+  addEventListener('scroll', onScroll, {passive:true}); addEventListener('hashchange', () => setTimeout(onScroll, 50));
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ const t = e.target; io.unobserve(t); t.classList.add('ks-in'); setTimeout(() => t.classList.add('ks-done'), 1400); } }), {threshold:.12});
+  const tag = () => document.querySelectorAll('#app .rb:not(.ks-rv),#app .ls:not(.ks-rv),#app .hire:not(.ks-rv)').forEach(el => { el.style.setProperty('--i', [...el.parentElement.children].indexOf(el) % 3); el.classList.add('ks-rv'); io.observe(el); });
+  new MutationObserver(tag).observe(document.getElementById('app'), {childList:true}); tag(); onScroll();
+})();
+"""
+
+def add_motion(page):
+    if "ACADEMY_MOTION" in page or ".readbar{" in page:
+        return page
+    page = page.replace("</style>", ACADEMY_MOTION_CSS + "</style>", 1)
+    return page.replace("</body>", "<script>\n" + ACADEMY_MOTION_JS + "</script>\n</body>", 1)
+
 def main():
     shutil.rmtree(OUT, ignore_errors=True)
     shutil.copytree(SRC, OUT, ignore=shutil.ignore_patterns("media"))
@@ -98,6 +130,7 @@ def main():
     assert hire in page and team in page, "player hire buttons changed, update build_academy.py"
     page = page.replace(hire, '<a class="btn" href="/api/checkout?item=${r.id}">').replace(team, '<a class="btn soft" href="/api/checkout?item=all">')
     page = page.replace("</body>", (ROOT / "tools/academy_pay.js").read_text().join(["<script>\n", "</script>\n</body>"]), 1)
+    page = add_motion(page)
     (OUT / "index.html").write_text(page)
     print(f"academy: {kept} free lessons with video, {locked} locked lessons stripped")
 
