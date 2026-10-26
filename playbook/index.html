@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Playbook, Kelty Sage</title>
+<meta name="description" content="The frameworks I build my business on: big idea first, StoryBrand, blue ocean, Profit First, and my own design and marketing rules. Real examples from my dog training company.">
+<link rel="icon" href="/brand/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12181c;--ink-2:#3d4a50;--ink-3:#7b8a90;--bg:#f4f7f7;--card:#fff;--line:#e1e8e8;--sea:#9ed9c7;--teal:#2f9a94;--green:#b9f09c;--pink:#ff9fd6;--blue:#9ccff8;--violet:#dcbcf8;--tan:#f1e4c3;--term:#1b2a30;--sans:'Geist',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+html,body{overflow-x:clip}
+img{max-width:100%;display:block}a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+.eb{font-family:var(--mono);font-size:14px;color:var(--teal);min-height:1.55em}
+h1,h2,h3{font-weight:600;letter-spacing:-.03em;line-height:1.08}
+.nav .wrap{display:flex;align-items:center;gap:12px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:19px;letter-spacing:-.02em;white-space:nowrap}
+.brand img{width:44px}
+.brand .sep{flex:none;width:1.5px;height:20px;background:#aebcbc;margin:0 2px}
+.brand .tag{font-weight:500;font-size:15px;color:var(--ink-2)}
+.links{margin-left:auto;display:flex;align-items:center;gap:26px}
+.links a{text-decoration:none;font-size:15px;color:var(--ink-2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;cursor:pointer;text-decoration:none;font-family:var(--sans);font-weight:600;font-size:16px;border-radius:999px;padding:14px 24px;white-space:nowrap}
+.btn-ink,.links a.btn-ink{background:var(--ink);color:#fff}
+.btn-line{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.nav .btn{padding:10px 18px;font-size:14px}
+.hero{padding:44px 0 8px}
+.hero h1{font-size:54px;margin-top:10px;max-width:860px}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 60%,var(--green) 60%,var(--green) 92%,transparent 92%)}
+.hero p{font-size:20px;color:var(--ink-2);margin-top:14px;max-width:660px}
+.toc{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.toc a{font-size:14px;font-weight:600;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+.toc a b{font-family:var(--mono);font-weight:500;color:var(--teal);margin-right:6px}
+.plays{display:flex;flex-direction:column;gap:26px;padding:36px 0 20px}
+.play{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:34px;scroll-margin-top:20px}
+.play .top{display:flex;gap:18px;align-items:flex-start}
+.play .num{flex:none;width:52px;height:52px;border-radius:16px;background:var(--c);display:grid;place-items:center;font-family:var(--mono);font-size:18px}
+.play h2{font-size:32px}
+.play .by{font-size:15px;color:var(--ink-3);margin-top:6px}
+.play .line{font-size:22px;font-weight:600;letter-spacing:-.02em;margin-top:22px;padding-left:16px;border-left:4px solid var(--c);max-width:760px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
+.box{border-radius:20px;padding:22px;background:#f7fafa;border:1px solid var(--line)}
+.box h3{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:0;color:var(--teal);text-transform:lowercase;margin-bottom:10px}
+.box p,.box li{font-size:16px;color:var(--ink-2)}
+.box p+p{margin-top:10px}
+.box ul,.box ol{padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.box li b{color:var(--ink)}
+.real{background:linear-gradient(135deg,#eef9f5,#fbf4ff)}
+.quote{font-size:19px;font-weight:600;color:var(--ink);letter-spacing:-.01em;margin:4px 0 10px}
+.try{margin-top:20px;background:var(--term);border-radius:20px;padding:20px 22px;color:#e8f3f0}
+.try .lab{font-family:var(--mono);font-size:13px;color:var(--sea);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.try code{display:block;font-family:var(--mono);font-size:15px;line-height:1.6;margin-top:10px;white-space:pre-wrap}
+.try button{font:600 13px var(--sans);background:var(--sea);color:var(--term);border:0;border-radius:999px;padding:7px 14px;cursor:pointer}
+.more{display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;font-size:15px}
+.more a{color:var(--teal);font-weight:600;text-decoration:none}
+.end{display:flex;gap:24px;align-items:center;flex-wrap:wrap;justify-content:space-between;background:linear-gradient(135deg,#e7f8f2,#f6efff);border:1px solid #d6ece6;border-radius:28px;padding:30px;margin:28px 0 64px}
+.end h2{font-size:30px}.end p{color:var(--ink-2);margin-top:6px;max-width:560px}
+footer{padding:40px 0 56px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+footer p{font-size:14px;color:var(--ink-3);width:100%}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+@keyframes heroIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.hero .wrap>*{animation:heroIn .9s cubic-bezier(.22,1,.36,1) both}
+.hero .wrap>:nth-child(2){animation-delay:.08s}.hero .wrap>:nth-child(3){animation-delay:.18s}.hero .wrap>:nth-child(4){animation-delay:.28s}
+@media (max-width:860px){.cols{grid-template-columns:1fr}.hero h1{font-size:42px}}
+@media (max-width:600px){.links a:not(.btn){display:none}.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}
+  .hero h1{font-size:34px}.hero p{font-size:18px}.play{padding:22px;border-radius:24px}.play h2{font-size:25px}.play .num{width:44px;height:44px;font-size:16px}.play .line{font-size:19px}.box{padding:18px}.try code{font-size:14px}.end{padding:22px}}
+@media (max-width:359px){.nav .brand .sep,.nav .brand .tag{display:none}}
+@media (prefers-reduced-motion:reduce){.hero .wrap>*{animation:none}.rv{opacity:1;transform:none}}
+</style></head><body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
+  <nav class="links"><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/playbook">Playbook</a><a href="/cheatsheets">Cheat sheets</a><a class="btn btn-ink" href="/academy/">Academy</a></nav>
+</div></header>
+<main>
+<section class="hero"><div class="wrap">
+  <div class="eb">&gt; the playbook</div>
+  <h1>The frameworks I build my <em>business</em> on.</h1>
+  <p>The robots do the work. These decide what the work is. Every example here is real, from my dog training company, Scentsible K9.</p>
+  <div class="toc">
+    <a href="#big-idea"><b>01</b>Big idea first</a>
+    <a href="#storybrand"><b>02</b>StoryBrand</a>
+    <a href="#blue-ocean"><b>03</b>Blue ocean</a>
+    <a href="#profit-first"><b>04</b>Profit First</a>
+    <a href="#design"><b>05</b>My design rules</a>
+    <a href="#marketing"><b>06</b>My marketing rules</a>
+  </div>
+</div></section>
+
+<section><div class="wrap"><div class="plays">
+
+<article class="play rv" id="big-idea" style="--c:var(--green)">
+  <div class="top"><div class="num">01</div><div><h2>Big idea first</h2><p class="by">David Bayer's four beats of a message that converts</p></div></div>
+  <p class="line">People buy beliefs before they buy products.</p>
+  <div class="cols">
+    <div class="box"><h3>what it is</h3>
+      <p>Every message has four parts, in this order. Stacked together, they build trust.</p>
+      <ol><li><b>Big idea.</b> The one belief that makes people curious.</li><li><b>Story.</b> Your real story, so they think "that's me."</li><li><b>Framework.</b> Three simple beliefs that make the big idea true.</li><li><b>Proof.</b> Real people it worked for.</li></ol>
+    </div>
+    <div class="box real"><h3>how I used it</h3>
+      <p class="quote">"Your dog doesn't have an obedience problem. Your dog has a job problem."</p>
+      <p>That is the big idea for Scentsible K9. The framework is three beliefs: behavior is information, fulfillment beats suppression, and the leash has two ends.</p>
+      <p>I wrote it once, in one document. My website, posts, emails and booth pitch all pull from it. I never invent a new message. I deliver the same one in different formats.</p>
+    </div>
+  </div>
+  <div class="try"><div class="lab"><span>&gt; try it with AI</span><button type="button">copy</button></div><code>Interview me one question at a time to find my business's big idea. Then write my message in four parts: big idea, my story, a three-belief framework, and proof. Put [brackets] anywhere you need a real story from me. Do not make anything up.</code></div>
+  <div class="more"><a href="https://youtu.be/6fOc7TvLF3s" target="_blank" rel="noopener">The video I learned it from &rarr;</a><a href="/robots/echo">Echo writes it in your voice &rarr;</a></div>
+</article>
+
+<article class="play rv" id="storybrand" style="--c:var(--blue)">
+  <div class="top"><div class="num">02</div><div><h2>Your customer is the hero</h2><p class="by">StoryBrand, from Donald Miller's book Building a StoryBrand</p></div></div>
+  <p class="line">Your customer is the hero. You are the guide.</p>
+  <div class="cols">
+    <div class="box"><h3>what it is</h3>
+      <p>Every good story works the same way. Your website should too.</p>
+      <ol><li>A <b>hero</b> wants something</li><li>and has a <b>problem.</b></li><li>They meet a <b>guide</b></li><li>who gives them a <b>plan</b></li><li>and <b>calls them to act.</b></li><li>That helps them avoid <b>failure</b></li><li>and ends in <b>success.</b></li></ol>
+    </div>
+    <div class="box real"><h3>how I used it</h3>
+      <p class="quote">"You love your dog. You're just exhausted."</p>
+      <p>That is the headline on scentsiblek9training.com. It is about the owner, not about us. It names their problem in the words they would use.</p>
+      <p>Most business websites make themselves the hero: our awards, our team, our years in business. Flip it. The customer is the star. You are the one who helps.</p>
+    </div>
+  </div>
+  <div class="try"><div class="lab"><span>&gt; try it with AI</span><button type="button">copy</button></div><code>Read my homepage. Rewrite the headline so my customer is the hero and I am the guide. Name their problem in the words they would actually use. Give me three options.</code></div>
+  <div class="more"><a href="/robots/dot">Dot changes your website by talking &rarr;</a></div>
+</article>
+
+<article class="play rv" id="blue-ocean" style="--c:var(--sea)">
+  <div class="top"><div class="num">03</div><div><h2>Stop competing. Make your own lane.</h2><p class="by">Blue Ocean Strategy, by W. Chan Kim and Ren&eacute;e Mauborgne</p></div></div>
+  <p class="line">Don't fight over the same customers with the same offer. Change the offer.</p>
+  <div class="cols">
+    <div class="box"><h3>what it is</h3>
+      <p>A <b>red ocean</b> is where everyone sells the same thing and fights on price. A <b>blue ocean</b> is a space nobody else is in yet.</p>
+      <p>To find yours, answer four questions about your offer:</p>
+      <ul><li><b>Eliminate:</b> what does everyone do that you can drop?</li><li><b>Reduce:</b> what can you do less of?</li><li><b>Raise:</b> what can you do far better?</li><li><b>Create:</b> what can you offer that nobody does?</li></ul>
+    </div>
+    <div class="box real"><h3>how I used it</h3>
+      <p><b>Red ocean:</b> every trainer in my valley sells control. Sit, stay, stop pulling, a quieter dog. They compete on price.</p>
+      <p><b>Blue ocean:</b> we teach dogs to do more, not less. Dogs were bred to work, so we give them jobs: scent work, sports, tricks, even a dog acting academy.</p>
+      <p class="quote">"Most training teaches dogs to do less. We teach them to do more."</p>
+    </div>
+  </div>
+  <div class="try"><div class="lab"><span>&gt; try it with AI</span><button type="button">copy</button></div><code>Here are my three biggest competitors: [names]. Search the web and list what we all sell the same way. That is my red ocean. Then fill in eliminate, reduce, raise and create for my business, and show me the sources you used.</code></div>
+  <div class="more"><a href="/robots/scout">Scout does the research &rarr;</a></div>
+</article>
+
+<article class="play rv" id="profit-first" style="--c:var(--tan)">
+  <div class="top"><div class="num">04</div><div><h2>Pay yourself first</h2><p class="by">Profit First, by Mike Michalowicz</p></div></div>
+  <p class="line">Take your profit first. Run the business on what is left.</p>
+  <div class="cols">
+    <div class="box"><h3>what it is</h3>
+      <p>Most owners pay everyone else, then hope something is left for them. Profit First flips the order.</p>
+      <p>When money comes in, a set percentage moves right away into separate accounts: profit, owner pay and taxes. The business runs on the rest. If the rest is not enough, that tells you something.</p>
+    </div>
+    <div class="box real"><h3>how I am using it</h3>
+      <p>My business coach had me read this book this year. I am setting it up now, and step one was cleaning up my books with AI so the numbers are real.</p>
+      <p>One rule I learned the hard way: AI is not a calculator. Any math it does for my money runs in code, with the work shown, so I can check it.</p>
+    </div>
+  </div>
+  <div class="try"><div class="lab"><span>&gt; try it with AI</span><button type="button">copy</button></div><code>Look at last month in my books. Show me how the money would have split under Profit First: profit, owner pay, taxes and operating. Do the math in code, not in your head, and show your work so I can check it.</code></div>
+  <div class="more"><a href="/robots/penny">Penny handles the money &rarr;</a></div>
+</article>
+
+<article class="play rv" id="design" style="--c:var(--pink)">
+  <div class="top"><div class="num">05</div><div><h2>My design rules</h2><p class="by">Mine. Learned by shipping a lot of pages.</p></div></div>
+  <p class="line">Calm, clear, and checked on a real phone.</p>
+  <div class="cols">
+    <div class="box"><h3>the rules</h3>
+      <ul><li><b>Light and airy first screen.</b> No dark takeovers.</li><li><b>Four things on a card, max.</b> More than that and nobody reads it.</li><li><b>Fill the page.</b> No screen that is mostly blank.</li><li><b>One spacing scale.</b> The same few gaps everywhere, so it all lines up.</li><li><b>Smooth, not bouncy.</b> Soft fades only. No spins, pops or moving widgets.</li><li><b>Logo on every piece.</b></li><li><b>Check it at phone size</b> before it ships.</li></ul>
+    </div>
+    <div class="box real"><h3>how I use them</h3>
+      <p>I don't open a design app. I saved these rules once, and my robots check every page against them before they show me.</p>
+      <p>This website was built that way. So were my dog training site, my class posters and my print pieces.</p>
+    </div>
+  </div>
+  <div class="try"><div class="lab"><span>&gt; try it with AI</span><button type="button">copy</button></div><code>Save these as my design rules: [paste your rules]. From now on, check every page and graphic against them at phone size before you show me anything.</code></div>
+  <div class="more"><a href="/robots/pixel">Pixel makes the graphics &rarr;</a></div>
+</article>
+
+<article class="play rv" id="marketing" style="--c:var(--violet)">
+  <div class="top"><div class="num">06</div><div><h2>My marketing rules</h2><p class="by">Mine. Every one came from a real mistake.</p></div></div>
+  <p class="line">Lead with the why. Never fake the proof.</p>
+  <div class="cols">
+    <div class="box"><h3>the rules</h3>
+      <ul><li><b>Mission and heart first.</b> Lead with why you do it, then what you sell.</li><li><b>Real reviews only,</b> word for word. Never invent one, never reword one.</li><li><b>One message, every channel.</b> See rule 01.</li><li><b>Short texts.</b> If it scrolls, it is too long.</li><li><b>Every comment reply is different.</b> Nobody likes a copy and paste.</li><li><b>Nothing goes out until I say send.</b></li></ul>
+    </div>
+    <div class="box real"><h3>how I use them</h3>
+      <p>My robots draft my posts, emails, texts and comment replies. They check them against these rules first. Then I read every one and say send.</p>
+      <p>AI can sound like you. It cannot care like you. That part stays mine.</p>
+    </div>
+  </div>
+  <div class="try"><div class="lab"><span>&gt; try it with AI</span><button type="button">copy</button></div><code>Save these as my marketing rules: [paste your rules]. Before any post, email or text goes out, check it against them, tell me which rules it passed, and wait for me to say send.</code></div>
+  <div class="more"><a href="/robots/echo">Echo writes in your voice &rarr;</a><a href="/robots/tempo">Tempo sends it, after your yes &rarr;</a></div>
+</article>
+
+</div>
+<div class="end rv"><div><h2>Now hand the work to the robots.</h2><p>The playbook decides what to say. The robots do the typing. Start free with Boot, then hire the robot for the job you hate most.</p></div><a class="btn btn-ink" href="/academy/">Open the Robot Academy</a></div>
+</div></section>
+</main>
+<footer><div class="wrap">
+  <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage</a>
+  <nav class="links"><a href="https://www.tiktok.com/@keltysage" target="_blank" rel="noopener">TikTok</a><a href="mailto:keltysage01@gmail.com">Contact</a></nav>
+  <p>I type it. AI does it.</p>
+</div></footer>
+<script>
+document.querySelectorAll('.try button').forEach(b => b.addEventListener('click', () => {
+  navigator.clipboard.writeText(b.closest('.try').querySelector('code').textContent).then(() => { b.textContent = 'copied'; setTimeout(() => b.textContent = 'copy', 1600); });
+}));
+(function(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { document.querySelectorAll('.rv').forEach(el => el.classList.add('in')); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ io.unobserve(e.target); e.target.classList.add('in'); } }), {threshold:.08});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  const sweep = () => document.querySelectorAll('.rv:not(.in)').forEach(el => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add('in'); });
+  addEventListener('scroll', sweep, {passive:true}); addEventListener('hashchange', () => setTimeout(sweep, 50)); sweep();
+})();
+</script>
+</body></html>
