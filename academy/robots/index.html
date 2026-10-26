@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<base href="/academy/boot/">
+<base href="/academy/robots/">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Robot Academy: Boot</title>
 <meta name="description" content="Boot's free lessons, made by the robots. Every robot mistake is a lesson.">
@@ -108,6 +108,15 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px soli
 .lnav::-webkit-scrollbar{display:none}
 .chip{flex:none;width:40px;height:40px;border-radius:50%;border:2px solid var(--line);background:var(--card);display:grid;place-items:center;font-weight:800;text-decoration:none;color:var(--ink-2)}
 .chip[aria-current=page]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip.lock{border-style:dashed;color:var(--ink-3)}
+.rnav{display:flex;gap:8px;overflow-x:auto;padding:16px 0 0;scrollbar-width:none}
+.rnav::-webkit-scrollbar{display:none}
+.rnav a{flex:none;width:52px;height:52px;border-radius:16px;background:var(--card);border:2px solid var(--line);display:grid;place-items:center}
+.rnav a[aria-current=page]{border-color:var(--ink)}
+.rnav img{width:38px;height:38px}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:#fff;font-weight:700;border-radius:14px;padding:13px 20px;font-size:16px;text-decoration:none}
+.btn.soft{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
 /* platforms + skip */
 .os{display:flex;gap:8px}
 .os button{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:6px 14px;font-weight:600;font-size:15px}
@@ -149,12 +158,13 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px soli
 <body>
 <header class="bar"><div class="wrap">
   <a class="brand" href="/academy/"><img src="logo.png" alt="">Robot Academy</a>
-  <a class="draft" href="/academy/#/boot" style="text-decoration:none">ALL ROBOTS</a>
+  <a class="draft" href="/academy/" style="text-decoration:none">ALL ROBOTS</a>
 </div></header>
 <main id="app" class="wrap"></main>
 <footer><div class="wrap">Made by the robots. Checked by Kelty. Mostly.</div></footer>
 
 <script src="lessons.js"></script>
+<script src="course.js"></script>
 <script src="voices.js"></script>
 <script>
 /* Comedy lessons. Each segment from the brief is one render function, fed by a lesson
@@ -238,6 +248,26 @@ function Closing(c, L){
   else if (c.bloopers) body = `<ul class="bloops">${c.bloopers.map(b => `<li>${esc(b)}</li>`).join('')}</ul>`;
   return sec(`Closing bit: ${esc(c.kind)}`, body + tip);
 }
+// Paid robots: lesson 1 is the free preview, lessons 2 and 3 come with the pack.
+// Checkout still uses the robots' original ids.
+const ITEM = {reel:'cutter', bouncer:'officer-keys', penny:'ledger', dot:'brick', tempo:'postie'};
+const item = (r) => ITEM[r] || r;
+const PAID_LESSONS = 3;
+const ROBOTS = [...new Set(LESSONS.map(l => l.robot))];
+const COURSE = window.COURSE || {};
+function Hire(L){
+  if (L.robot === 'boot') return '';
+  const n = esc(CAST[L.robot].name);
+  return sec('Want the rest?', `<div class="try"><h2>Hire ${n}</h2>
+    <p class="small">Lessons 2 and 3 are in ${n}'s pack, with every prompt and video. One time, yours to keep.</p>
+    <div class="row"><a class="btn" href="/api/checkout?item=${item(L.robot)}">Hire ${n}: ${esc(COURSE.price)}</a>${COURSE.bundle_price ? `<a class="btn soft" href="/api/checkout?item=all">Whole team: ${esc(COURSE.bundle_price)}</a>` : ''}</div></div>`);
+}
+function Nav(L){
+  const mine = LESSONS.filter(l => l.robot === L.robot);
+  const locked = L.robot === 'boot' ? [] : Array.from({length: PAID_LESSONS - mine.length}, (_, k) => mine.length + k + 1);
+  return `<nav class="rnav" aria-label="Robots">${ROBOTS.map(r => `<a href="#${LESSONS.find(l => l.robot === r).id}" ${r === L.robot ? 'aria-current="page"' : ''} title="${esc(CAST[r].name)}"><img src="${art(r)}" alt="${esc(CAST[r].name)}"></a>`).join('')}</nav>
+    <nav class="lnav" aria-label="Lessons">${mine.map(l => `<a class="chip" href="#${l.id}" ${l.id === L.id ? 'aria-current="page"' : ''} title="${esc(l.title)}">${l.number}</a>`).join('')}${locked.map(n => `<a class="chip lock" href="/api/checkout?item=${item(L.robot)}" title="In ${esc(CAST[L.robot].name)}'s pack">${n}</a>`).join('')}</nav>`;
+}
 function Pager(i){
   const p = LESSONS[i - 1], n = LESSONS[i + 1];
   return `<nav class="pager">${p ? `<a href="#${p.id}"><small>Back</small><b>${esc(p.title)}</b></a>` : ''}${n ? `<a class="next" href="#${n.id}"><small>Next lesson</small><b>${esc(n.title)}</b></a>` : ''}</nav>`;
@@ -249,12 +279,12 @@ function render(){
   const L = LESSONS[i]; if (!L) return;
   document.title = `${CAST[L.robot].name} lesson ${L.number}: ${L.title}`;
   document.getElementById('app').innerHTML = `
-    <nav class="lnav" aria-label="Lessons">${LESSONS.map((l, j) => `<a class="chip" href="#${l.id}" ${j === i ? 'aria-current="page"' : ''} title="${esc(l.title)}">${l.number}</a>`).join('')}</nav>
+    ${Nav(L)}
     <div class="hero fade"><div class="pic"><img src="${art(L.robot)}" alt="${esc(CAST[L.robot].name)} the robot"></div>
-      <div><p class="eyebrow">&gt;_ ${esc(CAST[L.robot].name)} · lesson ${L.number} · free</p><h1>${headline(L.title)}</h1>
+      <div><p class="eyebrow">&gt;_ ${esc(CAST[L.robot].name)} · lesson ${L.number} · ${L.robot === 'boot' ? 'free' : 'free preview'}</p><h1>${headline(L.title)}</h1>
       <p class="lede">${esc(L.intro)}</p></div></div>
     ${ColdOpen(L.coldOpen)}${Attempt(L.attempt)}${Cameo(L.cameo)}${BlameGame(L.blame)}
-    ${IncidentReport(L.hr, L.number)}${RealTeaching(L.teach)}${RejectedFolder(L.rejected)}${TryIt(L.tryIt)}${Closing(L.closing, L)}
+    ${IncidentReport(L.hr, i + 1)}${RealTeaching(L.teach)}${RejectedFolder(L.rejected)}${TryIt(L.tryIt)}${Closing(L.closing, L)}${Hire(L)}
     ${Pager(i)}`;
   wire();
 }

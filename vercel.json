@@ -25,6 +25,11 @@
       "source": "/robots/brick",
       "destination": "/robots/dot",
       "permanent": true
+    },
+    {
+      "source": "/academy/boot",
+      "destination": "/academy/robots",
+      "permanent": true
     }
   ]
 }
