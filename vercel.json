@@ -13,7 +13,12 @@
     },
     {
       "source": "/robots/cutter",
-      "destination": "/robots/reel",
+      "destination": "/robots/spielbot",
+      "permanent": true
+    },
+    {
+      "source": "/robots/reel",
+      "destination": "/robots/spielbot",
       "permanent": true
     },
     {

@@ -105,7 +105,7 @@ SHEETS = [
 ROBOTS = [  # pain, robot, site slug, art id, accent
   ("You have never used a terminal", "Boot", "boot", "boot", "#9ed9c7", "Free"),
   ("Graphics take forever", "Pixel", "pixel", "pixel", "#ff7cc6", None),
-  ("Your videos never get edited", "Reel", "reel", "cutter", "#ffbd2e", None),
+  ("Your videos never get edited", "Spielbot", "spielbot", "cutter", "#ffbd2e", None),
   ("You are about to connect email or payments", "Bouncer", "bouncer", "officer-keys", "#3b5bdb", None),
   ("You never know who still owes you", "Penny", "penny", "ledger", "#28c840", None),
   ("Your writing sounds robotic", "Echo", "echo", "echo", "#ff6159", None),

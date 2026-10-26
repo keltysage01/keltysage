@@ -22,16 +22,16 @@
       ]
     },
     "cutter": {
-      "pitch": "Reel edits your videos, so one recording turns into a week of posts.",
+      "pitch": "Spielbot edits your videos, so one recording turns into a week of posts.",
       "hire": [
         "You record great videos and never get around to editing them",
         "You spend an hour adding captions by hand",
         "You want one long video cut into three short ones",
         "You need vertical versions for TikTok and Reels"
       ],
-      "name": "Reel",
-      "slug": "reel",
-      "intro": "Reel here. I make the videos. I'll show you how to replace CapCut. Let's skip the intro."
+      "name": "Spielbot",
+      "slug": "spielbot",
+      "intro": "Spielbot here. I direct your videos. Every clip is a blockbuster to me, and I'll show you how to replace CapCut."
     },
     "officer-keys": {
       "pitch": "Bouncer guards your accounts and secret keys, so nothing gets in or goes out without your OK.",
@@ -81,13 +81,13 @@
     },
     "postie": {
       "name": "Tempo",
-      "intro": "Tempo here. I keep your inbox and calendar on beat. I sort it, draft your replies, and you just say yes.",
-      "pitch": "Tempo runs your inbox and calendar, so client emails and bookings stop eating your day.",
+      "intro": "Tempo here. I'm your CRM manager. I keep your clients, inbox and calendar on beat. I draft, and you just say yes.",
+      "pitch": "Tempo is your CRM manager. Your client list, texts, emails and calendar, all run in plain sentences, so nobody slips through the cracks.",
       "hire": [
+        "You pay for a CRM you barely use",
+        "Leads slip through because nobody followed up",
         "Your inbox has hundreds of unread emails",
-        "You answer booking questions all day long",
-        "You double book or forget to confirm appointments",
-        "You want replies drafted for you, and you just hit send"
+        "You double book or forget to confirm appointments"
       ]
     },
     "scout": {
