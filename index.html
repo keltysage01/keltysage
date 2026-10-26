@@ -60,7 +60,8 @@ h1,h2,h3{font-weight:600;letter-spacing:-.03em;line-height:1.05}
 .hero:before{content:"";position:absolute;width:620px;height:620px;border-radius:50%;left:-260px;top:-200px;background:radial-gradient(circle,rgba(185,240,156,.35),transparent 65%);pointer-events:none}
 .hero:after{content:"";position:absolute;width:560px;height:560px;border-radius:50%;right:-200px;top:120px;background:radial-gradient(circle,rgba(255,159,214,.25),transparent 65%);pointer-events:none}
 .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;position:relative;z-index:1}
-.kick{font-size:24px;font-weight:500;color:var(--ink-2);margin-top:14px;letter-spacing:-.01em}
+.kick{font-size:27px;font-weight:600;color:var(--ink);margin-top:14px;letter-spacing:-.02em;line-height:1.25}
+.kick em{font-style:normal;color:var(--teal)}
 .hero h1{font-size:58px;margin-top:8px}
 .hero .lead{font-size:20px;color:var(--ink-2);margin-top:20px;max-width:560px}
 .signup{display:flex;gap:10px;margin-top:28px;max-width:520px}
@@ -308,8 +309,7 @@ html,body{overflow-x:clip}
 /* phones: one thing to read (the headline), one thing to tap (the black button) */
 .lead-short{display:none}
 @media (max-width:600px){
-  .kick{font-size:17px;color:var(--ink-3)}
-  .hero .hl-p,.hero .hl-b{background-image:linear-gradient(transparent 60%,var(--green) 60%,var(--green) 92%,transparent 92%)}
+  .kick{font-size:22px}
   .hero .lead{margin-top:14px}
   .lead-full{display:none}.lead-short{display:inline}
   .hero .ctas{margin-top:22px;gap:4px}
@@ -341,7 +341,7 @@ html,body{overflow-x:clip}
 <section class="hero"><div class="wrap">
   <div>
     <div class="eb">&gt; hi, I'm Kelty</div>
-    <p class="kick">You started a business to do the work you love.</p>
+    <p class="kick">You started a business to do <em>the work you love.</em></p>
     <h1>Not the <span class="hl-g">marketing</span>, the <span class="hl-p">graphic design</span> and the <span class="hl-b">bookkeeping.</span></h1>
     <p class="lead"><span class="lead-full">I run a dog training company, and I was stuck doing all three. So I taught AI to do those jobs. Now I type what I need in plain English, and it gets done. I'll show you exactly how.</span><span class="lead-short">I run a dog training company. My AI robots do those jobs now.</span></p>
     <div class="ctas">
