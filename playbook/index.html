@@ -55,6 +55,8 @@ h1,h2,h3{font-weight:600;letter-spacing:-.03em;line-height:1.08}
 .try button{font:600 13px var(--sans);background:var(--sea);color:var(--term);border:0;border-radius:999px;padding:7px 14px;cursor:pointer}
 .more{display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;font-size:15px}
 .more a{color:var(--teal);font-weight:600;text-decoration:none}
+.credits{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:30px;margin-top:6px}.credits h2{font-size:28px}.credits>p{color:var(--ink-2);margin-top:6px}.credits ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:16px}.credits li{font-size:16px;color:var(--ink-2)}.credits li b{color:var(--ink)}.credits a{color:var(--teal);font-weight:600;text-decoration:none;white-space:nowrap}
+.play .by a{color:var(--teal);text-decoration:none;font-weight:600}
 .end{display:flex;gap:24px;align-items:center;flex-wrap:wrap;justify-content:space-between;background:linear-gradient(135deg,#e7f8f2,#f6efff);border:1px solid #d6ece6;border-radius:28px;padding:30px;margin:28px 0 64px}
 .end h2{font-size:30px}.end p{color:var(--ink-2);margin-top:6px;max-width:560px}
 footer{padding:40px 0 56px;border-top:1px solid var(--line)}
@@ -67,7 +69,7 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 .hero .wrap>:nth-child(2){animation-delay:.08s}.hero .wrap>:nth-child(3){animation-delay:.18s}.hero .wrap>:nth-child(4){animation-delay:.28s}
 @media (max-width:860px){.cols{grid-template-columns:1fr}.hero h1{font-size:42px}}
 @media (max-width:600px){.links a:not(.btn){display:none}.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}
-  .hero h1{font-size:34px}.hero p{font-size:18px}.play{padding:22px;border-radius:24px}.play h2{font-size:25px}.play .num{width:44px;height:44px;font-size:16px}.play .line{font-size:19px}.box{padding:18px}.try code{font-size:14px}.end{padding:22px}}
+  .hero h1{font-size:34px}.hero p{font-size:18px}.play{padding:22px;border-radius:24px}.play h2{font-size:25px}.play .num{width:44px;height:44px;font-size:16px}.play .line{font-size:19px}.box{padding:18px}.try code{font-size:14px}.end{padding:22px}.credits{padding:22px}.credits h2{font-size:24px}}
 @media (max-width:359px){.nav .brand .sep,.nav .brand .tag{display:none}}
 @media (prefers-reduced-motion:reduce){.hero .wrap>*{animation:none}.rv{opacity:1;transform:none}}
 </style></head><body>
@@ -93,7 +95,7 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 <section><div class="wrap"><div class="plays">
 
 <article class="play rv" id="big-idea" style="--c:var(--green)">
-  <div class="top"><div class="num">01</div><div><h2>Big idea first</h2><p class="by">David Bayer's four beats of a message that converts</p></div></div>
+  <div class="top"><div class="num">01</div><div><h2>Big idea first</h2><p class="by">Credit: David Bayer, from his video <a href="https://youtu.be/6fOc7TvLF3s" target="_blank" rel="noopener">It's Boring, But THIS Will Make You Dangerously Wealthy</a></p></div></div>
   <p class="line">People buy beliefs before they buy products.</p>
   <div class="cols">
     <div class="box"><h3>what it is</h3>
@@ -107,11 +109,11 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
     </div>
   </div>
   <div class="try"><div class="lab"><span>&gt; try it with AI</span><button type="button">copy</button></div><code>Interview me one question at a time to find my business's big idea. Then write my message in four parts: big idea, my story, a three-belief framework, and proof. Put [brackets] anywhere you need a real story from me. Do not make anything up.</code></div>
-  <div class="more"><a href="https://youtu.be/6fOc7TvLF3s" target="_blank" rel="noopener">The video I learned it from &rarr;</a><a href="/robots/echo">Echo writes it in your voice &rarr;</a></div>
+  <div class="more"><a href="https://youtu.be/6fOc7TvLF3s" target="_blank" rel="noopener">Watch David Bayer's video &rarr;</a><a href="/robots/echo">Echo writes it in your voice &rarr;</a></div>
 </article>
 
 <article class="play rv" id="storybrand" style="--c:var(--blue)">
-  <div class="top"><div class="num">02</div><div><h2>Your customer is the hero</h2><p class="by">StoryBrand, from Donald Miller's book Building a StoryBrand</p></div></div>
+  <div class="top"><div class="num">02</div><div><h2>Your customer is the hero</h2><p class="by">Credit: Donald Miller, from his book <a href="https://storybrand.com" target="_blank" rel="noopener">Building a StoryBrand</a></p></div></div>
   <p class="line">Your customer is the hero. You are the guide.</p>
   <div class="cols">
     <div class="box"><h3>what it is</h3>
@@ -129,12 +131,12 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 </article>
 
 <article class="play rv" id="blue-ocean" style="--c:var(--sea)">
-  <div class="top"><div class="num">03</div><div><h2>Stop competing. Make your own lane.</h2><p class="by">Blue Ocean Strategy, by W. Chan Kim and Ren&eacute;e Mauborgne</p></div></div>
+  <div class="top"><div class="num">03</div><div><h2>Stop competing. Make your own lane.</h2><p class="by">Credit: W. Chan Kim and Ren&eacute;e Mauborgne, from their book <a href="https://www.blueoceanstrategy.com" target="_blank" rel="noopener">Blue Ocean Strategy</a></p></div></div>
   <p class="line">Don't fight over the same customers with the same offer. Change the offer.</p>
   <div class="cols">
     <div class="box"><h3>what it is</h3>
       <p>A <b>red ocean</b> is where everyone sells the same thing and fights on price. A <b>blue ocean</b> is a space nobody else is in yet.</p>
-      <p>To find yours, answer four questions about your offer:</p>
+      <p>To find yours, answer their four questions about your offer. They call it the Four Actions Framework:</p>
       <ul><li><b>Eliminate:</b> what does everyone do that you can drop?</li><li><b>Reduce:</b> what can you do less of?</li><li><b>Raise:</b> what can you do far better?</li><li><b>Create:</b> what can you offer that nobody does?</li></ul>
     </div>
     <div class="box real"><h3>how I used it</h3>
@@ -148,7 +150,7 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 </article>
 
 <article class="play rv" id="profit-first" style="--c:var(--tan)">
-  <div class="top"><div class="num">04</div><div><h2>Pay yourself first</h2><p class="by">Profit First, by Mike Michalowicz</p></div></div>
+  <div class="top"><div class="num">04</div><div><h2>Pay yourself first</h2><p class="by">Credit: Mike Michalowicz, from his book <a href="https://www.profitfirstbook.com" target="_blank" rel="noopener">Profit First</a></p></div></div>
   <p class="line">Take your profit first. Run the business on what is left.</p>
   <div class="cols">
     <div class="box"><h3>what it is</h3>
@@ -181,11 +183,11 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 </article>
 
 <article class="play rv" id="marketing" style="--c:var(--violet)">
-  <div class="top"><div class="num">06</div><div><h2>My marketing rules</h2><p class="by">Mine. Every one came from a real mistake.</p></div></div>
+  <div class="top"><div class="num">06</div><div><h2>My marketing rules</h2><p class="by">Mine. Every one came from a real mistake. Rule one stands on Simon Sinek's Start With Why.</p></div></div>
   <p class="line">Lead with the why. Never fake the proof.</p>
   <div class="cols">
     <div class="box"><h3>the rules</h3>
-      <ul><li><b>Mission and heart first.</b> Lead with why you do it, then what you sell.</li><li><b>Real reviews only,</b> word for word. Never invent one, never reword one.</li><li><b>One message, every channel.</b> See rule 01.</li><li><b>Short texts.</b> If it scrolls, it is too long.</li><li><b>Every comment reply is different.</b> Nobody likes a copy and paste.</li><li><b>Nothing goes out until I say send.</b></li></ul>
+      <ul><li><b>Mission and heart first.</b> Lead with why you do it, then what you sell. Simon Sinek said it first: people buy why you do it.</li><li><b>Real reviews only,</b> word for word. Never invent one, never reword one.</li><li><b>One message, every channel.</b> See rule 01.</li><li><b>Short texts.</b> If it scrolls, it is too long.</li><li><b>Every comment reply is different.</b> Nobody likes a copy and paste.</li><li><b>Nothing goes out until I say send.</b></li></ul>
     </div>
     <div class="box real"><h3>how I use them</h3>
       <p>My robots draft my posts, emails, texts and comment replies. They check them against these rules first. Then I read every one and say send.</p>
@@ -197,6 +199,14 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 </article>
 
 </div>
+<div class="credits rv"><h2>Credit where it's due</h2><p>None of these big ideas are mine. I just use them every day, with robots. Go to the source.</p>
+<ul>
+<li><b>David Bayer</b>, the four beats: big idea, story, framework, proof. <a href="https://youtu.be/6fOc7TvLF3s" target="_blank" rel="noopener">Watch the video</a></li>
+<li><b>Donald Miller</b>, Building a StoryBrand. <a href="https://storybrand.com" target="_blank" rel="noopener">storybrand.com</a></li>
+<li><b>W. Chan Kim and Ren&eacute;e Mauborgne</b>, Blue Ocean Strategy. <a href="https://www.blueoceanstrategy.com" target="_blank" rel="noopener">blueoceanstrategy.com</a></li>
+<li><b>Mike Michalowicz</b>, Profit First. <a href="https://www.profitfirstbook.com" target="_blank" rel="noopener">profitfirstbook.com</a></li>
+<li><b>Simon Sinek</b>, Start With Why. <a href="https://simonsinek.com" target="_blank" rel="noopener">simonsinek.com</a></li>
+</ul></div>
 <div class="end rv"><div><h2>Now hand the work to the robots.</h2><p>The playbook decides what to say. The robots do the typing. Start free with Boot, then hire the robot for the job you hate most.</p></div><a class="btn btn-ink" href="/academy/">Open the Robot Academy</a></div>
 </div></section>
 </main>
