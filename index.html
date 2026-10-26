@@ -301,6 +301,18 @@ h2.rise.in{filter:none}
 }
 html,body{overflow-x:clip}
 .hero{overflow-x:clip}
+
+/* phones: one thing to read (the headline), one thing to tap (the black button) */
+.lead-short{display:none}
+@media (max-width:600px){
+  .kick{font-size:17px;color:var(--ink-3)}
+  .hero .hl-p,.hero .hl-b{background-image:linear-gradient(transparent 60%,var(--green) 60%,var(--green) 92%,transparent 92%)}
+  .hero .lead{margin-top:14px}
+  .lead-full{display:none}.lead-short{display:inline}
+  .hero .ctas{margin-top:22px;gap:4px}
+  .hero .ctas .btn-line{background:none;border:0;padding:10px;font-size:15px;color:var(--ink-2);text-decoration:underline;text-underline-offset:4px}
+  .hero .fine{display:none}
+}
 </style>
 </head>
 <body>
@@ -327,7 +339,7 @@ html,body{overflow-x:clip}
     <div class="eb">&gt; hi, I'm Kelty</div>
     <p class="kick">You started a business to do the work you love.</p>
     <h1>Not the <span class="hl-g">marketing</span>, the <span class="hl-p">graphic design</span> and the <span class="hl-b">bookkeeping.</span></h1>
-    <p class="lead">I run a dog training company, and I was stuck doing all three. So I taught AI to do those jobs. Now I type what I need in plain English, and it gets done. I'll show you exactly how.</p>
+    <p class="lead"><span class="lead-full">I run a dog training company, and I was stuck doing all three. So I taught AI to do those jobs. Now I type what I need in plain English, and it gets done. I'll show you exactly how.</span><span class="lead-short">I run a dog training company. My AI robots do those jobs now.</span></p>
     <div class="ctas">
       <a class="btn btn-ink" href="/academy/">Open the Robot Academy</a>
       <a class="btn btn-line" href="/academy/#/boot">Start free with Boot</a>
