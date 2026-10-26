@@ -282,10 +282,10 @@ def steps_html(lesson, free):
         if s.get("picture"): parts.append(f'<p class="pic">{esc(s["picture"])}</p>')
         if s.get("skip"): parts.append(f'<p class="skip"><em>if you skip it</em>{esc(s["skip"])}</p>')
         if free:
-            for t in s.get("turns", []):
+            for t in [t for t in s.get("turns", []) if t["p"]]:
                 parts.append(f'<div class="prompt"><code>{esc(t["p"])}</code><button type="button">copy</button></div>')
                 for o in t.get("o", []): parts.append(f'<p class="out">{esc(o)}</p>')
-        elif s.get("turns"):
+        elif any(t["p"] for t in s.get("turns", [])):
             parts.append('<div class="locked">&gt;_ the exact prompt for this step is in the pack</div>')
         parts.append("</li>")
         out.append("".join(parts))
