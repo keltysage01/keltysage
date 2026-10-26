@@ -145,25 +145,45 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
 .keys{display:grid;grid-template-columns:auto 1fr;gap:7px 12px;align-items:center;justify-items:start;text-align:left;font-size:13px;color:#4d4870;margin-top:2px}
 .keys kbd{font:500 12px var(--mono);background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.95);border-radius:8px;padding:2px 8px;color:#1c1a33;white-space:nowrap;box-shadow:0 2px 6px rgba(60,35,140,.1)}
 
+.game.full{position:fixed;inset:0;width:auto;height:100vh;height:100dvh;min-height:0;border-radius:0;z-index:1000;margin:0}
+.game.full .ui,.game.full .labels{inset:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+html.lock,html.lock body{overflow:hidden;overscroll-behavior:none}
 @media (max-width:760px){
-  .game{height:78vh;border-radius:24px}
-  .quests{top:14px;left:14px;width:auto;max-width:56%;padding:10px 12px}
+  .top p{font-size:13px}
+  .game{height:78vh;height:calc(100svh - 132px);min-height:480px;border-radius:24px}
+  .quests{top:12px;left:12px;width:auto;max-width:58%;padding:10px 12px}
   .quests li{font-size:12.5px}
   .quests h3{font-size:14px}
-  .quests.small{padding:7px 10px}
-  .topr{top:14px;right:14px;gap:6px}
-  .chip,.fs{display:none}
+  .quests.small{padding:6px 8px 6px 10px}
+  .quests.small .qword{display:none}
+  .quests.small #qCount{margin-left:0}
+  .topr{top:12px;right:12px;gap:6px;max-width:none}
+  .chip{display:none}
+  .fs{width:40px;height:40px}
   .clock{gap:4px;padding:4px}
-  .clock .ib{width:28px;height:28px}
+  .clock .ib{width:30px;height:30px}
   .clock span{min-width:58px;font-size:13px}
-  .minimap{width:104px;height:104px;bottom:auto;top:66px;right:14px;padding:5px}
-  .dialog{grid-template-columns:64px minmax(0,1fr);gap:12px;padding:12px;border-radius:24px;bottom:12px;width:calc(100% - 24px)}
-  .dialog .face{width:64px;height:76px;border-radius:16px}.dialog .face img{width:62px;height:84px}
-  .dialog .who b{font-size:19px}
-  .dialog .say{font-size:15px}
-  .prompt{bottom:150px}
+  .minimap{width:96px;height:96px;bottom:auto;top:64px;right:12px;padding:5px}
+  .np{font-size:12px}
+  .dialog{left:8px;right:8px;bottom:8px;width:auto;transform:none;grid-template-columns:52px minmax(0,1fr);gap:10px;padding:12px;border-radius:22px}
+  .dialog.off{transform:translateY(12px)}
+  .dialog .face{width:52px;height:60px;border-radius:14px}.dialog .face img{width:50px;height:68px;margin-bottom:-6px}
+  .dialog .who{gap:6px}
+  .dialog .who b{font-size:18px}
+  .dialog .who em{display:none}
+  .dialog .say{font-size:15px;line-height:1.45;min-height:0;margin:6px 0 10px}
+  .dialog .opts{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .opt{justify-content:center;text-align:center;min-height:40px;padding:6px 10px;font-size:13px;line-height:1.2}
+  .opt kbd{display:none}
+  .prompt{bottom:calc(150px + env(safe-area-inset-bottom,0px));padding:9px 18px 9px 9px}
+  .stick{left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));width:116px;height:116px}
+  .start .card{padding:22px 18px 18px;gap:12px}
   .start h2{font-size:42px}
+  .start p{font-size:14px}
   .lineup span{width:31px;height:31px;margin-left:-6px}.lineup img{width:29px;height:39px}
+  .cast{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;margin:0 -16px;padding:2px 16px 8px;scrollbar-width:none}
+  .cast::-webkit-scrollbar{display:none}
+  .cast button{flex:none;scroll-snap-align:start}
 }
 .cast{display:flex;gap:8px;flex-wrap:wrap}
 .cast button{display:flex;align-items:center;gap:8px;font:600 13px var(--sans);color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px 5px 6px;cursor:pointer}
@@ -190,7 +210,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
     <div class="reticle" id="reticle" hidden></div>
     <div class="ui" id="ui">
       <section class="quests panel" id="quests" hidden>
-        <h3><span>Quests <span id="qCount">0/4</span></span><button class="min" id="qMin" type="button" aria-label="Hide quests">hide</button></h3>
+        <h3><span><span class="qword">Quests </span><span id="qCount">0/4</span></span><button class="min" id="qMin" type="button" aria-label="Hide quests">hide</button></h3>
         <ul id="qList"></ul>
       </section>
       <div class="topr" id="topr" hidden>
@@ -302,6 +322,7 @@ const MOODS = {boot:['proud','curious','helpful'], pixel:['picky','inspired','de
 const $ = s => document.querySelector(s);
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const touch = matchMedia('(pointer: coarse)').matches;
+const low = touch || Math.min(screen.width, screen.height) < 760; // phones and tablets: lighter shadows, fewer samples
 const fmt = m => { m = Math.round(m); let h = Math.floor(m/60), mm = m%60, ap = h >= 12 ? 'pm' : 'am'; h = h%12 || 12; return h + ':' + String(mm).padStart(2,'0') + ' ' + ap; };
 const lerp = (a, b, t) => a + (b - a) * t;
 const ease = t => t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2) / 2;
@@ -311,11 +332,15 @@ const P = (phi, r, y = 0) => new THREE.Vector3(r * Math.sin(phi), y, r * Math.co
 const wrapA = a => { while (a > Math.PI) a -= 2*Math.PI; while (a < -Math.PI) a += 2*Math.PI; return a; };
 
 const game = $('#game');
+if (touch){
+  $('.keys').innerHTML = '<kbd>Stick</kbd><span>Walk (or tap the floor)</span><kbd>Drag</kbd><span>Look around</span><kbd>Tap a robot</kbd><span>Say hi</span><kbd>Tap an orb</kbd><span>Replay a memory</span>';
+  $('#start p').textContent = 'Ten robots run the business while the boss is at a session. Walk in and say hi. The corner button makes it full screen.';
+}
 $('#lineup').innerHTML = R.map(r => `<span style="--c:${r.c};--soft:${r.soft}"><img src="${ART[r.id]}" alt=""></span>`).join('');
 let gl;
 try { gl = new THREE.WebGLRenderer({antialias:true, powerPreference:'high-performance'}); } catch (e) { gl = null; }
 if (!gl){ game.innerHTML = '<div class="nogl">This browser could not open the 3D room. Try Chrome or Safari on a recent device.</div>'; throw new Error('no webgl'); }
-gl.setPixelRatio(Math.min(devicePixelRatio, 2));
+gl.setPixelRatio(Math.min(devicePixelRatio, low ? 1.5 : 2));
 gl.outputEncoding = THREE.sRGBEncoding;
 gl.toneMapping = THREE.ACESFilmicToneMapping; gl.toneMappingExposure = 1.0;
 gl.shadowMap.enabled = true; gl.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -349,7 +374,7 @@ const rr = (x, a, b, w, h, r) => { x.beginPath(); x.roundRect ? x.roundRect(a, b
 // ---------- light ----------
 const hemi = new THREE.HemisphereLight('#fff0ff', '#b9c4ff', .25); scene.add(hemi);
 const sun = new THREE.DirectionalLight('#ffe2c8', .85); sun.position.set(6, 14, 8); sun.castShadow = true;
-sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, {left:-17, right:17, top:17, bottom:-17, near:1, far:40}); sun.shadow.bias = -.0006; sun.shadow.normalBias = .02;
+sun.shadow.mapSize.set(low ? 1024 : 2048, low ? 1024 : 2048); Object.assign(sun.shadow.camera, {left:-17, right:17, top:17, bottom:-17, near:1, far:40}); sun.shadow.bias = -.0006; sun.shadow.normalBias = .02;
 scene.add(sun);
 const amb = new THREE.AmbientLight('#ffffff', 0); scene.add(amb);
 const fill = new THREE.DirectionalLight('#b9a8ff', .45); fill.position.set(-8, 6, -10); scene.add(fill);
@@ -384,7 +409,7 @@ if (THREE.EffectComposer && THREE.UnrealBloomPass && gl.capabilities.isWebGL2){
   try {
     const opt = {type:THREE.HalfFloatType, format:THREE.RGBAFormat, minFilter:THREE.LinearFilter, magFilter:THREE.LinearFilter};
     const rt = THREE.WebGLMultisampleRenderTarget ? new THREE.WebGLMultisampleRenderTarget(4, 4, opt) : new THREE.WebGLRenderTarget(4, 4, opt);
-    if (rt.samples !== undefined) rt.samples = 4;
+    if (rt.samples !== undefined) rt.samples = low ? 2 : 4;
     composer = new THREE.EffectComposer(gl, rt);
     composer.addPass(new THREE.RenderPass(scene, cam));
     bloom = new THREE.UnrealBloomPass(new THREE.Vector2(256, 256), .6, .5, 1.6);
@@ -537,7 +562,8 @@ shelfRows.forEach((y, row) => {
     for (let phi = s + step/2; phi < e - step/2; phi += step) orbs.push({phi, y:y + ORB_R + .01, filled:false, mem:null});
   });
 });
-const orbMat = new THREE.MeshPhysicalMaterial({color:'#ffffff', roughness:.12, clearcoat:1, clearcoatRoughness:.05, emissive:'#ffffff', emissiveIntensity:1.1});
+const orbMat = low ? new THREE.MeshStandardMaterial({color:'#ffffff', roughness:.15, emissive:'#ffffff', emissiveIntensity:1.1})
+  : new THREE.MeshPhysicalMaterial({color:'#ffffff', roughness:.12, clearcoat:1, clearcoatRoughness:.05, emissive:'#ffffff', emissiveIntensity:1.1});
 orbMat.onBeforeCompile = sh => { sh.fragmentShader = sh.fragmentShader.replace('vec3 totalEmissiveRadiance = emissive;', 'vec3 totalEmissiveRadiance = emissive;\n#if defined( USE_COLOR )\ntotalEmissiveRadiance *= vColor.rgb;\n#endif'); };
 const orbMesh = new THREE.InstancedMesh(new THREE.SphereGeometry(ORB_R, 16, 12), orbMat, orbs.length);
 scene.add(orbMesh);
@@ -640,7 +666,7 @@ const gem = add(new THREE.IcosahedronGeometry(.4, 0), soft('#7cf3df', {emissive:
 const holoRings = ['#ff5fb8', '#ffcf3f', '#7950f2'].map((c, k) => { const m = add(new THREE.TorusGeometry(.66 + k * .14, .034, 8, 72), new THREE.MeshBasicMaterial({color:glowC(c, 2.6)}), 0, 1.22, 0, holo); m.castShadow = false; return m; });
 
 // ---------- sparkles drifting up through the room ----------
-const SPK = 240, spkPos = new Float32Array(SPK * 3), spkCol = new Float32Array(SPK * 3), spkSpd = [];
+const SPK = low ? 140 : 240, spkPos = new Float32Array(SPK * 3), spkCol = new Float32Array(SPK * 3), spkSpd = [];
 for (let k = 0; k < SPK; k++){
   const r = Math.sqrt(Math.random()) * (RAD - 1.5), a = Math.random() * Math.PI * 2;
   spkPos.set([r * Math.sin(a), Math.random() * WALL, r * Math.cos(a)], k * 3);
@@ -853,7 +879,7 @@ const keys = {};
 addEventListener('keydown', e => {
   if (e.target.tagName === 'INPUT') return;
   const k = e.key.toLowerCase();
-  if (k === 'escape'){ closeDialog(); closeMemo(); }
+  if (k === 'escape'){ closeDialog(); closeMemo(); if (game.classList.contains('full')) setFull(false); }
   if (talking >= 0 && /^[1-6]$/.test(k)){ const o = document.querySelectorAll('#dOpts .opt')[+k - 1]; if (o) { e.preventDefault(); o.click(); } return; }
   if (talking >= 0 && (k === ' ' || k === 'enter')){ e.preventDefault(); skipType(); return; }
   if (!inside) { if (k === 'enter' && document.activeElement === document.body) enter(); return; }
@@ -976,7 +1002,8 @@ function goTalk(i){
   if (dir.length() < .01) dir.set(0, 0, 1);
   dir.normalize();
   const stand = collide(rp.clone().addScaledVector(dir, i === driver ? 3.4 : 2.4)); stand.y = EYE;
-  glide(stand, angleTo(stand, rp), i === driver ? .02 : -.08, undefined, () => talk(i));
+  const narrow = game.clientWidth < 600;
+  glide(stand, angleTo(stand, rp), i === driver ? (narrow ? -.12 : .02) : (narrow ? -.3 : -.08), undefined, () => talk(i));
 }
 $('#prompt').onclick = () => { if (near >= 0) talk(near); };
 function vault(){
@@ -1091,7 +1118,16 @@ $('#play').onclick = () => setPlaying(!playing);
 $('#jump').onclick = () => { gameMin = gameMin >= 1140 ? 570 : 1200; applyTime(gameMin); };
 setPlaying(playing);
 setInterval(() => { if (!playing) return; gameMin += 1; if (gameMin > 1260) gameMin = 420; applyTime(gameMin); }, 420);
-$('#fs').onclick = () => { try { document.fullscreenElement ? document.exitFullscreen() : game.requestFullscreen().catch(() => {}); } catch (e) {} };
+const FS_IN = '<svg viewBox="0 0 16 16"><path d="M1.5 5.5v-4h4M10.5 1.5h4v4M14.5 10.5v4h-4M5.5 14.5h-4v-4"/></svg>';
+const FS_OUT = '<svg viewBox="0 0 16 16"><path d="M5.5 1.5v4h-4M14.5 5.5h-4v-4M10.5 14.5v-4h4M1.5 10.5h4v4"/></svg>';
+function setFull(on){
+  game.classList.toggle('full', on); document.documentElement.classList.toggle('lock', on);
+  $('#fs').innerHTML = on ? FS_OUT : FS_IN; $('#fs').setAttribute('aria-label', on ? 'Exit full screen' : 'Full screen'); resize();
+}
+$('#fs').onclick = () => {
+  if (touch || !game.requestFullscreen){ setFull(!game.classList.contains('full')); return; }
+  try { document.fullscreenElement ? document.exitFullscreen() : game.requestFullscreen().catch(() => {}); } catch (e) {}
+};
 
 // ---------- minimap ----------
 const map = $('#map'), mx = map.getContext('2d');
@@ -1128,7 +1164,7 @@ $('#minimap').onclick = e => {
 // ---------- frame loop ----------
 function resize(){
   const w = game.clientWidth, h = game.clientHeight; gl.setSize(w, h, false); cam.aspect = w / h; cam.fov = w < 600 ? 72 : 64; cam.updateProjectionMatrix();
-  if (composer){ composer.setPixelRatio(Math.min(devicePixelRatio, w < 600 ? 1.5 : 2)); composer.setSize(w, h); }
+  if (composer){ composer.setPixelRatio(Math.min(devicePixelRatio, low ? 1.35 : 2)); composer.setSize(w, h); }
 }
 addEventListener('resize', resize); new ResizeObserver(resize).observe(game); resize();
 const proj = new THREE.Vector3();
