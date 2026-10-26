@@ -304,7 +304,8 @@ def robot_page(r, lessons, cast):
         if not free: cover = ""
         n = len([x for x in l["scenes"] if x["type"] == "step"])
         if free:
-            steps_block = f'<details class="more"><summary>Show the {n} steps and prompts</summary><ol class="steps">\n{steps_html(l, free)}\n</ol></details>'
+            label = "Show the step" if n == 1 else f"Show the {n} steps and prompts"
+            steps_block = f'<details class="more"><summary>{label}</summary><ol class="steps">\n{steps_html(l, free)}\n</ol></details>'
         else:
             steps_block = f'<ol class="steps minis">\n{steps_html(l, free)}\n</ol>'
         if l.get("format") == "long": tag = "long lesson · " + tag

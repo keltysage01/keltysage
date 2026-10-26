@@ -81,34 +81,6 @@ window.LESSONS = [
      "note": "Search your computer for Terminal, then open it. Brand new? Typing claude will not work yet, because it is not installed. Lesson 2 installs it in one line.",
      "why": "You need somewhere to type.",
      "picture": "It's a text thread with your computer, like texting a friend who never leaves you on read."
-    },
-    {
-     "title": "Ask in plain English",
-     "note": "Type what you want, like you would text a person.",
-     "why": "There is nothing to memorize.",
-     "picture": "It's like ordering a coffee. You say what you want, not the chemistry.",
-     "prompts": [
-      "What files are on my desktop?"
-     ]
-    },
-    {
-     "title": "Read before you say yes",
-     "note": "It asks before changing files. Read the ask, then answer.",
-     "why": "You stay in charge of every change.",
-     "picture": "Claude is the intern handing you a letter. You sign it, not the intern.",
-     "skip": "You sign the intern's letter without reading. Your neighbor now has opinions about their fence.",
-     "prompts": [
-      "Before you change anything, ask me first"
-     ]
-    },
-    {
-     "title": "Check your work",
-     "note": "Ask it to explain what it just did.",
-     "why": "You sign off, so you catch mistakes early.",
-     "picture": "It's checking your teeth for spinach before a meeting. Two seconds now, no awkward later.",
-     "prompts": [
-      "Explain what you just did, in plain English"
-     ]
     }
    ]
   },
@@ -218,7 +190,7 @@ window.LESSONS = [
    "fix": "For anything that changes, like install steps, prices or rules, turn on web search or check the official page. Ask it which source it used."
   },
   "teach": {
-   "title": "Five steps to day one.",
+   "title": "Seven steps to day one.",
    "intro": "Here are the current steps, checked against the official installer. Pick your computer and follow along.",
    "steps": [
     {
@@ -281,6 +253,16 @@ window.LESSONS = [
      ]
     },
     {
+     "title": "Read before you say yes",
+     "note": "It asks before changing files. Read the ask, then answer.",
+     "why": "You stay in charge of every change.",
+     "picture": "Claude is the intern handing you a letter. You sign it, not the intern.",
+     "skip": "You sign the intern's letter without reading. Your neighbor now has opinions about their fence.",
+     "prompts": [
+      "Before you change anything, ask me first"
+     ]
+    },
+    {
      "title": "Check your work",
      "note": "Ask it to say what it just did.",
      "why": "You sign off, so mistakes get caught early.",
@@ -312,7 +294,7 @@ window.LESSONS = [
   },
   "id": "boot-2",
   "title": "Day one: from never coded to talking to Claude",
-  "summary": "Five steps from zero to your first sentence in Claude Code, on a Mac or a Windows PC."
+  "summary": "Seven steps from zero to your first sentence in Claude Code, on a Mac or a Windows PC."
  },
  {
   "slug": "boot-3-first-five-sentences",
