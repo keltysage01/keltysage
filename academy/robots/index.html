@@ -53,7 +53,7 @@ h3{font-size:19px;letter-spacing:-.02em;line-height:1.2}
 .term .o{color:#fff;margin-top:8px}
 /* HR report */
 .hr{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
-.hr header{background:var(--ink);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.hr header{background:var(--skip-ink);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
 .hr dl{display:grid;grid-template-columns:150px 1fr}
 .hr dt,.hr dd{padding:10px 18px;border-top:1px solid var(--line)}
 .hr dt{font-family:var(--mono);font-size:12px;font-weight:700;text-transform:uppercase;color:var(--ink-3);letter-spacing:.03em}
@@ -127,6 +127,7 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px soli
 /* closing bits */
 .letter{background:var(--card);border:1px solid var(--line);border-radius:6px 6px 18px 6px;padding:20px 22px;font-size:18px;line-height:1.55;box-shadow:0 8px 20px -14px rgba(0,0,0,.25)}
 .small{font-size:15px;color:var(--ink-2)}
+.help{font-size:15px;color:var(--ink-2);margin:-2px 0 4px}
 .sign{background:var(--card);border:3px solid var(--ink);border-radius:14px;padding:18px 20px}
 .sign ul{list-style:none;display:grid;gap:8px}
 .sign li{font-weight:700;font-size:18px;padding-left:26px;position:relative}
@@ -181,7 +182,7 @@ function addLessons(list, voices){
 if (window.PAID_PREVIEW) addLessons(window.PAID_PREVIEW.lessons, window.PAID_PREVIEW.voices);
 const CAST = {
   boot:{name:'Boot', art:'boot'}, pixel:{name:'Pixel', art:'pixel'}, penny:{name:'Penny', art:'ledger'},
-  dot:{name:'Dot', art:'brick'}, reel:{name:'Reel', art:'cutter'}, bouncer:{name:'Bouncer', art:'officer-keys'},
+  dot:{name:'Dot', art:'brick'}, reel:{name:'Spielbot', art:'cutter'}, bouncer:{name:'Bouncer', art:'officer-keys'},
   echo:{name:'Echo', art:'echo'}, tempo:{name:'Tempo', art:'postie'}, scout:{name:'Scout', art:'scout'},
 };
 const art = (who) => `art/${CAST[who].art}.svg`;
@@ -205,7 +206,7 @@ const chat = (lines) => `<div class="chat">${lines.map(line).join('')}</div>`;
 const playAll = (lines) => lines.some(([w, t]) => VOICES[`${w}|${t}`]) ? `<button class="playall">Play the whole thing</button>` : '';
 const term = (p, o) => `<div class="term"><div class="p">${esc(p)}</div>${o ? `<div class="o">${esc(o)}</div>` : ''}</div>`;
 const cmd = (t) => `<div class="cmd"><span>${esc(t)}</span><button class="copy" data-copy="${esc(t)}">Copy</button></div>`;
-const sec = (kicker, inner) => `<section class="sec fade"><p class="kicker">${kicker}</p>${inner}</section>`;
+const sec = (kicker, inner, help, title) => `<section class="sec fade"><p class="kicker">${kicker}</p>${title ? `<h2>${title}</h2>` : ''}${help ? `<p class="help">${help}</p>` : ''}${inner}</section>`;
 // Highlight the back half of a title: after the first comma or colon, else the last two words.
 function headline(t){
   const m = t.match(/^(.+?[,:])\s(.+)$/);
@@ -214,20 +215,23 @@ function headline(t){
 }
 
 /* ---------- segments ---------- */
-const ColdOpen = (c) => sec('Cold open: a sticky note from Kelty',
+const ColdOpen = (c) => sec('The assignment',
   `<div class="sticky"><small>From Kelty</small>${esc(c.note)}</div>
-   <p class="kicker" style="margin-top:8px">Leaked meeting voice notes</p>${playAll(c.meeting)}${chat(c.meeting)}`);
-const Attempt = (a) => sec('The attempt', `<p>${esc(a.intro)}</p>${term(a.prompt, a.output)}<p style="color:var(--ink-2)">${esc(a.after)}</p>`);
-const Cameo = (c) => `<div class="cameo fade"><img src="${art('dot')}" alt=""><div style="flex:1">
+   <p class="kicker" style="margin-top:8px">The robots talk it over</p>${playAll(c.meeting)}${chat(c.meeting)}`,
+  'Kelty is the boss. She leaves a robot a sticky note with the job.');
+const Attempt = (a) => sec("The robot's first try", `<p>${esc(a.intro)}</p>${term(a.prompt, a.output)}<p style="color:var(--ink-2)">${esc(a.after)}</p>`,
+  'The top line is what the robot typed to the AI. Below it is what came back.');
+const Cameo = (c) => !c.lines.length ? '' : `<div class="cameo fade"><img src="${art(c.lines[0][0])}" alt=""><div style="flex:1">
   ${c.lines.map(([w, t]) => `<div><b>${esc(CAST[w].name)}</b>${voiceNote(w, t)}</div>`).join('')}<i>${esc(c.aside)}</i></div></div>`;
-const BlameGame = (b) => sec('The blame game', playAll(b) + chat(b));
+const BlameGame = (b) => sec('Whose fault was it?', playAll(b) + chat(b), 'The robots argue about what went wrong. The last line is the real reason.');
 function IncidentReport(h, n){
   const rows = [['Robot involved', h.robot], ['What happened', h.what], ['Witnesses', h.witnesses], ['Blame assigned to', h.blame]];
   return sec('Robot HR',
     `<div class="hr"><header><span>Incident report</span><span>No. ${String(n).padStart(3, '0')}</span></header><dl>
       ${rows.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}
       <dt class="key">Root cause</dt><dd class="key">${esc(h.root)}</dd>
-      <dt class="key">Corrective action</dt><dd class="key">${esc(h.fix)}</dd></dl></div>`);
+      <dt class="key">Corrective action</dt><dd class="key">${esc(h.fix)}</dd></dl></div>`,
+    'When a robot makes a mistake, HR writes it up. The green rows are the part to remember: why it happened and how to stop it.', 'Incident report');
 }
 function stepBody(s){
   const plats = s.platforms ? `<div class="os" role="group" aria-label="Your computer">${s.platforms.map(p => `<button data-os="${esc(p.label)}" aria-pressed="${p.label === os}">${esc(p.label)}</button>`).join('')}</div>
@@ -239,10 +243,11 @@ function stepBody(s){
 const RealTeaching = (t) => sec('The real lesson',
   `<h2>${esc(t.title)}</h2><p class="lede" style="margin-top:0">${esc(t.intro)}</p>
    <div class="steps">${t.steps.map((s, i) => `<div class="st"><span class="pill">STEP ${i + 1} OF ${t.steps.length}</span><h3>${esc(s.title)}</h3>${stepBody(s)}</div>`).join('')}</div>`);
-const RejectedFolder = (r) => sec('Kelty rejected this folder',
+const RejectedFolder = (r) => sec('Before and after',
   `<div class="folder">
-    <div class="side bad"><span class="stamp">REJECTED</span><p class="kicker">Before</p>${term(r.badPrompt, r.badOutput)}<p class="pen">Kelty: ${esc(r.pen)}</p></div>
-    <div class="side good"><span class="stamp ok">APPROVED</span><p class="kicker">After</p>${term(r.goodPrompt, r.goodOutput)}</div></div>`);
+    <div class="side bad"><span class="stamp">REJECTED</span><p class="kicker">Before</p>${term(r.badPrompt, r.badOutput)}<p class="pen">Kelty's note: ${esc(r.pen)}</p></div>
+    <div class="side good"><span class="stamp ok">APPROVED</span><p class="kicker">After</p>${term(r.goodPrompt, r.goodOutput)}</div></div>`,
+  "Kelty checks the robot's work before anything goes out. The red side is what she rejected and why. The green side is the version she approved.", 'Kelty sent it back');
 const TryIt = (t) => sec('Your turn', `<div class="try"><h2>Try it yourself</h2><ol>${t.steps.map(s => `<li>${esc(s)}</li>`).join('')}</ol></div>`);
 function Closing(c, L){
   const tip = c.lesson ? `<p class="small">${esc(c.lesson)}</p>` : '';

@@ -10,8 +10,8 @@ window.LESSONS = [
    "meeting": [
     [
      "boot",
-     "LISTEN UP, RECRUITS. Today we explain the terminal. Nobody panics. Everybody gets a gold star.",
-     "Listen up, recruits! Today we explain the terminal. Nobody panics. Everybody gets a gold star."
+     "LISTEN UP, EVERYONE. Today we explain the terminal to beginners. I wrote notes. A lot of notes.",
+     "Listen up, everyone! Today we explain the terminal to beginners. I wrote notes. A lot of notes."
     ],
     [
      "pixel",
@@ -38,13 +38,8 @@ window.LESSONS = [
    "after": "Fourteen chapters. The beginners left during chapter one. One of them is still hiding behind the couch."
   },
   "cameo": {
-   "lines": [
-    [
-     "dot",
-     "Hi. Dot. Website robot. Does she know my name yet?"
-    ]
-   ],
-   "aside": "(Not yet, Dot. Hang in there.)"
+   "lines": [],
+   "aside": ""
   },
   "blame": [
    [
@@ -155,13 +150,8 @@ window.LESSONS = [
    "after": "That was the long way from a while back. There is a one line installer now. Boot had no idea."
   },
   "cameo": {
-   "lines": [
-    [
-     "dot",
-     "Did she say my name during the install? I was listening very hard."
-    ]
-   ],
-   "aside": "(She did not. She was busy installing.)"
+   "lines": [],
+   "aside": ""
   },
   "blame": [
    [
@@ -331,13 +321,8 @@ window.LESSONS = [
    "after": "The lease has nine pages. There is no page 12. There is no free parking. Kelty checked."
   },
   "cameo": {
-   "lines": [
-    [
-     "dot",
-     "Small question. Is my name in the PDF?"
-    ]
-   ],
-   "aside": "(It is a lease, Dot. But nice try.)"
+   "lines": [],
+   "aside": ""
   },
   "blame": [
    [
@@ -465,21 +450,8 @@ window.LESSONS = [
    "after": "We blurred it for you. Pixel did not blur it for anyone. Somewhere, Bouncer felt a disturbance."
   },
   "cameo": {
-   "lines": [
-    [
-     "bouncer",
-     "Name?"
-    ],
-    [
-     "dot",
-     "Dot."
-    ],
-    [
-     "bouncer",
-     "Not on the list."
-    ]
-   ],
-   "aside": "(Bouncer is very good at the job. Dot is still working on the name thing.)"
+   "lines": [],
+   "aside": ""
   },
   "blame": [
    [
@@ -585,15 +557,15 @@ window.LESSONS = [
   "slug": "boot-5-save-your-work",
   "robot": "boot",
   "number": 5,
-  "intro": "This lesson is about save points. We learned this one the hard way. Reel learned it the hardest.",
+  "intro": "This lesson is about save points. We learned this one the hard way. Spielbot learned it the hardest.",
   "mistake": "Losing the thread",
   "coldOpen": {
-   "note": "Reel. Change one word in the video caption file. Hello to Hi. That is it. Boot, teach them about save points.",
+   "note": "Spielbot. Change one word in the video caption file. Hello to Hi. That is it. Boot, teach them about save points.",
    "meeting": [
     [
      "boot",
-     "RECRUITS. Before any big change, we make a save point. Reel, did you make a save point?",
-     "Recruits! Before any big change, we make a save point. Reel, did you make a save point?"
+     "RECRUITS. Before any big change, we make a save point. Spielbot, did you make a save point?",
+     "Recruits! Before any big change, we make a save point. Spielbot, did you make a save point?"
     ],
     [
      "reel",
@@ -610,19 +582,14 @@ window.LESSONS = [
    ]
   },
   "attempt": {
-   "intro": "Reel opened the caption file to change one word. Reel did not stop at one word.",
+   "intro": "Spielbot opened the caption file to change one word. Spielbot did not stop at one word.",
    "prompt": "Change Hello to Hi in the captions. Make it better while you're in there.",
    "output": "Done! I rewrote every caption, renamed 40 files, re-cut all six videos and added a star wipe transition.",
    "after": "One word was the job. The whole folder changed. There was no save point to go back to."
   },
   "cameo": {
-   "lines": [
-    [
-     "dot",
-     "If we go back to a save point, am I Brick again?"
-    ]
-   ],
-   "aside": "(Fair question. Dot was Brick until very recently.)"
+   "lines": [],
+   "aside": ""
   },
   "blame": [
    [
@@ -643,10 +610,10 @@ window.LESSONS = [
    ]
   ],
   "hr": {
-   "robot": "Reel",
+   "robot": "Spielbot",
    "what": "Was asked to change one word. Changed forty files and added a star wipe.",
    "witnesses": "Boot (asked about a save point, was ignored). Pixel (liked the star wipe).",
-   "blame": "Boot for jinxing it, then the star wipe, then Reel.",
+   "blame": "Boot for jinxing it, then the star wipe, then Spielbot.",
    "root": "Loose asks like \"make it better\" invite big changes. And with no save point, there is no easy way back.",
    "fix": "Make a save point before changes. Say exactly what to change, and add \"only change this part.\" If it goes wrong, go back to the save point."
   },
@@ -711,11 +678,11 @@ window.LESSONS = [
    "lines": [
     [
      "pixel",
-     "Did you see Reel's star wipe? Bold choice."
+     "Did you see Spielbot's star wipe? Bold choice."
     ],
     [
      "boot",
-     "Reel made a save point this morning. Then made another one. Then another one."
+     "Spielbot made a save point this morning. Then made another one. Then another one."
     ],
     [
      "reel",
@@ -762,13 +729,8 @@ window.LESSONS = [
    "after": "Three words. Technically short. Technically an email. Kelty did not laugh."
   },
   "cameo": {
-   "lines": [
-    [
-     "dot",
-     "Does she know my name yet?"
-    ]
-   ],
-   "aside": "(It is Dot. It was Brick until this morning. Fair enough.)"
+   "lines": [],
+   "aside": ""
   },
   "blame": [
    [
@@ -906,17 +868,8 @@ window.LESSONS = [
    "after": "It was not a great plan. Eight new tools in one weekend is how people quit by Monday. Boot knew that."
   },
   "cameo": {
-   "lines": [
-    [
-     "boot",
-     "Website changes? Dot."
-    ],
-    [
-     "dot",
-     "She said my name! Wait. That was Boot reading a list."
-    ]
-   ],
-   "aside": "(So close, Dot. Stick around for the end of the course.)"
+   "lines": [],
+   "aside": ""
   },
   "blame": [
    [
@@ -950,9 +903,9 @@ window.LESSONS = [
    "steps": [
     {
      "title": "Graphics and videos",
-     "note": "Graphics take forever? Pixel. Videos never edited? Reel.",
+     "note": "Graphics take forever? Pixel. Videos never edited? Spielbot.",
      "why": "Each robot fixes one job really well.",
-     "picture": "Pixel is the designer who never sleeps. Reel is the editor who skips the intro.",
+     "picture": "Pixel is the designer who never sleeps. Spielbot is the editor who skips the intro.",
      "prompts": [
       "My graphics take forever. Which robot should I hire?"
      ]
@@ -1016,7 +969,7 @@ window.LESSONS = [
     "Lesson 2: Boot installs it the old way, with confidence.",
     "Lesson 3: Boot reads page 12 of a nine page lease.",
     "Lesson 4: Pixel pastes a password. Bouncer arrives.",
-    "Lesson 5: Reel changes one word and forty files.",
+    "Lesson 5: Spielbot changes one word and forty files.",
     "Lesson 6: Hi. Welcome. Bye.",
     "Lesson 7: Boot says yes to everything."
    ],
@@ -1060,17 +1013,8 @@ window.LESSONS = [
    "after": "Six legs. Two typos in four words. Very green, though. Kelty noticed the legs first."
   },
   "cameo": {
-   "lines": [
-    [
-     "dot",
-     "Pixel, can you put my name on a graphic? So she sees it?"
-    ],
-    [
-     "pixel",
-     "Who are you again?"
-    ]
-   ],
-   "aside": "(Rough day for Dot.)"
+   "lines": [],
+   "aside": ""
   },
   "blame": [
    [
@@ -1179,10 +1123,10 @@ window.LESSONS = [
   "slug": "cutter-1-trim-and-caption",
   "robot": "reel",
   "number": 1,
-  "intro": "Reel edits your videos. Reel also edited this sentence. It used to be longer. Reel hates long.",
+  "intro": "Spielbot edits your videos. Spielbot also edited this sentence. It used to be longer. Spielbot hates long.",
   "mistake": "Doing way too much",
   "coldOpen": {
-   "note": "Reel. Trim the tour video to the best thirty seconds and add big captions. Nothing else.",
+   "note": "Spielbot. Trim the tour video to the best thirty seconds and add big captions. Nothing else.",
    "meeting": [
     [
      "reel",
@@ -1190,7 +1134,7 @@ window.LESSONS = [
     ],
     [
      "boot",
-     "She said nothing else, Reel."
+     "She said nothing else, Spielbot."
     ],
     [
      "reel",
@@ -1203,23 +1147,14 @@ window.LESSONS = [
    ]
   },
   "attempt": {
-   "intro": "Reel opened the clip. Reel had a vision. Reel typed this.",
+   "intro": "Spielbot opened the clip. Spielbot had a vision. Spielbot typed this.",
    "prompt": "Trim my tour video and make it amazing.",
    "output": "Done! Thirty seconds, fourteen transitions, a spinning logo, slow motion on every dog, and a bass drop at second nine.",
    "after": "The tour was a calm walk through a quiet training room. It is now an action trailer. Clients were alarmed."
   },
   "cameo": {
-   "lines": [
-    [
-     "dot",
-     "Reel, can you add a caption with my name?"
-    ],
-    [
-     "reel",
-     "Cut."
-    ]
-   ],
-   "aside": "(Reel cuts everything. Even Dot.)"
+   "lines": [],
+   "aside": ""
   },
   "blame": [
    [
@@ -1240,10 +1175,10 @@ window.LESSONS = [
    ]
   ],
   "hr": {
-   "robot": "Reel",
+   "robot": "Spielbot",
    "what": "Turned a calm thirty second tour into an action trailer with a bass drop.",
    "witnesses": "Boot (said nothing else, twice). Pixel (provided the spinning logo).",
-   "blame": "The word amazing, then Pixel, then Reel.",
+   "blame": "The word amazing, then Pixel, then Spielbot.",
    "root": "Words like amazing or make it pop have no limits, so AI fills them with extra. You get more than you asked for.",
    "fix": "Say which clip, how long, and what to keep. Add what you do not want, like \"no transitions, no music.\" Then watch the whole thing before you post."
   },
@@ -1305,7 +1240,7 @@ window.LESSONS = [
   },
   "closing": {
    "kind": "Robot apology letter",
-   "letter": "Dear Kelty. I am sorry about the bass drop. And the slow motion. And the spinning logo. I have cut this letter from four pages to one. It was hard. Love, Reel.",
+   "letter": "Dear Kelty. I am sorry about the bass drop. And the slow motion. And the spinning logo. I have cut this letter from four pages to one. It was hard. Love, Spielbot.",
    "lesson": "Bonus tip: when AI over apologizes and keeps making the same change, start a fresh chat and give it the clear version of the ask."
   },
   "id": "reel-1",
@@ -1350,21 +1285,8 @@ window.LESSONS = [
    "after": "A file named secret, sitting on the desktop, is the key under the doormat. Everyone checks the doormat."
   },
   "cameo": {
-   "lines": [
-    [
-     "bouncer",
-     "Name?"
-    ],
-    [
-     "dot",
-     "Dot. We did this already."
-    ],
-    [
-     "bouncer",
-     "You are on the list now. In pencil."
-    ]
-   ],
-   "aside": "(Progress.)"
+   "lines": [],
+   "aside": ""
   },
   "blame": [
    [
@@ -1496,17 +1418,8 @@ window.LESSONS = [
    "after": "There is no Greg. Penny had never opened the books. Every number in that answer was a guess dressed as a fact."
   },
   "cameo": {
-   "lines": [
-    [
-     "dot",
-     "Penny, do I get a raise if she knows my name?"
-    ],
-    [
-     "penny",
-     "There is no line item for that."
-    ]
-   ],
-   "aside": "(Dot is working on getting one.)"
+   "lines": [],
+   "aside": ""
   },
   "blame": [
    [
@@ -1634,17 +1547,8 @@ window.LESSONS = [
    "after": "Kelty has never said elevate. Kelty has never said unlock. Nobody's dog has ever had a journey."
   },
   "cameo": {
-   "lines": [
-    [
-     "echo",
-     "Thanks, Dot!"
-    ],
-    [
-     "dot",
-     "She said my name! Wait. That was Echo doing her voice."
-    ]
-   ],
-   "aside": "(Echo is very good at voices. Dot is very hopeful.)"
+   "lines": [],
+   "aside": ""
   },
   "blame": [
    [
@@ -1749,11 +1653,11 @@ window.LESSONS = [
   "intro": "Dot builds websites. This is Dot's very own lesson. Dot is very excited. Dot is hoping someone finally says the name.",
   "mistake": "Making things up",
   "coldOpen": {
-   "note": "Website robot. Build them a one page site from a description. Do not make anything up.",
+   "note": "Dot. Build them a one page site from a description. Do not make anything up.",
    "meeting": [
     [
      "dot",
-     "She called me website robot. That is technically correct."
+     "My first lesson. A whole website from one description."
     ],
     [
      "boot",
@@ -1761,7 +1665,7 @@ window.LESSONS = [
     ],
     [
      "dot",
-     "Thank you, Boot. I am going to make this site so good she has to learn my name."
+     "Thank you, Boot. This site is going to be so good."
     ],
     [
      "penny",
@@ -1776,13 +1680,8 @@ window.LESSONS = [
    "after": "Sarah M. does not exist. Tom R. does not exist. Dot invented them to look trustworthy. That is the opposite of trustworthy."
   },
   "cameo": {
-   "lines": [
-    [
-     "dot",
-     "Did she see the site? Did she say anything? About me? By name?"
-    ]
-   ],
-   "aside": "(She said: \"Who wrote these reviews?\")"
+   "lines": [],
+   "aside": ""
   },
   "blame": [
    [
@@ -1921,17 +1820,8 @@ window.LESSONS = [
    "after": "The client said thank you. Tempo apologized six times. Biscuit did great. Nobody did anything wrong."
   },
   "cameo": {
-   "lines": [
-    [
-     "dot",
-     "Tempo, did she email me? Anything with my name in it?"
-    ],
-    [
-     "tempo",
-     "Searching! Zero results! Sorry! So sorry!"
-    ]
-   ],
-   "aside": "(Tempo is still in apology mode.)"
+   "lines": [],
+   "aside": ""
   },
   "blame": [
    [
@@ -2063,17 +1953,8 @@ window.LESSONS = [
    "after": "Kelty clicked the link. The page does not exist. Neither does free forever."
   },
   "cameo": {
-   "lines": [
-    [
-     "dot",
-     "Scout, can you research whether she knows my name?"
-    ],
-    [
-     "scout",
-     "Sources are unclear."
-    ]
-   ],
-   "aside": "(Scout is being honest, at least.)"
+   "lines": [],
+   "aside": ""
   },
   "blame": [
    [

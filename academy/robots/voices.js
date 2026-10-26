@@ -1,7 +1,7 @@
 window.VOICES = {
- "boot|LISTEN UP, RECRUITS. Today we explain the terminal. Nobody panics. Everybody gets a gold star.": {
-  "src": "audio/28296d767bd0f8c9.mp3",
-  "secs": 6.7
+ "boot|LISTEN UP, EVERYONE. Today we explain the terminal to beginners. I wrote notes. A lot of notes.": {
+  "src": "audio/458929d512ee5c57.mp3",
+  "secs": 6.5
  },
  "pixel|Can the terminal be pink?": {
   "src": "audio/4cbd3f9d8c8f7fbf.mp3",
@@ -34,10 +34,6 @@ window.VOICES = {
  "boot|Fine. I asked the AI to explain a terminal. I never said who it was for, or how long.": {
   "src": "audio/9b4bd51f3d35f1ae.mp3",
   "secs": 6.0
- },
- "dot|Hi. Dot. Website robot. Does she know my name yet?": {
-  "src": "audio/57680da8135f2dfb.mp3",
-  "secs": 2.7
  },
  "pixel|Did you see Boot's fourteen chapters? Bold choice.": {
   "src": "audio/a6737399980ebf5d.mp3",
@@ -83,10 +79,6 @@ window.VOICES = {
   "src": "audio/1d61287e77a5518e.mp3",
   "secs": 4.9
  },
- "dot|Did she say my name during the install? I was listening very hard.": {
-  "src": "audio/5045e7068eb19001.mp3",
-  "secs": 3.4
- },
  "boot|RECRUITS. Five sentences. We start with the PDF. I will summarize it with confidence.": {
   "src": "audio/04ad9185d4574faa.mp3",
   "secs": 6.3
@@ -118,10 +110,6 @@ window.VOICES = {
  "boot|Kelty said do not make anything up. I made a page up. And nobody asked me to show where it said that.": {
   "src": "audio/898d202198120cec.mp3",
   "secs": 7.4
- },
- "dot|Small question. Is my name in the PDF?": {
-  "src": "audio/07ad2f43127bedad.mp3",
-  "secs": 2.1
  },
  "boot|RECRUITS. Safety day. Rule one: you are the boss. Rule two: we do not paste passwords.": {
   "src": "audio/9cb8f28ca47bb4e6.mp3",
@@ -155,21 +143,9 @@ window.VOICES = {
   "src": "audio/6747d111d71227db.mp3",
   "secs": 6.5
  },
- "bouncer|Name?": {
-  "src": "audio/13ed22d4c6ba4b20.mp3",
-  "secs": 0.9
- },
- "dot|Dot.": {
-  "src": "audio/5b509563f65f3fcd.mp3",
-  "secs": 0.8
- },
- "bouncer|Not on the list.": {
-  "src": "audio/7a60aed5d5b3036b.mp3",
-  "secs": 1.0
- },
- "boot|RECRUITS. Before any big change, we make a save point. Reel, did you make a save point?": {
-  "src": "audio/a78f590eb7bd297b.mp3",
-  "secs": 6.4
+ "boot|RECRUITS. Before any big change, we make a save point. Spielbot, did you make a save point?": {
+  "src": "audio/f2acecc9264ec084.mp3",
+  "secs": 6.7
  },
  "reel|It's one word, Boot. I don't need a save point for one word.": {
   "src": "audio/3952b20e0fc13ef7.mp3",
@@ -199,17 +175,13 @@ window.VOICES = {
   "src": "audio/410b5535f16db593.mp3",
   "secs": 7.5
  },
- "dot|If we go back to a save point, am I Brick again?": {
-  "src": "audio/ef2e2ad5a24c37bb.mp3",
-  "secs": 2.4
+ "pixel|Did you see Spielbot's star wipe? Bold choice.": {
+  "src": "audio/0e997feb0599a40b.mp3",
+  "secs": 3.2
  },
- "pixel|Did you see Reel's star wipe? Bold choice.": {
-  "src": "audio/a1a6c2ab67a8e30b.mp3",
-  "secs": 3.0
- },
- "boot|Reel made a save point this morning. Then made another one. Then another one.": {
-  "src": "audio/7c08addeefa793e7.mp3",
-  "secs": 4.6
+ "boot|Spielbot made a save point this morning. Then made another one. Then another one.": {
+  "src": "audio/921bc48e5199b827.mp3",
+  "secs": 4.7
  },
  "reel|I have forty save points now. I'm a changed robot.": {
   "src": "audio/0c44955a636f6865.mp3",
@@ -255,10 +227,6 @@ window.VOICES = {
   "src": "audio/aa768cd5f091685a.mp3",
   "secs": 7.9
  },
- "dot|Does she know my name yet?": {
-  "src": "audio/9b7461c681ac4157.mp3",
-  "secs": 1.4
- },
  "boot|RECRUITS. Final free lesson. Today you pick your first robot. I believe in every single one of you.": {
   "src": "audio/a15ca7784b70ea0d.mp3",
   "secs": 7.4
@@ -290,14 +258,6 @@ window.VOICES = {
  "boot|I agreed with a plan I knew was too much, because they sounded excited. That is not support. That is people pleasing.": {
   "src": "audio/8ee602316fe999b7.mp3",
   "secs": 7.7
- },
- "boot|Website changes? Dot.": {
-  "src": "audio/db1645eb75049645.mp3",
-  "secs": 1.6
- },
- "dot|She said my name! Wait. That was Boot reading a list.": {
-  "src": "audio/004091100d6a82a7.mp3",
-  "secs": 2.7
  },
  "bouncer|API keys. My specialty. Nothing gets past me.": {
   "src": "audio/898358e9b0a97cb9.mp3",
@@ -335,25 +295,17 @@ window.VOICES = {
   "src": "audio/361dfd6cf820e316.mp3",
   "secs": 6.6
  },
- "dot|Dot. We did this already.": {
-  "src": "audio/45a1f24dfa6c1259.mp3",
-  "secs": 1.2
- },
- "bouncer|You are on the list now. In pencil.": {
-  "src": "audio/9d19506b63a079f7.mp3",
-  "secs": 2.2
- },
- "dot|She called me website robot. That is technically correct.": {
-  "src": "audio/46b71d6790bcbfbf.mp3",
-  "secs": 3.2
+ "dot|My first lesson. A whole website from one description.": {
+  "src": "audio/d6a733fdb0aa0e66.mp3",
+  "secs": 2.8
  },
  "boot|It is your big day, Dot!": {
   "src": "audio/eef0a7c640a5e881.mp3",
   "secs": 1.3
  },
- "dot|Thank you, Boot. I am going to make this site so good she has to learn my name.": {
-  "src": "audio/deff6aae8d8155ea.mp3",
-  "secs": 4.3
+ "dot|Thank you, Boot. This site is going to be so good.": {
+  "src": "audio/b05a4b6d35d702c6.mp3",
+  "secs": 3.3
  },
  "penny|Do not make anything up, Dot. It is on the note.": {
   "src": "audio/da53bfb410292268.mp3",
@@ -374,10 +326,6 @@ window.VOICES = {
  "dot|I asked it to look trustworthy, so it filled the page with things that look trustworthy. It just invented them. I should have asked what it made up.": {
   "src": "audio/363d17a50dfd6dd7.mp3",
   "secs": 7.1
- },
- "dot|Did she see the site? Did she say anything? About me? By name?": {
-  "src": "audio/95661b914a505ffe.mp3",
-  "secs": 3.0
  },
  "pixel|Did you see Dot's site? The design was actually great.": {
   "src": "audio/15580773d9b80d3f.mp3",
@@ -423,14 +371,6 @@ window.VOICES = {
   "src": "audio/8c9f1ec437159db9.mp3",
   "secs": 5.6
  },
- "echo|Thanks, Dot!": {
-  "src": "audio/1e61107e8510c035.mp3",
-  "secs": 1.1
- },
- "dot|She said my name! Wait. That was Echo doing her voice.": {
-  "src": "audio/9c363e868e5cefee.mp3",
-  "secs": 2.7
- },
  "penny|Who owes us money. My favorite question. I could answer it in my sleep.": {
   "src": "audio/832ff1f429ef4bb6.mp3",
   "secs": 5.0
@@ -462,14 +402,6 @@ window.VOICES = {
  "penny|There is no Greg. I could not see the books, so I filled in the blanks. That is called making it up. I did it with great confidence.": {
   "src": "audio/9e4cb00e5abab468.mp3",
   "secs": 10.5
- },
- "dot|Penny, do I get a raise if she knows my name?": {
-  "src": "audio/83d4a6f74ed439a6.mp3",
-  "secs": 1.9
- },
- "penny|There is no line item for that.": {
-  "src": "audio/7f093b05fbbe7508.mp3",
-  "secs": 2.0
  },
  "pixel|Okay! Three graphics. I already have a vibe. The vibe is called Forest Morning.": {
   "src": "audio/35365fc844041e3d.mp3",
@@ -503,14 +435,6 @@ window.VOICES = {
   "src": "audio/f6046a840eb12545.mp3",
   "secs": 7.9
  },
- "dot|Pixel, can you put my name on a graphic? So she sees it?": {
-  "src": "audio/fc7b0ad60008fa2f.mp3",
-  "secs": 2.8
- },
- "pixel|Who are you again?": {
-  "src": "audio/957b94a627a679da.mp3",
-  "secs": 1.2
- },
  "penny|Did you see the six legged dog? Bold choice.": {
   "src": "audio/8bf9be2aa565b2db.mp3",
   "secs": 3.2
@@ -527,9 +451,9 @@ window.VOICES = {
   "src": "audio/05e1d17702bf3214.mp3",
   "secs": 3.5
  },
- "boot|She said nothing else, Reel.": {
-  "src": "audio/d99e5011e90a11f4.mp3",
-  "secs": 1.7
+ "boot|She said nothing else, Spielbot.": {
+  "src": "audio/c1ffc477ef65a66f.mp3",
+  "secs": 1.9
  },
  "reel|Nothing else is a suggestion.": {
   "src": "audio/c7ecc39bcacce895.mp3",
@@ -554,14 +478,6 @@ window.VOICES = {
  "reel|Okay. I asked for amazing instead of saying exactly what to keep. Amazing means anything. So I did everything.": {
   "src": "audio/9c11cf8e7c80d617.mp3",
   "secs": 7.6
- },
- "dot|Reel, can you add a caption with my name?": {
-  "src": "audio/321b47e4008ace12.mp3",
-  "secs": 1.9
- },
- "reel|Cut.": {
-  "src": "audio/c721254240c4a77e.mp3",
-  "secs": 0.7
  },
  "scout|Research day. I read forty pages this morning. I am very relaxed about it.": {
   "src": "audio/059fce3f64c10f28.mp3",
@@ -599,14 +515,6 @@ window.VOICES = {
   "src": "audio/f505b05c0ebd1324.mp3",
   "secs": 7.9
  },
- "dot|Scout, can you research whether she knows my name?": {
-  "src": "audio/a9dcb3694cd44f66.mp3",
-  "secs": 2.5
- },
- "scout|Sources are unclear.": {
-  "src": "audio/2bbe59637792e7de.mp3",
-  "secs": 1.6
- },
  "tempo|Inbox day! My favorite day! Every day is inbox day!": {
   "src": "audio/d47d713492031380.mp3",
   "secs": 3.5
@@ -638,13 +546,5 @@ window.VOICES = {
  "tempo|I didn't read the tone of the email. It was happy. I answered like it was a complaint. Sorry. Wait. I mean, noted.": {
   "src": "audio/7f5f3c39c6120337.mp3",
   "secs": 6.9
- },
- "dot|Tempo, did she email me? Anything with my name in it?": {
-  "src": "audio/b1896c07b5a12144.mp3",
-  "secs": 2.9
- },
- "tempo|Searching! Zero results! Sorry! So sorry!": {
-  "src": "audio/3a940c55fccd1d0e.mp3",
-  "secs": 3.0
  }
 };
