@@ -57,6 +57,16 @@ h1,h2,h3{font-weight:600;letter-spacing:-.03em;line-height:1.08}
 .more a{color:var(--teal);font-weight:600;text-decoration:none}
 .credits{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:30px;margin-top:6px}.credits h2{font-size:28px}.credits>p{color:var(--ink-2);margin-top:6px}.credits ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:16px}.credits li{font-size:16px;color:var(--ink-2)}.credits li b{color:var(--ink)}.credits a{color:var(--teal);font-weight:600;text-decoration:none;white-space:nowrap}
 .play .by a{color:var(--teal);text-decoration:none;font-weight:600}
+.nos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.no{background:#fff8f7;border:1px solid #f6dedb;border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.no .nh{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.no .x{font-family:var(--mono);font-size:13px;color:#c2453a}
+.no .tag{font-family:var(--mono);font-size:11px;color:var(--ink-2);background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 9px}
+.no h3{font-size:19px;letter-spacing:-.02em;line-height:1.2}
+.no p{font-size:15px;color:var(--ink-2)}
+.no .inst{margin-top:auto;padding-top:6px}
+.no .inst span{display:block;font-family:var(--mono);font-size:11px;color:var(--teal);margin-bottom:4px}
+.no .inst code{display:block;font-family:var(--mono);font-size:13px;line-height:1.5;background:var(--term);color:#e8f3f0;border-radius:12px;padding:10px 12px}
 .end{display:flex;gap:24px;align-items:center;flex-wrap:wrap;justify-content:space-between;background:linear-gradient(135deg,#e7f8f2,#f6efff);border:1px solid #d6ece6;border-radius:28px;padding:30px;margin:28px 0 64px}
 .end h2{font-size:30px}.end p{color:var(--ink-2);margin-top:6px;max-width:560px}
 footer{padding:40px 0 56px;border-top:1px solid var(--line)}
@@ -67,9 +77,10 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
 @keyframes heroIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .hero .wrap>*{animation:heroIn .9s cubic-bezier(.22,1,.36,1) both}
 .hero .wrap>:nth-child(2){animation-delay:.08s}.hero .wrap>:nth-child(3){animation-delay:.18s}.hero .wrap>:nth-child(4){animation-delay:.28s}
+@media (max-width:960px){.nos{grid-template-columns:1fr 1fr}}
 @media (max-width:860px){.cols{grid-template-columns:1fr}.hero h1{font-size:42px}}
 @media (max-width:600px){.links a:not(.btn){display:none}.brand{font-size:16px;gap:8px}.brand img{width:34px}.brand .tag{font-size:12.5px}.brand .sep{height:16px}.nav .btn{padding:9px 14px;font-size:13px}
-  .hero h1{font-size:34px}.hero p{font-size:18px}.play{padding:22px;border-radius:24px}.play h2{font-size:25px}.play .num{width:44px;height:44px;font-size:16px}.play .line{font-size:19px}.box{padding:18px}.try code{font-size:14px}.end{padding:22px}.credits{padding:22px}.credits h2{font-size:24px}}
+  .hero h1{font-size:34px}.hero p{font-size:18px}.play{padding:22px;border-radius:24px}.play h2{font-size:25px}.play .num{width:44px;height:44px;font-size:16px}.play .line{font-size:19px}.box{padding:18px}.try code{font-size:14px}.end{padding:22px}.credits{padding:22px}.nos{grid-template-columns:1fr;gap:12px}.no{padding:18px}.credits h2{font-size:24px}}
 @media (max-width:359px){.nav .brand .sep,.nav .brand .tag{display:none}}
 @media (prefers-reduced-motion:reduce){.hero .wrap>*{animation:none}.rv{opacity:1;transform:none}}
 </style></head><body>
@@ -89,6 +100,7 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
     <a href="#profit-first"><b>04</b>Profit First</a>
     <a href="#design"><b>05</b>My design rules</a>
     <a href="#marketing"><b>06</b>My marketing rules</a>
+    <a href="#no-nos"><b>07</b>The no-nos</a>
   </div>
 </div></section>
 
@@ -196,6 +208,26 @@ footer p{font-size:14px;color:var(--ink-3);width:100%}
   </div>
   <div class="try"><div class="lab"><span>&gt; try it with AI</span><button type="button">copy</button></div><code>Save these as my marketing rules: [paste your rules]. Before any post, email or text goes out, check it against them, tell me which rules it passed, and wait for me to say send.</code></div>
   <div class="more"><a href="/robots/echo">Echo writes in your voice &rarr;</a><a href="/robots/tempo">Tempo sends it, after your yes &rarr;</a></div>
+</article>
+
+<article class="play rv" id="no-nos" style="--c:#ffdcda">
+  <div class="top"><div class="num">07</div><div><h2>The no-nos</h2><p class="by">Mine. Working with AI in the terminal, the hard way.</p></div></div>
+  <p class="line">AI is fast. That is exactly why these matter.</p>
+  <div class="nos">
+<div class="no"><div class="nh"><span class="x">01</span></div><h3>Never paste a password or API key into the chat.</h3><p>Chats get saved. Keys leak.</p><div class="inst"><span>say this instead</span><code>Put my key in a .env file and never show it on screen.</code></div></div>
+<div class="no"><div class="nh"><span class="x">02</span></div><h3>Never say yes without reading.</h3><p>Yes to the wrong delete is forever. Slow down on words like delete, remove, force and reset.</p><div class="inst"><span>say this instead</span><code>Before you change anything, tell me what it does in one sentence.</code></div></div>
+<div class="no"><div class="nh"><span class="x">03</span></div><h3>Never let it message a customer without your yes.</h3><p>A text or email that goes out cannot come back.</p><div class="inst"><span>say this instead</span><code>Draft it. Do not send. Wait for me to say send.</code></div></div>
+<div class="no"><div class="nh"><span class="x">04</span></div><h3>Never run a command you can't explain.</h3><p>Especially one you copied from a random website.</p><div class="inst"><span>say this instead</span><code>What does this command do, and is it safe?</code></div></div>
+<div class="no"><div class="nh"><span class="x">05</span></div><h3>Never start a big change without a save point.</h3><p>No save point means no undo.</p><div class="inst"><span>say this instead</span><code>Make a save point first, then make the change.</code></div></div>
+<div class="no"><div class="nh"><span class="x">06</span><span class="tag">happened to me</span></div><h3>Never trust "done" without checking.</h3><p>A robot told me a job succeeded. It had sent nothing.</p><div class="inst"><span>say this instead</span><code>Show me proof it worked, from the place it was supposed to land.</code></div></div>
+<div class="no"><div class="nh"><span class="x">07</span></div><h3>Never let AI do money math in its head.</h3><p>It can sound sure and still be wrong.</p><div class="inst"><span>say this instead</span><code>Do the math in code and show your work.</code></div></div>
+<div class="no"><div class="nh"><span class="x">08</span><span class="tag">happened to me</span></div><h3>Never let it guess facts that change.</h3><p>Prices, install steps and laws change. Old answers sound just as confident.</p><div class="inst"><span>say this instead</span><code>Search the web and show me your sources.</code></div></div>
+<div class="no"><div class="nh"><span class="x">09</span></div><h3>Never turn on an automation without an off switch.</h3><p>Things that run on their own keep running when you are asleep.</p><div class="inst"><span>say this instead</span><code>Before this runs on its own, show me how to turn it off, and send the first one only to me.</code></div></div>
+<div class="no"><div class="nh"><span class="x">10</span><span class="tag">happened to me</span></div><h3>Never run two AI windows on the same project blind.</h3><p>They can overwrite each other's work.</p><div class="inst"><span>say this instead</span><code>Get the latest version before you change anything.</code></div></div>
+<div class="no"><div class="nh"><span class="x">11</span></div><h3>Never turn off the yes and no questions on day one.</h3><p>Claude Code can run without asking you first. That is for later, once you know what it does.</p><div class="inst"><span>say this instead</span><code>Ask me before every change.</code></div></div>
+<div class="no"><div class="nh"><span class="x">12</span></div><h3>Never put secrets in a public project.</h3><p>Projects on GitHub can be public. Anyone can read them.</p><div class="inst"><span>say this instead</span><code>Check that no keys or passwords are in anything we publish.</code></div></div>
+  </div>
+  <div class="more"><a href="/robots/bouncer">Bouncer keeps your keys safe &rarr;</a><a href="/academy/#/boot">Boot teaches the safety basics free &rarr;</a></div>
 </article>
 
 </div>
