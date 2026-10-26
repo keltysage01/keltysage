@@ -26,6 +26,7 @@ module.exports = async function handler(req, res) {
     success_url: `${SITE}/academy/?paid={CHECKOUT_SESSION_ID}#/${back}`,
     cancel_url: `${SITE}/academy/#/${back}`,
     'metadata[item]': item,
+    allow_promotion_codes: 'true',
   });
   const r = await fetch('https://api.stripe.com/v1/checkout/sessions', {
     method: 'POST',

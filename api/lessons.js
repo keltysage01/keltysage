@@ -15,7 +15,7 @@ module.exports = async function handler(req, res) {
     const r = await fetch(`https://api.stripe.com/v1/checkout/sessions/${id}`, { headers: { Authorization: `Bearer ${key}` } });
     if (!r.ok) return;
     const s = await r.json();
-    if (s.payment_status === 'paid' && s.metadata && s.metadata.item) owned.add(s.metadata.item);
+    if ((s.payment_status === 'paid' || (s.status === 'complete' && s.payment_status === 'no_payment_required')) && s.metadata && s.metadata.item) owned.add(s.metadata.item);
   }));
   if (!owned.size) return res.status(200).json({ owned: [], lessons: {} });
 
