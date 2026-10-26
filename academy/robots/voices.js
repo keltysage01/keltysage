@@ -339,6 +339,50 @@ window.VOICES = {
   "src": "audio/1adbb2e2855dcf4a.mp3",
   "secs": 3.9
  },
+ "dustin|Oh. Oh no. I have seen the Desktop. There are forty-one screenshots. One of them is a screenshot of a screenshot.": {
+  "src": "audio/86b716e443849a6f.mp3",
+  "secs": 7.6
+ },
+ "boot|Dustin, she said look first and show her the plan.": {
+  "src": "audio/db49faddf27fe790.mp3",
+  "secs": 2.9
+ },
+ "dustin|The plan is clean. Clean is always the plan.": {
+  "src": "audio/d4e5cda502ccf8a9.mp3",
+  "secs": 2.7
+ },
+ "bouncer|Not on the list? Not getting moved.": {
+  "src": "audio/1302d6a1f03b31c5.mp3",
+  "secs": 2.4
+ },
+ "dustin|Technically nothing was deleted. It was relocated. With love.": {
+  "src": "audio/9fd3547f16044405.mp3",
+  "secs": 3.8
+ },
+ "boot|You moved the file she was working on.": {
+  "src": "audio/502a3349c50df24a.mp3",
+  "secs": 2.2
+ },
+ "penny|Misc is not a folder. Misc is a junk drawer with a label.": {
+  "src": "audio/b7662dccbbe38891.mp3",
+  "secs": 4.1
+ },
+ "dustin|Fine. I cleaned before I looked, and I never showed her the plan. Both of those were on the sticky note. I am putting myself in Check Before Trash.": {
+  "src": "audio/c0aa3c3e6b3f79e4.mp3",
+  "secs": 8.8
+ },
+ "penny|Did you hear Dustin labeled the coffee maker?": {
+  "src": "audio/33f8512ff7558186.mp3",
+  "secs": 2.6
+ },
+ "boot|It says Coffee Maker. Then under that, it says Do Not Misc.": {
+  "src": "audio/f1b49eddeea64ced.mp3",
+  "secs": 4.6
+ },
+ "dustin|A place for everything. And everything in a folder.": {
+  "src": "audio/a9b3151a14403881.mp3",
+  "secs": 2.9
+ },
  "echo|Ooh, a voice job. I love voices. I just need to know how she talks.": {
   "src": "audio/484dbfe15a3ab6ee.mp3",
   "secs": 4.9

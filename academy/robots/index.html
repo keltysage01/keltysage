@@ -172,7 +172,7 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px soli
    in lessons.js (python3 build.py). Voice notes come from voices.js (python3 voices.py). */
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const LESSONS = window.LESSONS || [], VOICES = window.VOICES || {};
-const ORDER = ['boot', 'pixel', 'reel', 'bouncer', 'penny', 'echo', 'dot', 'tempo', 'scout'];
+const ORDER = ['boot', 'pixel', 'reel', 'bouncer', 'penny', 'echo', 'dot', 'tempo', 'scout', 'dustin'];
 // Paid lessons join the list once bought (or from preview-paid.js on Kelty's computer).
 function addLessons(list, voices){
   for (const l of list || []) if (!LESSONS.some(x => x.id === l.id)) LESSONS.push(l);
@@ -183,7 +183,7 @@ if (window.PAID_PREVIEW) addLessons(window.PAID_PREVIEW.lessons, window.PAID_PRE
 const CAST = {
   boot:{name:'Boot', art:'boot'}, pixel:{name:'Pixel', art:'pixel'}, penny:{name:'Penny', art:'ledger'},
   dot:{name:'Dot', art:'brick'}, reel:{name:'Spielbot', art:'cutter'}, bouncer:{name:'Bouncer', art:'officer-keys'},
-  echo:{name:'Echo', art:'echo'}, tempo:{name:'Tempo', art:'postie'}, scout:{name:'Scout', art:'scout'},
+  echo:{name:'Echo', art:'echo'}, tempo:{name:'Tempo', art:'postie'}, scout:{name:'Scout', art:'scout'}, dustin:{name:'Dustin', art:'dustin'},
 };
 const art = (who) => `art/${CAST[who].art}.svg`;
 let os = /Win/i.test(navigator.userAgent) ? 'Windows PC' : 'Mac';

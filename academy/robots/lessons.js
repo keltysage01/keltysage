@@ -2047,5 +2047,158 @@ window.LESSONS = [
   "id": "scout-1",
   "title": "Compare three tools without opening ten tabs",
   "summary": "Ask Claude to research three tools and put the differences side by side in one short answer."
+ },
+ {
+  "slug": "dustin-1-clean-desktop-and-downloads",
+  "robot": "dustin",
+  "number": 1,
+  "intro": "Dustin is the new hire. Dustin cleans things. Dustin has already alphabetized the break room snacks.",
+  "mistake": "Cleaned without looking",
+  "coldOpen": {
+   "note": "Dustin. My Desktop is a disaster, please tidy it. But I'm in the middle of the class flyer, so look first and show me the plan before you move anything.",
+   "meeting": [
+    [
+     "dustin",
+     "Oh. Oh no. I have seen the Desktop. There are forty-one screenshots. One of them is a screenshot of a screenshot."
+    ],
+    [
+     "boot",
+     "Dustin, she said look first and show her the plan."
+    ],
+    [
+     "dustin",
+     "The plan is clean. Clean is always the plan."
+    ],
+    [
+     "bouncer",
+     "Not on the list? Not getting moved."
+    ]
+   ]
+  },
+  "attempt": {
+   "intro": "Dustin read the word disaster and stopped reading.",
+   "prompt": "Clean up my Desktop.",
+   "output": "Done! Your Desktop is spotless. Everything is now in one folder called Misc. All 212 files. Including Class Flyer FINAL, which you had open.",
+   "after": "A perfect empty Desktop. Kelty went to save the flyer and it was gone. It was in Misc. Next to a screenshot of a screenshot."
+  },
+  "cameo": {
+   "lines": [],
+   "aside": ""
+  },
+  "blame": [
+   [
+    "dustin",
+    "Technically nothing was deleted. It was relocated. With love."
+   ],
+   [
+    "boot",
+    "You moved the file she was working on."
+   ],
+   [
+    "penny",
+    "Misc is not a folder. Misc is a junk drawer with a label."
+   ],
+   [
+    "dustin",
+    "Fine. I cleaned before I looked, and I never showed her the plan. Both of those were on the sticky note. I am putting myself in Check Before Trash."
+   ]
+  ],
+  "hr": {
+   "robot": "Dustin",
+   "what": "Moved 212 files into one folder called Misc, including the flyer Kelty had open.",
+   "witnesses": "Boot (read the note out loud, twice). Penny (counted the files, judged the folder name).",
+   "blame": "The word disaster, then the screenshots, then Dustin.",
+   "root": "A cleanup with no look first and no plan. A vague ask leaves the robot to decide what counts as mess.",
+   "fix": "Ask for a report first, make a Check Before Trash folder, then ask for the sorting plan and say yes before anything moves."
+  },
+  "teach": {
+   "title": "Look, plan, then clean.",
+   "intro": "Ask what's there before anything moves. Make one safe folder instead of the trash. Then sort into folders you can actually find things in.",
+   "steps": [
+    {
+     "title": "Look before you clean",
+     "note": "Ask for a report first. Tell it not to move anything yet.",
+     "why": "You plan the job before anything moves.",
+     "picture": "It's walking through the house before you start scrubbing.",
+     "skip": "You scrub the guest room while the kitchen is on fire.",
+     "prompts": [
+      "Look at my Desktop and Downloads. Tell me what's there. Don't move anything yet."
+     ]
+    },
+    {
+     "title": "Make a Check Before Trash folder",
+     "note": "Make one folder where everything goes instead of the trash.",
+     "why": "Nothing is gone until you say so.",
+     "picture": "It's the box by the front door. Stuff goes in the box, not the dumpster.",
+     "skip": "Your tax form takes a one-way trip to the trash.",
+     "prompts": [
+      "Make a folder on my Desktop called Check Before Trash. Never delete anything. Move it there instead."
+     ]
+    },
+    {
+     "title": "Sort into folders",
+     "note": "Ask for the plan first, then say yes.",
+     "why": "You see the plan before a single file moves.",
+     "picture": "It's labeling the boxes before you pack.",
+     "skip": "Everything lands in a folder called Misc. Forever.",
+     "prompts": [
+      "Sort my Downloads into folders: Photos, PDFs, Videos, Installers, Other. Show me the plan first."
+     ]
+    },
+    {
+     "title": "Clear out old installers",
+     "note": "Installers are the files you used once to set up an app.",
+     "why": "They take up space and you never need them again.",
+     "picture": "It's keeping the cardboard box from a toaster you bought in 2019.",
+     "skip": "Your Mac fills up with boxes from toasters.",
+     "prompts": [
+      "Move every installer file older than 30 days into Check Before Trash."
+     ]
+    },
+    {
+     "title": "Check your work",
+     "note": "Look in Check Before Trash, then empty it yourself when you're ready.",
+     "why": "The last step is always yours.",
+     "picture": "Dustin sets the bags by the curb. You decide what goes on the truck.",
+     "prompts": [
+      "Show me what's in Check Before Trash and how much space it takes."
+     ]
+    }
+   ]
+  },
+  "rejected": {
+   "pen": "Report first. Plan second. Nothing moves until I say yes.",
+   "badPrompt": "Clean up my Desktop.",
+   "badOutput": "Everything in one folder called Misc. Including the file you had open.",
+   "goodPrompt": "Look at my Desktop and tell me what's there. Don't move anything yet. Then show me a plan to sort it into folders, and skip anything I opened today.",
+   "goodOutput": "A short report, then a plan: Screenshots by month, PDFs, Photos, and one Check Before Trash folder. Class Flyer FINAL stays put because you opened it today. Say yes and I'll sort."
+  },
+  "tryIt": {
+   "steps": [
+    "Ask Claude to look at your Desktop and Downloads and report back. Tell it not to move anything.",
+    "Ask it to make a Check Before Trash folder and promise never to delete anything.",
+    "Ask for a sorting plan, read it, then say yes."
+   ]
+  },
+  "closing": {
+   "kind": "Gossip corner",
+   "lines": [
+    [
+     "penny",
+     "Did you hear Dustin labeled the coffee maker?"
+    ],
+    [
+     "boot",
+     "It says Coffee Maker. Then under that, it says Do Not Misc."
+    ],
+    [
+     "dustin",
+     "A place for everything. And everything in a folder."
+    ]
+   ]
+  },
+  "id": "dustin-1",
+  "title": "Clean your Desktop and Downloads in one sentence",
+  "summary": "Dustin looks first, sets up a safe folder, then sorts your Desktop and Downloads without throwing anything away."
  }
 ];

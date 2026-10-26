@@ -98,6 +98,16 @@
         "You want to know what your competitors charge",
         "You need a quick answer you can trust, with sources"
       ]
+    },
+    "dustin": {
+      "pitch": "Dustin cleans up your computer, so you can find anything in seconds and never lose a file.",
+      "hire": [
+        "Your Desktop is wallpapered in screenshots",
+        "Your Downloads folder is a junk drawer you're scared to open",
+        "Your Mac keeps saying it's almost full",
+        "You want a five minute cleanup you can run every Friday"
+      ],
+      "intro": "Dustin here. I clean up your computer. Desktops, downloads, duplicates. And I never throw anything away without asking."
     }
   }
 }
