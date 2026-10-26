@@ -79,7 +79,7 @@ html,body{overflow-x:clip}
 </style></head><body>
 <header class="nav"><div class="wrap">
   <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty<span class="sep" aria-hidden="true"></span><span class="tag">AI Business Coach</span></a>
-  <nav class="links"><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a><a class="btn btn-ink" href="/academy/"><span class="lg">Robot </span>Academy</a></nav>
+  <nav class="links"><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a><a href="/cheatsheets">Cheat sheets</a><a class="btn btn-ink" href="/academy/"><span class="lg">Robot </span>Academy</a></nav>
 </div>
 <nav class="mnav" aria-label="Menu"><a href="/">Home</a><a href="/robots">Robots</a><a href="/academy/">Academy</a><a href="/#join">Pricing</a></nav>
 </header>
@@ -89,7 +89,7 @@ html,body{overflow-x:clip}
 FOOT = """</main>
 <footer><div class="wrap">
   <a class="brand" href="/"><img src="/brand/logo.png" alt="">Kelty Sage</a>
-  <nav class="links"><a href="https://www.tiktok.com/@keltysage" target="_blank" rel="noopener">TikTok</a><a href="mailto:keltysage01@gmail.com">Contact</a></nav>
+  <nav class="links"><a href="/cheatsheets">Free cheat sheets</a><a href="https://www.tiktok.com/@keltysage" target="_blank" rel="noopener">TikTok</a><a href="mailto:keltysage01@gmail.com">Contact</a></nav>
   <p>I type it. AI does it.</p>
 </div></footer>
 {js}
