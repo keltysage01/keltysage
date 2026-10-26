@@ -171,6 +171,14 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px soli
    in lessons.js (python3 build.py). Voice notes come from voices.js (python3 voices.py). */
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const LESSONS = window.LESSONS || [], VOICES = window.VOICES || {};
+const ORDER = ['boot', 'pixel', 'reel', 'bouncer', 'penny', 'echo', 'dot', 'tempo', 'scout'];
+// Paid lessons join the list once bought (or from preview-paid.js on Kelty's computer).
+function addLessons(list, voices){
+  for (const l of list || []) if (!LESSONS.some(x => x.id === l.id)) LESSONS.push(l);
+  LESSONS.sort((a, b) => ORDER.indexOf(a.robot) - ORDER.indexOf(b.robot) || a.number - b.number);
+  Object.assign(VOICES, voices || {});
+}
+if (window.PAID_PREVIEW) addLessons(window.PAID_PREVIEW.lessons, window.PAID_PREVIEW.voices);
 const CAST = {
   boot:{name:'Boot', art:'boot'}, pixel:{name:'Pixel', art:'pixel'}, penny:{name:'Penny', art:'ledger'},
   dot:{name:'Dot', art:'brick'}, reel:{name:'Reel', art:'cutter'}, bouncer:{name:'Bouncer', art:'officer-keys'},
@@ -256,7 +264,7 @@ const PAID_LESSONS = 3;
 const ROBOTS = [...new Set(LESSONS.map(l => l.robot))];
 const COURSE = window.COURSE || {};
 function Hire(L){
-  if (L.robot === 'boot') return '';
+  if (L.robot === 'boot' || LESSONS.filter(l => l.robot === L.robot).length >= PAID_LESSONS) return '';
   const n = esc(CAST[L.robot].name);
   return sec('Want the rest?', `<div class="try"><h2>Hire ${n}</h2>
     <p class="small">Lessons 2 and 3 are in ${n}'s pack, with every prompt and video. One time, yours to keep.</p>
@@ -281,7 +289,7 @@ function render(){
   document.getElementById('app').innerHTML = `
     ${Nav(L)}
     <div class="hero fade"><div class="pic"><img src="${art(L.robot)}" alt="${esc(CAST[L.robot].name)} the robot"></div>
-      <div><p class="eyebrow">&gt;_ ${esc(CAST[L.robot].name)} · lesson ${L.number} · ${L.robot === 'boot' ? 'free' : 'free preview'}</p><h1>${headline(L.title)}</h1>
+      <div><p class="eyebrow">&gt;_ ${esc(CAST[L.robot].name)} · lesson ${L.number} · ${L.robot === 'boot' ? 'free' : L.number === 1 ? 'free preview' : 'in the pack'}</p><h1>${headline(L.title)}</h1>
       <p class="lede">${esc(L.intro)}</p></div></div>
     ${ColdOpen(L.coldOpen)}${Attempt(L.attempt)}${Cameo(L.cameo)}${BlameGame(L.blame)}
     ${IncidentReport(L.hr, i + 1)}${RealTeaching(L.teach)}${RejectedFolder(L.rejected)}${TryIt(L.tryIt)}${Closing(L.closing, L)}${Hire(L)}
@@ -320,6 +328,17 @@ function wire(){
   const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12}) : null;
   app.querySelectorAll('.fade').forEach(el => io ? io.observe(el) : el.classList.add('in'));
 }
+/* Buyers: the same Stripe session ids the academy saved (ks_paid) unlock lessons 2 and 3 here.
+   /api/lessons checks each one with Stripe before handing anything back. */
+(function(){
+  let ids = [];
+  try { ids = JSON.parse(localStorage.getItem('ks_paid') || '[]'); } catch(_) {}
+  if (!ids.length || location.protocol === 'file:') return;
+  fetch('/api/lessons?s=' + encodeURIComponent(ids.join(','))).then(r => r.json()).then(d => {
+    for (const list of Object.values(d.comedy || {})) for (const l of list) addLessons([l], l.voices);
+    if (d.comedy && Object.keys(d.comedy).length) render();
+  }).catch(() => {});
+})();
 window.addEventListener('hashchange', () => { audio.pause(); stopNote(); queue = []; render(); window.scrollTo(0, 0); });
 render();
 </script>

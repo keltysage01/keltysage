@@ -1764,7 +1764,7 @@ window.LESSONS = [
   "slug": "brick-1-one-page-website",
   "robot": "dot",
   "number": 1,
-  "intro": "Dot builds websites. This is Dot's very own lesson. Dot is very excited. Dot is hoping someone says her name.",
+  "intro": "Dot builds websites. This is Dot's very own lesson. Dot is very excited. Dot is hoping someone finally says the name.",
   "mistake": "Making things up",
   "coldOpen": {
    "note": "Website robot. Build them a one page site from a description. Do not make anything up.",

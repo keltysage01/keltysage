@@ -50,6 +50,7 @@ def upload_paid(paid):
                 print(f"  uploaded {f.name}")
             l["video"] = seen[l["slug"]]["url"]
     seen_f.write_text(json.dumps(seen, indent=1))
+    attach_comedy(paid)
     key_f = PAID / "data-key"
     if not key_f.exists():
         key_f.write_text(secrets.token_urlsafe(24))
@@ -89,9 +90,40 @@ def add_motion(page):
     page = page.replace("</style>", ACADEMY_MOTION_CSS + "</style>", 1)
     return page.replace("</body>", "<script>\n" + ACADEMY_MOTION_JS + "</script>\n</body>", 1)
 
+COMEDY = Path.home() / "keltysage-course/comedy-pilot"
+SITE_IDS = {"reel": "cutter", "bouncer": "officer-keys", "penny": "ledger", "dot": "brick", "tempo": "postie"}
+
+def attach_comedy(paid):
+    """Add the robots' comedy versions of the paid lessons, and their voice notes, to the paid data."""
+    src = COMEDY / "paid/comedy.json"
+    if not src.exists():
+        return
+    voices = json.loads((COMEDY / "paid/voices.json").read_text())
+    done_f = PAID / "comedy-audio.json"
+    done = json.loads(done_f.read_text()) if done_f.exists() else {}
+    paid["comedy"] = {}
+    for l in json.loads(src.read_text())["lessons"]:
+        lines = l["coldOpen"]["meeting"] + l["blame"] + l["cameo"]["lines"] + l["closing"].get("lines", [])
+        mine = {}
+        for who, text, *_ in lines:
+            v = voices.get(f"{who}|{text}")
+            if not v:
+                continue
+            name = Path(v["src"]).name
+            if name not in done:
+                done[name] = blob_put(COMEDY / v["src"], f"comedy/{name}")
+                print(f"  uploaded comedy/{name}")
+            mine[f"{who}|{text}"] = {"src": done[name], "secs": v["secs"]}
+        paid["comedy"].setdefault(SITE_IDS.get(l["robot"], l["robot"]), []).append({**l, "voices": mine})
+    done_f.write_text(json.dumps(done, indent=1))
+
 def main():
-    shutil.rmtree(OUT, ignore_errors=True)
-    shutil.copytree(SRC, OUT, ignore=shutil.ignore_patterns("media"))
+    # academy/robots is the comedy course, published from ~/keltysage-course/comedy-pilot. Keep it.
+    if OUT.exists():
+        for p in OUT.iterdir():
+            if p.name != "robots":
+                shutil.rmtree(p) if p.is_dir() else p.unlink()
+    shutil.copytree(SRC, OUT, ignore=shutil.ignore_patterns("media"), dirs_exist_ok=True)
     (OUT / "media").mkdir()
     data = json.loads((SRC / "course-data.json").read_text())
     paid = {"robots": {}}

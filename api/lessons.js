@@ -20,9 +20,13 @@ module.exports = async function handler(req, res) {
   if (!owned.size) return res.status(200).json({ owned: [], lessons: {} });
 
   if (!paid) paid = await (await fetch(process.env.PAID_DATA_URL)).json();
-  const lessons = {};
+  const lessons = {}, comedy = {};
   for (const [rid, list] of Object.entries(paid.robots)) {
     if (owned.has('all') || owned.has(rid)) lessons[rid] = list;
   }
-  return res.status(200).json({ owned: [...owned], lessons });
+  // The robots' comedy versions at /academy/robots, with their voice notes.
+  for (const [rid, list] of Object.entries(paid.comedy || {})) {
+    if (owned.has('all') || owned.has(rid)) comedy[rid] = list;
+  }
+  return res.status(200).json({ owned: [...owned], lessons, comedy });
 };
