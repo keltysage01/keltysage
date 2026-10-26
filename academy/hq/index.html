@@ -138,6 +138,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
 .start h2{margin:0;font:800 54px/1.05 var(--display);letter-spacing:-.045em;background:linear-gradient(120deg,#7c5cff 10%,#ff6fb5 55%,#ff9f6b 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .start p{margin:0;color:#4d4870;font-size:15px}
 .start .go{font:600 17px var(--sans);padding:14px 36px}
+.start .leave{font:600 13.5px var(--sans);color:#5b4bb5;text-decoration:none;padding:6px 12px}
 .lineup{display:flex;justify-content:center}
 .lineup span{width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 50% 85%,color-mix(in srgb,var(--c) 45%,#fff),var(--soft) 70%);border:2px solid rgba(255,255,255,.95);margin-left:-7px;display:grid;place-items:end center;overflow:hidden;box-shadow:0 4px 12px rgba(60,35,140,.15)}
 .lineup span:first-child{margin-left:0}
@@ -163,7 +164,7 @@ html.lock,html.lock body{overflow:hidden;overscroll-behavior:none}
   .clock{gap:4px;padding:4px}
   .clock .ib{width:30px;height:30px}
   .clock span{min-width:58px;font-size:13px}
-  .minimap{width:96px;height:96px;bottom:auto;top:64px;right:12px;padding:5px}
+  .minimap{width:84px;height:84px;bottom:auto;top:62px;right:12px;padding:4px}
   .np{font-size:12px}
   .dialog{left:8px;right:8px;bottom:8px;width:auto;transform:none;grid-template-columns:52px minmax(0,1fr);gap:10px;padding:12px;border-radius:22px}
   .dialog.off{transform:translateY(12px)}
@@ -175,8 +176,10 @@ html.lock,html.lock body{overflow:hidden;overscroll-behavior:none}
   .dialog .opts{display:grid;grid-template-columns:1fr 1fr;gap:6px}
   .opt{justify-content:center;text-align:center;min-height:40px;padding:6px 10px;font-size:13px;line-height:1.2}
   .opt kbd{display:none}
+  .opt:last-child:nth-child(odd){grid-column:1/-1;min-height:36px}
   .prompt{bottom:calc(150px + env(safe-area-inset-bottom,0px));padding:9px 18px 9px 9px}
   .stick{left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));width:116px;height:116px}
+  .start{overflow-y:auto;padding:max(16px,env(safe-area-inset-top,0px)) 16px max(16px,env(safe-area-inset-bottom,0px))}
   .start .card{padding:22px 18px 18px;gap:12px}
   .start h2{font-size:42px}
   .start p{font-size:14px}
@@ -184,6 +187,24 @@ html.lock,html.lock body{overflow:hidden;overscroll-behavior:none}
   .cast{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;margin:0 -16px;padding:2px 16px 8px;scrollbar-width:none}
   .cast::-webkit-scrollbar{display:none}
   .cast button{flex:none;scroll-snap-align:start}
+}
+@media (max-height:520px){ /* phones held sideways */
+  html.phone .start{overflow-y:auto}
+  html.phone .start .card{padding:14px 18px;gap:8px}
+  html.phone .start .card>img,html.phone .keys,html.phone .lineup{display:none}
+  html.phone .start h2{font-size:34px}
+  html.phone .quests{top:10px;left:10px}
+  html.phone .topr{top:10px;right:10px}
+  html.phone .chip{display:none}
+  html.phone .minimap{width:84px;height:84px;padding:4px;bottom:12px;right:12px}
+  html.phone .stick{width:104px;height:104px;left:12px;bottom:12px}
+  html.phone .dialog{width:min(620px,calc(100% - 260px));bottom:8px;grid-template-columns:52px minmax(0,1fr);gap:10px;padding:10px 12px;border-radius:20px}
+  html.phone .dialog .face{width:52px;height:60px;border-radius:14px}
+  html.phone .dialog .face img{width:50px;height:68px;margin-bottom:-6px}
+  html.phone .dialog .who em{display:none}
+  html.phone .dialog .say{font-size:14px;min-height:0;margin:4px 0 8px}
+  html.phone .opt kbd{display:none}
+  html.phone .prompt{bottom:16px}
 }
 .cast{display:flex;gap:8px;flex-wrap:wrap}
 .cast button{display:flex;align-items:center;gap:8px;font:600 13px var(--sans);color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px 5px 6px;cursor:pointer}
@@ -322,6 +343,7 @@ const MOODS = {boot:['proud','curious','helpful'], pixel:['picky','inspired','de
 const $ = s => document.querySelector(s);
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const touch = matchMedia('(pointer: coarse)').matches;
+const phone = touch && Math.min(screen.width, screen.height) < 760; // phones open straight into a full-screen game, like an app
 const low = touch || Math.min(screen.width, screen.height) < 760; // phones and tablets: lighter shadows, fewer samples
 const fmt = m => { m = Math.round(m); let h = Math.floor(m/60), mm = m%60, ap = h >= 12 ? 'pm' : 'am'; h = h%12 || 12; return h + ':' + String(mm).padStart(2,'0') + ' ' + ap; };
 const lerp = (a, b, t) => a + (b - a) * t;
@@ -334,7 +356,7 @@ const wrapA = a => { while (a > Math.PI) a -= 2*Math.PI; while (a < -Math.PI) a 
 const game = $('#game');
 if (touch){
   $('.keys').innerHTML = '<kbd>Stick</kbd><span>Walk (or tap the floor)</span><kbd>Drag</kbd><span>Look around</span><kbd>Tap a robot</kbd><span>Say hi</span><kbd>Tap an orb</kbd><span>Replay a memory</span>';
-  $('#start p').textContent = 'Ten robots run the business while the boss is at a session. Walk in and say hi. The corner button makes it full screen.';
+  $('#start p').textContent = 'Ten robots run the business while the boss is at a session. Walk in and say hi.';
 }
 $('#lineup').innerHTML = R.map(r => `<span style="--c:${r.c};--soft:${r.soft}"><img src="${ART[r.id]}" alt=""></span>`).join('');
 let gl;
@@ -834,11 +856,11 @@ let toastTimer;
 function toast(t, icon){ $('#toast i').innerHTML = icon || '&#10003;'; $('#toastText').textContent = t; $('#toast').classList.add('on'); clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').classList.remove('on'), 2400); }
 $('#qMin').onclick = () => { const q = $('#quests'); q.classList.toggle('small'); $('#qMin').textContent = q.classList.contains('small') ? 'show' : 'hide'; };
 renderQuests();
-if (innerWidth < 760){ $('#quests').classList.add('small'); $('#qMin').textContent = 'show'; }
+if (innerWidth < 760 || phone){ $('#quests').classList.add('small'); $('#qMin').textContent = 'show'; }
 
 R.forEach((r, i) => {
   const b = document.createElement('button'); b.type = 'button'; b.style.setProperty('--c', r.c);
-  b.innerHTML = `<img src="${ART[r.id]}" alt="">${r.name}`; b.onclick = () => { game.scrollIntoView({block:'center', behavior:reduce ? 'auto' : 'smooth'}); if (!inside) enter(() => goTalk(i)); else goTalk(i); };
+  b.innerHTML = `<img src="${ART[r.id]}" alt="">${r.name}`; b.onclick = () => { if (phone) setFull(true); game.scrollIntoView({block:'center', behavior:reduce ? 'auto' : 'smooth'}); if (!inside) enter(() => goTalk(i)); else goTalk(i); };
   $('#cast').appendChild(b);
 });
 
@@ -1001,9 +1023,10 @@ function goTalk(i){
   let dir = i === driver ? new THREE.Vector3(0, 0, 1) : from.sub(rp).setY(0);
   if (dir.length() < .01) dir.set(0, 0, 1);
   dir.normalize();
-  const stand = collide(rp.clone().addScaledVector(dir, i === driver ? 3.4 : 2.4)); stand.y = EYE;
+  const short = game.clientHeight < 520; // phone held sideways: step back and look down so the robot sits above the talk box
+  const stand = collide(rp.clone().addScaledVector(dir, i === driver ? 3.4 : short ? 3.1 : 2.4)); stand.y = EYE;
   const narrow = game.clientWidth < 600;
-  glide(stand, angleTo(stand, rp), i === driver ? (narrow ? -.12 : .02) : (narrow ? -.3 : -.08), undefined, () => talk(i));
+  glide(stand, angleTo(stand, rp), i === driver ? (narrow || short ? -.12 : .02) : (narrow ? -.3 : short ? -.42 : -.08), undefined, () => talk(i));
 }
 $('#prompt').onclick = () => { if (near >= 0) talk(near); };
 function vault(){
@@ -1128,6 +1151,11 @@ $('#fs').onclick = () => {
   if (touch || !game.requestFullscreen){ setFull(!game.classList.contains('full')); return; }
   try { document.fullscreenElement ? document.exitFullscreen() : game.requestFullscreen().catch(() => {}); } catch (e) {}
 };
+if (phone){
+  document.documentElement.classList.add('phone'); setFull(true);
+  const back = document.querySelector('a.back');
+  if (back){ const a = document.createElement('a'); a.className = 'leave'; a.href = back.href; a.textContent = back.textContent; $('#start .card').appendChild(a); }
+}
 
 // ---------- minimap ----------
 const map = $('#map'), mx = map.getContext('2d');
