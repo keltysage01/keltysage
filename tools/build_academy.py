@@ -117,6 +117,22 @@ def attach_comedy(paid):
         paid["comedy"].setdefault(SITE_IDS.get(l["robot"], l["robot"]), []).append({**l, "voices": mine})
     done_f.write_text(json.dumps(done, indent=1))
 
+def add_hq_card(page):
+    """Pick a robot page: a card under the team card that walks into Robot HQ."""
+    anchor = "</span></a>`; })()}"
+    assert anchor in page, "team card changed, update add_hq_card"
+    card = ('<a class="hqcard" href="/academy/hq"><div><p class="eyebrow">&gt;_ new</p>'
+            '<h2>Visit Robot HQ</h2><p>Walk around the robots\' 3D headquarters. Say hi to all ten and watch them work.</p></div>'
+            '<span class="btn">Walk in</span></a>')
+    page = page.replace(anchor, anchor + "\n    " + card, 1)
+    css = (".hqcard{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;"
+           "margin:14px 0 4px;padding:22px;background:linear-gradient(135deg,#efe6ff,#ffe6f2);border:2px solid #c4b5ff;border-radius:22px;"
+           "color:var(--ink);text-decoration:none}.hqcard h2{margin:4px 0 6px}.hqcard p{color:var(--ink-2)}"
+           ".hqcard .btn{background:linear-gradient(135deg,#7c5cff,#ff6fb5);color:#fff;border:0}"
+           "@media (max-width:560px){.hqcard .btn{width:100%}}")
+    return page.replace("</style>", css + "\n</style>", 1)
+
+
 def add_team_card(page):
     """Pick a robot page: a hire-the-whole-team card above the grid, gone once you own them all."""
     lede = "Start with Boot, it's free.</p></div>"
@@ -137,10 +153,11 @@ def add_team_card(page):
 
 
 def main():
-    # academy/robots is the comedy course, published from ~/keltysage-course/comedy-pilot. Keep it.
+    # academy/robots is the comedy course, published from ~/keltysage-course/comedy-pilot.
+    # academy/hq is Robot HQ, the walk-in 3D office, published from ~/keltysage-hq. Keep both.
     if OUT.exists():
         for p in OUT.iterdir():
-            if p.name != "robots":
+            if p.name not in ("robots", "hq"):
                 shutil.rmtree(p) if p.is_dir() else p.unlink()
     shutil.copytree(SRC, OUT, ignore=shutil.ignore_patterns("media"), dirs_exist_ok=True)
     (OUT / "media").mkdir()
@@ -182,6 +199,7 @@ def main():
     page = page.replace(hire, '<a class="btn" href="/api/checkout?item=${r.id}">').replace(team, '<a class="btn soft" href="/api/checkout?item=all">')
     page = page.replace("</body>", (ROOT / "tools/academy_pay.js").read_text().join(["<script>\n", "</script>\n</body>"]), 1)
     page = add_team_card(page)
+    page = add_hq_card(page)
     page = add_motion(page)
     (OUT / "index.html").write_text(page)
     print(f"academy: {kept} free lessons with video, {locked} locked lessons stripped")
