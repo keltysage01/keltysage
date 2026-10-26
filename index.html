@@ -135,6 +135,7 @@ section{padding:72px 0}
 @media (max-width:600px){.minis{grid-template-columns:repeat(3,1fr)}}
 /* stack */
 .stack{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.stack .tool-all{grid-column:1/-1}
 .tool{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px 20px;text-decoration:none;
   transition:transform .2s,box-shadow .2s,border-color .2s}
 .tool:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(18,24,28,.09);border-color:#cfdcdc}
@@ -381,6 +382,7 @@ html,body{overflow-x:clip}
   <p class="sec-p rise">I don't open most of these anymore. AI works in them for me. Tap any one to check it out.</p>
   <div class="stack">
     <a class="tool rise" href="https://claude.com/product/claude-code" target="_blank" rel="noopener"><div class="ico" style="background:#fbe9e2"><img src="/brand/tools/claude.svg" alt=""></div><div><h3>Claude Code</h3><p>The brain. It builds and runs everything.</p></div><span class="go">&rarr;</span></a>
+    <a class="tool rise" href="https://wisprflow.ai" target="_blank" rel="noopener"><div class="ico" style="background:#ecebf3"><img src="/brand/tools/wisprflow.png" alt=""></div><div><h3>Wispr Flow</h3><p>I talk, it types. Most of what I ask AI starts out loud.</p></div><span class="go">&rarr;</span></a>
     <a class="tool rise" href="https://openai.com" target="_blank" rel="noopener"><div class="ico" style="background:#ececec"><img src="/brand/tools/openai.svg" alt=""></div><div><h3>OpenAI</h3><p>Images and second opinions.</p></div><span class="go">&rarr;</span></a>
     <a class="tool rise" href="https://www.metricool.com" target="_blank" rel="noopener"><div class="ico" style="background:#e4f0ff"><img src="/brand/tools/metricool.png" alt=""></div><div><h3>Metricool</h3><p>Schedules my posts everywhere.</p></div><span class="go">&rarr;</span></a>
     <a class="tool rise" href="https://higgsfield.ai" target="_blank" rel="noopener"><div class="ico" style="background:#ecf8e4"><img src="/brand/tools/higgsfield.png" alt=""></div><div><h3>Higgsfield</h3><p>AI video and images.</p></div><span class="go">&rarr;</span></a>
@@ -391,7 +393,7 @@ html,body{overflow-x:clip}
     <a class="tool rise" href="https://www.cloudflare.com" target="_blank" rel="noopener"><div class="ico" style="background:#feeedf"><img src="/brand/tools/cloudflare.svg" alt=""></div><div><h3>Cloudflare</h3><p>Hosts my websites.</p></div><span class="go">&rarr;</span></a>
     <a class="tool rise" href="https://elevenlabs.io" target="_blank" rel="noopener"><div class="ico" style="background:#efefef"><img src="/brand/tools/elevenlabs.svg" alt=""></div><div><h3>ElevenLabs</h3><p>Voiceovers and music for my videos.</p></div><span class="go">&rarr;</span></a>
     <a class="tool rise" href="https://skills.sh" target="_blank" rel="noopener"><div class="ico" style="background:#eef0ff"><img src="/brand/tools/skills.png" alt=""></div><div><h3>skills.sh</h3><p>Where I find new skills to teach Claude.</p></div><span class="go">&rarr;</span></a>
-    <a class="tool rise" href="/robots"><div class="ico" style="background:var(--term)"><b style="color:var(--sea);font-family:var(--mono)">&gt;_</b></div><div><h3>My robots</h3><p>The skills I built myself. Hire them one at a time.</p></div><span class="go">&rarr;</span></a>
+    <a class="tool rise tool-all" href="/robots"><div class="ico" style="background:var(--term)"><b style="color:var(--sea);font-family:var(--mono)">&gt;_</b></div><div><h3>My robots</h3><p>The skills I built myself. Hire them one at a time.</p></div><span class="go">&rarr;</span></a>
   </div>
 </div></section>
 
