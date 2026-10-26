@@ -117,6 +117,25 @@ def attach_comedy(paid):
         paid["comedy"].setdefault(SITE_IDS.get(l["robot"], l["robot"]), []).append({**l, "voices": mine})
     done_f.write_text(json.dumps(done, indent=1))
 
+def add_team_card(page):
+    """Pick a robot page: a hire-the-whole-team card above the grid, gone once you own them all."""
+    lede = "Start with Boot, it's free.</p></div>"
+    assert lede in page, "team lede changed, update add_team_card"
+    card = ("${(() => { const paid = C.robots.filter(r => !r.free); if (!C.bundle_price || paid.every(owns)) return '';"
+            " const each = parseFloat(String(C.price).replace(/[^0-9.]/g, '')), was = (each * paid.length).toFixed(2);"
+            " return `<a class=\"allteam\" href=\"/api/checkout?item=all\"><div><p class=\"eyebrow\">&gt;_ best deal</p>"
+            "<h2>Hire the whole team</h2><p>All ${paid.length} robots, every lesson, buy once and keep forever."
+            " <s>$${was}</s> <b>${esc(C.bundle_price)}</b></p></div>"
+            "<span class=\"btn\">Hire all ${paid.length}: ${esc(C.bundle_price)}</span></a>`; })()}")
+    page = page.replace(lede, lede + "\n    " + card, 1)
+    css = (".allteam{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;"
+           "margin:22px 0 4px;padding:22px;background:var(--sea-soft);border:2px solid var(--sea);border-radius:22px;"
+           "color:var(--ink);text-decoration:none}.allteam h2{margin:4px 0 6px}.allteam p{color:var(--ink-2)}"
+           ".allteam s{color:var(--ink-3)}.allteam b{color:var(--ink)}"
+           "@media (max-width:560px){.allteam .btn{width:100%}}")
+    return page.replace("</style>", css + "\n</style>", 1)
+
+
 def main():
     # academy/robots is the comedy course, published from ~/keltysage-course/comedy-pilot. Keep it.
     if OUT.exists():
@@ -162,6 +181,7 @@ def main():
     assert hire in page and team in page, "player hire buttons changed, update build_academy.py"
     page = page.replace(hire, '<a class="btn" href="/api/checkout?item=${r.id}">').replace(team, '<a class="btn soft" href="/api/checkout?item=all">')
     page = page.replace("</body>", (ROOT / "tools/academy_pay.js").read_text().join(["<script>\n", "</script>\n</body>"]), 1)
+    page = add_team_card(page)
     page = add_motion(page)
     (OUT / "index.html").write_text(page)
     print(f"academy: {kept} free lessons with video, {locked} locked lessons stripped")

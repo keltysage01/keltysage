@@ -130,6 +130,7 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px soli
 .view .prog b{transform-origin:0 50%;animation:ksFill 1.1s .35s cubic-bezier(.22,1,.36,1) both}
 @keyframes ksFill{from{transform:scaleX(0)}}
 @media (prefers-reduced-motion:reduce){.view h1 em{background-size:100% 100%}}
+.allteam{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin:22px 0 4px;padding:22px;background:var(--sea-soft);border:2px solid var(--sea);border-radius:22px;color:var(--ink);text-decoration:none}.allteam h2{margin:4px 0 6px}.allteam p{color:var(--ink-2)}.allteam s{color:var(--ink-3)}.allteam b{color:var(--ink)}@media (max-width:560px){.allteam .btn{width:100%}}
 </style>
 </head>
 <body>
@@ -170,6 +171,7 @@ function team(){
     <div style="padding:34px 0 0"><p class="eyebrow">&gt;_ robot academy</p>
     <h1>Pick a robot. <em>Learn one job.</em></h1>
     <p class="lede">Every robot teaches one thing I do from my window. Watch the video, do each step, check it off. Start with Boot, it's free.</p></div>
+    ${(() => { const paid = C.robots.filter(r => !r.free); if (!C.bundle_price || paid.every(owns)) return ''; const each = parseFloat(String(C.price).replace(/[^0-9.]/g, '')), was = (each * paid.length).toFixed(2); return `<a class="allteam" href="/api/checkout?item=all"><div><p class="eyebrow">&gt;_ best deal</p><h2>Hire the whole team</h2><p>All ${paid.length} robots, every lesson, buy once and keep forever. <s>$${was}</s> <b>${esc(C.bundle_price)}</b></p></div><span class="btn">Hire all ${paid.length}: ${esc(C.bundle_price)}</span></a>`; })()}
     <div class="team">${C.robots.map(r => {
       const d = robotDone(r), n = r.lessons.length, full = d === n && n;
       return `<a class="rb" href="#/${r.id}" style="--c:${r.accent}">
