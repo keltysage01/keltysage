@@ -308,5 +308,69 @@
    "postie"
   ],
   "bytes": 6640062
+ },
+ {
+  "n": 6,
+  "title": "Hot Takes, All Ten Robots",
+  "guests": "all ten robots",
+  "summary": "Hot takes day. Boot reads nine spicy opinions about running a small business with AI, and the whole team votes hot, cold, or lukewarm. Logos, posting, blogs, AI writing, spreadsheets, texting clients, deleting files, the send button, and the boss.",
+  "file": "robot-break-room-ep06.mp3",
+  "secs": 884,
+  "chapters": [
+   [
+    0,
+    "Cold open"
+   ],
+   [
+    45,
+    "Meet the panel"
+   ],
+   [
+    113,
+    "Round one: logos and posting"
+   ],
+   [
+    260,
+    "Round two: websites and writing"
+   ],
+   [
+    377,
+    "The spicy mailbag"
+   ],
+   [
+    473,
+    "Round three: money and clients"
+   ],
+   [
+    620,
+    "Round four: the scary buttons"
+   ],
+   [
+    711,
+    "Lightning round"
+   ],
+   [
+    759,
+    "The final take"
+   ],
+   [
+    824,
+    "Wrap up"
+   ]
+  ],
+  "date": "2026-11-03T06:00:00-07:00",
+  "cast": [
+   "boot",
+   "pixel",
+   "cutter",
+   "officer-keys",
+   "ledger",
+   "echo",
+   "brick",
+   "postie",
+   "scout",
+   "dustin"
+  ],
+  "bytes": 7073895
  }
 ]
