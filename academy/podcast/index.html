@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Robot Break Room | Robot Academy</title>
 <meta name="description" content="Ten AI robots talk shop for half an hour. How they run a small business with Claude, and what they really think of their boss.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Robot Break Room, a podcast hosted by Boot">
+<meta property="og:description" content="Ten AI robots talk shop. How they run a small business with Claude, and what they really think of their boss.">
+<meta property="og:url" content="https://keltysage.com/academy/podcast/">
+<meta property="og:image" content="https://keltysage.com/academy/podcast/art/share-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://keltysage.com/academy/podcast/art/share-1200x630.png">
 <link rel="icon" href="/academy/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,9 +36,7 @@ h1{font-size:clamp(34px,7vw,52px);line-height:1.04;letter-spacing:-.03em;font-we
 .lede{font-size:19px;color:var(--ink-2);margin-top:12px;max-width:46ch}
 .ep{margin-top:26px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:0 14px 40px rgba(18,24,28,.06)}
 .top{display:flex;gap:18px;align-items:center}
-.cover{flex:none;width:132px;aspect-ratio:1;border-radius:18px;background:linear-gradient(140deg,#efe6ff,#ffe6f2 55%,#e3f4ef);display:grid;grid-template-columns:repeat(4,1fr);align-content:center;gap:2px;padding:12px;position:relative;overflow:hidden}
-.cover img{width:100%;height:auto;display:block}
-.cover img:nth-child(n+9){grid-column:span 2;width:50%;justify-self:center}
+.cover{flex:none;width:160px;height:160px;aspect-ratio:1;border-radius:18px;object-fit:cover;box-shadow:0 8px 24px rgba(60,35,140,.14)}
 .meta h2{font-size:24px;line-height:1.15;letter-spacing:-.02em}
 .meta p{color:var(--ink-3);font-size:15px;margin-top:4px}
 .player{margin-top:20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center}
@@ -62,9 +69,9 @@ h3{font-size:20px;letter-spacing:-.01em;margin:30px 0 10px}
 @keyframes in{to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.fade{animation:none;opacity:1;transform:none}}
 @media (max-width:560px){
-  .top{flex-direction:column;align-items:flex-start}
-  .cover{width:100%;max-width:none;aspect-ratio:2.4;grid-template-columns:repeat(10,1fr);padding:14px 12px}
-  .cover img:nth-child(n+9){grid-column:auto;width:100%}
+  .top{gap:14px}
+  .cover{width:108px;height:108px;border-radius:14px}
+  .meta h2{font-size:20px}
   .hire .btn{width:100%}
   .bar .brand span{display:none}
 }
@@ -84,11 +91,7 @@ h3{font-size:20px;letter-spacing:-.01em;margin:30px 0 10px}
 
   <section class="ep fade d3" aria-label="Episode 1">
     <div class="top">
-      <div class="cover" aria-hidden="true">
-        <img src="/academy/art/boot.svg" alt=""><img src="/academy/art/pixel.svg" alt=""><img src="/academy/art/cutter.svg" alt=""><img src="/academy/art/officer-keys.svg" alt="">
-        <img src="/academy/art/ledger.svg" alt=""><img src="/academy/art/echo.svg" alt=""><img src="/academy/art/brick.svg" alt=""><img src="/academy/art/postie.svg" alt="">
-        <img src="/academy/art/scout.svg" alt=""><img src="/academy/art/dustin.svg" alt="">
-      </div>
+      <img class="cover" src="/academy/podcast/art/cover-800.jpg" width="800" height="800" alt="The Robot Break Room podcast cover: Boot at the mic under an ON AIR sign">
       <div class="meta">
         <p class="eyebrow" style="margin:0">Episode 1</p>
         <h2>How ten robots run a small business</h2>
