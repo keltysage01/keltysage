@@ -211,6 +211,45 @@ html.lock,html.lock body{overflow:hidden;overscroll-behavior:none}
 .cast button img{width:24px;height:30px;object-fit:contain}
 .cast button.met{border-color:var(--c)}
 .nogl{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;color:#3d4a50}
+/* Phones, pass 3: a clean HUD, robots one tap away, bigger tap targets */
+.dock{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom,0px));display:flex;gap:4px;padding:6px;border-radius:26px;max-width:calc(100% - 20px);overflow-x:auto;scrollbar-width:none;transition:opacity .3s,transform .3s}
+.dock::-webkit-scrollbar{display:none}
+.dock[hidden]{display:none}
+.dock button{position:relative;flex:none;width:52px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0 3px;border:0;border-radius:18px;background:none;font:600 10px var(--sans);color:#3b3560;cursor:pointer}
+.dock button img{width:40px;height:40px;object-fit:cover;object-position:50% 12%;border-radius:50%;background:var(--soft);box-shadow:0 0 0 2px #fff,0 3px 10px rgba(60,35,140,.18)}
+.dock button:not(.met)::after{content:'';position:absolute;top:3px;right:7px;width:9px;height:9px;border-radius:50%;background:#ff9f6b;box-shadow:0 0 0 2px #fff}
+.dock button:active img{transform:scale(.96)}
+html.phone .reticle{display:none!important}
+html.phone .start .keys{display:none}
+html.phone .start .card>img{width:40px;height:40px;border-radius:11px}
+html.phone .start .leave{padding:12px 16px;margin:-6px 0 -8px}
+html.phone .quests .min{position:relative;font-size:0;width:28px;height:28px;padding:0;margin:-4px -4px -4px 0;background:none;border:0}
+html.phone .quests .min::before{content:'';position:absolute;inset:-8px}
+html.phone .quests .min::after{content:'';display:block;width:7px;height:7px;margin:7px auto 0;border:solid #5b4bb5;border-width:0 2px 2px 0;transform:rotate(45deg)}
+html.phone .quests:not(.small) .min::after{transform:rotate(-135deg);margin-top:11px}
+html.phone .clock .ib{position:relative}
+html.phone .clock .ib::before{content:'';position:absolute;inset:-7px}
+html.phone .fs{width:44px;height:44px}
+html.phone .opt{min-height:44px}
+html.phone .memo .gbtn{min-height:44px}
+html.phone .toast{top:64px;max-width:calc(100% - 24px);white-space:nowrap}
+html.phone .game.talking .labels{opacity:0}
+html.phone .labels{transition:opacity .3s}
+html.phone .stick{opacity:.6;transition:opacity .2s}
+html.phone .stick:active{opacity:1}
+html.phone .game.talking .dock{opacity:0;pointer-events:none;transform:translate(-50%,12px)}
+html.phone .memo{left:10px!important;right:10px;top:auto!important;bottom:calc(92px + env(safe-area-inset-bottom,0px));width:auto}
+@media (orientation:portrait){
+  html.phone .minimap,html.phone .stick{display:none!important}
+  html.phone .dialog{grid-template-columns:minmax(0,1fr)}
+  html.phone .dialog .face{display:none}
+  html.phone .prompt{bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+}
+@media (orientation:landscape){
+  html.phone .dock{display:none}
+  html.phone .memo{left:50%!important;right:auto;width:300px;bottom:12px;transform:translateX(-50%)}
+  html.phone .toast{top:12px}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
@@ -248,6 +287,7 @@ html.lock,html.lock body{overflow:hidden;overscroll-behavior:none}
       <button class="minimap panel" id="minimap" type="button" aria-label="Map. Click to walk there." hidden><canvas id="map" width="312" height="312"></canvas></button>
       <div class="prompt panel off" id="prompt" role="button" tabindex="-1"><kbd>E</kbd><span id="promptText">Talk</span></div>
       <div class="stick" id="stick" hidden><b id="knob"></b></div>
+      <nav class="dock panel" id="dock" hidden aria-label="Say hi to a robot"></nav>
       <div class="memo panel off" id="memo" role="dialog" aria-label="Memory">
         <div class="mh"><i id="mOrb"></i><span id="mWhen"></span></div>
         <p id="mText"></p>
@@ -355,6 +395,9 @@ const P = (phi, r, y = 0) => new THREE.Vector3(r * Math.sin(phi), y, r * Math.co
 const wrapA = a => { while (a > Math.PI) a -= 2*Math.PI; while (a < -Math.PI) a += 2*Math.PI; return a; };
 
 const game = $('#game');
+const tall = () => phone && game.clientHeight > game.clientWidth * 1.2;
+let closeUp = false;
+const fovFor = () => tall() ? (closeUp ? 72 : 74) : game.clientWidth < 600 ? 72 : 64;
 if (touch){
   $('.keys').innerHTML = '<kbd>Stick</kbd><span>Walk (or tap the floor)</span><kbd>Drag</kbd><span>Look around</span><kbd>Tap a robot</kbd><span>Say hi</span><kbd>Tap an orb</kbd><span>Replay a memory</span>';
   $('#start p').textContent = 'Ten robots run the business while the boss is at a session. Walk in and say hi.';
@@ -363,7 +406,8 @@ $('#lineup').innerHTML = R.map(r => `<span style="--c:${r.c};--soft:${r.soft}"><
 let gl;
 try { gl = new THREE.WebGLRenderer({antialias:true, powerPreference:'high-performance'}); } catch (e) { gl = null; }
 if (!gl){ game.innerHTML = '<div class="nogl">This browser could not open the 3D room. Try Chrome or Safari on a recent device.</div>'; throw new Error('no webgl'); }
-gl.setPixelRatio(Math.min(devicePixelRatio, low ? 1.5 : 2));
+let PR = phone ? Math.min(devicePixelRatio, 2) : Math.min(devicePixelRatio, low ? 1.5 : 2); // phones get a crisp start, then step down if frames run slow
+gl.setPixelRatio(PR);
 gl.outputEncoding = THREE.sRGBEncoding;
 gl.toneMapping = THREE.ACESFilmicToneMapping; gl.toneMappingExposure = 1.0;
 gl.shadowMap.enabled = true; gl.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -863,6 +907,10 @@ R.forEach((r, i) => {
   const b = document.createElement('button'); b.type = 'button'; b.style.setProperty('--c', r.c);
   b.innerHTML = `<img src="${ART[r.id]}" alt="">${r.name}`; b.onclick = () => { if (phone) setFull(true); game.scrollIntoView({block:'center', behavior:reduce ? 'auto' : 'smooth'}); if (!inside) enter(() => goTalk(i)); else goTalk(i); };
   $('#cast').appendChild(b);
+  if (!phone) return;
+  const d = document.createElement('button'); d.type = 'button'; d.style.setProperty('--c', r.c); d.style.setProperty('--soft', r.soft);
+  d.setAttribute('aria-label', 'Say hi to ' + r.name); d.innerHTML = `<img src="${ART[r.id]}" alt=""><span>${r.name}</span>`;
+  d.onclick = () => goTalk(i); $('#dock').appendChild(d);
 });
 
 // ---------- the player ----------
@@ -887,10 +935,15 @@ function enter(after){
   if (inside){ after && after(); return; }
   inside = true;
   $('#start').classList.add('off');
-  glide(new THREE.Vector3(0, EYE, 7.2), 0, .05, reduce ? 1 : 2800, () => {
+  // upright phones: start beside Pixel and Echo so robots fill the frame, big screen behind them
+  const up = tall(), at = up ? collide(new THREE.Vector3(4.4, EYE, -.6)) : new THREE.Vector3(0, EYE, 7.2);
+  at.y = EYE;
+  const aim = up ? angleTo(at, station(1).multiplyScalar(.6).add(station(5).multiplyScalar(.4))) : 0;
+  glide(at, aim, up ? -.03 : .05, reduce ? 1 : 2800, () => {
     ['#quests', '#topr', '#minimap', '#reticle'].forEach(s => $(s).hidden = false);
     if (touch) $('#stick').hidden = false;
-    toast('New quest: meet the whole team', '!');
+    if (phone) $('#dock').hidden = false;
+    toast(phone ? 'Tap a robot to say hi' : 'New quest: meet the whole team', '!');
     gl.domElement.focus({preventScroll:true});
     after && after();
   });
@@ -1007,7 +1060,7 @@ function options(i){
   });
 }
 function talk(i){
-  talking = i; closeMemo(); bots[i].waveT = performance.now();
+  talking = i; closeUp = true; game.classList.add('talking'); closeMemo(); bots[i].waveT = performance.now();
   const r = R[i];
   $('#dialog').style.setProperty('--c', r.c); $('#dialog').style.setProperty('--soft', r.soft); $('#dImg').src = ART[r.id]; $('#dImg').alt = r.name;
   $('#dName').textContent = r.name; $('#dJob').textContent = r.job + (i === driver ? ' · at the console' : '');
@@ -1015,15 +1068,16 @@ function talk(i){
   typeSay(met.has(i) ? `Back again? I’m still ${r.tasks[bots[i].task][0]}.` : r.intro);
   options(i);
   $('#dialog').classList.remove('off'); $('#prompt').classList.add('off');
-  if (!met.has(i)){ met.add(i); progress('meet', met.size); document.querySelectorAll('#cast button')[i].classList.add('met'); }
+  if (!met.has(i)){ met.add(i); progress('meet', met.size); document.querySelectorAll('#cast button')[i].classList.add('met'); const d = document.querySelectorAll('#dock button')[i]; if (d) d.classList.add('met'); }
 }
-function closeDialog(){ talking = -1; clearInterval(typeTimer); $('#dialog').classList.add('off'); }
+function closeDialog(){ talking = -1; closeUp = false; game.classList.remove('talking'); clearInterval(typeTimer); $('#dialog').classList.add('off'); }
 function goTalk(i){
   // walk up to the robot, face them, then talk
   const rp = bots[i].g.position.clone(), from = me.pos.clone(); from.y = 0;
   let dir = i === driver ? new THREE.Vector3(0, 0, 1) : from.sub(rp).setY(0);
   if (dir.length() < .01) dir.set(0, 0, 1);
   dir.normalize();
+  closeUp = true;
   const short = game.clientHeight < 520; // phone held sideways: step back and look down so the robot sits above the talk box
   const stand = collide(rp.clone().addScaledVector(dir, i === driver ? 3.4 : short ? 3.1 : 2.4)); stand.y = EYE;
   const narrow = game.clientWidth < 600;
@@ -1192,12 +1246,13 @@ $('#minimap').onclick = e => {
 
 // ---------- frame loop ----------
 function resize(){
-  const w = game.clientWidth, h = game.clientHeight; gl.setSize(w, h, false); cam.aspect = w / h; cam.fov = w < 600 ? 72 : 64; cam.updateProjectionMatrix();
-  if (composer){ composer.setPixelRatio(Math.min(devicePixelRatio, low ? 1.35 : 2)); composer.setSize(w, h); }
+  const w = game.clientWidth, h = game.clientHeight; gl.setSize(w, h, false); cam.aspect = w / h; cam.fov = fovFor(); cam.updateProjectionMatrix();
+  if (composer){ composer.setPixelRatio(phone ? PR : Math.min(devicePixelRatio, low ? 1.35 : 2)); composer.setSize(w, h); }
 }
 addEventListener('resize', resize); new ResizeObserver(resize).observe(game); resize();
 const proj = new THREE.Vector3();
 let last = performance.now(), screenAt = 0, mapAt = 0, near = -1;
+const perf = {n:0, t:0};
 function frame(){
   const now = performance.now();
   const dt = Math.max(0, Math.min(.05, (now - last) / 1000)); last = now;
@@ -1224,6 +1279,8 @@ function frame(){
     me.pos.set(Math.sin(a) * 10.5, 4.4, Math.cos(a) * 10.5);
     me.yaw = angleTo(me.pos, new THREE.Vector3(0, 0, 0)); me.pitch = Math.atan2(1.2 - 4.4, 10.5);
   }
+  const fv = fovFor(); if (Math.abs(cam.fov - fv) > .05){ cam.fov += (fv - cam.fov) * (1 - Math.exp(-5 * dt)); cam.updateProjectionMatrix(); }
+  if (phone && inside && PR > 1.25){ perf.n++; perf.t += dt; if (perf.n >= 90){ if (perf.t / perf.n > 1/34){ PR = Math.max(1.25, PR - .5); gl.setPixelRatio(PR); resize(); } perf.n = 0; perf.t = 0; } }
   cam.position.copy(me.pos);
   cam.lookAt(me.pos.clone().add(lookDir(me.yaw, me.pitch)));
 
@@ -1237,7 +1294,7 @@ function frame(){
     const lit = b.hover || talking === i || near === i;
     b.ring.material.opacity += ((lit ? .9 : 0) - b.ring.material.opacity) * .2;
     proj.copy(b.g.position); proj.y = BOT_H + .14; proj.project(cam);
-    const vis = inside && proj.z < 1 && Math.abs(proj.x) < 1.05 && Math.abs(proj.y) < 1.05 && d < 17;
+    const vis = inside && proj.z < 1 && Math.abs(proj.x) < 1.05 && Math.abs(proj.y) < 1.05 && d < (tall() ? 24 : 17);
     const sx = (proj.x + 1) / 2 * w, sy = (1 - proj.y) / 2 * h, sc = Math.max(.75, Math.min(1.1, 4 / Math.max(d, 1) + .55));
     b.np.style.transform = `translate(${sx}px, ${sy}px) translate(-50%, -100%) scale(${sc.toFixed(3)})`;
     b.np.style.opacity = vis && !b.bub.classList.contains('on') ? 1 : 0;
