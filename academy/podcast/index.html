@@ -102,6 +102,19 @@ h3{font-size:20px;letter-spacing:-.01em;margin:30px 0 10px}
 .fine.ok{color:var(--deep);font-weight:600}
 .fine.err{color:#b4234a}
 @media (max-width:560px){.signup{flex-direction:column}.signup .btn{width:100%}}
+.plist{margin-top:8px}
+.plsub{color:var(--ink-2);font-size:15px;margin:-4px 0 12px}
+.eps .len b{display:block;font-weight:600;color:var(--deep);font-size:11px}
+.inapp{margin-top:14px;padding:12px 14px;border-radius:14px;background:#fff6e5;border:1px solid #f3d9a4;font-size:15px;color:var(--ink)}
+.ways{margin-top:6px}
+.yt{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;border-radius:14px;background:#ff0033;color:#fff;font-weight:700;text-decoration:none;margin-bottom:14px}
+.yt svg{width:22px;height:22px}
+.feed{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px}
+.feed p{color:var(--ink-2);font-size:15px}
+.feed p b{color:var(--ink)}
+.feedrow{display:flex;gap:10px;margin-top:12px}
+.feedrow input{flex:1;min-width:0;font:500 13px var(--mono);min-height:48px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink)}
+@media (max-width:560px){.feedrow{flex-direction:column}.feedrow .btn{width:100%}.yt{width:100%;justify-content:center}}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -146,7 +159,14 @@ h3{font-size:20px;letter-spacing:-.01em;margin:30px 0 10px}
       <button type="button" class="sp" data-r="1.5" aria-pressed="false">1.5x</button>
     </div>
 
+    <p class="inapp" id="inapp" hidden>Want to listen with your phone locked? Open this page in Safari or Chrome. The app you're in may stop the audio when the screen turns off.</p>
     <p class="about" id="epAbout"></p>
+  </section>
+
+  <section class="plist" id="allWrap" aria-labelledby="plH">
+    <h3 id="plH">Playlist</h3>
+    <p class="plsub">Plays straight through, one episode after another, even with your phone locked. It remembers where you left off.</p>
+    <ol class="eps" id="eps"></ol>
   </section>
 
   <section class="sub" id="sub" aria-labelledby="subH">
@@ -164,15 +184,22 @@ h3{font-size:20px;letter-spacing:-.01em;margin:30px 0 10px}
   <h3>Chapters</h3>
   <ol class="chapters" id="ch"></ol>
 
-  <div id="allWrap" hidden>
-    <h3>All episodes</h3>
-    <ol class="eps" id="eps"></ol>
-  </div>
+  <section class="ways" aria-labelledby="waysH">
+    <h3 id="waysH">Listen your way</h3>
+    <a class="yt" id="yt" href="#" target="_blank" rel="noopener" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1-5.8 3.1z"/></svg>Watch on YouTube</a>
+    <div class="feed">
+      <p><b>Listen in your podcast app.</b> Copy this link, then in your podcast app choose Follow a Show by URL (in Apple Podcasts it's under Library) and paste it.</p>
+      <div class="feedrow"><input id="feedUrl" type="text" readonly value="https://www.keltysage.com/academy/podcast/feed.xml" aria-label="Podcast feed link"><button type="button" class="btn" id="copyFeed">Copy link</button></div>
+      <p class="fine" id="copied" role="status" aria-live="polite"></p>
+    </div>
+  </section>
 
   <a class="hire" href="/academy/"><div><p class="eyebrow" style="margin:0">&gt;_ like what you heard?</p><h2>Hire the team</h2><p>Every robot comes with short lessons that teach you their job. Boot is free.</p></div><span class="btn">Meet the robots</span></a>
 </main>
 
 <script>
+// The YouTube channel button shows when this is set.
+const YT_CHANNEL_URL = 'https://www.youtube.com/channel/UCZS2FMno-bg_AZklDdGFMFA';
 // Episodes come from episodes.json. An episode shows once its release time has passed,
 // so the weekly show releases itself every Tuesday at 6am Boise time with nothing sent or pushed.
 // Test a future date with ?now=2026-11-04
@@ -183,21 +210,55 @@ const esc = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':
 const PLAY = 'M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z', PAUSE = 'M7 5h3.5v14H7zM13.5 5H17v14h-3.5z';
 const q = new URLSearchParams(location.search).get('now');
 const NOW = q && !isNaN(Date.parse(q)) ? Date.parse(q) : Date.now();
-let CH = [], EPS = [], cur = null, on = -1;
+let CH = [], EPS = [], cur = null, on = -1, pending = 0, lastSave = 0;
+const COVER = location.origin + '/academy/podcast/art/cover-800.jpg';
+// per-episode position, kept in this browser only
+const store = {
+  get(n){ try { return JSON.parse(localStorage.getItem('rbr-pos') || '{}')[n] || null; } catch (e) { return null; } },
+  set(n, v){ try { const all = JSON.parse(localStorage.getItem('rbr-pos') || '{}'); all[n] = v; localStorage.setItem('rbr-pos', JSON.stringify(all)); } catch (e) {} }
+};
+function savePos(force){
+  if (!cur || !au.currentTime) return;
+  const t = Date.now(); if (!force && t - lastSave < 4000) return; lastSave = t;
+  store.set(cur.n, {t: Math.floor(au.currentTime), done: false});
+}
+function badge(e){
+  const p = store.get(e.n);
+  if (p && p.done) return '<b>Played</b>';
+  if (p && p.t > 10) return '<b>' + Math.max(1, Math.round((e.secs - p.t) / 60)) + ' min left</b>';
+  return '';
+}
+function drawList(){
+  $('eps').innerHTML = EPS.map(e => `<li data-n="${e.n}" class="${cur && cur.n === e.n ? 'on' : ''}"><button type="button" data-n="${e.n}"><span class="n">Ep ${e.n}</span><span class="tt">${esc(e.title)}<small>${esc(e.guests ? 'With ' + e.guests : '')}</small></span><span class="len">${badge(e)}${Math.round(e.secs / 60)} min</span></button></li>`).join('');
+}
+function session(e){
+  if (!('mediaSession' in navigator)) return;
+  try {
+    navigator.mediaSession.metadata = new MediaMetadata({title: 'Ep ' + e.n + ': ' + e.title, artist: 'The Robot Break Room', album: 'Hosted by Boot',
+      artwork: [{src: COVER, sizes: '800x800', type: 'image/jpeg'}]});
+  } catch (err) {}
+}
+function step(d){ const i = EPS.findIndex(x => cur && x.n === cur.n); const nx = EPS[i + d]; if (nx){ savePos(true); load(nx, true); } }
 
 function load(e, play){
   cur = e; on = -1; CH = e.chapters || [];
   const src = '/academy/podcast/' + e.file;
-  if (au.getAttribute('src') !== src){ au.pause(); au.setAttribute('src', src); au.load(); }
+  if (au.getAttribute('src') !== src){
+    au.pause(); au.setAttribute('src', src); au.load();
+    const p = store.get(e.n);
+    pending = p && !p.done && p.t > 10 && p.t < e.secs - 15 ? p.t : 0;
+  }
+  session(e);
   $('epNum').textContent = 'Episode ' + e.n;
   $('epTitle').textContent = e.title;
   $('epSub').innerHTML = Math.round(e.secs / 60) + ' min &middot; Hosted by Boot' + (e.guests ? ', with ' + esc(e.guests) : '');
   $('epAbout').textContent = e.summary || '';
   $('epAbout').hidden = !e.summary;
   seek.max = e.secs; seek.value = 0; $('cur').textContent = '0:00'; $('dur').textContent = fmt(e.secs);
-  $('now').textContent = 'Press play to start at the cold open.';
+  $('now').textContent = pending ? 'Picks up where you left off, at ' + fmt(pending) + '.' : 'Press play to start at the cold open.';
+  if (pending){ seek.value = pending; $('cur').textContent = fmt(pending); }
   $('ch').innerHTML = CH.map(([t, n], i) => `<li data-i="${i}"><button type="button" data-t="${t}"><span class="t">${fmt(t)}</span><span>${esc(n)}</span></button></li>`).join('');
-  document.querySelectorAll('#eps li').forEach(li => li.classList.toggle('on', +li.dataset.n === e.n));
+  drawList();
   if (play) au.play().catch(() => {});
 }
 function render(all){
@@ -210,8 +271,6 @@ function render(all){
     $('next').innerHTML = `<b>Next episode ${esc(day)}:</b> Boot sits down with ${esc(up.guests)}.`;
     $('next').hidden = false;
   }
-  $('eps').innerHTML = EPS.map(e => `<li data-n="${e.n}"><button type="button" data-n="${e.n}"><span class="n">Ep ${e.n}</span><span class="tt">${esc(e.title)}<small>${esc(e.guests ? 'With ' + e.guests : '')}</small></span><span class="len">${Math.round(e.secs / 60)} min</span></button></li>`).join('');
-  $('allWrap').hidden = EPS.length < 2;
   const want = +new URLSearchParams(location.search).get('ep');
   load(EPS.find(e => e.n === want) || EPS[0], false);
 }
@@ -226,11 +285,37 @@ function go(t){ au.currentTime = t; if (au.paused) au.play().catch(() => {}); }
 $('play').onclick = () => au.paused ? au.play().catch(() => {}) : au.pause();
 au.addEventListener('play', () => { $('ico').innerHTML = '<path d="' + PAUSE + '"/>'; $('play').setAttribute('aria-label', 'Pause'); mark(); });
 au.addEventListener('pause', () => { $('ico').innerHTML = '<path d="' + PLAY + '"/>'; $('play').setAttribute('aria-label', 'Play'); });
-au.addEventListener('loadedmetadata', () => { seek.max = Math.floor(au.duration); $('dur').textContent = fmt(au.duration); });
+au.addEventListener('loadedmetadata', () => {
+  seek.max = Math.floor(au.duration); $('dur').textContent = fmt(au.duration);
+  if (pending){ au.currentTime = pending; pending = 0; }
+});
+au.addEventListener('pause', () => savePos(true));
+// when one episode ends, the next one in the playlist starts on its own (works with the screen locked)
+au.addEventListener('ended', () => {
+  if (cur) store.set(cur.n, {t: 0, done: true});
+  const i = EPS.findIndex(x => cur && x.n === cur.n);
+  if (EPS[i + 1]) load(EPS[i + 1], true); else drawList();
+});
+addEventListener('pagehide', () => savePos(true));
+if ('mediaSession' in navigator){
+  const ms = navigator.mediaSession, set = (a, f) => { try { ms.setActionHandler(a, f); } catch (e) {} };
+  set('play', () => au.play().catch(() => {}));
+  set('pause', () => au.pause());
+  set('seekbackward', d => go(Math.max(0, au.currentTime - ((d && d.seekOffset) || 15))));
+  set('seekforward', d => go(au.currentTime + ((d && d.seekOffset) || 30)));
+  set('seekto', d => { if (d && d.seekTime != null) au.currentTime = d.seekTime; });
+  set('previoustrack', () => step(-1));
+  set('nexttrack', () => step(1));
+}
 let drag = false;
 seek.addEventListener('input', () => { drag = true; $('cur').textContent = fmt(seek.value); });
 seek.addEventListener('change', () => { drag = false; go(+seek.value); });
-au.addEventListener('timeupdate', () => { if (!drag) seek.value = au.currentTime; $('cur').textContent = fmt(au.currentTime); mark(); });
+au.addEventListener('timeupdate', () => {
+  if (!drag) seek.value = au.currentTime; $('cur').textContent = fmt(au.currentTime); mark(); savePos(false);
+  if ('mediaSession' in navigator && navigator.mediaSession.setPositionState && au.duration){
+    try { navigator.mediaSession.setPositionState({duration: au.duration, playbackRate: au.playbackRate, position: Math.min(au.currentTime, au.duration)}); } catch (e) {}
+  }
+});
 au.addEventListener('seeked', mark);
 $('back').onclick = () => go(Math.max(0, au.currentTime - 15));
 $('fwd').onclick = () => go(au.currentTime + 30);
@@ -265,6 +350,14 @@ $('signup').addEventListener('submit', async e => {
   }
   btn.disabled = false;
 });
+// YouTube button, podcast app link, and a heads up inside in-app browsers that stop audio when the screen locks
+if (YT_CHANNEL_URL){ $('yt').href = YT_CHANNEL_URL; $('yt').hidden = false; }
+if (/TikTok|musical_ly|Bytedance|Instagram|FBAN|FBAV/i.test(navigator.userAgent)) $('inapp').hidden = false;
+$('copyFeed').onclick = async () => {
+  const u = $('feedUrl').value;
+  try { await navigator.clipboard.writeText(u); $('copied').textContent = 'Copied. Paste it into your podcast app.'; }
+  catch (e) { $('feedUrl').select(); $('copied').textContent = 'Press and hold the link to copy it.'; }
+};
 fetch('/academy/podcast/episodes.json', {cache: 'no-store'}).then(r => r.json()).then(render).catch(() => render(FALLBACK));
 </script>
 </body>

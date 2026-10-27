@@ -80,7 +80,8 @@
    "postie",
    "scout",
    "dustin"
-  ]
+  ],
+  "bytes": 13847513
  },
  {
   "n": 2,
@@ -131,7 +132,8 @@
   "cast": [
    "boot",
    "pixel"
-  ]
+  ],
+  "bytes": 6822714
  },
  {
   "n": 3,
@@ -182,7 +184,8 @@
   "cast": [
    "boot",
    "ledger"
-  ]
+  ],
+  "bytes": 7596151
  },
  {
   "n": 4,
@@ -239,7 +242,8 @@
    "officer-keys",
    "dustin",
    "brick"
-  ]
+  ],
+  "bytes": 6664302
  },
  {
   "n": 5,
@@ -302,6 +306,7 @@
   "cast": [
    "boot",
    "postie"
-  ]
+  ],
+  "bytes": 6640062
  }
 ]

@@ -42,5 +42,11 @@
       "path": "/api/podcast-weekly",
       "schedule": "15 13 * * 2"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/academy/podcast/feed.xml",
+      "destination": "/api/podcast-feed"
+    }
   ]
 }
