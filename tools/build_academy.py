@@ -16,6 +16,7 @@ Upload state lives in ~/.keltysage-paid, outside the repo.
 """
 import hashlib, json, re, secrets, shutil, subprocess, sys
 from pathlib import Path
+from analytics import tag
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = Path.home() / "keltysage-course/dist"
@@ -201,7 +202,7 @@ def main():
     page = add_team_card(page)
     page = add_hq_card(page)
     page = add_motion(page)
-    (OUT / "index.html").write_text(page)
+    (OUT / "index.html").write_text(tag(page))
     print(f"academy: {kept} free lessons with video, {locked} locked lessons stripped")
 
     if "--upload" in sys.argv:

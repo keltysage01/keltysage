@@ -9,6 +9,7 @@ sheets stick to the free Boot material and general how-to.
 """
 import html, re, shutil, subprocess, sys, tempfile
 from pathlib import Path
+from analytics import tag
 
 SITE = Path(__file__).resolve().parent.parent
 OUT = SITE / "cheatsheets"
@@ -336,7 +337,7 @@ def main():
     both = OUT / "kelty-sage-cheat-sheets.pdf"
     chrome("--no-pdf-header-footer", f"--print-to-pdf={both}", allsrc.as_uri())
     page = PAGE.replace("{cards}", "\n".join(cards)).replace("{count}", str(len(SHEETS)))
-    (OUT / "index.html").write_text(page)
+    (OUT / "index.html").write_text(tag(page))
     print(f"built {len(SHEETS)} sheets, combined PDF {pages(both)} pages")
 
 if __name__ == "__main__":
