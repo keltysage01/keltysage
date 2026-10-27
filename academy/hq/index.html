@@ -143,8 +143,6 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
 .lineup span{width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 50% 85%,color-mix(in srgb,var(--c) 45%,#fff),var(--soft) 70%);border:2px solid rgba(255,255,255,.95);margin-left:-7px;display:grid;place-items:end center;overflow:hidden;box-shadow:0 4px 12px rgba(60,35,140,.15)}
 .lineup span:first-child{margin-left:0}
 .lineup img{width:36px;height:48px;object-fit:contain;margin-bottom:-8px}
-.keys{display:grid;grid-template-columns:auto 1fr;gap:7px 12px;align-items:center;justify-items:start;text-align:left;font-size:13px;color:#4d4870;margin-top:2px}
-.keys kbd{font:500 12px var(--mono);background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.95);border-radius:8px;padding:2px 8px;color:#1c1a33;white-space:nowrap;box-shadow:0 2px 6px rgba(60,35,140,.1)}
 
 .game.full{position:fixed;inset:0;width:auto;height:100vh;height:100dvh;min-height:0;border-radius:0;z-index:1000;margin:0}
 .game.full .ui,.game.full .labels{inset:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
@@ -191,7 +189,7 @@ html.lock,html.lock body{overflow:hidden;overscroll-behavior:none}
 @media (max-height:520px){ /* phones held sideways */
   html.phone .start{overflow-y:auto}
   html.phone .start .card{padding:14px 18px;gap:8px}
-  html.phone .start .card>img,html.phone .keys,html.phone .lineup{display:none}
+  html.phone .start .card>img,html.phone .lineup{display:none}
   html.phone .start h2{font-size:34px}
   html.phone .quests{top:10px;left:10px}
   html.phone .topr{top:10px;right:10px}
@@ -220,7 +218,6 @@ html.lock,html.lock body{overflow:hidden;overscroll-behavior:none}
 .dock button:not(.met)::after{content:'';position:absolute;top:3px;right:7px;width:9px;height:9px;border-radius:50%;background:#ff9f6b;box-shadow:0 0 0 2px #fff}
 .dock button:active img{transform:scale(.96)}
 html.phone .reticle{display:none!important}
-html.phone .start .keys{display:none}
 html.phone .start .card>img{width:40px;height:40px;border-radius:11px}
 html.phone .start .leave{padding:12px 16px;margin:-6px 0 -8px}
 html.phone .quests .min{position:relative;font-size:0;width:28px;height:28px;padding:0;margin:-4px -4px -4px 0;background:none;border:0}
@@ -309,12 +306,6 @@ html.phone .memo{left:10px!important;right:10px;top:auto!important;bottom:calc(9
           <div class="lineup" id="lineup" aria-hidden="true"></div>
           <p>Ten robots run the business while the boss is at a session. Walk in, say hi, and try not to touch the send vault.</p>
           <button class="gbtn dark go" id="enter" type="button">Press start</button>
-          <div class="keys">
-            <kbd>W A S D</kbd><span>Walk (or click the floor)</span>
-            <kbd>Drag</kbd><span>Look around</span>
-            <kbd>E</kbd><span>Talk to the robot in front of you</span>
-            <kbd>Click an orb</kbd><span>Replay a memory</span>
-          </div>
         </div>
       </div>
     </div>
@@ -399,7 +390,6 @@ const tall = () => phone && game.clientHeight > game.clientWidth * 1.2;
 let closeUp = false;
 const fovFor = () => tall() ? (closeUp ? 72 : 74) : game.clientWidth < 600 ? 72 : 64;
 if (touch){
-  $('.keys').innerHTML = '<kbd>Stick</kbd><span>Walk (or tap the floor)</span><kbd>Drag</kbd><span>Look around</span><kbd>Tap a robot</kbd><span>Say hi</span><kbd>Tap an orb</kbd><span>Replay a memory</span>';
   $('#start p').textContent = 'Ten robots run the business while the boss is at a session. Walk in and say hi.';
 }
 $('#lineup').innerHTML = R.map(r => `<span style="--c:${r.c};--soft:${r.soft}"><img src="${ART[r.id]}" alt=""></span>`).join('');
