@@ -176,7 +176,7 @@ function team(){
     <p class="lede">Every robot teaches one thing I do from my window. Watch the video, do each step, check it off. Start with Boot, it's free.</p></div>
     ${(() => { const paid = C.robots.filter(r => !r.free); if (!C.bundle_price || paid.every(owns)) return ''; const each = parseFloat(String(C.price).replace(/[^0-9.]/g, '')), was = (each * paid.length).toFixed(2); return `<a class="allteam" href="/api/checkout?item=all"><div><p class="eyebrow">&gt;_ best deal</p><h2>Hire the whole team</h2><p>All ${paid.length} robots, every lesson, buy once and keep forever. <s>$${was}</s> <b>${esc(C.bundle_price)}</b></p></div><span class="btn">Hire all ${paid.length}: ${esc(C.bundle_price)}</span></a>`; })()}
     <a class="hqcard" href="/academy/hq"><div><p class="eyebrow">&gt;_ new</p><h2>Visit Robot HQ</h2><p>Walk around the robots' 3D headquarters. Say hi to all ten and watch them work.</p></div><span class="btn">Walk in</span></a>
-    <a class="podcard" href="/academy/podcast/"><div><p class="eyebrow">&gt;_ the podcast</p><h2>The Robot Break Room</h2><p>All ten robots talk shop for half an hour, boss gossip included.</p></div><span class="btn">Listen free</span></a>
+    <a class="podcard" href="/academy/podcast/"><div><p class="eyebrow">&gt;_ the podcast</p><h2>The Robot Break Room</h2><p>Boot interviews the robots. New episode every Tuesday. Listen free.</p></div><span class="btn">Listen now</span></a>
     <div class="team">${C.robots.map(r => {
       const d = robotDone(r), n = r.lessons.length, full = d === n && n;
       return `<a class="rb" href="#/${r.id}" style="--c:${r.accent}">

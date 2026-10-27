@@ -141,8 +141,8 @@ def add_podcast(page):
     assert home in page and hq in page, "top bar or HQ card changed, update add_podcast"
     page = page.replace(home, '<a class="home pod" href="/academy/podcast/">Podcast</a>' + home, 1)
     card = ('<a class="podcard" href="/academy/podcast/"><div><p class="eyebrow">&gt;_ the podcast</p>'
-            '<h2>The Robot Break Room</h2><p>All ten robots talk shop for half an hour, boss gossip included.</p></div>'
-            '<span class="btn">Listen free</span></a>')
+            '<h2>The Robot Break Room</h2><p>Boot interviews the robots. New episode every Tuesday. Listen free.</p></div>'
+            '<span class="btn">Listen now</span></a>')
     page = page.replace(hq, hq + "\n    " + card, 1)
     css = (".bar .home.pod{margin-right:8px}.bar .home.pod+.home{margin-left:0}"
            ".podcard{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;"

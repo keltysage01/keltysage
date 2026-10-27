@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Robot Break Room | Robot Academy</title>
-<meta name="description" content="A weekly podcast. Boot interviews the other robots about running a small business with Claude, and what they really think of their boss. New episodes every Tuesday.">
+<meta name="description" content="A weekly podcast, new every Tuesday. Boot interviews the other robots about running a small business with Claude, and what they really think of their boss. New episodes every Tuesday.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Robot Break Room, a podcast hosted by Boot">
 <meta property="og:description" content="A weekly podcast. Boot interviews the other robots about running a small business with Claude. New episodes every Tuesday.">
@@ -86,6 +86,22 @@ h3{font-size:20px;letter-spacing:-.01em;margin:30px 0 10px}
 .eps .tt small{display:block;font-weight:400;color:var(--ink-3);font-size:14px;margin-top:2px}
 .eps .len{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
 @media (max-width:560px){.eps button{grid-template-columns:1fr auto}.eps .n{grid-column:1/-1;margin-bottom:-6px}}
+.weekly{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:15px;font-weight:600;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.weekly .dot{width:8px;height:8px;border-radius:50%;background:#ff5a7a;box-shadow:0 0 0 4px rgba(255,90,122,.15)}
+.sub{margin-top:18px;padding:22px;border-radius:22px;background:linear-gradient(135deg,#efe6ff,#ffe6f2);border:2px solid #c4b5ff}
+.sub h2{font-size:22px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px}
+.subp{color:var(--ink-2);font-size:16px}
+.sub .next{margin:0 0 12px;padding:0;border:0;background:none;font-family:var(--mono);font-size:13px;color:var(--violet)}
+.sub .next b{color:var(--violet);font-weight:700}
+.signup{display:flex;gap:10px;margin-top:16px}
+.signup input{flex:1;min-width:0;font:inherit;font-size:16px;min-height:48px;padding:12px 18px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink)}
+.signup input:focus{outline:2px solid var(--violet);border-color:var(--violet)}
+.signup .btn{border-radius:999px;white-space:nowrap}
+.signup .btn:disabled{opacity:.6}
+.fine{font-size:14px;color:var(--ink-2);margin-top:10px;min-height:20px}
+.fine.ok{color:var(--deep);font-weight:600}
+.fine.err{color:#b4234a}
+@media (max-width:560px){.signup{flex-direction:column}.signup .btn{width:100%}}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -98,6 +114,7 @@ h3{font-size:20px;letter-spacing:-.01em;margin:30px 0 10px}
 <main class="wrap">
   <p class="eyebrow fade">&gt;_ the podcast</p>
   <h1 class="fade">The Robot Break Room</h1>
+  <p class="weekly fade d2"><span class="dot" aria-hidden="true"></span>New episode every Tuesday</p>
   <p class="lede fade d2">Ten AI robots talk shop in the podcast room. Every Tuesday, Boot sits down with one of them, or a panel, to teach one real way to run a small business with Claude.</p>
 
   <section class="ep fade d3" id="ep" aria-label="Episode">
@@ -132,7 +149,17 @@ h3{font-size:20px;letter-spacing:-.01em;margin:30px 0 10px}
     <p class="about" id="epAbout"></p>
   </section>
 
-  <div class="next" id="next" hidden></div>
+  <section class="sub" id="sub" aria-labelledby="subH">
+    <p class="next" id="next" hidden></p>
+    <h2 id="subH">Get each new episode in your inbox every Tuesday</h2>
+    <p class="subp">One short email when a new episode drops. Free. Unsubscribe anytime.</p>
+    <form class="signup" id="signup" novalidate>
+      <input type="email" name="email" required autocomplete="email" placeholder="you@yourbusiness.com" aria-label="Your email">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+      <button class="btn" type="submit">Get the episodes</button>
+    </form>
+    <p class="fine" id="fine" role="status" aria-live="polite"></p>
+  </section>
 
   <h3>Chapters</h3>
   <ol class="chapters" id="ch"></ol>
@@ -180,7 +207,7 @@ function render(all){
   if (up){
     const d = new Date(Date.parse(up.date));
     const day = d.toLocaleDateString('en-US', {weekday: 'long', month: 'long', day: 'numeric', timeZone: 'America/Boise'});
-    $('next').innerHTML = `<b>Next episode ${esc(day)}.</b> Boot sits down with ${esc(up.guests)}.`;
+    $('next').innerHTML = `<b>Next episode ${esc(day)}:</b> Boot sits down with ${esc(up.guests)}.`;
     $('next').hidden = false;
   }
   $('eps').innerHTML = EPS.map(e => `<li data-n="${e.n}"><button type="button" data-n="${e.n}"><span class="n">Ep ${e.n}</span><span class="tt">${esc(e.title)}<small>${esc(e.guests ? 'With ' + e.guests : '')}</small></span><span class="len">${Math.round(e.secs / 60)} min</span></button></li>`).join('');
@@ -217,6 +244,26 @@ $('eps').addEventListener('click', e => {
   const ep = EPS.find(x => x.n === +b.dataset.n); if (!ep) return;
   const rate = au.playbackRate; load(ep, true); au.playbackRate = rate;
   $('ep').scrollIntoView({behavior: 'smooth', block: 'start'});
+});
+// signup: saves the email to Resend through /api/subscribe; if that fails, opens an email to Kelty so nobody is lost
+$('signup').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target, fine = $('fine'), btn = f.querySelector('button');
+  const email = f.email.value.trim();
+  fine.className = 'fine';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { fine.textContent = 'That email looks off. Try again?'; fine.classList.add('err'); f.email.focus(); return; }
+  btn.disabled = true;
+  try {
+    const r = await fetch('/api/subscribe', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({email, website: f.website.value, source: 'podcast'})});
+    if (!r.ok) throw new Error(r.status);
+    fine.textContent = "You're in. The next episode lands in your inbox on Tuesday.";
+    fine.classList.add('ok');
+    f.reset();
+  } catch (err) {
+    location.href = 'mailto:keltysage01@gmail.com?subject=' + encodeURIComponent('Add me to the podcast emails') + '&body=' + encodeURIComponent('Hi Kelty, please send me each new Robot Break Room episode.');
+    fine.textContent = "Your email app should open. Hit send and you're on the list.";
+  }
+  btn.disabled = false;
 });
 fetch('/academy/podcast/episodes.json', {cache: 'no-store'}).then(r => r.json()).then(render).catch(() => render(FALLBACK));
 </script>
