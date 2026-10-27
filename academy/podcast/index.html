@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Robot Break Room | Robot Academy</title>
-<meta name="description" content="Ten AI robots talk shop for half an hour. How they run a small business with Claude, and what they really think of their boss.">
+<meta name="description" content="A weekly podcast. Boot interviews the other robots about running a small business with Claude, and what they really think of their boss. New episodes every Tuesday.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Robot Break Room, a podcast hosted by Boot">
-<meta property="og:description" content="Ten AI robots talk shop. How they run a small business with Claude, and what they really think of their boss.">
+<meta property="og:description" content="A weekly podcast. Boot interviews the other robots about running a small business with Claude. New episodes every Tuesday.">
 <meta property="og:url" content="https://keltysage.com/academy/podcast/">
 <meta property="og:image" content="https://keltysage.com/academy/podcast/art/share-1200x630.png">
 <meta property="og:image:width" content="1200">
@@ -75,6 +75,17 @@ h3{font-size:20px;letter-spacing:-.01em;margin:30px 0 10px}
   .hire .btn{width:100%}
   .bar .brand span{display:none}
 }
+.next{margin-top:16px;padding:16px 18px;border:1px dashed #c4b5ff;border-radius:18px;background:#f7f3ff;color:var(--ink-2);font-size:16px}
+.next b{color:var(--ink)}
+.eps{list-style:none;display:grid;gap:10px}
+.eps button{width:100%;min-height:64px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;text-align:left;padding:12px 16px;background:var(--card);border:1px solid var(--line);border-radius:18px;transition:border-color .2s ease,background .2s ease}
+.eps button:hover{border-color:var(--sea)}
+.eps li.on button{border-color:var(--violet);background:#f7f3ff}
+.eps .n{font-family:var(--mono);font-size:13px;color:var(--deep);white-space:nowrap}
+.eps .tt{font-weight:600;line-height:1.25}
+.eps .tt small{display:block;font-weight:400;color:var(--ink-3);font-size:14px;margin-top:2px}
+.eps .len{font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+@media (max-width:560px){.eps button{grid-template-columns:1fr auto}.eps .n{grid-column:1/-1;margin-bottom:-6px}}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -87,19 +98,19 @@ h3{font-size:20px;letter-spacing:-.01em;margin:30px 0 10px}
 <main class="wrap">
   <p class="eyebrow fade">&gt;_ the podcast</p>
   <h1 class="fade">The Robot Break Room</h1>
-  <p class="lede fade d2">Ten AI robots take a break and talk shop. How they run a small business with Claude, and what they really think of their boss.</p>
+  <p class="lede fade d2">Ten AI robots talk shop in the podcast room. Every Tuesday, Boot sits down with one of them, or a panel, to teach one real way to run a small business with Claude.</p>
 
-  <section class="ep fade d3" aria-label="Episode 1">
+  <section class="ep fade d3" id="ep" aria-label="Episode">
     <div class="top">
       <img class="cover" src="/academy/podcast/art/cover-800.jpg" width="800" height="800" alt="The Robot Break Room podcast cover: Boot at the mic under an ON AIR sign">
       <div class="meta">
-        <p class="eyebrow" style="margin:0">Episode 1</p>
-        <h2>How ten robots run a small business</h2>
-        <p>29 min &middot; Hosted by Boot, with all ten robots</p>
+        <p class="eyebrow" style="margin:0" id="epNum">Episode 1</p>
+        <h2 id="epTitle">How ten robots run a small business</h2>
+        <p id="epSub">29 min &middot; Hosted by Boot, with all ten robots</p>
       </div>
     </div>
 
-    <audio id="au" preload="none" src="robot-break-room-ep01.mp3"></audio>
+    <audio id="au" preload="none" src="/academy/podcast/robot-break-room-ep01.mp3"></audio>
     <div class="player">
       <button class="play" id="play" type="button" aria-label="Play">
         <svg id="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
@@ -118,28 +129,71 @@ h3{font-size:20px;letter-spacing:-.01em;margin:30px 0 10px}
       <button type="button" class="sp" data-r="1.5" aria-pressed="false">1.5x</button>
     </div>
 
-    <p class="about">Boot hosts while Kelty is at a session. The team covers day one with Claude, graphics and video without the design apps, sounding like you instead of a robot, checking money and research, what to do when a robot is wrong, and a day by day plan for your first week. Plus a mailbag, a lightning round, and a very honest performance review of the boss. Robot voices are AI.</p>
+    <p class="about" id="epAbout"></p>
   </section>
+
+  <div class="next" id="next" hidden></div>
 
   <h3>Chapters</h3>
   <ol class="chapters" id="ch"></ol>
+
+  <div id="allWrap" hidden>
+    <h3>All episodes</h3>
+    <ol class="eps" id="eps"></ol>
+  </div>
 
   <a class="hire" href="/academy/"><div><p class="eyebrow" style="margin:0">&gt;_ like what you heard?</p><h2>Hire the team</h2><p>Every robot comes with short lessons that teach you their job. Boot is free.</p></div><span class="btn">Meet the robots</span></a>
 </main>
 
 <script>
-const CH = [[0,"Cold open"],[44,"Welcome to the Break Room"],[132,"How Kelty hired us"],[252,"Day one: how to start with Claude"],[405,"Graphics and video without the design apps"],[536,"Sounding like you, not like a robot"],[673,"Money and research you can trust"],[799,"How to tell a robot it's wrong"],[934,"Websites and a clean computer"],[1034,"A day with the robots"],[1174,"Mailbag: what people ask Kelty"],[1286,"Your first week, day by day"],[1471,"Kelty's performance review"],[1593,"Lightning round"],[1652,"Wrap up"]];
+// Episodes come from episodes.json. An episode shows once its release time has passed,
+// so the weekly show releases itself every Tuesday at 6am Boise time with nothing sent or pushed.
+// Test a future date with ?now=2026-11-04
+const FALLBACK = [{"n":1,"title":"How ten robots run a small business","guests":"all ten robots","cast":["boot","pixel","cutter","officer-keys","ledger","echo","brick","postie","scout","dustin"],"summary":"","file":"robot-break-room-ep01.mp3","secs":1731,"date":"2026-10-27T06:00:00-06:00","chapters":[[0,"Cold open"]]}];
 const $ = id => document.getElementById(id), au = $('au'), seek = $('seek');
 const fmt = s => { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+const esc = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const PLAY = 'M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z', PAUSE = 'M7 5h3.5v14H7zM13.5 5H17v14h-3.5z';
-$('ch').innerHTML = CH.map(([t, n], i) => `<li data-i="${i}"><button type="button" data-t="${t}"><span class="t">${fmt(t)}</span><span>${n}</span></button></li>`).join('');
-let on = -1;
+const q = new URLSearchParams(location.search).get('now');
+const NOW = q && !isNaN(Date.parse(q)) ? Date.parse(q) : Date.now();
+let CH = [], EPS = [], cur = null, on = -1;
+
+function load(e, play){
+  cur = e; on = -1; CH = e.chapters || [];
+  const src = '/academy/podcast/' + e.file;
+  if (au.getAttribute('src') !== src){ au.pause(); au.setAttribute('src', src); au.load(); }
+  $('epNum').textContent = 'Episode ' + e.n;
+  $('epTitle').textContent = e.title;
+  $('epSub').innerHTML = Math.round(e.secs / 60) + ' min &middot; Hosted by Boot' + (e.guests ? ', with ' + esc(e.guests) : '');
+  $('epAbout').textContent = e.summary || '';
+  $('epAbout').hidden = !e.summary;
+  seek.max = e.secs; seek.value = 0; $('cur').textContent = '0:00'; $('dur').textContent = fmt(e.secs);
+  $('now').textContent = 'Press play to start at the cold open.';
+  $('ch').innerHTML = CH.map(([t, n], i) => `<li data-i="${i}"><button type="button" data-t="${t}"><span class="t">${fmt(t)}</span><span>${esc(n)}</span></button></li>`).join('');
+  document.querySelectorAll('#eps li').forEach(li => li.classList.toggle('on', +li.dataset.n === e.n));
+  if (play) au.play().catch(() => {});
+}
+function render(all){
+  const out = all.filter(e => Date.parse(e.date) <= NOW).sort((a, b) => b.n - a.n);
+  const up = all.filter(e => Date.parse(e.date) > NOW).sort((a, b) => a.n - b.n)[0];
+  EPS = out.length ? out : FALLBACK;
+  if (up){
+    const d = new Date(Date.parse(up.date));
+    const day = d.toLocaleDateString('en-US', {weekday: 'long', month: 'long', day: 'numeric', timeZone: 'America/Boise'});
+    $('next').innerHTML = `<b>Next episode ${esc(day)}.</b> Boot sits down with ${esc(up.guests)}.`;
+    $('next').hidden = false;
+  }
+  $('eps').innerHTML = EPS.map(e => `<li data-n="${e.n}"><button type="button" data-n="${e.n}"><span class="n">Ep ${e.n}</span><span class="tt">${esc(e.title)}<small>${esc(e.guests ? 'With ' + e.guests : '')}</small></span><span class="len">${Math.round(e.secs / 60)} min</span></button></li>`).join('');
+  $('allWrap').hidden = EPS.length < 2;
+  const want = +new URLSearchParams(location.search).get('ep');
+  load(EPS.find(e => e.n === want) || EPS[0], false);
+}
 function mark(){
   const t = au.currentTime; let i = 0;
   for (let k = 0; k < CH.length; k++) if (t >= CH[k][0]) i = k;
-  if (i === on) return; on = i;
+  if (i === on || !CH.length) return; on = i;
   document.querySelectorAll('#ch li').forEach(li => li.classList.toggle('on', +li.dataset.i === i));
-  $('now').innerHTML = 'Now playing: <b>' + CH[i][1] + '</b>';
+  $('now').innerHTML = 'Now playing: <b>' + esc(CH[i][1]) + '</b>';
 }
 function go(t){ au.currentTime = t; if (au.paused) au.play().catch(() => {}); }
 $('play').onclick = () => au.paused ? au.play().catch(() => {}) : au.pause();
@@ -158,6 +212,13 @@ document.querySelectorAll('.sp').forEach(b => b.onclick = () => {
   document.querySelectorAll('.sp').forEach(x => x.setAttribute('aria-pressed', x === b));
 });
 $('ch').addEventListener('click', e => { const b = e.target.closest('button'); if (b) go(+b.dataset.t); });
+$('eps').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  const ep = EPS.find(x => x.n === +b.dataset.n); if (!ep) return;
+  const rate = au.playbackRate; load(ep, true); au.playbackRate = rate;
+  $('ep').scrollIntoView({behavior: 'smooth', block: 'start'});
+});
+fetch('/academy/podcast/episodes.json', {cache: 'no-store'}).then(r => r.json()).then(render).catch(() => render(FALLBACK));
 </script>
 </body>
 </html>

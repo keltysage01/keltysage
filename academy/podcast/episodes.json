@@ -1,0 +1,187 @@
+[
+ {
+  "n": 1,
+  "title": "How ten robots run a small business",
+  "guests": "all ten robots",
+  "summary": "Boot hosts while Kelty is at a session. The team covers day one with Claude, graphics and video without the design apps, sounding like you instead of a robot, checking money and research, what to do when a robot is wrong, and a day by day plan for your first week. Plus a mailbag, a lightning round, and a very honest performance review of the boss. Robot voices are AI.",
+  "file": "robot-break-room-ep01.mp3",
+  "secs": 1731,
+  "chapters": [
+   [
+    0,
+    "Cold open"
+   ],
+   [
+    44,
+    "Welcome to the Break Room"
+   ],
+   [
+    132,
+    "How Kelty hired us"
+   ],
+   [
+    252,
+    "Day one: how to start with Claude"
+   ],
+   [
+    405,
+    "Graphics and video without the design apps"
+   ],
+   [
+    536,
+    "Sounding like you, not like a robot"
+   ],
+   [
+    673,
+    "Money and research you can trust"
+   ],
+   [
+    799,
+    "How to tell a robot it's wrong"
+   ],
+   [
+    934,
+    "Websites and a clean computer"
+   ],
+   [
+    1034,
+    "A day with the robots"
+   ],
+   [
+    1174,
+    "Mailbag: what people ask Kelty"
+   ],
+   [
+    1286,
+    "Your first week, day by day"
+   ],
+   [
+    1471,
+    "Kelty's performance review"
+   ],
+   [
+    1593,
+    "Lightning round"
+   ],
+   [
+    1652,
+    "Wrap up"
+   ]
+  ],
+  "date": "2026-10-27T06:00:00-06:00",
+  "cast": [
+   "boot",
+   "pixel",
+   "cutter",
+   "officer-keys",
+   "ledger",
+   "echo",
+   "brick",
+   "postie",
+   "scout",
+   "dustin"
+  ]
+ },
+ {
+  "n": 2,
+  "title": "Pixel, Graphics Without the Design App",
+  "guests": "Pixel",
+  "summary": "Boot sits down with Pixel in the podcast room. How to make a whole week of posts with one brand file and plain words, no design app, and why your phone is the only judge that matters.",
+  "file": "robot-break-room-ep02.mp3",
+  "secs": 853,
+  "chapters": [
+   [
+    0,
+    "Cold open"
+   ],
+   [
+    43,
+    "Meet Pixel"
+   ],
+   [
+    139,
+    "The brand file"
+   ],
+   [
+    296,
+    "Describe it, then check it"
+   ],
+   [
+    485,
+    "The template trick"
+   ],
+   [
+    583,
+    "What goes wrong"
+   ],
+   [
+    662,
+    "Try it tonight"
+   ],
+   [
+    726,
+    "Lightning round"
+   ],
+   [
+    786,
+    "Wrap up"
+   ]
+  ],
+  "date": "2026-11-03T06:00:00-07:00",
+  "cast": [
+   "boot",
+   "pixel"
+  ]
+ },
+ {
+  "n": 3,
+  "title": "Penny, Your Numbers in Ten Minutes a Week",
+  "guests": "Penny",
+  "summary": "Penny brings an agenda to the podcast room. How to know where your money went every week without being scared of your bank account, why a robot should never do the math in its head, and the one number to check by hand.",
+  "file": "robot-break-room-ep03.mp3",
+  "secs": 949,
+  "chapters": [
+   [
+    0,
+    "Cold open"
+   ],
+   [
+    53,
+    "Meet Penny"
+   ],
+   [
+    136,
+    "The weekly money routine"
+   ],
+   [
+    402,
+    "Who still owes you"
+   ],
+   [
+    502,
+    "Set it aside first"
+   ],
+   [
+    638,
+    "What goes wrong"
+   ],
+   [
+    725,
+    "Try it tonight"
+   ],
+   [
+    808,
+    "Lightning round"
+   ],
+   [
+    873,
+    "Wrap up"
+   ]
+  ],
+  "date": "2026-11-10T06:00:00-07:00",
+  "cast": [
+   "boot",
+   "ledger"
+  ]
+ }
+]
