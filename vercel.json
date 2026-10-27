@@ -36,5 +36,11 @@
       "destination": "/academy/robots",
       "permanent": true
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/podcast-weekly",
+      "schedule": "15 13 * * 2"
+    }
   ]
 }
