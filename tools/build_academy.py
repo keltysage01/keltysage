@@ -134,6 +134,24 @@ def add_hq_card(page):
     return page.replace("</style>", css + "\n</style>", 1)
 
 
+def add_podcast(page):
+    """Robot Break Room podcast: a Podcast pill in the top bar and a card under the HQ card."""
+    home = '<a class="home" href="/">&larr; Home</a>'
+    hq = '<span class="btn">Walk in</span></a>'
+    assert home in page and hq in page, "top bar or HQ card changed, update add_podcast"
+    page = page.replace(home, '<a class="home pod" href="/academy/podcast/">Podcast</a>' + home, 1)
+    card = ('<a class="podcard" href="/academy/podcast/"><div><p class="eyebrow">&gt;_ the podcast</p>'
+            '<h2>The Robot Break Room</h2><p>All ten robots talk shop for half an hour, boss gossip included.</p></div>'
+            '<span class="btn">Listen free</span></a>')
+    page = page.replace(hq, hq + "\n    " + card, 1)
+    css = (".bar .home.pod{margin-right:8px}.bar .home.pod+.home{margin-left:0}"
+           ".podcard{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;"
+           "margin:14px 0 4px;padding:22px;background:#fff;border:2px solid var(--line);border-radius:22px;"
+           "color:var(--ink);text-decoration:none}.podcard h2{margin:4px 0 6px}.podcard p{color:var(--ink-2)}"
+           "@media (max-width:560px){.podcard .btn{width:100%}.bar .home{padding:7px 11px}.bar .brand{font-size:0}.bar .brand img{margin:0}}")
+    return page.replace("</style>", css + "\n</style>", 1)
+
+
 def add_team_card(page):
     """Pick a robot page: a hire-the-whole-team card above the grid, gone once you own them all."""
     lede = "Start with Boot, it's free.</p></div>"
@@ -155,10 +173,11 @@ def add_team_card(page):
 
 def main():
     # academy/robots is the comedy course, published from ~/keltysage-course/comedy-pilot.
-    # academy/hq is Robot HQ, the walk-in 3D office, published from ~/keltysage-hq. Keep both.
+    # academy/hq is Robot HQ, the walk-in 3D office, published from ~/keltysage-hq.
+    # academy/podcast is the Robot Break Room podcast page (hand-made, audio in the folder). Keep all three.
     if OUT.exists():
         for p in OUT.iterdir():
-            if p.name not in ("robots", "hq"):
+            if p.name not in ("robots", "hq", "podcast"):
                 shutil.rmtree(p) if p.is_dir() else p.unlink()
     shutil.copytree(SRC, OUT, ignore=shutil.ignore_patterns("media"), dirs_exist_ok=True)
     (OUT / "media").mkdir()
@@ -201,6 +220,7 @@ def main():
     page = page.replace("</body>", (ROOT / "tools/academy_pay.js").read_text().join(["<script>\n", "</script>\n</body>"]), 1)
     page = add_team_card(page)
     page = add_hq_card(page)
+    page = add_podcast(page)
     page = add_motion(page)
     (OUT / "index.html").write_text(tag(page))
     print(f"academy: {kept} free lessons with video, {locked} locked lessons stripped")

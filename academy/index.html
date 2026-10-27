@@ -132,13 +132,14 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px soli
 @keyframes ksFill{from{transform:scaleX(0)}}
 @media (prefers-reduced-motion:reduce){.view h1 em{background-size:100% 100%}}
 .hqcard{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin:14px 0 4px;padding:22px;background:linear-gradient(135deg,#efe6ff,#ffe6f2);border:2px solid #c4b5ff;border-radius:22px;color:var(--ink);text-decoration:none}.hqcard h2{margin:4px 0 6px}.hqcard p{color:var(--ink-2)}.hqcard .btn{background:linear-gradient(135deg,#7c5cff,#ff6fb5);color:#fff;border:0}@media (max-width:560px){.hqcard .btn{width:100%}}
+.bar .home.pod{margin-right:8px}.bar .home.pod+.home{margin-left:0}.podcard{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin:14px 0 4px;padding:22px;background:#fff;border:2px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none}.podcard h2{margin:4px 0 6px}.podcard p{color:var(--ink-2)}@media (max-width:560px){.podcard .btn{width:100%}.bar .home{padding:7px 11px}.bar .brand{font-size:0}.bar .brand img{margin:0}}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <header class="bar"><div class="wrap">
   <a class="brand" href="#/"><img src="logo.png" alt="">Robot Academy</a>
-  <a class="home" href="/">&larr; Home</a><div class="xp" title="Points you have earned"><i>XP</i><span id="xp">0</span><span class="lbl">&nbsp;points</span></div>
+  <a class="home pod" href="/academy/podcast/">Podcast</a><a class="home" href="/">&larr; Home</a><div class="xp" title="Points you have earned"><i>XP</i><span id="xp">0</span><span class="lbl">&nbsp;points</span></div>
 </div></header>
 <main id="app" class="wrap"></main>
 
@@ -175,6 +176,7 @@ function team(){
     <p class="lede">Every robot teaches one thing I do from my window. Watch the video, do each step, check it off. Start with Boot, it's free.</p></div>
     ${(() => { const paid = C.robots.filter(r => !r.free); if (!C.bundle_price || paid.every(owns)) return ''; const each = parseFloat(String(C.price).replace(/[^0-9.]/g, '')), was = (each * paid.length).toFixed(2); return `<a class="allteam" href="/api/checkout?item=all"><div><p class="eyebrow">&gt;_ best deal</p><h2>Hire the whole team</h2><p>All ${paid.length} robots, every lesson, buy once and keep forever. <s>$${was}</s> <b>${esc(C.bundle_price)}</b></p></div><span class="btn">Hire all ${paid.length}: ${esc(C.bundle_price)}</span></a>`; })()}
     <a class="hqcard" href="/academy/hq"><div><p class="eyebrow">&gt;_ new</p><h2>Visit Robot HQ</h2><p>Walk around the robots' 3D headquarters. Say hi to all ten and watch them work.</p></div><span class="btn">Walk in</span></a>
+    <a class="podcard" href="/academy/podcast/"><div><p class="eyebrow">&gt;_ the podcast</p><h2>The Robot Break Room</h2><p>All ten robots talk shop for half an hour, boss gossip included.</p></div><span class="btn">Listen free</span></a>
     <div class="team">${C.robots.map(r => {
       const d = robotDone(r), n = r.lessons.length, full = d === n && n;
       return `<a class="rb" href="#/${r.id}" style="--c:${r.accent}">

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Robot Break Room | Robot Academy</title>
+<meta name="description" content="Ten AI robots talk shop for half an hour. How they run a small business with Claude, and what they really think of their boss.">
+<link rel="icon" href="/academy/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12181c;--ink-2:#3d4a50;--ink-3:#7b8a90;--bg:#f4f7f7;--card:#fff;--line:#e1e8e8;--sea:#9ed9c7;--sea-soft:#e3f4ef;--deep:#2f8f78;--violet:#7c5cff;--pink:#ff6fb5;--sans:'Geist',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;color-scheme:light}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;min-height:100vh}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.bar{border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,transparent)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none;white-space:nowrap}
+.brand img{width:30px;height:30px;border-radius:8px}
+.pill{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:999px;background:#fff;white-space:nowrap}
+main{padding:26px 0 60px}
+.eyebrow{font-family:var(--mono);font-size:13px;color:var(--deep);margin-bottom:10px}
+h1{font-size:clamp(34px,7vw,52px);line-height:1.04;letter-spacing:-.03em;font-weight:800}
+.lede{font-size:19px;color:var(--ink-2);margin-top:12px;max-width:46ch}
+.ep{margin-top:26px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:0 14px 40px rgba(18,24,28,.06)}
+.top{display:flex;gap:18px;align-items:center}
+.cover{flex:none;width:132px;aspect-ratio:1;border-radius:18px;background:linear-gradient(140deg,#efe6ff,#ffe6f2 55%,#e3f4ef);display:grid;grid-template-columns:repeat(4,1fr);align-content:center;gap:2px;padding:12px;position:relative;overflow:hidden}
+.cover img{width:100%;height:auto;display:block}
+.cover img:nth-child(n+9){grid-column:span 2;width:50%;justify-self:center}
+.meta h2{font-size:24px;line-height:1.15;letter-spacing:-.02em}
+.meta p{color:var(--ink-3);font-size:15px;margin-top:4px}
+.player{margin-top:20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center}
+.play{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--pink));color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px rgba(124,92,255,.3);transition:transform .2s ease}
+.play:active{transform:scale(.97)}
+.play svg{width:26px;height:26px}
+.scrub{display:flex;flex-direction:column;gap:6px}
+input[type=range]{width:100%;height:44px;accent-color:var(--violet);cursor:pointer;background:transparent}
+.times{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-top:-8px}
+.now{margin-top:10px;font-size:15px;color:var(--ink-2);min-height:22px}
+.now b{color:var(--ink)}
+.tools{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.tools button{min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:14px;font-weight:600}
+.tools button[aria-pressed=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.about{margin-top:22px;color:var(--ink-2)}
+h3{font-size:20px;letter-spacing:-.01em;margin:30px 0 10px}
+.chapters{list-style:none;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.chapters li+li{border-top:1px solid var(--line)}
+.chapters button{width:100%;min-height:52px;display:grid;grid-template-columns:62px 1fr;gap:10px;align-items:center;text-align:left;padding:10px 16px;transition:background .2s ease}
+.chapters button:hover{background:var(--sea-soft)}
+.chapters .t{font-family:var(--mono);font-size:13px;color:var(--deep)}
+.chapters li.on button{background:#f1ecff}
+.chapters li.on .t{color:var(--violet)}
+.hire{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:30px;padding:22px;background:var(--sea-soft);border:2px solid var(--sea);border-radius:22px;text-decoration:none}
+.hire h2{font-size:24px;margin:2px 0 6px;letter-spacing:-.02em}
+.hire p{color:var(--ink-2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;background:var(--ink);color:#fff;font-weight:700;border-radius:14px;padding:12px 22px;font-size:17px}
+.fade{opacity:0;transform:translateY(8px);animation:in .6s ease forwards}
+.fade.d2{animation-delay:.08s}.fade.d3{animation-delay:.16s}
+@keyframes in{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.fade{animation:none;opacity:1;transform:none}}
+@media (max-width:560px){
+  .top{flex-direction:column;align-items:flex-start}
+  .cover{width:100%;max-width:none;aspect-ratio:2.4;grid-template-columns:repeat(10,1fr);padding:14px 12px}
+  .cover img:nth-child(n+9){grid-column:auto;width:100%}
+  .hire .btn{width:100%}
+  .bar .brand span{display:none}
+}
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="brand" href="/academy/"><img src="/academy/logo.png" alt=""><span>Robot Academy</span></a>
+  <a class="pill" href="/academy/">&larr; Back to Robot Academy</a>
+</div></header>
+
+<main class="wrap">
+  <p class="eyebrow fade">&gt;_ the podcast</p>
+  <h1 class="fade">The Robot Break Room</h1>
+  <p class="lede fade d2">Ten AI robots take a break and talk shop. How they run a small business with Claude, and what they really think of their boss.</p>
+
+  <section class="ep fade d3" aria-label="Episode 1">
+    <div class="top">
+      <div class="cover" aria-hidden="true">
+        <img src="/academy/art/boot.svg" alt=""><img src="/academy/art/pixel.svg" alt=""><img src="/academy/art/cutter.svg" alt=""><img src="/academy/art/officer-keys.svg" alt="">
+        <img src="/academy/art/ledger.svg" alt=""><img src="/academy/art/echo.svg" alt=""><img src="/academy/art/brick.svg" alt=""><img src="/academy/art/postie.svg" alt="">
+        <img src="/academy/art/scout.svg" alt=""><img src="/academy/art/dustin.svg" alt="">
+      </div>
+      <div class="meta">
+        <p class="eyebrow" style="margin:0">Episode 1</p>
+        <h2>How ten robots run a small business</h2>
+        <p>29 min &middot; Hosted by Boot, with all ten robots</p>
+      </div>
+    </div>
+
+    <audio id="au" preload="none" src="robot-break-room-ep01.mp3"></audio>
+    <div class="player">
+      <button class="play" id="play" type="button" aria-label="Play">
+        <svg id="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
+      </button>
+      <div class="scrub">
+        <input type="range" id="seek" min="0" max="1731" step="1" value="0" aria-label="Seek">
+        <div class="times"><span id="cur">0:00</span><span id="dur">28:51</span></div>
+      </div>
+    </div>
+    <p class="now" id="now">Press play to start at the cold open.</p>
+    <div class="tools">
+      <button type="button" id="back" aria-label="Back 15 seconds">Back 15s</button>
+      <button type="button" id="fwd" aria-label="Forward 30 seconds">Forward 30s</button>
+      <button type="button" class="sp" data-r="1" aria-pressed="true">1x</button>
+      <button type="button" class="sp" data-r="1.25" aria-pressed="false">1.25x</button>
+      <button type="button" class="sp" data-r="1.5" aria-pressed="false">1.5x</button>
+    </div>
+
+    <p class="about">Boot hosts while Kelty is at a session. The team covers day one with Claude, graphics and video without the design apps, sounding like you instead of a robot, checking money and research, what to do when a robot is wrong, and a day by day plan for your first week. Plus a mailbag, a lightning round, and a very honest performance review of the boss. Robot voices are AI.</p>
+  </section>
+
+  <h3>Chapters</h3>
+  <ol class="chapters" id="ch"></ol>
+
+  <a class="hire" href="/academy/"><div><p class="eyebrow" style="margin:0">&gt;_ like what you heard?</p><h2>Hire the team</h2><p>Every robot comes with short lessons that teach you their job. Boot is free.</p></div><span class="btn">Meet the robots</span></a>
+</main>
+
+<script>
+const CH = [[0,"Cold open"],[44,"Welcome to the Break Room"],[132,"How Kelty hired us"],[252,"Day one: how to start with Claude"],[405,"Graphics and video without the design apps"],[536,"Sounding like you, not like a robot"],[673,"Money and research you can trust"],[799,"How to tell a robot it's wrong"],[934,"Websites and a clean computer"],[1034,"A day with the robots"],[1174,"Mailbag: what people ask Kelty"],[1286,"Your first week, day by day"],[1471,"Kelty's performance review"],[1593,"Lightning round"],[1652,"Wrap up"]];
+const $ = id => document.getElementById(id), au = $('au'), seek = $('seek');
+const fmt = s => { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+const PLAY = 'M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z', PAUSE = 'M7 5h3.5v14H7zM13.5 5H17v14h-3.5z';
+$('ch').innerHTML = CH.map(([t, n], i) => `<li data-i="${i}"><button type="button" data-t="${t}"><span class="t">${fmt(t)}</span><span>${n}</span></button></li>`).join('');
+let on = -1;
+function mark(){
+  const t = au.currentTime; let i = 0;
+  for (let k = 0; k < CH.length; k++) if (t >= CH[k][0]) i = k;
+  if (i === on) return; on = i;
+  document.querySelectorAll('#ch li').forEach(li => li.classList.toggle('on', +li.dataset.i === i));
+  $('now').innerHTML = 'Now playing: <b>' + CH[i][1] + '</b>';
+}
+function go(t){ au.currentTime = t; if (au.paused) au.play().catch(() => {}); }
+$('play').onclick = () => au.paused ? au.play().catch(() => {}) : au.pause();
+au.addEventListener('play', () => { $('ico').innerHTML = '<path d="' + PAUSE + '"/>'; $('play').setAttribute('aria-label', 'Pause'); mark(); });
+au.addEventListener('pause', () => { $('ico').innerHTML = '<path d="' + PLAY + '"/>'; $('play').setAttribute('aria-label', 'Play'); });
+au.addEventListener('loadedmetadata', () => { seek.max = Math.floor(au.duration); $('dur').textContent = fmt(au.duration); });
+let drag = false;
+seek.addEventListener('input', () => { drag = true; $('cur').textContent = fmt(seek.value); });
+seek.addEventListener('change', () => { drag = false; go(+seek.value); });
+au.addEventListener('timeupdate', () => { if (!drag) seek.value = au.currentTime; $('cur').textContent = fmt(au.currentTime); mark(); });
+au.addEventListener('seeked', mark);
+$('back').onclick = () => go(Math.max(0, au.currentTime - 15));
+$('fwd').onclick = () => go(au.currentTime + 30);
+document.querySelectorAll('.sp').forEach(b => b.onclick = () => {
+  au.playbackRate = +b.dataset.r;
+  document.querySelectorAll('.sp').forEach(x => x.setAttribute('aria-pressed', x === b));
+});
+$('ch').addEventListener('click', e => { const b = e.target.closest('button'); if (b) go(+b.dataset.t); });
+</script>
+</body>
+</html>
