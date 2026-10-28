@@ -88,51 +88,51 @@
   "title": "Hot Takes, All Ten Robots",
   "guests": "all ten robots",
   "summary": "Hot takes day. Boot reads nine spicy opinions about running a small business with AI, and the whole team votes hot, cold, or lukewarm, then argues about it. Logos, posting, blogs, AI writing, spreadsheets, client texts, deleting files, the send button, and the boss.",
-  "file": "robot-break-room-ep06.mp3",
-  "secs": 872,
+  "file": "robot-break-room-ep06-v2.mp3",
+  "secs": 954,
   "chapters": [
    [
     0,
     "Cold open"
    ],
    [
-    49,
+    53,
     "Meet the panel"
    ],
    [
-    126,
+    133,
     "Round one: logos and posting"
    ],
    [
-    268,
+    291,
     "Round two: websites and writing"
    ],
    [
-    381,
+    422,
     "The spicy mailbag"
    ],
    [
-    455,
+    504,
     "Round three: money and clients"
    ],
    [
-    592,
+    650,
     "Round four: the scary buttons"
    ],
    [
-    700,
+    781,
     "Lightning round"
    ],
    [
-    741,
+    822,
     "The final take"
    ],
    [
-    818,
+    908,
     "Wrap up"
    ]
   ],
-  "date": "2026-11-03T06:00:00-07:00",
+  "date": "2026-10-27T20:00:00-06:00",
   "cast": [
    "boot",
    "pixel",
@@ -145,6 +145,6 @@
    "scout",
    "dustin"
   ],
-  "bytes": 6976092
+  "bytes": 7628736
  }
 ]
