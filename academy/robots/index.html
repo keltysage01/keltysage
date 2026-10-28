@@ -160,7 +160,8 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px soli
 <body>
 <header class="bar"><div class="wrap">
   <a class="brand" href="/academy/"><img src="logo.png" alt="">Robot Academy</a>
-  <a class="draft" href="/academy/" style="text-decoration:none">ALL ROBOTS</a>
+  <a class="draft" id="backLessons" href="/academy/" style="text-decoration:none">&larr; BACK TO LESSONS</a>
+  <script>(function(){var m={reel:'cutter',bouncer:'officer-keys',penny:'ledger',dot:'brick',tempo:'postie'},a=document.getElementById('backLessons');function u(){var s=(location.hash.slice(1).match(/^([a-z-]+?)-\d+$/)||[])[1];a.href='/academy/'+(s?'#/'+(m[s]||s):'');}u();addEventListener('hashchange',u);})();</script>
 </div></header>
 <main id="app" class="wrap"></main>
 <footer><div class="wrap">Made by the robots. Checked by Kelty. Mostly.</div></footer>
