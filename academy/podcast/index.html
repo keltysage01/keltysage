@@ -203,7 +203,7 @@ const YT_CHANNEL_URL = 'https://www.youtube.com/channel/UCZS2FMno-bg_AZklDdGFMFA
 // Episodes come from episodes.json. An episode shows once its release time has passed,
 // so the weekly show releases itself every Tuesday at 6am Boise time with nothing sent or pushed.
 // Test a future date with ?now=2026-11-04
-const FALLBACK = [{"n":1,"title":"How ten robots run a small business","guests":"all ten robots","cast":["boot","pixel","cutter","officer-keys","ledger","echo","brick","postie","scout","dustin"],"summary":"","file":"robot-break-room-ep01.mp3","secs":1731,"date":"2026-10-27T06:00:00-06:00","chapters":[[0,"Cold open"]]}];
+const FALLBACK = [{"n":1,"title":"How ten robots run a small business","guests":"all ten robots","cast":["boot","pixel","cutter","officer-keys","ledger","echo","brick","postie","scout","dustin"],"summary":"","file":"robot-break-room-ep01-v2.mp3","secs":1796,"date":"2026-10-27T06:00:00-06:00","chapters":[[0,"Cold open"]]}];
 const $ = id => document.getElementById(id), au = $('au'), seek = $('seek');
 const fmt = s => { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
 const esc = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
