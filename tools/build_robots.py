@@ -255,12 +255,12 @@ def grid(cast, lessons):
     cards = []
     for r in cast:
         n = len(lessons.get(r["id"], []))
-        tag = "free" if r["id"] in FREE else PRICE
+        chip = "free" if r["id"] in FREE else PRICE
         cards.append(f"""  <a class="bot" href="/robots/{r['slug']}" style="--c:{r['accent']};--soft:{soft(r['accent'])}">
     <div class="top"><div class="art"><img src="/robots/art/{r['id']}.svg" alt=""></div><div><div class="job">{esc(r['job'])}</div><h2>{esc(r['name'])}</h2></div></div>
     <p class="teaches">{esc(r.get('pitch') or 'Teaches ' + r['teaches'] + '.')}</p>
     <ul class="hire">{''.join('<li>' + esc(h) + '</li>' for h in r.get('hire', [])[:3])}</ul>
-    <div class="go">Meet {esc(r['name'])} &rarr;<i>{tag}</i></div>
+    <div class="go">Meet {esc(r['name'])} &rarr;<i>{chip}</i></div>
   </a>""")
     body = f"""<section class="hero"><div class="wrap">
   <div class="eb">&gt; meet my team of robots</div>
@@ -306,7 +306,7 @@ def robot_page(r, lessons, cast):
         if cover_src.exists():
             shutil.copy(cover_src, OUT / "covers" / cover_src.name)
             cover = f'<img class="cover" src="/robots/covers/{cover_src.name}" alt="Video cover for {esc(l["title"])}">'
-        tag = "free" if free or i == 1 else "in the pack"
+        chip = "free" if free or i == 1 else "in the pack"
         if not free: cover = ""
         n = len([x for x in l["scenes"] if x["type"] == "step"])
         if free:
@@ -314,9 +314,9 @@ def robot_page(r, lessons, cast):
             steps_block = f'<details class="more"><summary>{label}</summary><ol class="steps">\n{steps_html(l, free)}\n</ol></details>'
         else:
             steps_block = f'<ol class="steps minis">\n{steps_html(l, free)}\n</ol>'
-        if l.get("format") == "long": tag = "long lesson · " + tag
+        if l.get("format") == "long": chip = "long lesson · " + chip
         blocks.append(f"""<article class="lesson">
-  <div class="lhead"><div><div class="n"><b>lesson {i}</b><span>{tag}</span></div><h2>{esc(l['title'])}</h2><p class="sum">{esc(l['summary'])}</p></div>{cover}</div>
+  <div class="lhead"><div><div class="n"><b>lesson {i}</b><span>{chip}</span></div><h2>{esc(l['title'])}</h2><p class="sum">{esc(l['summary'])}</p></div>{cover}</div>
   {steps_block}
   {'' if not (free or i == 1) else f'<a class="btn btn-line watch" href="/academy/#/{r["id"]}/{l["slug"]}">Watch this lesson free &rarr;</a>'}
 </article>""")
