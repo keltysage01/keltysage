@@ -36,6 +36,8 @@ h2{font-size:clamp(24px,3.6vw,32px);letter-spacing:-.03em;line-height:1.1}
 .btn.soft{background:var(--card);color:var(--ink);border:1px solid var(--line)}
 .btn.sea{background:var(--sea);color:var(--ink)}
 .btn:disabled{opacity:.45;cursor:default}
+.help{text-align:center;padding:26px 16px 60px;border-top:1px solid var(--line)}
+.help p{margin:0 0 12px;color:var(--ink-2)}
 /* team */
 .team{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:26px 0 60px}
 .rb{text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;text-align:left;display:flex;flex-direction:column}
@@ -143,6 +145,7 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px soli
   <a class="home pod" href="/academy/podcast/">Podcast</a><a class="home" href="/">&larr; Home</a><div class="xp" title="Points you have earned"><i>XP</i><span id="xp">0</span><span class="lbl">&nbsp;points</span></div>
 </div></header>
 <main id="app" class="wrap"></main>
+<footer class="help wrap"><p>Stuck, or something not working?</p><a class="btn soft" id="helpMail" href="mailto:keltysage01@gmail.com?subject=Robot%20Academy%20help">Email Kelty</a></footer>
 
 <script>
 /* Progress lives in this browser only. Wrapped in try/catch so private windows still work. */
@@ -380,6 +383,15 @@ fetch('course-data.json').then(x => x.json()).then(d => { C = d; save(); route()
     box.querySelector('#paidok').onclick = () => box.remove();
   }
 })();
+</script>
+<script>
+// Email Kelty: the subject says free or paid and which lesson, so she knows where to look.
+document.getElementById('helpMail').addEventListener('click', function () {
+  let paid = false; try { paid = JSON.parse(localStorage.getItem('ks_paid') || '[]').length > 0 } catch (_) {}
+  const plan = paid ? 'paid' : 'free';
+  const body = 'Hi Kelty,\n\nWhat happened:\n\n\nWhat I was trying to do:\n\n\n(Plan: ' + plan + '. Page: ' + location.href.split('?')[0] + ')';
+  this.href = 'mailto:keltysage01@gmail.com?subject=' + encodeURIComponent('Robot Academy help (' + plan + ')') + '&body=' + encodeURIComponent(body);
+});
 </script>
 <script>
 // soft motion: reading bar, and cards fade in as each screen is drawn and scrolled
