@@ -20,6 +20,7 @@ FREE = {"boot"}
 PRICE = "price coming soon"
 BUNDLE = None
 esc = html.escape
+TEAMSTRIP = '<a class="teamstrip" href="/api/checkout?item=all"><div><b>Hire the whole team</b><span>All 9 robots, every lesson, buy once and keep forever. <s>$26.91</s> $BUNDLE$</span></div><span class="btn btn-ink">Hire all 9: $BUNDLE$</span></a>'
 
 def load():
     cast = json.loads((SRC / "robots/robots.json").read_text())["robots"]
@@ -99,6 +100,7 @@ FOOT = """</main>
 """
 
 GRID_CSS = """
+.teamstrip{display:flex;align-items:center;gap:16px;margin-top:18px;padding:16px 18px;background:#e3f4ef;border:2px solid #9ed9c7;border-radius:18px;color:inherit;text-decoration:none;max-width:640px}.teamstrip b{display:block;font-size:17px}.teamstrip span:not(.btn){display:block;font-size:14px;opacity:.8;margin-top:2px}.teamstrip s{opacity:.6}.teamstrip .btn{margin-left:auto;flex:none}@media (max-width:560px){.teamstrip{flex-wrap:wrap}.teamstrip .btn{width:100%}}
 .hero{padding:48px 0 8px}
 .hero h1{font-size:56px;margin-top:10px;max-width:820px}
 .hero p{font-size:20px;color:var(--ink-2);margin-top:16px;max-width:660px}
@@ -142,6 +144,7 @@ BOT_CSS = """
 .prof dt{font-family:var(--mono);font-size:13px;color:var(--teal);padding-top:2px}
 .prof dd{color:var(--ink-2)}
 .prof .quote{display:inline-block;margin-top:18px;font-weight:600;background:var(--soft);border-radius:12px;padding:8px 14px}
+.teamstrip{display:flex;align-items:center;gap:16px;margin-top:18px;padding:16px 18px;background:#e3f4ef;border:2px solid #9ed9c7;border-radius:18px;color:inherit;text-decoration:none;max-width:640px}.teamstrip b{display:block;font-size:17px}.teamstrip span:not(.btn){display:block;font-size:14px;opacity:.8;margin-top:2px}.teamstrip s{opacity:.6}.teamstrip .btn{margin-left:auto;flex:none}@media (max-width:560px){.teamstrip{flex-wrap:wrap}.teamstrip .btn{width:100%}}
 .acts{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:22px}
 .back{display:inline-block;font-size:15px;color:var(--ink-3);text-decoration:none}
 .lesson{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:30px;margin-top:24px}
@@ -263,6 +266,7 @@ def grid(cast, lessons):
   <div class="eb">&gt; meet my team of robots</div>
   <h1>Hire a robot for every job you never wanted.</h1>
   <p>Each robot takes one job off your plate and teaches you exactly how, one short lesson at a time. Start with Boot. It's free.</p>
+  {TEAMSTRIP.replace('$BUNDLE$', esc(BUNDLE)) if BUNDLE else ''}
 </div></section>
 <section style="padding-top:24px"><div class="wrap"><div class="team">
   <div class="coach"><img src="/kelty.jpg" alt="Kelty Sage"><div><div class="eb">&gt; the human</div><h2>Kelty, head coach</h2><p>I run a dog training company and built this team to run the jobs I never wanted. They do the work. I check it.</p></div></div>
@@ -333,7 +337,8 @@ def robot_page(r, lessons, cast):
       <div class="quote">"{esc(r['catchphrase'])}"</div>
     </div>
   </div>
-  <div class="acts"><a class="btn btn-ink" href="/academy/#/{r['id']}">{'Start free in the Academy' if free else 'Watch the free lesson'} &rarr;</a><a class="back" href="/robots">&larr; the whole team</a></div>
+  <div class="acts"><a class="btn btn-ink" href="/academy/#/{r['id']}">{'Start free in the Academy' if free else 'Watch the free lesson'} &rarr;</a><a class="back" href="/robots">&larr; all robots</a></div>
+  {TEAMSTRIP.replace('$BUNDLE$', esc(BUNDLE)) if BUNDLE else ''}
 </div></section>
 <section style="padding-top:8px"><div class="wrap" style="--soft:{soft(r['accent'])}">
 {chr(10).join(blocks)}

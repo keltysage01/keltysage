@@ -54,6 +54,7 @@ html,body{overflow-x:clip}
 .prof dt{font-family:var(--mono);font-size:13px;color:var(--teal);padding-top:2px}
 .prof dd{color:var(--ink-2)}
 .prof .quote{display:inline-block;margin-top:18px;font-weight:600;background:var(--soft);border-radius:12px;padding:8px 14px}
+.teamstrip{display:flex;align-items:center;gap:16px;margin-top:18px;padding:16px 18px;background:#e3f4ef;border:2px solid #9ed9c7;border-radius:18px;color:inherit;text-decoration:none;max-width:640px}.teamstrip b{display:block;font-size:17px}.teamstrip span:not(.btn){display:block;font-size:14px;opacity:.8;margin-top:2px}.teamstrip s{opacity:.6}.teamstrip .btn{margin-left:auto;flex:none}@media (max-width:560px){.teamstrip{flex-wrap:wrap}.teamstrip .btn{width:100%}}
 .acts{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:22px}
 .back{display:inline-block;font-size:15px;color:var(--ink-3);text-decoration:none}
 .lesson{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:30px;margin-top:24px}
@@ -141,7 +142,8 @@ html,body{overflow-x:clip}
       <div class="quote">"Let me look that up."</div>
     </div>
   </div>
-  <div class="acts"><a class="btn btn-ink" href="/academy/#/scout">Watch the free lesson &rarr;</a><a class="back" href="/robots">&larr; the whole team</a></div>
+  <div class="acts"><a class="btn btn-ink" href="/academy/#/scout">Watch the free lesson &rarr;</a><a class="back" href="/robots">&larr; all robots</a></div>
+  <a class="teamstrip" href="/api/checkout?item=all"><div><b>Hire the whole team</b><span>All 9 robots, every lesson, buy once and keep forever. <s>$26.91</s> $14.99</span></div><span class="btn btn-ink">Hire all 9: $14.99</span></a>
 </div></section>
 <section style="padding-top:8px"><div class="wrap" style="--soft:#e8e1fe">
 <article class="lesson">

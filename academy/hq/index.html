@@ -113,6 +113,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15p
 .opt:hover{background:rgba(255,255,255,.85);transform:translateY(-1px)}
 .opt:active{transform:scale(.97)}
 .opt.go{color:#fff;background:linear-gradient(135deg,#7c5cff,#ff6fb5);border-color:rgba(255,255,255,.5);box-shadow:0 8px 22px rgba(124,92,255,.35)}
+.teamlink{display:block;margin-top:12px;font:600 13.5px var(--sans);color:#6a4fe0;text-decoration:underline;text-underline-offset:3px}
+.opt.team{grid-column:1/-1}
 .opt.go kbd{background:rgba(255,255,255,.3)}
 
 .memo{position:absolute;width:260px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;transition:opacity .25s}
@@ -306,6 +308,7 @@ html.phone .memo{left:10px!important;right:10px;top:auto!important;bottom:calc(9
           <div class="lineup" id="lineup" aria-hidden="true"></div>
           <p>Ten robots run the business while the boss is at a session. Walk in, say hi, and try not to touch the send vault.</p>
           <button class="gbtn dark go" id="enter" type="button">Press start</button>
+          <a class="teamlink" href="https://keltysage.com/api/checkout?item=all" target="_blank" rel="noopener">Hire the whole team: all 9 robots for $14.99</a>
         </div>
       </div>
     </div>
@@ -884,7 +887,8 @@ function progress(id, n){
   q.n = n === undefined ? q.n + 1 : n; renderQuests();
   if (!was && q.n >= q.goal){
     toast('Quest complete: ' + q.label);
-    if (Q_LIST.every(x => x.n >= x.goal)) setTimeout(() => toast('All quests done. You are officially on the team.'), 2600);
+    if (id === 'meet') setTimeout(() => toast('You met the whole team. Hire all 9 from any robot.'), 2600);
+    if (Q_LIST.every(x => x.n >= x.goal)) setTimeout(() => toast('All quests done. You are officially on the team.'), 5200);
   }
 }
 let toastTimer;
@@ -1041,10 +1045,11 @@ function options(i){
     ['What do you do here?', () => typeSay(r.about)]];
   if (i !== driver) opts.push(['Take the console', () => { setDriver(i); progress('console'); typeSay('On it. The boss will never know.'); options(i); }]);
   if (r.slug) opts.push(['Hire ' + r.name, 'https://keltysage.com/robots/' + r.slug]);
+  opts.push(['Hire the whole team: $14.99', 'https://keltysage.com/api/checkout?item=all', 'team']);
   opts.push(['Bye', closeDialog]);
-  opts.forEach(([label, fn], k) => {
+  opts.forEach(([label, fn, kind], k) => {
     const o = document.createElement(typeof fn === 'string' ? 'a' : 'button');
-    if (typeof fn === 'string'){ o.href = fn; o.target = '_blank'; o.rel = 'noopener'; o.className = 'opt go'; }
+    if (typeof fn === 'string'){ o.href = fn; o.target = '_blank'; o.rel = 'noopener'; o.className = kind === 'team' ? 'opt go team' : 'opt'; }
     else { o.type = 'button'; o.className = 'opt'; o.onclick = fn; }
     o.innerHTML = `<kbd>${k + 1}</kbd>${label}`; el.appendChild(o);
   });
