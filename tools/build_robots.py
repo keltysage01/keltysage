@@ -11,6 +11,7 @@ the why and the picture, and keep the copy-paste prompts for the pack.
 import html, json, shutil
 from pathlib import Path
 from analytics import tag
+from site_menu import swap as menu_swap
 
 SRC = Path.home() / "keltysage-videos"
 SITE = Path(__file__).resolve().parent.parent
@@ -269,7 +270,7 @@ def grid(cast, lessons):
 </div></div></section>
 """
     page = head("Meet My Team of Robots, Kelty Sage", "Nine AI robots, one job each. Hire a robot for every job you never wanted.", GRID_CSS) + body + foot()
-    (OUT / "index.html").write_text(tag(page))
+    (OUT / "index.html").write_text(tag(menu_swap(page, "/robots")))
 
 def steps_html(lesson, free):
     out = []
@@ -340,7 +341,7 @@ def robot_page(r, lessons, cast):
 </div></section>
 """
     page = head(f"{r['name']}, the {r['job']}, Kelty Sage", f"{r['name']} teaches {r['teaches']}.", BOT_CSS) + body + foot(COPY_JS)
-    (OUT / f"{r['slug']}.html").write_text(tag(page))
+    (OUT / f"{r['slug']}.html").write_text(tag(menu_swap(page)))
 
 def main():
     cast, lessons = load()

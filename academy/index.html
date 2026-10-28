@@ -136,13 +136,16 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px soli
 .hqcard{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin:14px 0 4px;padding:22px;background:linear-gradient(135deg,#efe6ff,#ffe6f2);border:2px solid #c4b5ff;border-radius:22px;color:var(--ink);text-decoration:none}.hqcard h2{margin:4px 0 6px}.hqcard p{color:var(--ink-2)}.hqcard .btn{background:linear-gradient(135deg,#7c5cff,#ff6fb5);color:#fff;border:0}@media (max-width:560px){.hqcard .btn{width:100%}}
 .bar .home.pod{margin-right:8px}.bar .home.pod+.home{margin-left:0}.podcard{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin:14px 0 4px;padding:22px;background:#fff;border:2px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none}.podcard h2{margin:4px 0 6px}.podcard p{color:var(--ink-2)}@media (max-width:560px){.podcard .btn{width:100%}.bar .home{padding:7px 11px}.bar .brand{font-size:0}.bar .brand img{margin:0}}
 .hire.listen{display:flex;align-items:center;gap:14px;text-decoration:none;padding:16px 18px;margin:18px 0}.hire.listen h3{font-size:17px}.hire.listen p:not(.eyebrow){color:var(--ink-2);font-size:14px;margin-top:2px}.hire.listen .btn{margin-left:auto;flex:none}
+.bar .xp{margin-left:auto}.bar .snav{margin-left:0}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
+<link rel="stylesheet" href="/assets/menu.css?v=1">
+<script defer src="/assets/menu.js?v=1"></script>
 </head>
 <body>
 <header class="bar"><div class="wrap">
   <a class="brand" href="#/"><img src="logo.png" alt="">Robot Academy</a>
-  <a class="home pod" href="/academy/podcast/">Podcast</a><a class="home" href="/">&larr; Home</a><div class="xp" title="Points you have earned"><i>XP</i><span id="xp">0</span><span class="lbl">&nbsp;points</span></div>
+  <div class="xp" title="Points you have earned"><i>XP</i><span id="xp">0</span><span class="lbl">&nbsp;points</span></div><div class="snav"><details class="smenu"><summary aria-label="Open menu"><i></i><i></i><i></i></summary><nav class="smenu-panel" aria-label="Site menu"><a href="/"><b>Home</b><span>Start here</span></a><a href="/academy/" aria-current="page"><b>Robot Academy</b><span>Free lessons. Start with Boot.</span></a><a href="/robots"><b>Meet the robots</b><span>Ten robots, one job each</span></a><a href="/academy/hq/"><b>Robot HQ</b><span>Walk around their 3D office</span></a><a href="/academy/podcast/"><b>The podcast</b><span>The Robot Break Room, every Tuesday</span></a><a href="/playbook"><b>Playbook</b><span>The rules I run my business on</span></a><a href="/cheatsheets"><b>Free cheat sheets</b><span>One page each, print and keep</span></a><a href="/#join"><b>Pricing</b><span>$2.99 a robot, or the whole team</span></a></nav></details></div>
 </div></header>
 <main id="app" class="wrap"></main>
 <footer class="help wrap"><p>Stuck, or something not working?</p><a class="btn soft" id="helpMail" href="mailto:keltysage01@gmail.com?subject=Robot%20Academy%20help">Email Kelty</a></footer>

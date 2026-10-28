@@ -17,6 +17,7 @@ Upload state lives in ~/.keltysage-paid, outside the repo.
 import hashlib, json, re, secrets, shutil, subprocess, sys
 from pathlib import Path
 from analytics import tag
+from site_menu import menu as site_menu, HEAD as MENU_HEAD
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = Path.home() / "keltysage-course/dist"
@@ -171,6 +172,16 @@ def add_team_card(page):
     return page.replace("</style>", css + "\n</style>", 1)
 
 
+def add_menu(page):
+    """Podcast and Home pills give way to the site's three-line menu, after the points pill."""
+    pills = '<a class="home pod" href="/academy/podcast/">Podcast</a><a class="home" href="/">&larr; Home</a>'
+    assert pills in page, "academy top bar changed, update add_menu()"
+    page = page.replace(pills, "", 1)
+    page = page.replace('<span class="lbl">&nbsp;points</span></div>', '<span class="lbl">&nbsp;points</span></div>' + site_menu("/academy/", button=False), 1)
+    page = page.replace("</head>", MENU_HEAD + "</head>", 1)
+    return page.replace("</style>", ".bar .xp{margin-left:auto}.bar .snav{margin-left:0}\n</style>", 1)
+
+
 def main():
     # academy/robots is the comedy course, published from ~/keltysage-course/comedy-pilot.
     # academy/hq is Robot HQ, the walk-in 3D office, published from ~/keltysage-hq.
@@ -221,6 +232,7 @@ def main():
     page = add_team_card(page)
     page = add_hq_card(page)
     page = add_podcast(page)
+    page = add_menu(page)
     page = add_motion(page)
     (OUT / "index.html").write_text(tag(page))
     print(f"academy: {kept} free lessons with video, {locked} locked lessons stripped")
