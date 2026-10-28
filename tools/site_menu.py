@@ -23,7 +23,7 @@ LINKS = [
     ("/#join", "Pricing", "$2.99 a robot, or the whole team"),
 ]
 
-HEAD = '<link rel="stylesheet" href="/assets/menu.css?v=1">\n<script defer src="/assets/menu.js?v=1"></script>\n'
+HEAD = '<link rel="stylesheet" href="/assets/menu.css?v=2">\n<script defer src="/assets/menu.js?v=1"></script>\n'
 
 
 def panel(current=""):

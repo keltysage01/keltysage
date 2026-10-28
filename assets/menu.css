@@ -28,3 +28,11 @@
 @media (prefers-reduced-motion:reduce){.smenu-panel{animation:none}.smenu summary i{transition:none}}
 /* phones: logo + name, the full Robot Academy button, the menu. The tagline lives in the menu's place. */
 @media (max-width:600px){.nav .brand .sep,.nav .brand .tag{display:none}.snav .sbtn .lg{display:inline!important}}
+/* Phone tap targets: every tappable thing at least 44px tall and 8px+ apart. Check with ~/sk9-site/tools/tap-run.py */
+@media (max-width:600px){
+  .snav .sbtn,.nav .btn{min-height:44px}
+  .smenu summary{width:44px;height:44px}
+  .nav .brand,a.brand{min-height:44px;display:inline-flex;align-items:center}
+  a.back{display:inline-flex;align-items:center;min-height:44px}
+  .ctas{gap:12px!important}
+}
