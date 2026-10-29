@@ -33,7 +33,7 @@ def load():
         r.update(extras["robots"].get(r["id"], {}))
         r.setdefault("slug", r["name"].lower().replace(" ", "-"))
     lessons = {}
-    for f in sorted((SRC / "scripts/lessons").glob("*.json")):
+    for f in sorted((SRC / "scripts/lessons").glob("*.json")) + sorted((SRC / "scripts/read").glob("*.json")):
         d = json.loads(f.read_text())
         d["slug"] = f.stem
         lessons.setdefault(d["host"], []).append(d)

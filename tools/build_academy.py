@@ -45,6 +45,8 @@ def upload_paid(paid):
     seen = json.loads(seen_f.read_text()) if seen_f.exists() else {}
     for lessons in paid["robots"].values():
         for l in lessons:
+            if not l.get("video"):  # read-only lesson, nothing to upload
+                continue
             f = SRC / l["video"]
             sha = hashlib.sha1(f.read_bytes()).hexdigest()
             if seen.get(l["slug"], {}).get("sha") != sha:
@@ -198,7 +200,8 @@ def main():
     for r in data["robots"]:
         for l in r["lessons"]:
             if r.get("free") or l.get("free"):
-                shutil.copy(SRC / l["video"], OUT / l["video"])
+                if l.get("video"):
+                    shutil.copy(SRC / l["video"], OUT / l["video"])
                 kept += 1
             else:
                 paid["robots"].setdefault(r["id"], []).append(json.loads(json.dumps(l)))

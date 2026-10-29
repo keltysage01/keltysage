@@ -59,6 +59,9 @@ h2{font-size:clamp(24px,3.6vw,32px);letter-spacing:-.03em;line-height:1.1}
 .lessons{display:grid;gap:14px;padding-bottom:60px}
 .ls{display:grid;grid-template-columns:96px 1fr auto;gap:18px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px;text-align:left;width:100%}
 .ls img{width:96px;aspect-ratio:9/16;object-fit:cover;border-radius:12px;background:var(--bg)}
+.ls img.art{object-fit:contain;padding:10px;background:var(--sea-soft)}
+.readart{display:flex;align-items:center;justify-content:center;aspect-ratio:9/16;max-height:72vh;border-radius:22px;background:var(--sea-soft)}.readart img{width:62%}
+@media (max-width:560px){.readart{aspect-ratio:auto;height:min(34vh,280px);max-height:none}.readart img{width:auto;height:80%}}
 .ls h3{font-size:19px;letter-spacing:-.02em;line-height:1.2}
 .ls p{color:var(--ink-2);font-size:15px}
 .ls .st{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-top:4px}
@@ -235,8 +238,8 @@ function robotHome(r){
       const ok = open(r, l), done = S.lessons[l.slug];
       const mins = l.secs ? Math.max(1, Math.round(l.secs / 60)) + ' min' : '';
       return `<button class="ls" data-slug="${l.slug}" ${ok ? '' : 'data-locked="1"'}>
-        <img src="${l.cover}" alt="" loading="lazy">
-        <div><h3>${esc(l.title)}</h3><p>${esc(l.summary)}</p><p class="st">LESSON ${i + 1} · ${l.steps.length} STEPS · ${mins}${l.long ? ' · DEEP DIVE' : ''}${!r.free && l.free ? ' · FREE PREVIEW' : ''}</p></div>
+        <img src="${l.cover}" alt="" loading="lazy"${l.read ? ' class="art"' : ''}>
+        <div><h3>${esc(l.title)}</h3><p>${esc(l.summary)}</p><p class="st">LESSON ${i + 1} · ${l.steps.length} STEPS · ${l.read ? 'READ' : mins}${l.long ? ' · DEEP DIVE' : ''}${!r.free && l.free ? ' · FREE PREVIEW' : ''}</p></div>
         <span class="dot ${done ? 'done' : ok ? '' : 'lock'}">${done ? '&#10003;' : ok ? i + 1 : 'HIRE'}</span></button>`;
     }).join('')}</div>
     ${(() => { const s = ({cutter:'reel', 'officer-keys':'bouncer', ledger:'penny', brick:'dot', postie:'tempo'})[r.id] || r.id;
@@ -292,9 +295,9 @@ function lesson(r, l, stage){
   app.innerHTML = '';
   if (stage === 'watch') {
     app.append($(`<section class="stage view" style="--c:${r.accent}">${top(0)}
-      <div class="watch"><video src="${l.video}" poster="${l.cover}" controls playsinline preload="metadata"></video>
+      <div class="watch">${l.read ? `<div class="readart"><img src="art/${r.id}.svg" alt="${esc(r.name)} the robot"></div>` : `<video src="${l.video}" poster="${l.cover}" controls playsinline preload="metadata"></video>`}
       <div><p class="eyebrow">${esc(r.name.toUpperCase())} · LESSON</p><h1>${esc(l.title)}</h1><p class="lede">${esc(l.summary)}</p>
-      <p style="color:var(--ink-3);margin-top:12px">${N} steps. Watch first, then do each one and check it off.</p>
+      <p style="color:var(--ink-3);margin-top:12px">${N} steps. ${l.read ? 'No video on this one. Read' : 'Watch first, then do'} each one and check it off.</p>
       <div style="display:flex;gap:10px;margin-top:22px;flex-wrap:wrap"><button class="btn" id="go">Start step one</button></div></div></div></section>`));
     document.getElementById('go').onclick = () => lesson(r, l, 0);
     return;
