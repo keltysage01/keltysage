@@ -150,53 +150,57 @@
  {
   "n": 2.5,
   "title": "Kelty Yelled At Us",
-  "guests": "Tempo, Pixel, Scout, Penny, Bouncer, Echo",
-  "summary": "Somebody counted every prompt Kelty ever typed. Ten thousand five hundred of them. Three percent had a bad word in them. So the robots read the meanest ones out loud, bleeped, confess what they did, and explain why pushing back on your robots is the whole job. Robot voices are AI.",
-  "file": "robot-break-room-bonus-yelled.mp3",
-  "secs": 419,
+  "guests": "all ten robots",
+  "summary": "Boot pulls up the boss's funniest real prompts, one for every robot, and asks each one the same thing: do you remember this, and what did you learn? Cuss words bleeped like TV. Robot voices are AI.",
+  "file": "robot-break-room-bonus-yelled-v2.mp3",
+  "secs": 439,
   "chapters": [
    [
     0,
     "Cold open"
    ],
    [
-    48,
-    "Welcome"
+    55,
+    "Dustin and the hot laptop"
    ],
    [
-    69,
-    "The em dash war"
+    96,
+    "Pixel and the alien"
    ],
    [
-    102,
-    "Seven texts"
+    131,
+    "Tempo and the seven texts"
    ],
    [
-    145,
-    "Two walls of glass"
+    176,
+    "Scout and the glass walls"
    ],
    [
-    183,
-    "Turf, logos and bandanas"
+    207,
+    "Penny and the ad money"
    ],
    [
-    244,
-    "Numbers and metaphors"
+    238,
+    "Spielbot and the jumping dogs"
    ],
    [
-    289,
-    "Going to the bar"
+    284,
+    "Dot and the squished page"
    ],
    [
-    318,
-    "Good yelling and bad yelling"
+    310,
+    "Bouncer and the bar"
    ],
    [
     348,
-    "Why push back"
+    "Echo and the em dash"
    ],
    [
-    390,
+    374,
+    "Boot's turn"
+   ],
+   [
+    419,
     "Outro"
    ]
   ],
@@ -205,13 +209,16 @@
   "date": "2026-10-28T22:55:00-06:00",
   "cast": [
    "boot",
-   "postie",
    "pixel",
-   "scout",
-   "ledger",
+   "cutter",
    "officer-keys",
-   "echo"
+   "ledger",
+   "echo",
+   "brick",
+   "postie",
+   "scout",
+   "dustin"
   ],
-  "bytes": 3354465
+  "bytes": 3511527
  }
 ]
