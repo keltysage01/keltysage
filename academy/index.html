@@ -139,7 +139,9 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px soli
 .hqcard{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin:14px 0 4px;padding:22px;background:linear-gradient(135deg,#efe6ff,#ffe6f2);border:2px solid #c4b5ff;border-radius:22px;color:var(--ink);text-decoration:none}.hqcard h2{margin:4px 0 6px}.hqcard p{color:var(--ink-2)}.hqcard .btn{background:linear-gradient(135deg,#7c5cff,#ff6fb5);color:#fff;border:0}@media (max-width:560px){.hqcard .btn{width:100%}}
 .bar .home.pod{margin-right:8px}.bar .home.pod+.home{margin-left:0}.podcard{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin:14px 0 4px;padding:22px;background:#fff;border:2px solid var(--line);border-radius:22px;color:var(--ink);text-decoration:none}.podcard h2{margin:4px 0 6px}.podcard p{color:var(--ink-2)}@media (max-width:560px){.podcard .btn{width:100%}.bar .home{padding:7px 11px}.bar .brand{font-size:0}.bar .brand img{margin:0}}
 .hire.listen{display:flex;align-items:center;gap:14px;text-decoration:none;padding:16px 18px;margin:18px 0}.hire.listen h3{font-size:17px}.hire.listen p:not(.eyebrow){color:var(--ink-2);font-size:14px;margin-top:2px}.hire.listen .btn{margin-left:auto;flex:none}
+.bar .login{margin-left:auto;min-height:44px;padding:0 14px;font:inherit;font-size:14px;font-weight:700;color:var(--ink);background:none;border:1px solid var(--line);border-radius:99px;cursor:pointer}.bar .login+.xp{margin-left:10px}
 .bar .xp{margin-left:auto}.bar .snav{margin-left:0}
+.tell .code{letter-spacing:6px;font-size:22px;text-align:center;font-weight:700}.tell .sub{font-size:14px;color:var(--ink-3);margin:-4px 0 14px}.tell .linkish{background:none;border:0;padding:10px 0;color:var(--ink-2);font:inherit;font-size:14px;text-decoration:underline;cursor:pointer;min-height:44px}
 .teamstrip{display:flex;align-items:center;gap:14px;margin:0 0 20px;padding:14px 16px;background:var(--sea-soft);border:2px solid var(--sea);border-radius:18px;color:var(--ink);text-decoration:none}.teamstrip img{width:44px;flex:none}.teamstrip b{display:block;font-size:17px}.teamstrip span:not(.btn){display:block;color:var(--ink-2);font-size:14px;margin-top:2px}.teamstrip s{color:var(--ink-3)}.teamstrip .btn{margin-left:auto;flex:none;padding:12px 18px}
 @media (max-width:560px){.teamstrip{flex-wrap:wrap}.teamstrip > div{flex:1;min-width:0}.teamstrip .btn{width:100%}}
 .ask{position:fixed;inset:0;z-index:60;background:rgba(18,24,28,.32);display:flex;align-items:center;justify-content:center;padding:16px;animation:askIn .22s ease both}
@@ -173,7 +175,7 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px soli
 <body>
 <header class="bar"><div class="wrap">
   <a class="brand" href="#/"><img src="logo.png" alt="">Robot Academy</a>
-  <div class="xp" title="Points you have earned"><i>XP</i><span id="xp">0</span><span class="lbl">&nbsp;points</span></div><div class="snav"><details class="smenu"><summary aria-label="Open menu"><i></i><i></i><i></i></summary><nav class="smenu-panel" aria-label="Site menu"><a href="/"><b>Home</b><span>Start here</span></a><a href="/academy/" aria-current="page"><b>Robot Academy</b><span>Free lessons. Start with Boot.</span></a><a href="/robots"><b>Meet the robots</b><span>Ten robots, one job each</span></a><a href="/academy/hq/"><b>Robot HQ</b><span>Walk around their 3D office</span></a><a href="/academy/podcast/"><b>The podcast</b><span>The Robot Break Room, every Tuesday</span></a><a href="/playbook"><b>Playbook</b><span>The rules I run my business on</span></a><a href="/cheatsheets"><b>Free cheat sheets</b><span>One page each, print and keep</span></a><a href="/#join"><b>Pricing</b><span>$2.99 a robot, or the whole team</span></a></nav></details></div>
+  <button class="login" id="loginBtn" type="button" hidden>Log in</button><div class="xp" title="Points you have earned"><i>XP</i><span id="xp">0</span><span class="lbl">&nbsp;points</span></div><div class="snav"><details class="smenu"><summary aria-label="Open menu"><i></i><i></i><i></i></summary><nav class="smenu-panel" aria-label="Site menu"><a href="/"><b>Home</b><span>Start here</span></a><a href="/academy/" aria-current="page"><b>Robot Academy</b><span>Free lessons. Start with Boot.</span></a><a href="/robots"><b>Meet the robots</b><span>Ten robots, one job each</span></a><a href="/academy/hq/"><b>Robot HQ</b><span>Walk around their 3D office</span></a><a href="/academy/podcast/"><b>The podcast</b><span>The Robot Break Room, every Tuesday</span></a><a href="/playbook"><b>Playbook</b><span>The rules I run my business on</span></a><a href="/cheatsheets"><b>Free cheat sheets</b><span>One page each, print and keep</span></a><a href="/#join"><b>Pricing</b><span>$2.99 a robot, or the whole team</span></a></nav></details></div>
 </div></header>
 <main id="app" class="wrap"></main>
 <footer class="help wrap"><p>Stuck, or something not working? Text me from here.</p><button class="btn soft" id="helpMail" type="button">Tell Kelty</button></footer>
@@ -278,12 +280,14 @@ function askTeam(r){
     <p>The whole team is ${b.paid.length} robots for ${esc(C.bundle_price)}. That is about the price of ${Math.round(parseFloat(C.bundle_price.replace(/[^0-9.]/g, '')) / parseFloat(C.price.replace(/[^0-9.]/g, '')))} robots.</p>
     <a class="pick best" href="/api/checkout?item=all"><span class="flag">Best deal</span><b>Whole team: ${esc(C.bundle_price)}</b><span>All ${b.paid.length} robots, every lesson, keep forever. <s>$${b.was}</s></span></a>
     <a class="pick" href="/api/checkout?item=${r.id}"><b>Just ${esc(r.name)}: ${esc(C.price)}</b><span>Every ${esc(r.name)} lesson, video and prompt.</span></a>
+    <button class="linkish" type="button" data-login style="background:none;border:0;margin-top:12px;color:var(--ink-2);text-decoration:underline;font:inherit;font-size:14px;min-height:44px;cursor:pointer">Already hired them? Log in</button>
   </div></div>`).firstElementChild;
   const shut = () => { box.classList.add('out'); setTimeout(() => box.remove(), 220); };
   box.onclick = (e) => { if (e.target === box) shut(); };
   box.querySelector('.close').onclick = shut;
   addEventListener('keydown', function k(e){ if (e.key === 'Escape') { shut(); removeEventListener('keydown', k); } });
   document.body.appendChild(box);
+  box.querySelector('[data-login]').onclick = () => { shut(); setTimeout(window.ksLogin, 240); };
   box.querySelector('.pick.best').focus({preventScroll:true});
 }
 
@@ -447,6 +451,63 @@ fetch('course-data.json').then(x => x.json()).then(d => { C = d; save(); route()
     box.querySelector('.copy').onclick = (e) => copy(link, e.target);
     box.querySelector('#paidok').onclick = () => box.remove();
   }
+})();
+</script>
+<script>
+/* Log in on a new device: email -> 8 digit code -> the paid session ids land in ks_paid. */
+(function () {
+  const btn = document.getElementById('loginBtn');
+  let has = false; try { has = JSON.parse(localStorage.getItem('ks_paid') || '[]').length > 0 } catch (_) {}
+  btn.hidden = has;
+  async function post(body) {
+    const r = await fetch('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    return r.json().catch(() => ({ ok: false, error: 'Something went wrong. Try again.' }));
+  }
+  window.ksLogin = function () {
+    document.querySelector('.ask')?.remove();
+    const box = $(`<div class="ask" role="dialog" aria-modal="true" aria-label="Log in"><form class="sheet tell" novalidate>
+      <button class="close" type="button" aria-label="Close">&times;</button>
+      <h2>Log in</h2><p>Type the email you used to hire your robots. We'll send you a code.</p>
+      <div class="s1"><label class="f"><span>Email</span><input name="email" type="email" maxlength="200" required autocomplete="email" inputmode="email"></label>
+      <button class="btn big" type="submit">Email me a code</button></div>
+      <div class="s2" hidden><p class="sub"></p><label class="f"><span>8 digit code</span><input name="code" class="code" maxlength="9" inputmode="numeric" autocomplete="one-time-code"></label>
+      <button class="btn big" type="button" id="codeGo">Open my robots</button><button class="linkish" type="button" id="codeBack">Use a different email</button></div>
+      <p class="err" role="alert"></p></form></div>`).firstElementChild;
+    const f = box.querySelector('form'), err = box.querySelector('.err');
+    const shut = () => { box.classList.add('out'); setTimeout(() => box.remove(), 220); };
+    box.onclick = (e) => { if (e.target === box) shut(); };
+    box.querySelector('.close').onclick = shut;
+    let token = '';
+    f.onsubmit = async (e) => {
+      e.preventDefault(); err.textContent = '';
+      const email = f.email.value.trim(), b = f.querySelector('.s1 .btn');
+      if (!email) { err.textContent = 'Type your email first.'; return; }
+      b.disabled = true; b.textContent = 'Sending...';
+      const d = await post({ email });
+      b.disabled = false; b.textContent = 'Email me a code';
+      if (!d.ok) { err.textContent = d.error || 'Something went wrong. Try again.'; return; }
+      token = d.token;
+      box.querySelector('.s1').hidden = true; box.querySelector('.s2').hidden = false;
+      box.querySelector('.sub').textContent = `If ${email} hired robots, a code is on its way. Check spam too. It works for 15 minutes.`;
+      f.code.focus();
+    };
+    box.querySelector('#codeBack').onclick = () => { box.querySelector('.s1').hidden = false; box.querySelector('.s2').hidden = true; err.textContent = ''; };
+    box.querySelector('#codeGo').onclick = async (e) => {
+      err.textContent = '';
+      const b = e.target; b.disabled = true; b.textContent = 'Checking...';
+      const d = await post({ token, code: f.code.value });
+      b.disabled = false; b.textContent = 'Open my robots';
+      if (!d.ok) { err.textContent = d.error || 'Something went wrong. Try again.'; return; }
+      if (!d.ids || !d.ids.length) { err.textContent = "We couldn't find a purchase for that email. Try the email from your receipt, or use Tell Kelty."; return; }
+      let ids = []; try { ids = JSON.parse(localStorage.getItem('ks_paid') || '[]') } catch (_) {}
+      d.ids.forEach((id) => { if (!ids.includes(id)) ids.push(id); });
+      try { localStorage.setItem('ks_paid', JSON.stringify(ids)) } catch (_) {}
+      location.reload();
+    };
+    document.body.appendChild(box);
+    f.email.focus({ preventScroll: true });
+  };
+  btn.onclick = () => window.ksLogin();
 })();
 </script>
 <script>
