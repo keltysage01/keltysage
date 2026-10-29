@@ -185,7 +185,7 @@ window.LESSONS = [
    "steps": [
     {
      "title": "Get the Claude Pro plan",
-     "note": "The free plan does not include Claude Code.",
+     "note": "The free plan does not include Claude Code. Heavy days can hit your usage limit. That's normal. It resets, and you can move up a plan later if it keeps happening.",
      "why": "Claude Code is not in the free plan.",
      "picture": "It's a movie ticket. No ticket, no seat, no matter how early you show up.",
      "skip": "You install everything, then get turned away. Like showing up at the movies with popcorn but no ticket."
@@ -239,7 +239,7 @@ window.LESSONS = [
      "why": "Plain sentences work. No special words needed.",
      "picture": "It's directions for a brilliant new hire. Tell them the job, plainly.",
      "prompts": [
-      "I run a small business. What can you help me with first?"
+      "I run a dog training business. Here's what I do every week: [list]. Teach me in low cognitive load where you can help first. One step at a time."
      ]
     },
     {
@@ -374,11 +374,11 @@ window.LESSONS = [
     },
     {
      "title": "Ask about your business",
-     "note": "Sentence five: let it suggest where to start.",
+     "note": "Sentence five: tell it your real week and ask for a faster way.",
      "why": "It gives better ideas when it knows what you do.",
      "picture": "Ask it like a brand new hire. Tell them what you do first, or you get random chores.",
      "prompts": [
-      "What can you help me with in my business?"
+      "Here's my week: I answer client texts, post the class schedule, chase invoices and make flyers. Which one eats the most time, and is there a faster way to do it?"
      ]
     },
     {
@@ -804,7 +804,7 @@ window.LESSONS = [
      "why": "Specific fixes beat starting over.",
      "picture": "It's a dog proudly bringing the wrong shoe. Thank them, then check which shoe.",
      "prompts": [
-      "Keep the first paragraph, but make the ending shorter and warmer"
+      "Keep the first paragraph, make the ending shorter and warmer. Remember that I like short warm endings, for every email."
      ]
     }
    ]
@@ -1062,6 +1062,15 @@ window.LESSONS = [
      "picture": "It's ordering three coffees with names on the cups. Nobody gets the wrong drink.",
      "prompts": [
       "Make 3 square Instagram post graphics: one tip, one quote, one class announcement."
+     ]
+    },
+    {
+     "title": "Say what you hate",
+     "note": "Tell it what to never do. Be picky. Then ask it to remember.",
+     "why": "\"Make it nice\" gets you the same look as every AI post. Your no's make it yours.",
+     "picture": "It's a swatch of what you'd never wear. Saves a lot of returns.",
+     "prompts": [
+      "No emojis, no centered text, no stock-photo smiles. Remember that for every graphic."
      ]
     },
     {
@@ -1741,6 +1750,15 @@ window.LESSONS = [
      ]
     },
     {
+     "title": "Say what you hate",
+     "note": "Tell it what to never do. Be picky. You won't hurt my feelings.",
+     "why": "\"Make it nice\" gets you the same look as every AI site. Your no's make it yours.",
+     "picture": "It's telling the barber what you don't want. No bowl cut.",
+     "prompts": [
+      "No emojis. Don't center everything. Nothing that looks like every other AI website. Here's a site I like: [link]."
+     ]
+    },
+    {
      "title": "Check your work",
      "note": "Read it like a customer would.",
      "why": "Anything it invented needs your sign-off.",
@@ -1986,6 +2004,15 @@ window.LESSONS = [
    "title": "Let me look that up.",
    "intro": "Name the tools, say what matters most, ask for a pick and a reason, then check each tool's own page.",
    "steps": [
+    {
+     "title": "Ask if you need one at all",
+     "note": "Before you compare tools, ask if you need a new one.",
+     "why": "Every tool is another bill and another login. Claude might already do the job.",
+     "picture": "It's checking the pantry before you go to the store.",
+     "prompts": [
+      "Based on what I already pay for and what you can already do for me, do I even need a new booking tool? Be honest."
+     ]
+    },
     {
      "title": "Name the tools",
      "note": "List three tools and what you need.",
