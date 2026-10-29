@@ -137,6 +137,21 @@ def add_hq_card(page):
     return page.replace("</style>", css + "\n</style>", 1)
 
 
+def add_audit_card(page):
+    """Pick a robot page: the free business audit card, right above the HQ card."""
+    hq = '<a class="hqcard" href="/academy/hq">'
+    assert hq in page, "HQ card changed, update add_audit_card"
+    card = ('<a class="auditcard" href="/academy/audit/"><div><p class="eyebrow">&gt;_ free audit</p>'
+            '<h2>Which robots should you hire?</h2><p>Tell the robots how you run your business now. They tell you what could be easier and who to hire first. Two minutes.</p></div>'
+            '<span class="btn">Get my audit</span></a>\n    ')
+    page = page.replace(hq, card + hq, 1)
+    css = (".auditcard{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;"
+           "margin:14px 0 4px;padding:22px;background:linear-gradient(135deg,#e3f4ef,#eef2ff);border:2px solid var(--sea);border-radius:22px;"
+           "color:var(--ink);text-decoration:none}.auditcard h2{margin:4px 0 6px}.auditcard p{color:var(--ink-2)}"
+           "@media (max-width:560px){.auditcard .btn{width:100%}}")
+    return page.replace("</style>", css + "\n</style>", 1)
+
+
 def add_podcast(page):
     """Robot Break Room podcast: a Podcast pill in the top bar and a card under the HQ card."""
     home = '<a class="home" href="/">&larr; Home</a>'
@@ -187,10 +202,11 @@ def add_menu(page):
 def main():
     # academy/robots is the comedy course, published from ~/keltysage-course/comedy-pilot.
     # academy/hq is Robot HQ, the walk-in 3D office, published from ~/keltysage-hq.
-    # academy/podcast is the Robot Break Room podcast page (hand-made, audio in the folder). Keep all three.
+    # academy/podcast is the Robot Break Room podcast page (hand-made, audio in the folder).
+    # academy/audit is the free business audit (hand-made, runs in the browser). Keep all four.
     if OUT.exists():
         for p in OUT.iterdir():
-            if p.name not in ("robots", "hq", "podcast"):
+            if p.name not in ("robots", "hq", "podcast", "audit"):
                 shutil.rmtree(p) if p.is_dir() else p.unlink()
     shutil.copytree(SRC, OUT, ignore=shutil.ignore_patterns("media"), dirs_exist_ok=True)
     (OUT / "media").mkdir()
@@ -234,6 +250,7 @@ def main():
     page = page.replace("</body>", (ROOT / "tools/academy_pay.js").read_text().join(["<script>\n", "</script>\n</body>"]), 1)
     page = add_team_card(page)
     page = add_hq_card(page)
+    page = add_audit_card(page)
     page = add_podcast(page)
     page = add_menu(page)
     page = add_motion(page)

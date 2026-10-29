@@ -167,6 +167,7 @@ footer{padding:26px 0 40px;color:var(--ink-3);font-size:14px;border-top:1px soli
 .tell [type=submit]{width:100%}.tell [type=submit]:disabled{opacity:.6}
 .tell .sent{text-align:center;padding:14px 0 4px}.tell .sent .tick{width:56px;height:56px;margin:0 auto 10px;border-radius:50%;background:var(--sea);display:grid;place-items:center;font-size:26px;font-weight:700}.tell .sent .btn{margin-top:6px}
 @media (max-width:560px){.tell .two{grid-template-columns:1fr;gap:0}}
+.auditcard{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin:14px 0 4px;padding:22px;background:linear-gradient(135deg,#e3f4ef,#eef2ff);border:2px solid var(--sea);border-radius:22px;color:var(--ink);text-decoration:none}.auditcard h2{margin:4px 0 6px}.auditcard p{color:var(--ink-2)}@media (max-width:560px){.auditcard .btn{width:100%}}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 <link rel="stylesheet" href="/assets/menu.css?v=2">
@@ -212,6 +213,7 @@ function team(){
     <h1>Pick a robot. <em>Learn one job.</em></h1>
     <p class="lede">Every robot teaches one thing I do from my window. Watch the video, do each step, check it off. Start with Boot, it's free.</p></div>
     ${(() => { const paid = C.robots.filter(r => !r.free); if (!C.bundle_price || paid.every(owns)) return ''; const each = parseFloat(String(C.price).replace(/[^0-9.]/g, '')), was = (each * paid.length).toFixed(2); return `<a class="allteam" href="/api/checkout?item=all"><div><p class="eyebrow">&gt;_ best deal</p><h2>Hire the whole team</h2><p>All ${paid.length} robots, every lesson, buy once and keep forever. <s>$${was}</s> <b>${esc(C.bundle_price)}</b></p></div><span class="btn">Hire all ${paid.length}: ${esc(C.bundle_price)}</span></a>`; })()}
+    <a class="auditcard" href="/academy/audit/"><div><p class="eyebrow">&gt;_ free audit</p><h2>Which robots should you hire?</h2><p>Tell the robots how you run your business now. They tell you what could be easier and who to hire first. Two minutes.</p></div><span class="btn">Get my audit</span></a>
     <a class="hqcard" href="/academy/hq"><div><p class="eyebrow">&gt;_ new</p><h2>Visit Robot HQ</h2><p>Walk around the robots' 3D headquarters. Say hi to all ten and watch them work.</p></div><span class="btn">Walk in</span></a>
     <a class="podcard" href="/academy/podcast/"><div><p class="eyebrow">&gt;_ the podcast</p><h2>The Robot Break Room</h2><p>Boot interviews the robots. New episode every Tuesday. Listen free.</p></div><span class="btn">Listen now</span></a>
     <div class="team">${C.robots.map(r => {

@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Business Audit | Robot Academy</title>
+<meta name="description" content="Tell the robots how you run your business now. They tell you what could be easier and which robots to hire first. Free, two minutes, nothing leaves your phone.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free business audit from the robots">
+<meta property="og:description" content="Tell the robots how you run your business now. They tell you what could be easier and which robots to hire first.">
+<meta property="og:url" content="https://keltysage.com/academy/audit/">
+<link rel="icon" href="/academy/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#12181c;--ink-2:#3d4a50;--ink-3:#7b8a90;--bg:#f4f7f7;--card:#fff;--line:#e1e8e8;--sea:#9ed9c7;--sea-soft:#e3f4ef;--deep:#2f8f78;--violet:#7c5cff;--pink:#ff6fb5;--sans:'Geist',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;color-scheme:light}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;min-height:100vh}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.bar{border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,transparent)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none;white-space:nowrap}
+.brand img{width:38px;height:38px}
+.brand{min-width:44px;min-height:44px}
+.pill{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:999px;background:#fff;white-space:nowrap}
+@media (max-width:420px){.brand span{display:none}}
+h1{font-size:clamp(34px,7vw,54px);line-height:1.05;letter-spacing:-.035em;font-weight:800}
+h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--sea) 62%)}
+h2{font-size:clamp(24px,5vw,32px);letter-spacing:-.03em;line-height:1.1}
+.eyebrow{font-family:var(--mono);font-size:13px;color:var(--deep);margin-bottom:10px}
+.lede{font-size:19px;color:var(--ink-2);margin-top:14px;max-width:46ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--ink);color:#fff;font-weight:700;border-radius:14px;padding:14px 22px;font-size:17px;text-decoration:none;min-height:52px}
+.btn.big{padding:18px 28px;font-size:19px;border-radius:18px;width:100%}
+.btn.soft{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn.sea{background:var(--sea);color:var(--ink)}
+.btn.glow{background:linear-gradient(135deg,var(--violet),var(--pink));color:#fff}
+.btn:disabled{opacity:.4;cursor:default}
+.view{animation:rise .4s ease both;padding:28px 0 56px}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+/* intro */
+.hero{background:linear-gradient(135deg,#efe6ff,#e3f4ef);border:1px solid var(--line);border-radius:26px;padding:28px 22px 24px;overflow:hidden}
+.lineup{display:flex;justify-content:center;margin:22px 0 6px}
+.lineup img{width:58px;height:58px;margin:0 -7px;animation:bob 3s ease-in-out infinite;filter:drop-shadow(0 6px 8px rgba(18,24,28,.12))}
+@keyframes bob{50%{transform:translateY(-6px)}}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
+.how div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px}
+.how b{display:block;font-family:var(--mono);font-size:12px;color:var(--deep)}
+.how span{font-size:15px;color:var(--ink-2)}
+.fine{font-size:14px;color:var(--ink-3);text-align:center;margin-top:12px}
+/* steps */
+.top{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.top .x{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;font-size:20px;flex:none}
+.prog{flex:1;height:10px;border-radius:99px;background:var(--line);overflow:hidden}
+.prog b{display:block;height:100%;background:linear-gradient(90deg,var(--sea),var(--violet));border-radius:99px;transition:width .5s ease}
+.asker{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
+.asker img{width:64px;height:64px;flex:none}
+.bubble{background:#fff;border:1px solid var(--line);border-radius:4px 18px 18px 18px;padding:12px 16px;font-size:15px;color:var(--ink-2)}
+.bubble b{display:block;color:var(--ink);font-size:13px;font-family:var(--mono)}
+.q h2{margin-bottom:8px}
+.q .sub{color:var(--ink-2);margin-bottom:16px}
+textarea{width:100%;min-height:210px;font:inherit;font-size:17px;line-height:1.5;padding:16px;border:2px solid var(--line);border-radius:18px;background:#fff;color:var(--ink);resize:vertical}
+textarea:focus{outline:none;border-color:var(--violet)}
+.starters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+.starters button{font-size:14px;padding:8px 12px;border-radius:99px;background:var(--sea-soft);color:var(--deep);font-weight:600;min-height:40px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:10px 16px;border-radius:14px;border:2px solid var(--line);background:#fff;font-weight:600;font-size:16px;text-align:left;transition:border-color .15s,background .15s}
+.chip[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:#fff}
+.chip.row{width:100%;min-height:56px}
+.group{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin:18px 0 8px;text-transform:uppercase}
+.group:first-child{margin-top:0}
+.foot{display:flex;gap:10px;margin-top:24px}
+.foot .btn{flex:1}
+/* reading */
+.reading{text-align:center;padding:60px 0}
+.reading .faces{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;max-width:420px;margin:24px auto}
+.reading .faces img{width:60px;height:60px;opacity:.25;transition:opacity .25s,transform .25s}
+.reading .faces img.on{opacity:1;transform:translateY(-6px)}
+.reading p{font-family:var(--mono);color:var(--deep);min-height:24px}
+/* results */
+.summary{background:linear-gradient(135deg,#efe6ff,#ffe6f2);border:2px solid #c4b5ff;border-radius:24px;padding:24px 20px}
+.summary .lede{margin-top:10px}
+.score{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0 6px}
+.area{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.area b{font-size:15px}
+.area span{font-family:var(--mono);font-size:12px;font-weight:700;align-self:flex-start;padding:2px 8px;border-radius:99px}
+.st-hand{background:#ffeeec;color:#c8463c}
+.st-none{background:#fff4d6;color:#8a6100}
+.st-ok{background:var(--sea-soft);color:var(--deep)}
+.sec{margin:34px 0 14px}
+.hire{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;margin-bottom:16px}
+.hire .head{display:flex;gap:14px;align-items:center;padding:18px 18px 14px;background:linear-gradient(180deg,color-mix(in srgb,var(--c) 22%,#fff),#fff)}
+.hire .head img{width:84px;height:84px;flex:none}
+.rank{font-family:var(--mono);font-size:12px;font-weight:700;background:var(--ink);color:#fff;border-radius:99px;padding:3px 10px;display:inline-block;margin-bottom:6px}
+.hire h3{font-size:26px;letter-spacing:-.02em;line-height:1.1}
+.hire .job{color:var(--ink-3);font-size:15px}
+.hire .body{padding:0 18px 18px;display:grid;gap:14px}
+.hire h4{font-family:var(--mono);font-size:12px;color:var(--ink-3);text-transform:uppercase;margin-bottom:6px}
+.saw li{list-style:none;padding-left:20px;position:relative;color:var(--ink-2);margin-bottom:4px}
+.saw li::before{content:"";position:absolute;left:4px;top:.6em;width:8px;height:8px;border-radius:50%;background:var(--c)}
+.say{font-size:18px;line-height:1.45;border-left:4px solid var(--c);padding:2px 0 2px 14px}
+.try{background:var(--bg);border-radius:14px;padding:12px 14px;font-family:var(--mono);font-size:14px;color:var(--ink)}
+.acts{display:flex;gap:10px;flex-wrap:wrap}
+.acts .btn{flex:1 1 200px}
+.more{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mini{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;text-decoration:none;display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.mini img{width:52px;height:52px}
+.mini b{font-size:17px}
+.mini span{font-size:14px;color:var(--ink-2)}
+.note{background:#eef2ff;border:1px solid #c9d3ff;border-radius:20px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
+.note img{width:56px;height:56px;flex:none}
+.note p{color:var(--ink-2);font-size:16px}
+.note b{color:var(--ink)}
+.team{background:var(--ink);color:#fff;border-radius:24px;padding:22px 20px;display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.team p{color:#c9d3d6}
+.team s{color:#8d9a9f}
+.team .acts .btn{background:#fff;color:var(--ink)}
+.team .acts .btn.glow{background:linear-gradient(135deg,var(--violet),var(--pink));color:#fff}
+.again{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.again .btn{flex:1 1 180px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:14px;font-weight:600;font-size:15px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:50}
+.toast.on{opacity:1}
+@media (max-width:600px){
+  .how{grid-template-columns:1fr}
+  .how div{display:flex;gap:10px;align-items:baseline}
+  .more{grid-template-columns:1fr}
+  .mini{flex-direction:row;align-items:center;gap:12px}
+  .mini div{display:flex;flex-direction:column}
+  .hire .head img{width:72px;height:72px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="stylesheet" href="/assets/menu.css?v=2">
+<script defer src="/assets/menu.js?v=1"></script>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="brand" href="/academy/"><img src="/academy/logo.png" alt=""><span>Robot Academy</span></a>
+  <div class="snav"><a class="pill" href="/academy/">Robot Academy</a><details class="smenu"><summary aria-label="Open menu"><i></i><i></i><i></i></summary><nav class="smenu-panel" aria-label="Site menu"><a href="/"><b>Home</b><span>Start here</span></a><a href="/academy/"><b>Robot Academy</b><span>Free lessons. Start with Boot.</span></a><a href="/robots"><b>Meet the robots</b><span>Ten robots, one job each</span></a><a href="/academy/hq/"><b>Robot HQ</b><span>Walk around their 3D office</span></a><a href="/academy/podcast/"><b>The podcast</b><span>The Robot Break Room, every Tuesday</span></a><a href="/playbook"><b>Playbook</b><span>The rules I run my business on</span></a><a href="/cheatsheets"><b>Free cheat sheets</b><span>One page each, print and keep</span></a><a href="/#join"><b>Pricing</b><span>$2.99 a robot, or the whole team</span></a></nav></details></div>
+</div></header>
+<main class="wrap" id="app"></main>
+<div class="toast" id="toast" role="status"></div>
+<script>
+/* The robots' business audit. Everything runs in the browser: answers never leave the phone. */
+const ART = '/academy/art/';
+const SITE = { cutter: 'spielbot', 'officer-keys': 'bouncer', ledger: 'penny', brick: 'dot', postie: 'tempo' };
+
+// what each robot listens for, and what they say back
+const R = {
+  pixel: {
+    area: 'Graphics',
+    kw: /canva|graphic|flyer|poster|logo|design|template|photoshop|adobe|rack card|brochure|post image|thumbnail|menu board|business card/i,
+    say: 'You are rebuilding the same graphic by hand. Save your colors, fonts and logo once, then ask for the post in one sentence. Every graphic matches and you stop scrolling templates.',
+    try: 'Make three Instagram posts for my Saturday class, in my brand colors.',
+  },
+  cutter: {
+    area: 'Video',
+    kw: /capcut|video|reel|tiktok|caption|edit(ing)? clips|youtube|footage|clips|inshot|premiere|imovie/i,
+    say: 'Your best videos are sitting unedited in your camera roll. Hand me the clip. I trim it, add captions and make the vertical version while you do something else.',
+    try: 'Trim this clip to the best 30 seconds and add captions.',
+  },
+  'officer-keys': {
+    area: 'Safety',
+    kw: /password|login|hack|scam|security|api key|sticky note|same password|shared account|lastpass|1password|keychain/i,
+    say: 'Before any robot touches your email or money, set the house rules. Nothing sends without your yes. Keys live in one safe place, never in a note on your phone.',
+    try: 'Never send anything without asking me first. Make that a rule you can never break.',
+  },
+  ledger: {
+    area: 'Money',
+    kw: /quickbooks|invoice|venmo|square|stripe|paypal|zelle|owe|unpaid|chase (people|clients)|bookkeep|receipt|tax(es)?|spreadsheet|expense|payment|cash app|wave|freshbooks|subscription/i,
+    say: 'You are keeping money in your head and three apps. Ask me who still owes you and how much you made this month. I draft the reminder, you approve it before it goes.',
+    try: 'Who still owes me money, and how much?',
+  },
+  echo: {
+    area: 'Writing',
+    kw: /newsletter|email blast|mailchimp|caption|write|writing|blog|chatgpt|same questions|faq|copy and paste|blank page|sounds like a robot|reply to (dms|comments)|dms/i,
+    say: 'Writing is eating your nights, or the AI version sounds like a robot. Teach me how you talk once. Then I draft the email and the replies in your voice, and you just fix and approve.',
+    try: 'Here are three emails I wrote. Learn how I talk, then draft this week\'s newsletter.',
+  },
+  brick: {
+    area: 'Website',
+    kw: /wix|squarespace|godaddy|wordpress|website|web site|landing page|domain|shopify|linktree|link in bio|webflow|site builder|no site/i,
+    say: 'Your website is either missing, out of date, or costing you a monthly fee. Describe the change and I make it today: prices, hours, booking link, a new page for your event.',
+    try: 'Change my prices on my website and add the new Saturday class.',
+  },
+  postie: {
+    area: 'Clients',
+    kw: /crm|gohighlevel|ghl|honeybook|dubsado|calendly|acuity|booking|book(ed|s)? |appointment|schedul|calendar|follow ?up|leads?|inbox|gmail|text(ing)? (clients|people)|double book|no.?show|remind|confirm|paper planner|notes app|sticky|clients? list|dms/i,
+    say: 'Clients and follow ups are living in your memory, your texts and your inbox. Ask me who needs a reply and who is booked tomorrow. I draft the confirmations, you say send.',
+    try: 'Who is booked tomorrow, and who has not confirmed yet?',
+  },
+  scout: {
+    area: 'Research',
+    kw: /research|compare|competitor|what (do|does) .* charge|pricing|which tool|google|tabs|pdf|contract|reading|article|reviews|new service/i,
+    say: 'You are making big calls from ten open tabs. Give me the question. I come back with a short answer, the sources, and what everyone else charges.',
+    try: 'Compare the three booking apps I am looking at and tell me which fits a one-person business.',
+  },
+  dustin: {
+    area: 'Computer',
+    kw: /desktop|downloads|screenshots|storage|almost full|messy|clutter|can't find|cannot find|files everywhere|folders|organized|disorganized|icloud full|slow (mac|computer|laptop)/i,
+    say: 'You lose time just finding things. Say one sentence and I sort the Desktop and Downloads into folders. Nothing gets deleted without you seeing the list first.',
+    try: 'Clean up my Desktop and Downloads into folders. Show me before you delete anything.',
+  },
+};
+const ORDER = ['postie', 'ledger', 'pixel', 'cutter', 'echo', 'brick', 'scout', 'dustin', 'officer-keys'];
+
+// tools people use now: who it points to, and what the robot noticed
+const TOOLS = [
+  ['Clients and booking', [
+    ['Paper planner or notes app', 'postie', 3, 'Clients live in a planner or notes app'],
+    ['I text clients from my phone', 'postie', 2, 'You text clients one by one from your phone'],
+    ['Gmail or Outlook', 'postie', 1, 'Your inbox is where client stuff piles up'],
+    ['Calendly, Acuity or Square booking', 'postie', 1, 'Booking lives in one app, follow ups in another'],
+    ['A CRM like GoHighLevel or HoneyBook', 'postie', 2, 'You pay for a CRM'],
+  ]],
+  ['Money', [
+    ['QuickBooks', 'ledger', 2, 'You use QuickBooks'],
+    ['Venmo, Zelle or cash', 'ledger', 3, 'Payments come in through Venmo, Zelle or cash'],
+    ['Square, Stripe or PayPal', 'ledger', 1, 'Payments run through Square, Stripe or PayPal'],
+    ['A spreadsheet', 'ledger', 2, 'Money is tracked in a spreadsheet'],
+    ['I just keep it in my head', 'ledger', 3, 'You keep the money in your head'],
+  ]],
+  ['Posts and marketing', [
+    ['Canva', 'pixel', 3, 'You make graphics in Canva'],
+    ['CapCut or phone editing', 'cutter', 3, 'You edit videos by hand in CapCut or on your phone'],
+    ['Instagram or Facebook', 'echo', 1, 'You post on Instagram or Facebook'],
+    ['TikTok', 'cutter', 2, 'You post on TikTok'],
+    ['Mailchimp or email newsletters', 'echo', 2, 'You send a newsletter'],
+    ['ChatGPT, copy and paste', 'echo', 2, 'You copy and paste from ChatGPT'],
+  ]],
+  ['Website', [
+    ['Wix or Squarespace', 'brick', 3, 'You pay Wix or Squarespace every month'],
+    ['GoDaddy or WordPress', 'brick', 2, 'Your site is on GoDaddy or WordPress'],
+    ['Someone else built it', 'brick', 2, 'Someone else built your site, so changes wait on them'],
+    ['No website yet', 'brick', 3, 'You do not have a website yet'],
+  ]],
+];
+
+// what eats the week, in plain words; each points at a robot
+const PAINS = [
+  ['Following up with leads and clients', 'postie', 'Following up eats your week'],
+  ['Confirming appointments, no shows', 'postie', 'Confirming appointments and no shows'],
+  ['Chasing people who owe me', 'ledger', 'Chasing people who owe you'],
+  ['Knowing how much I actually made', 'ledger', 'Not knowing what you actually made'],
+  ['Making post graphics and flyers', 'pixel', 'Making graphics and flyers'],
+  ['Editing videos and captions', 'cutter', 'Editing videos and captions'],
+  ['Writing emails, captions, replies', 'echo', 'Writing emails, captions and replies'],
+  ['Answering the same questions', 'echo', 'Answering the same questions over and over'],
+  ['Updating my website', 'brick', 'Keeping the website up to date'],
+  ['Researching prices and tools', 'scout', 'Researching prices and tools'],
+  ['Finding files on my computer', 'dustin', 'Finding files on your computer'],
+  ['Passwords and logins', 'officer-keys', 'Passwords and logins stress you out'],
+];
+
+const TECH = [
+  ['new', 'I have never used AI for my business'],
+  ['chat', 'I use ChatGPT or Claude in a browser'],
+  ['code', 'I already use Claude Code'],
+];
+
+const STARTERS = [
+  'I take bookings by text and DM.',
+  'I make my posts in Canva.',
+  'I send invoices through Venmo.',
+  'My website is on Wix.',
+  'I write everything at night.',
+];
+
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const app = $('#app');
+let C = null;
+let A = { text: '', tools: [], pains: [], hate: '', tech: '' };
+const store = {
+  get() { try { return JSON.parse(localStorage.getItem('ks-audit') || 'null'); } catch { return null; } },
+  set(v) { try { localStorage.setItem('ks-audit', JSON.stringify(v)); } catch {} },
+  clear() { try { localStorage.removeItem('ks-audit'); } catch {} },
+};
+const bot = (id) => C.robots.find((r) => r.id === id);
+const page = (id) => `/robots/${SITE[id] || id}`;
+const cents = (s) => Math.round(parseFloat(String(s).replace(/[^0-9.]/g, '')) * 100);
+const money = (c) => '$' + (c / 100).toFixed(2);
+const toast = (t) => { const el = $('#toast'); el.textContent = t; el.classList.add('on'); setTimeout(() => el.classList.remove('on'), 2200); };
+const go = (fn) => { app.innerHTML = ''; window.scrollTo(0, 0); fn(); };
+
+/* ---------- intro ---------- */
+function intro() {
+  const faces = ['boot', ...ORDER].map((id) => `<img src="${ART}${id}.svg" alt="" style="animation-delay:${(Math.random() * 1.5).toFixed(2)}s">`).join('');
+  const last = store.get();
+  app.innerHTML = `<section class="view">
+    <div class="hero">
+      <p class="eyebrow">&gt;_ free business audit</p>
+      <h1>Tell the robots how you run things. They will tell you <em>what could be easier</em>.</h1>
+      <p class="lede">Two minutes. You get a short report, the robots worth hiring first, and one sentence to try today.</p>
+      <div class="lineup">${faces}</div>
+    </div>
+    <div class="how">
+      <div><b>01</b><span>Tell us how your week goes</span></div>
+      <div><b>02</b><span>Tap the tools you use now</span></div>
+      <div><b>03</b><span>Get your hire list</span></div>
+    </div>
+    <button class="btn big glow" id="start">Start my audit</button>
+    ${last ? '<button class="btn big soft" id="last" style="margin-top:10px">See my last audit</button>' : ''}
+    <p class="fine">Your answers stay on this phone. Nothing is sent anywhere.</p>
+  </section>`;
+  $('#start').onclick = () => { A = { text: '', tools: [], pains: [], hate: '', tech: '' }; go(step1); };
+  if (last) $('#last').onclick = () => { A = last; go(results); };
+}
+
+function bar(n) {
+  return `<div class="top"><button class="x" id="back" aria-label="Back">&#8592;</button><div class="prog"><b style="width:${n / 5 * 100}%"></b></div></div>`;
+}
+function asker(id, line) {
+  const r = bot(id);
+  return `<div class="asker"><img src="${ART}${id}.svg" alt=""><div class="bubble"><b>${esc(r.name)}</b>${line}</div></div>`;
+}
+function chipsFor(list, picked, cls = '') {
+  return list.map(([label]) => `<button class="chip ${cls}" aria-pressed="${picked.includes(label)}" data-v="${esc(label)}">${esc(label)}</button>`).join('');
+}
+function toggles(box, arr) {
+  box.querySelectorAll('.chip').forEach((b) => b.onclick = () => {
+    const v = b.dataset.v, i = arr.indexOf(v);
+    i < 0 ? arr.push(v) : arr.splice(i, 1);
+    b.setAttribute('aria-pressed', i < 0);
+  });
+}
+
+/* ---------- 1: the free text ---------- */
+function step1() {
+  app.innerHTML = `<section class="view q">${bar(1)}
+    ${asker('boot', 'I am Boot. I will pass this to the team. Write it like you would text a friend.')}
+    <h2>How are you running your business right now?</h2>
+    <p class="sub">Walk us through a normal week. How do clients find you, book, pay, and hear from you?</p>
+    <textarea id="t" placeholder="Example: I book clients by text and Instagram DMs. I keep my schedule in a paper planner. I make posts in Canva on Sunday nights. People pay me on Venmo and I forget who still owes me.">${esc(A.text)}</textarea>
+    <div class="starters">${STARTERS.map((s) => `<button type="button">+ ${esc(s)}</button>`).join('')}</div>
+    <div class="foot"><button class="btn big" id="next" ${A.text.trim().length < 3 ? 'disabled' : ''}>Next</button></div>
+  </section>`;
+  const t = $('#t'), next = $('#next');
+  t.oninput = () => { A.text = t.value; next.disabled = t.value.trim().length < 3; };
+  app.querySelectorAll('.starters button').forEach((b) => b.onclick = () => {
+    const s = b.textContent.replace(/^\+ /, '');
+    t.value = (t.value.trim() ? t.value.trim() + ' ' : '') + s;
+    t.oninput(); b.remove();
+  });
+  $('#back').onclick = () => go(intro);
+  next.onclick = () => go(step2);
+}
+
+/* ---------- 2: tools ---------- */
+function step2() {
+  app.innerHTML = `<section class="view q">${bar(2)}
+    ${asker('postie', 'Tempo here. Tap everything you use, even the stuff you hate.')}
+    <h2>What do you use now?</h2>
+    <p class="sub">Tap all that fit. Skip any you do not use.</p>
+    <div id="box">${TOOLS.map(([g, list]) => `<p class="group">${esc(g)}</p><div class="chips">${chipsFor(list, A.tools)}</div>`).join('')}</div>
+    <div class="foot"><button class="btn big" id="next">Next</button></div>
+  </section>`;
+  toggles($('#box'), A.tools);
+  $('#back').onclick = () => go(step1);
+  $('#next').onclick = () => go(step3);
+}
+
+/* ---------- 3: what eats the week ---------- */
+function step3() {
+  app.innerHTML = `<section class="view q">${bar(3)}
+    ${asker('ledger', 'Penny. Be honest. What takes way longer than it should?')}
+    <h2>What eats your week?</h2>
+    <p class="sub">Tap all that fit.</p>
+    <div class="chips" id="box">${chipsFor(PAINS, A.pains)}</div>
+    <div class="foot"><button class="btn big" id="next">Next</button></div>
+  </section>`;
+  toggles($('#box'), A.pains);
+  $('#back').onclick = () => go(step2);
+  $('#next').onclick = () => go(step4);
+}
+
+/* ---------- 4: the one you hate most ---------- */
+function step4() {
+  const list = PAINS.filter(([p]) => !A.pains.length || A.pains.includes(p));
+  app.innerHTML = `<section class="view q">${bar(4)}
+    ${asker('echo', 'Echo. Say what you hate. That is where we start.')}
+    <h2>If a robot could take one thing off your plate tomorrow, what would it be?</h2>
+    <p class="sub">Pick one.</p>
+    <div class="chips" id="box">${list.map(([p]) => `<button class="chip row" aria-pressed="${A.hate === p}" data-v="${esc(p)}">${esc(p)}</button>`).join('')}</div>
+    <div class="foot"><button class="btn big" id="next" ${A.hate ? '' : 'disabled'}>Next</button></div>
+  </section>`;
+  $('#box').querySelectorAll('.chip').forEach((b) => b.onclick = () => {
+    A.hate = b.dataset.v;
+    $('#box').querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', c === b));
+    $('#next').disabled = false;
+  });
+  $('#back').onclick = () => go(step3);
+  $('#next').onclick = () => go(step5);
+}
+
+/* ---------- 5: comfort with tech ---------- */
+function step5() {
+  app.innerHTML = `<section class="view q">${bar(5)}
+    ${asker('boot', 'Last one. No wrong answer. I teach from zero.')}
+    <h2>How much have you used AI so far?</h2>
+    <div class="chips" id="box" style="margin-top:16px">${TECH.map(([v, l]) => `<button class="chip row" aria-pressed="${A.tech === v}" data-v="${v}">${esc(l)}</button>`).join('')}</div>
+    <div class="foot"><button class="btn big glow" id="next" ${A.tech ? '' : 'disabled'}>Run my audit</button></div>
+  </section>`;
+  $('#box').querySelectorAll('.chip').forEach((b) => b.onclick = () => {
+    A.tech = b.dataset.v;
+    $('#box').querySelectorAll('.chip').forEach((c) => c.setAttribute('aria-pressed', c === b));
+    $('#next').disabled = false;
+  });
+  $('#back').onclick = () => go(step4);
+  $('#next').onclick = () => { store.set(A); go(reading); };
+}
+
+/* ---------- the robots read it ---------- */
+function reading() {
+  const ids = ['boot', ...ORDER];
+  app.innerHTML = `<section class="view reading">
+    <p class="eyebrow">&gt;_ the robots are reading</p>
+    <h2>Looking at how you run things</h2>
+    <div class="faces">${ids.map((id) => `<img src="${ART}${id}.svg" alt="">`).join('')}</div>
+    <p id="who"></p>
+  </section>`;
+  const imgs = app.querySelectorAll('.faces img'), who = $('#who');
+  const fast = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let i = 0;
+  const tick = () => {
+    if (i >= ids.length) return setTimeout(() => go(results), fast ? 0 : 350);
+    imgs[i].classList.add('on');
+    who.textContent = `${bot(ids[i]).name} is checking ${ids[i] === 'boot' ? 'the basics' : R[ids[i]].area.toLowerCase()}`;
+    i++; setTimeout(tick, fast ? 0 : 240);
+  };
+  tick();
+}
+
+/* ---------- scoring ---------- */
+function score(a) {
+  const s = {}, saw = {};
+  ORDER.forEach((id) => { s[id] = 0; saw[id] = []; });
+  const add = (id, n, line) => { s[id] += n; if (line && !saw[id].includes(line)) saw[id].push(line); };
+  // their own words count most
+  const sentences = a.text.split(/(?<=[.!?\n])\s*/).map((x) => x.trim()).filter(Boolean);
+  for (const id of ORDER) {
+    const hits = sentences.filter((x) => R[id].kw.test(x));
+    if (hits.length) add(id, 2 + hits.length * 2);
+    hits.slice(0, 2).forEach((h) => saw[id].push(`You said: "${h.length > 110 ? h.slice(0, 107) + '...' : h}"`));
+  }
+  for (const [, list] of TOOLS) for (const [label, id, n, line] of list) if (a.tools.includes(label)) add(id, n, line);
+  for (const [label, id, line] of PAINS) if (a.pains.includes(label)) add(id, 3, line);
+  const hate = PAINS.find(([p]) => p === a.hate);
+  if (hate) add(hate[1], 6, 'You picked this as the one thing to get rid of');
+  // anything that touches email, clients or money needs the safety rules first
+  const touchy = s.postie + s.ledger + s.echo;
+  if (touchy >= 6) add('officer-keys', Math.min(6, Math.round(touchy / 3)), 'A robot will be touching your email, clients or money, so the rules come first');
+  const ranked = ORDER.filter((id) => s[id] > 0).sort((x, y) => s[y] - s[x] || ORDER.indexOf(x) - ORDER.indexOf(y));
+  return { s, saw, ranked };
+}
+
+function status(id, s, a) {
+  if (id === 'brick' && a.tools.includes('No website yet')) return ['none', 'Missing'];
+  if (id === 'officer-keys' && s[id] > 0) return ['hand', 'Set rules first'];
+  if (s[id] >= 5) return ['hand', 'By hand'];
+  if (s[id] > 0) return ['none', 'Could be easier'];
+  return ['ok', 'Looks fine'];
+}
+
+/* ---------- results ---------- */
+function results() {
+  const { s, saw, ranked } = score(A);
+  // Bouncer stays a safety note, not a top pick, unless security is the real problem
+  const picks = ranked.filter((id) => id !== 'officer-keys' || A.hate === 'Passwords and logins');
+  const top3 = picks.slice(0, 3), rest = picks.slice(3, 6);
+  const needKeys = s['officer-keys'] > 0 && !top3.includes('officer-keys');
+  const price = cents(C.price);
+  const hireIds = [...top3, ...(needKeys ? ['officer-keys'] : [])];
+  const paidCount = C.robots.filter((r) => !r.free).length;
+  const names = top3.map((id) => bot(id).name);
+  const list = names.length > 1 ? names.slice(0, -1).join(', ') + ' and ' + names.at(-1) : names[0];
+
+  const areas = ORDER.map((id) => { const [k, t] = status(id, s, A); return `<div class="area"><b>${esc(R[id].area)}</b><span class="st-${k}">${t}</span></div>`; }).join('');
+
+  const card = (id, n) => {
+    const r = bot(id), first = r.lessons[0];
+    const lines = saw[id].slice(0, 4);
+    return `<article class="hire" style="--c:${r.accent}">
+      <div class="head"><img src="${ART}${id}-talk.svg" alt="" onerror="this.src='${ART}${id}.svg'"><div><span class="rank">Hire #${n}</span><h3>${esc(r.name)}</h3><p class="job">${esc(r.job)}</p></div></div>
+      <div class="body">
+        <div><h4>What ${esc(r.name)} saw</h4><ul class="saw">${lines.map((l) => `<li>${esc(l)}</li>`).join('')}</ul></div>
+        <div><h4>What could be better</h4><p class="say">${esc(R[id].say)}</p></div>
+        <div><h4>Say this to try it</h4><p class="try">"${esc(R[id].try)}"</p></div>
+        <div class="acts"><a class="btn sea" href="/academy/#/${id}/${first.slug}">Free first lesson</a><a class="btn" href="/api/checkout?item=${id}">Hire ${esc(r.name)}: ${esc(C.price)}</a></div>
+      </div>
+    </article>`;
+  };
+
+  let teamBox = '';
+  if (top3.length) {
+    const n = hireIds.length, cost = n * price;
+    teamBox = `<div class="team">
+      <p class="eyebrow" style="color:var(--sea)">&gt;_ your hire list</p>
+      <h2>${n} robot${n > 1 ? 's' : ''} for your business</h2>
+      <p>${hireIds.map((id) => esc(bot(id).name)).join(', ')}: ${money(cost)} if you hire them one at a time. Or all ${paidCount} robots for ${esc(C.bundle_price)}, buy once and keep forever.</p>
+      <div class="acts"><a class="btn glow" href="/api/checkout?item=all">Hire the whole team: ${esc(C.bundle_price)}</a><a class="btn" href="/api/checkout?item=${top3[0]}">Just ${esc(bot(top3[0]).name)}: ${esc(C.price)}</a></div>
+    </div>`;
+  }
+
+  const boot = A.tech !== 'code' ? `<div class="note" style="background:var(--sea-soft);border-color:var(--sea)"><img src="${ART}boot.svg" alt=""><p><b>Start with Boot, it is free.</b> ${A.tech === 'new' ? 'You have not used AI yet, so Boot gets you set up from zero first.' : 'You already chat with AI. Boot shows you how to let it actually do the work on your computer.'} <a href="/academy/#/boot">Start Boot's lessons</a></p></div>` : '';
+  const keys = needKeys ? `<div class="note"><img src="${ART}officer-keys.svg" alt=""><p><b>Bouncer says: rules first.</b> These robots will touch your clients, email or money. Hire Bouncer too, so nothing ever sends without your yes. <a href="/academy/#/officer-keys">See Bouncer</a></p></div>` : '';
+
+  const empty = !top3.length ? `<div class="note"><img src="${ART}boot.svg" alt=""><p><b>We did not hear much yet.</b> Go back and tell us a little more about your week, like how people book and pay you. <a href="#" id="redo">Add more</a></p></div>` : '';
+
+  app.innerHTML = `<section class="view">
+    <div class="summary">
+      <p class="eyebrow">&gt;_ your audit</p>
+      <h1>${top3.length ? `Hire <em>${esc(list)}</em> first.` : 'Tell us a little more.'}</h1>
+      <p class="lede">${top3.length ? `${esc(bot(top3[0]).name)} would take the most off your plate. Here is what each robot noticed, and what they would change.` : 'The robots need a bit more to go on.'}</p>
+      <div class="score">${areas}</div>
+    </div>
+    ${empty}
+    ${top3.length ? `<h2 class="sec">Your top ${top3.length}</h2>` : ''}
+    ${boot}
+    ${top3.map((id, i) => card(id, i + 1)).join('')}
+    ${keys}
+    ${rest.length ? `<h2 class="sec">Also worth a look</h2><div class="more">${rest.map((id) => { const r = bot(id); return `<a class="mini" href="${page(id)}"><img src="${ART}${id}.svg" alt=""><div><b>${esc(r.name)}</b><span>${esc(saw[id][0] || r.job)}</span></div></a>`; }).join('')}</div>` : ''}
+    ${teamBox}
+    <div class="again"><button class="btn soft" id="copy">Copy my audit</button><button class="btn soft" id="edit">Change my answers</button><button class="btn soft" id="over">Start over</button></div>
+  </section>`;
+
+  $('#edit').onclick = () => go(step1);
+  $('#over').onclick = () => { store.clear(); A = { text: '', tools: [], pains: [], hate: '', tech: '' }; go(intro); };
+  if ($('#redo')) $('#redo').onclick = (e) => { e.preventDefault(); go(step1); };
+  $('#copy').onclick = async () => {
+    const txt = [`My Robot Academy audit`, top3.length ? `Hire first: ${list}` : '', '',
+      ...top3.flatMap((id, i) => [`${i + 1}. ${bot(id).name}, ${bot(id).job}`, ...saw[id].slice(0, 3).map((l) => `  - ${l}`), `  Fix: ${R[id].say}`, `  Try: "${R[id].try}"`, '']),
+      needKeys ? 'Also: Bouncer, so nothing sends without my yes.' : '', 'keltysage.com/academy/audit'].filter((x, i, a) => x || a[i - 1]).join('\n');
+    try { await navigator.clipboard.writeText(txt); toast('Copied. Paste it anywhere.'); } catch { toast('Could not copy on this browser'); }
+  };
+}
+
+fetch('/academy/course-data.json').then((r) => r.json()).then((d) => { C = d; intro(); })
+  .catch(() => { app.innerHTML = '<section class="view"><h2>The robots are on break.</h2><p class="lede">Refresh the page to try again.</p></section>'; });
+</script>
+</body>
+</html>
