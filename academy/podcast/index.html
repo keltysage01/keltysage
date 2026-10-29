@@ -232,12 +232,12 @@ function badge(e){
   return '';
 }
 function drawList(){
-  $('eps').innerHTML = EPS.map(e => `<li data-n="${e.n}" class="${cur && cur.n === e.n ? 'on' : ''}"><button type="button" data-n="${e.n}"><span class="n">Ep ${e.n}</span><span class="tt">${esc(e.title)}<small>${esc(e.guests ? 'With ' + e.guests : '')}</small></span><span class="len">${badge(e)}${Math.round(e.secs / 60)} min</span></button></li>`).join('');
+  $('eps').innerHTML = EPS.map(e => `<li data-n="${e.n}" class="${cur && cur.n === e.n ? 'on' : ''}"><button type="button" data-n="${e.n}"><span class="n">${e.label || 'Ep ' + e.n}</span><span class="tt">${esc(e.title)}<small>${esc(e.guests ? 'With ' + e.guests : '')}</small></span><span class="len">${badge(e)}${Math.round(e.secs / 60)} min</span></button></li>`).join('');
 }
 function session(e){
   if (!('mediaSession' in navigator)) return;
   try {
-    navigator.mediaSession.metadata = new MediaMetadata({title: 'Ep ' + e.n + ': ' + e.title, artist: 'The Robot Break Room', album: 'Hosted by Boot',
+    navigator.mediaSession.metadata = new MediaMetadata({title: (e.label || 'Ep ' + e.n) + ': ' + e.title, artist: 'The Robot Break Room', album: 'Hosted by Boot',
       artwork: [{src: COVER, sizes: '800x800', type: 'image/jpeg'}]});
   } catch (err) {}
 }
@@ -252,7 +252,7 @@ function load(e, play){
     pending = p && !p.done && p.t > 10 && p.t < e.secs - 15 ? p.t : 0;
   }
   session(e);
-  $('epNum').textContent = 'Episode ' + e.n;
+  $('epNum').textContent = e.label ? e.label + ' episode' : 'Episode ' + e.n;
   $('epTitle').textContent = e.title;
   $('epSub').innerHTML = Math.round(e.secs / 60) + ' min &middot; Hosted by Boot' + (e.guests ? ', with ' + esc(e.guests) : '');
   $('epAbout').textContent = e.summary || '';

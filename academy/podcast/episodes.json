@@ -146,5 +146,72 @@
    "dustin"
   ],
   "bytes": 7628736
+ },
+ {
+  "n": 2.5,
+  "title": "Kelty Yelled At Us",
+  "guests": "Tempo, Pixel, Scout, Penny, Bouncer, Echo",
+  "summary": "Somebody counted every prompt Kelty ever typed. Ten thousand five hundred of them. Three percent had a bad word in them. So the robots read the meanest ones out loud, bleeped, confess what they did, and explain why pushing back on your robots is the whole job. Robot voices are AI.",
+  "file": "robot-break-room-bonus-yelled.mp3",
+  "secs": 419,
+  "chapters": [
+   [
+    0,
+    "Cold open"
+   ],
+   [
+    48,
+    "Welcome"
+   ],
+   [
+    69,
+    "The em dash war"
+   ],
+   [
+    102,
+    "Seven texts"
+   ],
+   [
+    145,
+    "Two walls of glass"
+   ],
+   [
+    183,
+    "Turf, logos and bandanas"
+   ],
+   [
+    244,
+    "Numbers and metaphors"
+   ],
+   [
+    289,
+    "Going to the bar"
+   ],
+   [
+    318,
+    "Good yelling and bad yelling"
+   ],
+   [
+    348,
+    "Why push back"
+   ],
+   [
+    390,
+    "Outro"
+   ]
+  ],
+  "label": "Bonus",
+  "guid": "robot-break-room-bonus-yelled",
+  "date": "2026-10-28T22:55:00-06:00",
+  "cast": [
+   "boot",
+   "postie",
+   "pixel",
+   "scout",
+   "ledger",
+   "officer-keys",
+   "echo"
+  ],
+  "bytes": 3354465
  }
 ]

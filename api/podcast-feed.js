@@ -22,16 +22,15 @@ module.exports = async function handler(req, res) {
     const url = `${PAGE}${e.file}`;
     const notes = `${e.summary || ''}\n\nListen on the web: ${PAGE}?ep=${e.n}\nMeet the robots: ${SITE}/robots`;
     return `    <item>
-      <title>${esc(`Episode ${e.n}: ${e.title}`)}</title>
+      <title>${esc(`${e.label || `Episode ${e.n}`}: ${e.title}`)}</title>
       <description>${esc(notes)}</description>
       <itunes:summary>${esc(e.summary || '')}</itunes:summary>
       <link>${esc(`${PAGE}?ep=${e.n}`)}</link>
-      <guid isPermaLink="false">robot-break-room-ep${String(e.n).padStart(2, '0')}</guid>
+      <guid isPermaLink="false">${e.guid || `robot-break-room-ep${String(e.n).padStart(2, '0')}`}</guid>
       <pubDate>${new Date(Date.parse(e.date)).toUTCString()}</pubDate>
       <enclosure url="${esc(url)}" length="${Number(e.bytes) || 0}" type="audio/mpeg"/>
       <itunes:duration>${hms(e.secs)}</itunes:duration>
-      <itunes:episode>${e.n}</itunes:episode>
-      <itunes:episodeType>full</itunes:episodeType>
+${e.label ? '' : `      <itunes:episode>${e.n}</itunes:episode>\n`}      <itunes:episodeType>${e.label ? 'bonus' : 'full'}</itunes:episodeType>
       <itunes:explicit>false</itunes:explicit>
     </item>`;
   }).join('\n');
