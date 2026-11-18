@@ -1,0 +1,110 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+/* Cheat sheet 09, hand-built. Every rule is scoped to .bat so it can sit in the combined PDF next to the other sheets. */
+.bat{--sea:#9ed9c7;--sea-soft:#e3f4ef;--teal:#2f8f89;--ink:#12181c;--ink-2:#3d4a50;--ink-3:#6f7f86;--line:#dfe8e8;--wash:#f4f7f7;--term:#1b2a30}
+.bat .b-cols{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;position:relative}
+.bat .b-col{display:flex;flex-direction:column;gap:12px}
+.bat .b-card{border:1px solid var(--line);border-radius:16px;padding:13px 15px;display:flex;flex-direction:column;gap:9px;background:#fff}
+.bat .b-grow{flex:1}
+.bat .b-card h2{font-size:16.5px;letter-spacing:-.02em;line-height:1.2}
+.bat .b-boot{display:flex;gap:10px;align-items:flex-start}
+.bat .b-face{width:34px;height:34px;border-radius:10px;background:var(--sea-soft);flex:none;overflow:hidden}
+.bat .b-face img{display:block;width:58px;margin:-11px 0 0 -12px}
+.bat .b-bub{background:var(--sea-soft);border-radius:4px 14px 14px 14px;padding:7px 11px;font-size:13px;line-height:1.4;color:var(--ink)}
+.bat .b-bub b{display:block;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--teal);letter-spacing:.04em;font-weight:600}
+.bat .b-refills{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bat .b-refill{border:2px dashed var(--sea);border-radius:12px;padding:6px 10px}
+.bat .b-refill div{font-size:16px;font-weight:800;letter-spacing:-.02em}
+.bat .b-refill small{font-size:11px;color:var(--ink-3)}
+.bat .b-fine{font-size:11px;color:var(--ink-3)}
+.bat .b-brains{display:flex;flex-direction:column;gap:7px;flex:1;justify-content:space-evenly}
+.bat .b-brain{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;padding:8px 11px;border-radius:12px;border:1px solid var(--line);background:var(--wash)}
+.bat .b-brain.pick{border:2px solid var(--sea);background:var(--sea-soft)}
+.bat .b-name{font-weight:700;font-size:14px}
+.bat .b-mdl{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--ink-3);margin-left:3px}
+.bat .b-tag{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;background:var(--ink);color:#fff;padding:2px 7px;border-radius:99px;margin-left:4px;white-space:nowrap;vertical-align:1px}
+.bat .b-job{grid-column:1/-1;font-size:12.5px;color:var(--ink-2);line-height:1.35}
+.bat .b-cells{display:flex;gap:3px;align-items:center}
+.bat .b-cell{width:10px;height:17px;border-radius:3px;background:var(--teal)}
+.bat .b-cell.sip{background:linear-gradient(to top,var(--teal) 18%,#e2e9e9 18%)}
+.bat .b-cost{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12px;color:var(--teal);margin-left:5px;min-width:3.6ch;text-align:right}
+.bat .b-legend{font-size:11px;color:var(--ink-3);display:flex;align-items:center;gap:6px}
+.bat .b-legend .b-cell{width:8px;height:13px}
+.bat .b-term{background:var(--term);color:#e8f3f1;border-radius:12px;padding:9px 12px;font-family:'JetBrains Mono',monospace;font-size:11.5px;line-height:1.5}
+.bat .b-term span{color:var(--sea)} .bat .b-term i{font-style:normal;color:#8ea3a6}
+.bat .b-tips{list-style:none;display:flex;flex-direction:column;gap:8px}
+.bat .b-tips li{display:grid;grid-template-columns:22px 1fr;gap:9px;align-items:start}
+.bat .b-n{width:22px;height:22px;border-radius:7px;background:var(--sea);font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;display:grid;place-items:center}
+.bat .b-tips b{display:block;font-size:13.5px}
+.bat .b-tips span{font-size:12px;color:var(--ink-2)}
+.bat .b-plans{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.bat .b-plan{border:1px solid var(--line);border-radius:10px;padding:6px;text-align:center}
+.bat .b-plan div{font-size:15px;font-weight:800;color:var(--teal);white-space:nowrap}
+.bat .b-plan small{display:block;font-size:10.5px;color:var(--ink-3)}
+.bat .b-note{align-self:center;background:#fff3a8;color:#4a3f0c;border:1px solid #e6d77a;padding:7px 16px 9px;font-family:'Caveat',cursive;font-size:22px;line-height:1.05;transform:rotate(-1.2deg)}
+.bat .b-hero{position:absolute;right:.5in;top:.78in;width:92px}
+.bat h1,.bat .sub{max-width:5.6in}
+</style></head>
+<body><div class="page bat" style="--c:#9ed9c7">
+<div class="top"><img src="{SITE}/brand/logo.png" alt=""><b>Kelty Sage</b><span>AI Business Coach</span><div class="num">cheat sheet 09</div></div>
+<img class="b-hero" src="{SITE}/robots/art/boot.svg" alt="">
+<h1>Your robots share <em>one battery</em></h1>
+<p class="sub">Hire the right robot for the job, and the $20 plan lasts all week.</p>
+
+<div class="b-cols">
+  <div class="b-col">
+    <div class="b-card">
+      <h2>How the $20 plan works</h2>
+      <div class="b-boot"><div class="b-face"><img src="{SITE}/robots/art/boot.svg" alt=""></div>
+        <div class="b-bub"><b>BOOT</b>There's no set number of messages. You get a battery, and it refills two ways.</div></div>
+      <div class="b-refills">
+        <div class="b-refill"><div>Every 5 hours</div><small>A short top-up</small></div>
+        <div class="b-refill"><div>Every week</div><small>The big refill</small></div>
+      </div>
+      <p class="b-fine">Check your battery in Claude: Settings, then Usage.</p>
+    </div>
+    <div class="b-card b-grow">
+      <h2>Hire the right robot for the job</h2>
+      <div class="b-boot"><div class="b-face"><img src="{SITE}/robots/art/boot.svg" alt=""></div>
+        <div class="b-bub"><b>BOOT</b>You wouldn't pay a master to make copies. Hire an intern for the small stuff and save the master for the big stuff.</div></div>
+      <div class="b-brains">
+        <div class="b-brain"><div class="b-name">The Intern <span class="b-mdl">Haiku</span></div><div class="b-cells"><i class="b-cell sip"></i><span class="b-cost">tiny</span></div><div class="b-job">Quick errands. Fix typos, reword a line, sort a list.</div></div>
+        <div class="b-brain pick"><div class="b-name">The Pro <span class="b-mdl">Sonnet</span> <span class="b-tag">TOP PICK</span></div><div class="b-cells"><i class="b-cell"></i><span class="b-cost">1</span></div><div class="b-job">Your everyday hire. Emails, posts, questions, edits.</div></div>
+        <div class="b-brain"><div class="b-name">The Expert <span class="b-mdl">Opus</span></div><div class="b-cells"><i class="b-cell"></i><i class="b-cell"></i><span class="b-cost">2</span></div><div class="b-job">Call in when the Pro gets stuck. Tricky plans, hard code.</div></div>
+        <div class="b-brain"><div class="b-name">The Master <span class="b-mdl">Fable</span></div><div class="b-cells"><i class="b-cell"></i><i class="b-cell"></i><i class="b-cell"></i><i class="b-cell"></i><span class="b-cost">4</span></div><div class="b-job">Paid the most. Only for rare, huge problems.</div></div>
+      </div>
+      <p class="b-legend"><i class="b-cell"></i> = the battery the Pro uses for one job</p>
+    </div>
+  </div>
+  <div class="b-col">
+    <div class="b-card">
+      <h2>App or terminal?</h2>
+      <div class="b-boot"><div class="b-face"><img src="{SITE}/robots/art/boot.svg" alt=""></div>
+        <div class="b-bub"><b>BOOT</b>Same battery. The terminal isn't cheaper. It can use more, because I read files and do lots of steps for you.</div></div>
+      <div class="b-term"><span>&gt;</span> fix the button on my contact page<br><i># one clear job uses less than "look at my whole site"</i></div>
+    </div>
+    <div class="b-card b-grow">
+      <h2>Boot's five battery savers</h2>
+      <ul class="b-tips">
+        <li><i class="b-n">1</i><div><b>New topic, new chat.</b><span>Long chats get reread every time you send. In the terminal, type /clear.</span></div></li>
+        <li><i class="b-n">2</i><div><b>Hire the Pro first.</b><span>Call the Expert only if the Pro gets stuck.</span></div></li>
+        <li><i class="b-n">3</i><div><b>Turn off extras.</b><span>Research mode and extended thinking use more.</span></div></li>
+        <li><i class="b-n">4</i><div><b>Ask it all at once.</b><span>One message with three questions beats three messages.</span></div></li>
+        <li><i class="b-n">5</i><div><b>Save big jobs for after the refill.</b><span>Check Settings, then Usage, first.</span></div></li>
+      </ul>
+    </div>
+    <div class="b-card">
+      <h2>Battery still runs out?</h2>
+      <div class="b-plans">
+        <div class="b-plan"><div>5x</div><small>Max plan</small></div>
+        <div class="b-plan"><div>10x</div><small>Ultra plan, weekly</small></div>
+        <div class="b-plan"><div>Credits</div><small>Pay as you go</small></div>
+      </div>
+    </div>
+    <div class="b-note">Don't pay the master to make copies</div>
+  </div>
+</div>
+<p class="b-fine" style="margin-top:10px;position:relative">Battery sizes come from Anthropic's public prices for each model, November 2026. The plan's exact math isn't published, so treat them as a guide.</p>
+<div class="foot"><span><b>keltysage.com</b> &nbsp;Free lessons in the Robot Academy</span><span>I type it. AI does it.</span></div>
+</div></body></html>

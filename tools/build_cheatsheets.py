@@ -102,6 +102,10 @@ SHEETS = [
      {"t": "It went off in a weird direction", "c": ["Stop. Let's make a plan first, then do it"], "d": "Press Esc first, then type this. Read the plan before you say go."},
      {"t": "Before you trust it", "c": ["Check your own work and tell me what might be wrong"], "d": "It is honest about its weak spots when you ask."},
    ]},
+  # 09 is hand-built in tools/sheets/ (battery bars, Boot speech bubbles); its CSS is scoped to .bat
+  {"slug": "robot-battery", "n": "09", "color": "#9ed9c7", "title": "Your robots share one battery",
+   "sub": "Hire the right robot for the job, and the $20 plan lasts all week.",
+   "file": "sheets/09-robot-battery.html"},
 ]
 
 ROBOTS = [  # pain, robot, site slug, art id, accent
@@ -172,6 +176,9 @@ def title_html(t):
     return esc(" ".join(words[:-k])) + ' <em>' + esc(" ".join(words[-k:])) + '</em>'
 
 def sheet_html(s):
+    if s.get("file"):
+        raw = (SITE / "tools" / s["file"]).read_text().replace("{SITE}", str(SITE))
+        return raw.replace('<meta charset="utf-8">', f'<meta charset="utf-8"><style>{SHEET_CSS}</style>', 1)
     if s.get("robots"):
         rows = "".join(
             f'<div class="bot" style="--a:{a}"><img src="{SITE}/robots/art/{art}.svg" alt=""><div class="pain">{esc(p)}</div>'
